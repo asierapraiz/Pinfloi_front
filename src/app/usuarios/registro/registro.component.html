@@ -1,0 +1,149 @@
+<div class="d-flex justify-content-center">
+  <div class="card border-primary">
+    <div class="card-header">{{titulo}}</div>
+    <div class="card-body">
+
+      <form [formGroup]="registro">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Nombre*</label>
+          <div class="col-sm-8">
+            <input  class="form-control" formControlName="nombre" type="text" />
+            <div class="error-messages">
+              <ng-container *ngFor="let error of error_messages.nombre">
+                <div class="error-message"
+                  *ngIf="registro.get('nombre').hasError(error.type) && (registro.get('nombre').dirty || registro.get('nombre').touched)">
+                  {{ error.message }}
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Apellido*</label>
+          <div class="col-sm-8">
+            <input  class="form-control " formControlName="apellido" type="text" />
+            <div class="error-messages">
+              <ng-container *ngFor="let error of error_messages.apellido">
+                <div class="error-message"
+                  *ngIf="registro.get('apellido').hasError(error.type) && (registro.get('apellido').dirty || registro.get('apellido').touched)">
+                  {{ error.message }}
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Nombre de usuario*</label>
+          <div class="col-sm-8">
+            <input  class="form-control" formControlName="username" type="text" />
+            <div class="error-messages">
+              <ng-container *ngFor="let error of error_messages.username">
+                <div class="error-message"
+                  *ngIf="registro.get('username').hasError(error.type) && (registro.get('username').dirty || registro.get('username').touched)">
+                  {{ error.message }}
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Curso*</label>
+          <div class="col-sm-8">
+            <select  class="browser-default custom-select">
+              <option selected>Selecciona tu curso</option>
+              <option *ngFor="let anios of edad" value="1">{{anios}}</option>
+              
+            </select>
+            <div class="error-messages">
+              <ng-container *ngFor="let error of error_messages.apellido">
+                <div class="error-message"
+                  *ngIf="registro.get('apellido').hasError(error.type) && (registro.get('apellido').dirty || registro.get('apellido').touched)">
+                  {{ error.message }}
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Email *</label>
+          <div class="col-sm-8">
+            <input class="form-control" formControlName="email" type="text" />
+            <div class="error-messages">
+              <ng-container *ngFor="let error of error_messages.email">
+                <div class="error-message" *ngIf="registro.get('email').hasError(error.type) && 
+        (registro.get('email').dirty || registro.get('email').touched)">
+                  {{ error.message }}
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group row">
+          <label class="col-sm-5 col-form-label">Password*</label>
+          <div class="col-sm-7 ">
+            <div class="input-group">
+              <input id="first-pass" class="form-control " formControlName="password" type="password" />
+              <div class="input-group-text" (click)="showPass('first-pass')">
+                <div><i id='first-pass-eye-icon' class="fa fa-eye" aria-hidden="true"></i></div>
+              </div>
+            </div>
+
+            <div class="error-messages">
+              <ng-container *ngFor="let error of error_messages.password">
+                <div class="error-message" *ngIf="registro.get('password').hasError(error.type) 
+                && (registro.get('password').dirty || registro.get('password').touched)">
+                  {{ error.message }}
+                </div>
+              </ng-container>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group row">
+          <label class="col-sm-5 col-form-label">Confirmar Password*</label>
+          <div class="col-sm-7 ">
+            <div class="input-group">
+              <input id="second-pass" class="form-control " formControlName="confirmpassword" type="password" />
+              <div class="input-group-text" (click)="showPass('second-pass')">
+                <div><i id='second-pass-eye-icon' class="fa fa-eye" aria-hidden="true"></i></div>
+              </div>
+            </div>
+
+            <div class="error-messages">
+              <ng-container *ngFor="let error of error_messages.confirmpassword">
+                <div class="error-message" *ngIf="registro.get('confirmpassword').hasError(error.type) 
+                  && (registro.get('confirmpassword').dirty || registro.get('confirmpassword').touched)">
+                  {{ error.message }}
+                </div>
+              </ng-container>
+
+              <ng-container>
+                <div class="error-message" *ngIf="registro.errors                
+                  && (registro.get('confirmpassword').dirty || registro.get('confirmpassword').touched)
+                  && enviando">
+                  Los paswords no coinciden.
+                </div>
+              </ng-container>
+            </div>
+
+          </div>
+
+        </div>
+        
+
+        <button class="form-control btn btn-primary" (click)='enviar(registro)'>Guardar</button>
+      </form>
+    </div>
+  </div>
+</div>
