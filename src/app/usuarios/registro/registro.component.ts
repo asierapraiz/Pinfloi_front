@@ -5,6 +5,7 @@ import { UsuarioService } from './../../services/usuario.service';
 import { Router } from '@angular/router';
 import swal from 'sweetalert2';
 
+
 @Component({
   selector: 'registro-app',
   templateUrl: './registro.component.html',
@@ -129,21 +130,6 @@ export class RegistroComponent {
     );      
        
   }
-/*
-  create(): void {
-    console.log(this.cliente);
-    this.clienteService.create(this.cliente)
-      .subscribe(
-        cliente => {
-          this.router.navigate(['/clientes']);
-          swal('Nuevo cliente', `El cliente ${cliente.nombre} ha sido creado con éxito`, 'success');
-        },
-        err => {
-          this.errores = err.error.errors as string[];
-          console.error('Código del error desde el backend: ' + err.status);
-          console.error(err.error.errors);
-        }
-      );
-  }*/
+
 
 }
