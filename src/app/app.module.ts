@@ -33,6 +33,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { RecuperarPassComponent } from './usuarios/recuperar-pass/recuperar-pass.component';
+import { ChangePassComponent } from './usuarios/change-pass/change-pass.component';
 
 
 registerLocaleData(localeES, 'es');
@@ -48,7 +49,8 @@ const routes: Routes = [
   { path: 'facturas/:id', component: DetalleFacturaComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_USER' } },
   { path: 'facturas/form/:clienteId', component: FacturasComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' } },
   { path: 'registro', component: RegistroComponent },
-  { path: 'recuperar_pass', component: RecuperarPassComponent }
+  { path: 'recuperar_pass', component: RecuperarPassComponent },
+  { path: 'user/changePassword', component: ChangePassComponent }
  
 ];
 
@@ -66,7 +68,8 @@ const routes: Routes = [
     DetalleFacturaComponent,
     FacturasComponent,
     RegistroComponent,
-    RecuperarPassComponent
+    RecuperarPassComponent,
+    ChangePassComponent
   ],
   imports: [
     BrowserModule,

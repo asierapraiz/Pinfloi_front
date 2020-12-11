@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from './../usuarios/usuario';
-import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest, HttpEvent, HttpParams } from '@angular/common/http';
 import { map, catchError, tap } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class UsuarioService {
 
   private urlEndPoint: string = 'http://localhost:8080/api/usuario';
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor( private http: HttpClient, private router: Router) { }
 
   create(usuario: Usuario): Observable<Usuario> {    
     return this.http.post(this.urlEndPoint, usuario)
@@ -27,9 +28,14 @@ export class UsuarioService {
           return throwError(e);
         }));
   }
-/*
-  recuperaPass(email){    
-    return this.http.post(this.urlEndPoint+"/resetPassword", email)
+
+  recuperaPass(userEmail){    
+
+    let params = new URLSearchParams();
+    params.set('email', userEmail);    
+    let body = {email: userEmail};
+
+    return this.http.get(this.urlEndPoint+"/resetPassword/"+ userEmail)
     .pipe(
       map((response: any) => response.usuario as Usuario),
       catchError(e => {
@@ -41,5 +47,31 @@ export class UsuarioService {
         }
         return throwError(e);
       }));
-  }*/
+  }
+
+  changePass(newPass, token){
+    
+
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    
+    
+    
+    let params = new HttpParams();
+    params.set('newPassword', newPass); 
+    params.set('token', token);  
+
+    return this.http.get(this.urlEndPoint+"/changePassword/", {params: params})
+    .pipe(
+      map((response: any) => response.usuario as Usuario),
+      catchError(e => {
+        if (e.status == 400) {
+          return throwError(e);
+        }
+        if (e.error.mensaje) {
+          console.error(e.error.mensaje);
+        }
+        return throwError(e);
+      }));
+  }
 }

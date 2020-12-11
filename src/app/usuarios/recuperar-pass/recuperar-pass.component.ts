@@ -19,7 +19,7 @@ export class RecuperarPassComponent implements OnInit {
 
   ngOnInit() {
   }
-/*
+
   enviar(){       
 
     if (this.email == null) {
@@ -39,7 +39,7 @@ export class RecuperarPassComponent implements OnInit {
       }
     );      
        
-  }*/
+  }
 
   
 

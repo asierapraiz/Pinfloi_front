@@ -1,14 +1,14 @@
 
 <div class="d-flex justify-content-center ">
   <div class="card border-primary text-center  ">
-    <div class="card-header">Recupera tu password</div>
+    <div class="card-header">Restblece tu password</div>
     <div class="card-body">
   
       <form method="post">
         <div class="form-group row">
-          <label class="col-sm-12 col-form-label">Email usado en la plataforma *</label>
+          <label class="col-sm-12 col-form-label">Elija un nuevo password *</label>
           <div class="col-sm-12">
-            <input [(ngModel)]="email" class="form-control" name="email" id="email" type="text" />
+            <input [(ngModel)]="newPass" class="form-control" name="newPass" id="newPass" type="text" />
             <div class="error-messages">              
             </div>
           </div>
@@ -18,6 +18,8 @@
         </div>
       </form>
     </div>
+    {{token}}
   </div>
+  
   </div>
   
