@@ -29,11 +29,7 @@ export class UsuarioService {
         }));
   }
 
-  recuperaPass(userEmail){    
-
-    let params = new URLSearchParams();
-    params.set('email', userEmail);    
-    let body = {email: userEmail};
+  recuperaPass(userEmail){       
 
     return this.http.get(this.urlEndPoint+"/resetPassword/"+ userEmail)
     .pipe(
@@ -57,9 +53,10 @@ export class UsuarioService {
     
     
     
-    let params = new HttpParams();
-    params.set('newPassword', newPass); 
-    params.set('token', token);  
+    let params = new HttpParams()
+    .set('newPassword', newPass) 
+    .set('token', token);    
+    
 
     return this.http.get(this.urlEndPoint+"/changePassword/", {params: params})
     .pipe(
