@@ -45,18 +45,11 @@ export class UsuarioService {
       }));
   }
 
-  changePass(newPass, token){
-    
-
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    
-    
-    
+  changePass(newPass, token){  
+      
     let params = new HttpParams()
     .set('newPassword', newPass) 
-    .set('token', token);    
-    
+    .set('token', token);      
 
     return this.http.get(this.urlEndPoint+"/changePassword/", {params: params})
     .pipe(
