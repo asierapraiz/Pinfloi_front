@@ -75,7 +75,7 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     FormsModule,    
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
     BrowserAnimationsModule, MatDatepickerModule, MatMomentDateModule,
     ReactiveFormsModule, MatAutocompleteModule, MatInputModule, MatFormFieldModule, FontAwesomeModule
   ],
