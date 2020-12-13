@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Cliente } from './cliente';
-import { Region } from './region';
+import { Cliente } from './models/cliente';
+import { Region } from './models/region';
 import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
 import { map, catchError, tap } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';

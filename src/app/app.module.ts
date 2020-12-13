@@ -1,13 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { DirectivaComponent } from './directiva/directiva.component';
-import { ClientesComponent } from './clientes/clientes.component';
-import { FormComponent } from './clientes/form.component';
-import { PaginatorComponent } from './paginator/paginator.component';
-import { ClienteService } from './clientes/cliente.service';
+import { SharedModule } from './../app/shared/shared.module';
+import { DirectivaComponent } from './components/directiva/directiva.component';
+import { ClientesComponent } from './components/clientes/clientes.component';
+import { FormComponent } from './components/clientes/form.component';
+
+import { ClienteService } from './components/clientes/cliente.service';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -18,14 +17,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
-import { DetalleComponent } from './clientes/detalle/detalle.component';
-import { LoginComponent } from './usuarios/login.component';
+import { DetalleComponent } from './components/clientes/detalle/detalle.component';
+import { LoginComponent } from './usuarios/login/login.component';
 import { AuthGuard } from './usuarios/guards/auth.guard';
 import { RoleGuard } from './usuarios/guards/role.guard';
 import { TokenInterceptor } from './usuarios/interceptors/token.interceptor';
 import { AuthInterceptor } from './usuarios/interceptors/auth.interceptor';
-import { DetalleFacturaComponent } from './facturas/detalle-factura.component';
-import { FacturasComponent } from './facturas/facturas.component';
+import { DetalleFacturaComponent } from './components/facturas/detalle-factura.component';
+import { FacturasComponent } from './components/facturas/facturas.component';
 import { UsuarioService } from './services/usuario.service';
 import { RegistroComponent } from './usuarios/registro/registro.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -34,6 +33,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { RecuperarPassComponent } from './usuarios/recuperar-pass/recuperar-pass.component';
 import { ChangePassComponent } from './usuarios/change-pass/change-pass.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 
 registerLocaleData(localeES, 'es');
@@ -57,12 +57,10 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
+       
     DirectivaComponent,
     ClientesComponent,
-    FormComponent,
-    PaginatorComponent,
+    FormComponent,    
     DetalleComponent,
     LoginComponent,
     DetalleFacturaComponent,
@@ -72,6 +70,7 @@ const routes: Routes = [
     ChangePassComponent
   ],
   imports: [
+    SharedModule, 
     BrowserModule,
     HttpClientModule,
     FormsModule,    

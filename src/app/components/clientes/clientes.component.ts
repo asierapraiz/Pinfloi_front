@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Cliente } from './cliente';
+import { Cliente } from './models/cliente';
 import { ClienteService } from './cliente.service';
 import { ModalService } from './detalle/modal.service';
 import swal from 'sweetalert2';
 import { tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
-import { AuthService } from '../usuarios/auth.service';
+import { AuthService } from './../../usuarios/service/auth.service';
 
 @Component({
   selector: 'app-clientes',
