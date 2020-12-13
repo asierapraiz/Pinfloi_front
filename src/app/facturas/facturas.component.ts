@@ -9,7 +9,7 @@ import { map, flatMap } from 'rxjs/operators';
 import { FacturaService } from './services/factura.service';
 import { Producto } from './models/producto';
 import { ItemFactura } from './models/item-factura';
-import { MatAutocompleteSelectedEvent } from '@angular/material';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 import swal from 'sweetalert2';
 
