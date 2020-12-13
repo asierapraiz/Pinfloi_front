@@ -31,9 +31,9 @@ import { RegistroComponent } from './usuarios/registro/registro.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { RecuperarPassComponent } from './usuarios/recuperar-pass/recuperar-pass.component';
 import { ChangePassComponent } from './usuarios/change-pass/change-pass.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 registerLocaleData(localeES, 'es');
@@ -74,11 +74,10 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule,
-    AngularFontAwesomeModule,
+    FormsModule,    
     RouterModule.forRoot(routes),
     BrowserAnimationsModule, MatDatepickerModule, MatMomentDateModule,
-    ReactiveFormsModule, MatAutocompleteModule, MatInputModule, MatFormFieldModule
+    ReactiveFormsModule, MatAutocompleteModule, MatInputModule, MatFormFieldModule, FontAwesomeModule
   ],
   providers: [ClienteService, UsuarioService,
     { provide: LOCALE_ID, useValue: 'es' },
