@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Constants } from '../../global/constants';
 import { Cliente } from './models/cliente';
 import { Region } from './models/region';
 import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class ClienteService {
-  private urlEndPoint: string = 'http://localhost:8080/api/clientes';
+  private urlEndPoint: string = Constants.API_ENDPOINT+'api/clientes';
 
   constructor(private http: HttpClient, private router: Router) { }
 

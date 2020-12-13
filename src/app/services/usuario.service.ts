@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Constants } from '../global/constants';
 import { Usuario } from '../usuarios/models/usuario';
 import { HttpClient, HttpHeaders, HttpRequest, HttpEvent, HttpParams } from '@angular/common/http';
 import { map, catchError, tap } from 'rxjs/operators';
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class UsuarioService {
 
-  private urlEndPoint: string = 'http://localhost:8080/api/usuario';
+  private urlEndPoint: string = Constants.API_ENDPOINT+'api/usuario';
   constructor( private http: HttpClient, private router: Router) { }
 
   create(usuario: Usuario): Observable<Usuario> {    
