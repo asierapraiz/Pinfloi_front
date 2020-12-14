@@ -34,6 +34,7 @@ export class RecuperarPassComponent implements OnInit {
       },
       err => {
         this.errores = err.error.errors as string[];
+        swal('Recuperación de password', err.error.mensaje, 'error');
         console.error('Código del error desde el backend: ' + err.status);
         console.error(err.error.errors);
       }
