@@ -1,0 +1,270 @@
+
+body{
+  background-image: url('/../assets/img/fondos/fondoDibujosB.png') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: repeat-y !important; 
+}
+
+:root {
+  
+  --color-white: white;  
+  --color-blue:   #1E90FF;
+  --duration: 12s;
+  --interations-counter:10;
+  --semi-duration: calc(var(--duration) / 2);
+  
+}
+
+
+
+.cosa{
+  animation-iteration-count: 3;
+}
+
+@mixin inerShadow {
+-webkit-box-shadow: inset 0px 0px 22px -4px rgba(125,125,125,1);
+  -moz-box-shadow: inset 0px 0px 22px -4px rgba(125,125,125,1);
+  box-shadow: inset 0px 0px 22px -4px rgba(125,125,125,1);
+    
+}
+
+@mixin shadow{
+  -webkit-box-shadow: 0px 0px 31px -4px rgba(122,122,122,1);
+  -moz-box-shadow: 0px 0px 31px -4px rgba(122,122,122,1);
+  box-shadow: 0px 0px 31px -4px rgba(80,80,80,1);
+}
+
+@mixin borde{
+  border: 1px  solid grey;
+}
+
+
+.fadeOut{
+  animation:fadeOut 4000 ; 
+}
+@keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+
+.cosa{
+  position:relative;
+  width:120px;
+  height:150px;
+  background-color:var(--color-blue);
+  margin:10% auto ;  
+  border: 1px solid white;
+  border-radius:5px;
+  overflow: hidden;
+  @include inerShadow;
+  transform-origin: center top;
+
+  @media(min-width:1200px) and (max-width:1400px) {
+    margin:5% auto ; 
+  }  
+  @media(min-width:1375px){
+  
+  }
+}
+
+
+#cara{
+  width:100%;
+  height:100%;
+  position:absolute;
+  transform-origin: center bottom;  
+}
+
+#cara.animacion{
+  animation:  ojos calc(1 * var(--semi-duration))  var(--interations-counter) linear; 
+   @keyframes ojos {
+      from to {
+        transform: translateX(0px)  translateY(5px);
+      }
+      25%{
+        transform: translateX(0px);
+      }
+      26%{
+        transform: translateX(10px) translateY(5px);
+      }
+      40%{
+        transform: translateX(10px);
+      }
+      41%{
+        transform: translateX(-8px)  ;
+      }
+      65%{
+        transform: translateX(-8px);
+      }
+      66%{
+        transform:  translateX(0px)  translateY(30px);
+      }
+      80%{
+        transform: translateX(0px) translateY(30px);
+      }
+      81%{
+        transform: translateX(0px)   ;
+      }
+      95%{
+        transform: translateX(0px) translateY(5px);
+      }
+    }   
+
+}
+
+
+
+
+
+.ojo{
+  transform-origin: center bottom;
+  @include borde;
+  position:absolute;
+  top:30px;
+  width:30px;
+  height:40px;
+  background-color:var(--color-white);
+  overflow: hidden;
+  border-radius:50% 50% 50% 50% / 70% 70% 45% 45%;
+
+  @include inerShadow;
+} 
+
+
+#ojoDch{
+  left:65px;
+}
+
+#ojoIzq{
+  left:25px;
+}
+
+
+  @keyframes iris {
+      from to {
+        transform: translateX(0px);
+      }
+      25%{
+        transform: translateX(0px);
+      }
+      26%{
+        transform: translateX(10px);
+      }
+      40%{
+        transform: translateX(10px);
+      }
+      41%{
+        transform: translateX(-5px);
+      }
+      65%{
+        transform: translateX(-5px);
+      }
+      66%{
+        transform:  translateX(0px) translateY(10px);
+      }
+      80%{
+        transform: translateX(0px) translateY(10px);
+      }
+      81%{
+        transform: translateX(0px);
+      }
+      95%{
+        transform: translateX(0px);
+      }
+    }
+
+    
+
+.iris{
+  content:'';
+  width:15px;
+  height:20px;  
+  top:40%;
+  left:15%;    
+  border-radius: 50%;
+  background-color: black;
+  position: absolute;    
+  transform-origin: center top;
+
+    
+    
+} 
+
+.iris.animacion{
+
+  animation: salto  calc(1 * var(--semi-duration))  var(--interations-counter) linear,
+  iris  calc(1 * var(--semi-duration))  var(--interations-counter) linear;
+  
+}
+
+.brillo{
+
+  content:'';
+  width:5px;
+  height:5px;  
+  top:42%;
+  left:15%;    
+  border-radius: 50%;
+  background-color: var(--color-white);
+  position: absolute;    
+  transform-origin: center top;
+  borde-radius: 50% 50% 50% 50%;  
+
+}
+
+.brillo.animacion{
+  animation:iris  calc(1 * var(--semi-duration))  var(--interations-counter) linear;
+}
+
+
+#mandibula{
+  transform-origin: center;
+  @include borde;
+  position:absolute;
+  width:200px;
+  height:120px;
+  background-color: var(--color-blue);
+  left:-20%;
+  margin-top:75%;
+  border-radius:50% 50% 50% 50% / 75% 75% 40% 40%;
+  @include shadow;
+
+  animation: mandibula calc(0.4 * var(--semi-duration))  var(--interations-counter) linear;
+
+  @keyframes mandibula {
+      from, to {
+        transform: rotate(10deg) translateY(10);
+      }
+      33%{
+        transform: rotate(-10deg) translateY(-10);
+      }
+      50% {
+        transform: rotate(10deg) translateY(10px);
+      }
+      75%{
+        transform: rotate(-10deg) translateY(-10);
+      }
+    }  
+}
+
+#mandibula:before{
+  content:'';
+  background-color:white ;
+  filter: brightness(90%);
+  width:10px;
+  height:10px;
+  position:absolute;
+  top:-3px;
+  left:20%;
+  transform:rotate(-25deg);
+  border-radius:20% 50% 0% 0%;  
+  @include shadow;      
+  border-top: 1px  solid grey;
+  border-left: 1px  solid grey;
+  border-right: 1px  solid grey;
+  border-bottom: 0px  solid grey;  
+
+}
+

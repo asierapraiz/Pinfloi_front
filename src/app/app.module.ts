@@ -33,13 +33,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { RecuperarPassComponent } from './components/usuarios/recuperar-pass/recuperar-pass.component';
 import { ChangePassComponent } from './components/usuarios/change-pass/change-pass.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { LandingComponent } from './components/landing/landing.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
 registerLocaleData(localeES, 'es');
 
 const routes: Routes = [
-  { path: '', redirectTo: '/clientes', pathMatch: 'full' },
+  { path: 'landing', component: LandingComponent },
   { path: 'directivas', component: DirectivaComponent },
   { path: 'clientes', component: ClientesComponent },
   { path: 'clientes/page/:page', component: ClientesComponent },
@@ -50,14 +52,14 @@ const routes: Routes = [
   { path: 'facturas/form/:clienteId', component: FacturasComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' } },
   { path: 'registro', component: RegistroComponent },
   { path: 'recuperar_pass', component: RecuperarPassComponent },
-  { path: 'user/changePassword', component: ChangePassComponent }
+  { path: 'user/changePassword', component: ChangePassComponent },
+  { path: '', redirectTo: '/landing', pathMatch: 'full' }
  
 ];
 
 @NgModule({
   declarations: [
-    AppComponent,
-       
+    AppComponent,       
     DirectivaComponent,
     ClientesComponent,
     FormComponent,    
@@ -67,7 +69,8 @@ const routes: Routes = [
     FacturasComponent,
     RegistroComponent,
     RecuperarPassComponent,
-    ChangePassComponent
+    ChangePassComponent,
+    LandingComponent
   ],
   imports: [
     SharedModule, 
@@ -76,7 +79,8 @@ const routes: Routes = [
     FormsModule,    
     RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
     BrowserAnimationsModule, MatDatepickerModule, MatMomentDateModule,
-    ReactiveFormsModule, MatAutocompleteModule, MatInputModule, MatFormFieldModule, FontAwesomeModule
+    ReactiveFormsModule, MatAutocompleteModule, MatInputModule, MatFormFieldModule, 
+    FontAwesomeModule, NgbModule
   ],
   providers: [ClienteService, UsuarioService,
     { provide: LOCALE_ID, useValue: 'es' },

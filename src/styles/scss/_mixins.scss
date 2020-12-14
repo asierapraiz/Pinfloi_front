@@ -1,0 +1,152 @@
+// src/assets/fonts
+
+
+@font-face {
+    font-family: 'dosisbold';
+    src: url('../../assets/fonts/dosis-bold-webfont-webfont.eot');
+    src: url('../../assets/fonts/dosis-bold-webfont-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../assets/fonts/dosis-bold-webfont-webfont.woff2') format('woff2'),
+         url('../../assets/fonts/dosis-bold-webfont-webfont.woff') format('woff'),
+         url('../../assets/fonts/dosis-bold-webfont-webfont.ttf') format('truetype'),
+         url('../../assets/fonts/dosis-bold-webfont-webfont.svg#dosisbold') format('svg');
+
+         
+
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+@font-face {
+    font-family: 'dosisextrabold';
+    src: url('../../assets/fonts/dosis-extrabold-webfont-webfont.eot');
+    src: url('../../assets/fonts/dosis-extrabold-webfont-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../assets/fonts/dosis-extrabold-webfont-webfont.woff2') format('woff2'),
+         url('../../assets/fonts/dosis-extrabold-webfont-webfont.woff') format('woff'),
+         url('../../assets/fonts/dosis-extrabold-webfont-webfont.ttf') format('truetype'),
+         url('../../assets/fonts/dosis-extrabold-webfont-webfont.svg#dosisextrabold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'dosisextralight';
+    src: url('../../assets/fonts/dosis-extralight-webfont-webfont.eot');
+    src: url('../../assets/fonts/dosis-extralight-webfont-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../assets/fonts/dosis-extralight-webfont-webfont.woff2') format('woff2'),
+         url('../../assets/fonts/dosis-extralight-webfont-webfont.woff') format('woff'),
+         url('../../assets/fonts/dosis-extralight-webfont-webfont.ttf') format('truetype'),
+         url('../../assets/fonts/dosis-extralight-webfont-webfont.svg#dosisextralight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'dosislight';
+    src: url('../../assets/fonts/dosis-light-webfont-webfont.eot');
+    src: url('../../assets/fonts/dosis-light-webfont-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../assets/fonts/dosis-light-webfont-webfont.woff2') format('woff2'),
+         url('../../assets/fonts/dosis-light-webfont-webfont.woff') format('woff'),
+         url('../../assets/fonts/dosis-light-webfont-webfont.ttf') format('truetype'),
+         url('../../assets/fonts/dosis-light-webfont-webfont.svg#dosislight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'dosismedium';
+    src: url('../../assets/fonts/dosis-medium-webfont-webfont.eot');
+    src: url('../../assets/fonts/dosis-medium-webfont-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../assets/fonts/dosis-medium-webfont-webfont.woff2') format('woff2'),
+         url('../../assets/fonts/dosis-medium-webfont-webfont.woff') format('woff'),
+         url('../../assets/fonts/dosis-medium-webfont-webfont.ttf') format('truetype'),
+         url('../../assets/fonts/dosis-medium-webfont-webfont.svg#dosismedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'dosisregular';
+    src: url('../../assets/fonts/dosis-regular-webfont-webfont.eot');
+    src: url('../../assets/fonts/dosis-regular-webfont-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../assets/fonts/dosis-regular-webfont-webfont.woff2') format('woff2'),
+         url('../../assets/fonts/dosis-regular-webfont-webfont.woff') format('woff'),
+         url('../../assets/fonts/dosis-regular-webfont-webfont.ttf') format('truetype'),
+         url('../../assets/fonts/dosis-regular-webfont-webfont.svg#dosisregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'dosissemibold';
+    src: url('../../assets/fonts/dosis-bold-webfont-webfont.eot');   
+    
+    src: url('./../../assets/fonts/dosis-semibold-webfont-webfont.eot') format('embedded-opentype'),
+         url('../../assets/fonts/dosis-semibold-webfont-webfont.woff2') format('woff2'),
+         url('../../assets/fonts/dosis-semibold-webfont-webfont.woff') format('woff'),
+         url('../../assets/fonts/dosis-semibold-webfont-webfont.ttf') format('truetype'),
+         url('../../assets/fonts/dosis-semibold-webfont-webfont.svg#dosissemibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+// Font Mixins
+
+
+@mixin font ($font) {
+  font-family: $font, Arial, sans-serif;
+}
+
+
+@mixin my-btn-primary{
+	background: rgba(56,199,187,1);
+	background: -moz-linear-gradient(top, rgba(56,199,187,1) 0%, rgba(54,201,66,1) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(56,199,187,1)), color-stop(100%, rgba(54,201,66,1)));
+	background: -webkit-linear-gradient(top, rgba(56,199,187,1) 0%, rgba(54,201,66,1) 100%);
+	background: -o-linear-gradient(top, rgba(56,199,187,1) 0%, rgba(54,201,66,1) 100%);
+	background: -ms-linear-gradient(top, rgba(56,199,187,1) 0%, rgba(54,201,66,1) 100%);
+	background: linear-gradient(to bottom, rgba(56,199,187,1) 0%, rgba(54,201,66,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#38c7bb', endColorstr='#36c942', GradientType=0 );
+}
+
+//Sombras
+
+//Sombra texto
+
+@mixin text-shadow{
+    text-shadow: 4px 4px #87898c;
+    }
+
+//Sombra marco con borde y animacion
+@mixin sombra-marco{
+      border: 1px solid #fff;
+      border-radius: 20px;             
+      background: #24C5D9;
+      text-align: center;
+      -webkit-box-shadow: -2px 2px 16px 3px rgba(0, 0, 0, 0.5);
+              box-shadow: -2px 2px 16px 3px rgba(0, 0, 0, 0.5);
+      -webkit-transition: box-shadow, .5s;
+    }    

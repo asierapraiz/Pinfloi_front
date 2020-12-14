@@ -1,0 +1,50 @@
+ @import "variables.scss";
+ body{
+	 background-image:none!important;
+	 background-attachment: fixed;
+    
+    @media(min-width:768px){
+		background-image: url('/img/fondos/fondoDibujosB.png')!important;
+        background-size: cover!important;   
+        background-position: center center!important;
+        background-repeat: repeat-y!important;
+	}
+}
+
+.container{
+	margin: 0 auto;
+	padding-right:2px!important;
+	padding-left:2px!important;
+	display: -webkit-flex; /* Safari */
+	  -webkit-justify-content: center; /* Safari 6.1+ */
+	  display: flex;
+	  justify-content: center;
+}
+
+.caja{
+	border:1px solid #fff;
+	border-radius:10px;
+	box-shadow:-2px 2px 16px 3px rgba(0,0,0,0.5);
+	-webkit-transition:box-shadow, .5s;
+	margin:auto;
+	background:$primary;
+	text-align:center;
+	margin-bottom: 5px;
+
+	&.caja:hover{
+		box-shadow:none;
+	}
+}
+
+.web{	
+	margin-top:10px;	
+	@media(min-width:768px){
+		margin-top:50px;	
+	}
+
+	@media(min-width:1200px) and (max-width:1400px) {
+		margin-top:15px;
+		max-width:500px;
+		padding:0px 20px;
+	}
+}
