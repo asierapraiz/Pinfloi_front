@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Constants } from '../global/constants';
-import { Usuario } from '../usuarios/models/usuario';
+import { Constants } from './../../../global/constants';
+import { Usuario } from './../models/usuario';
 import { HttpClient, HttpHeaders, HttpRequest, HttpEvent, HttpParams } from '@angular/common/http';
 import { map, catchError, tap } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';

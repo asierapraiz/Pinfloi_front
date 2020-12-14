@@ -5,7 +5,7 @@ import { ModalService } from './modal.service';
 
 import swal from 'sweetalert2';
 import { HttpEventType } from '@angular/common/http';
-import { AuthService } from '../../usuarios/service/auth.service';
+import { AuthService } from './../../usuarios/service/auth.service';
 
 import { FacturaService } from '../../facturas/services/factura.service';
 import { Factura } from '../../facturas/models/factura';
