@@ -141,7 +141,7 @@
       }
     }
   },
-  "defaultProject": "clientes-app",
+  "defaultProject": "my-starter-app",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

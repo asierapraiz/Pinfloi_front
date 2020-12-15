@@ -35,6 +35,9 @@ import { ChangePassComponent } from './components/usuarios/change-pass/change-pa
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LandingComponent } from './components/landing/landing.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NombreFormComponent } from './components/nombre-form/nombre-form.component';
+
+
 
 
 
@@ -53,6 +56,7 @@ const routes: Routes = [
   { path: 'registro', component: RegistroComponent },
   { path: 'recuperar_pass', component: RecuperarPassComponent },
   { path: 'user/changePassword', component: ChangePassComponent },
+  { path: 'nombre', component: NombreFormComponent },
   { path: '', redirectTo: '/landing', pathMatch: 'full' }
  
 ];
@@ -70,7 +74,8 @@ const routes: Routes = [
     RegistroComponent,
     RecuperarPassComponent,
     ChangePassComponent,
-    LandingComponent
+    LandingComponent,
+    NombreFormComponent
   ],
   imports: [
     SharedModule, 

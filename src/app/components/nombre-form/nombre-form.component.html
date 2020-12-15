@@ -1,0 +1,41 @@
+
+
+
+<div class="row container">
+    <div class=" wow fadeIn col-10 col-md-6 col-xl-4 caja" id="logeo">       
+           
+            <div class="cosa" id="cosa">
+                <div [ngClass]="['animacion', 'paused']" class="animacion" id="cara">
+                    <div class="ojo animacion" id="ojoIzq">
+                        <div class="iris animacion" id="irisIzq">
+                        </div>
+                        <div class="brillo animacion" id="brilloIzq">
+                        </div>
+                    </div>
+                    <div class="ojo animacion" id="ojoDch">
+                        <div class="iris animacion" id="irisDch">
+                        </div>
+                        <div class="brillo animacion" id="brilloDch">
+                        </div>
+                    </div>
+                    <div class=" animacion" id="mandibula">
+                        <!--<div id="pelilla"></div>-->
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <i class="fa fa-user clc">
+                </i>
+                <input class="col-10" [(ngModel)]="nombre"  (change)="keyUp()" (input)="keyDown()" id="tuNombre" name="tuNombre" placeholder="Tu nombre" required="" type="text"/>   
+               
+            </div>           
+            <input class="" (click)="start()" type="submit" value="OK"/>            
+        
+    </div>
+</div>
+
+
+
+
+
+
