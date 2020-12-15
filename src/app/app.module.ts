@@ -36,6 +36,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LandingComponent } from './components/landing/landing.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NombreFormComponent } from './components/nombre-form/nombre-form.component';
+import { AvatarFormComponent } from './components/avatar-form/avatar-form.component';
 
 
 
@@ -57,6 +58,7 @@ const routes: Routes = [
   { path: 'recuperar_pass', component: RecuperarPassComponent },
   { path: 'user/changePassword', component: ChangePassComponent },
   { path: 'nombre', component: NombreFormComponent },
+  { path: 'avatar', component: AvatarFormComponent },
   { path: '', redirectTo: '/landing', pathMatch: 'full' }
  
 ];
@@ -75,7 +77,8 @@ const routes: Routes = [
     RecuperarPassComponent,
     ChangePassComponent,
     LandingComponent,
-    NombreFormComponent
+    NombreFormComponent,
+    AvatarFormComponent
   ],
   imports: [
     SharedModule, 

@@ -1,7 +1,6 @@
 .container{
-	margin:0px auto;
+	margin:0px auto;	
 }
-	
 
 #logeo{
     margin:10px; 
@@ -99,7 +98,7 @@ input[type=password]:hover{
 	border-bottom:1px solid white;
 }
 
-input[type=submit]{
+input[type=submit], .avatar-btn{
 	border:1px solid #fff;
 	border-radius:50px;
 	display:inline-block;

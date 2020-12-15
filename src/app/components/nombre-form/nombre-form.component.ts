@@ -61,7 +61,7 @@ export class NombreFormComponent implements OnInit {
   
   start(){    
     localStorage.setItem('nombre', JSON.stringify(this.nombre));
-    this.router.navigateByUrl('/tarea');
+    this.router.navigateByUrl('/avatar');
   }
 
 }
