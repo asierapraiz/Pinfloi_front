@@ -50,7 +50,7 @@ export class AvatarFormComponent implements OnInit {
     let elements=document.getElementsByClassName('d-none'); 
     while(elements.length > 0){
       elements[0].classList.remove("d-none");
-    }; 
+    }
     let ele=document.querySelector('#indefinido');    
     ele.classList.add("d-none");          
   };

@@ -37,6 +37,7 @@ import { LandingComponent } from './components/landing/landing.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NombreFormComponent } from './components/nombre-form/nombre-form.component';
 import { AvatarFormComponent } from './components/avatar-form/avatar-form.component';
+import { JuegoComponent } from './components/juego/juego.component';
 
 
 
@@ -59,6 +60,7 @@ const routes: Routes = [
   { path: 'user/changePassword', component: ChangePassComponent },
   { path: 'nombre', component: NombreFormComponent },
   { path: 'avatar', component: AvatarFormComponent },
+  { path: 'juego/:id', component: JuegoComponent },
   { path: '', redirectTo: '/landing', pathMatch: 'full' }
  
 ];
@@ -78,7 +80,8 @@ const routes: Routes = [
     ChangePassComponent,
     LandingComponent,
     NombreFormComponent,
-    AvatarFormComponent
+    AvatarFormComponent,
+    JuegoComponent
   ],
   imports: [
     SharedModule, 
