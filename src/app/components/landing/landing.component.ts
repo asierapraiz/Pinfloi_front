@@ -1,6 +1,6 @@
 import { HostListener, Component, OnInit } from '@angular/core';
-import { Juego } from "./models/juego.model";
-import { Tarea } from "./models/tarea.model";
+import { Juego } from "./../../models/juego.model";
+import { Tarea } from "./../../models/tarea.model";
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router} from '@angular/router';
@@ -17,18 +17,17 @@ export class LandingComponent implements OnInit {
   
 
   tareas: Tarea[] = [
-    { id: 1, 'name': 'amigos', 'selected': false },
-    { id: 2, 'name': 'suma1', 'selected': false },
-    { id: 3, 'name': 'suma', 'selected': false },
-    { id: 4, 'name': 'sumaCon', 'selected': false },
-    { id: 5, 'name': 'resta' , 'selected': false},
-    { id: 6, 'name': 'restaCon', 'selected': false },
-    { id: 7, 'name': 'tablas', 'selected': false },
-    { id: 8, 'name': 'tablas2' , 'selected': false},
-    { id: 9, 'name': 'multiplicarDeUno' , 'selected': false},
-    { id: 10, 'name': 'multiplicarDeDos' , 'selected': false},
-    { id: 11, 'name': 'dividir', 'selected': false },
-    { id: 12, 'name': 'dividirDeDos', 'selected': false }
+    { id: 1, 'name': 'amigos', 'selected': false, 'cantidad': 0 },
+    { id: 2, 'name': 'suma1', 'selected': false, 'cantidad': 0 },
+    { id: 3, 'name': 'suma', 'selected': false, 'cantidad': 0 },
+    { id: 4, 'name': 'sumaCon', 'selected': false, 'cantidad': 0 },
+    { id: 5, 'name': 'resta' , 'selected': false, 'cantidad': 0},
+    { id: 6, 'name': 'restaCon', 'selected': false, 'cantidad': 0 },
+    { id: 7, 'name': 'tablas', 'selected': false, 'cantidad': 0 },
+    { id: 8, 'name': 'tablas2' , 'selected': false, 'cantidad': 0},
+    { id: 9, 'name': 'multiplicarDeUno' , 'selected': false, 'cantidad': 0},
+    { id: 11, 'name': 'dividir', 'selected': false , 'cantidad': 0},
+    { id: 12, 'name': 'dividirDeDos', 'selected': false , 'cantidad': 0}
   ];
 
   juegos: Juego[] = [
@@ -104,6 +103,21 @@ export class LandingComponent implements OnInit {
 
     console.log(JSON.stringify(this.juegosSeleccionados));
     console.log("Jueago selected =>"+this.juegoSelected);
+  
+}
+
+modificaCantidadTarea(event) {
+  var target = event.currentTarget;
+  var idAttr = target.attributes.id.nodeValue;
+  let tarea = this.tareas.find(t => t.name === idAttr.split("-")[1]);
+
+  let operacion = idAttr.split("-")[0];
+  if (operacion == 'suma' && tarea.cantidad < 6) {
+    tarea.cantidad++;
+  } else if (operacion == 'resta' && tarea.cantidad > 0) {
+    tarea.cantidad--;
+  }
+  this.tareaSelected = this.tareas.find(t => t.cantidad > 0) ? true : false;
   
 }
 

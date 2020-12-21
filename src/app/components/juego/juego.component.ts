@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Partida } from './models/partida';
+import { Partida } from './../../models/partida';
 import { Renderer2} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
