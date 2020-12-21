@@ -163,6 +163,19 @@ section {
   }
 }
 
+.tareas-modal-cantidad{
+  position:absolute;
+  top: 0rem;
+  left:0.5rem;
+  padding: 0.5rem 1rem;
+  color:rgb(87, 93, 95);
+  background-color: rgb(150, 156, 154);
+  opacity: 0.5;
+  border-radius: 50%;
+  overflow: hidden;
+  
+}
+
 
 // Button Styles
 .btn-submit{
