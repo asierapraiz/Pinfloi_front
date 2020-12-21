@@ -1,5 +1,6 @@
 export class Tarea {
     id: number;
     name: string;  
-    selected: boolean;  
+    selected: boolean;
+    cantidad: number ; 
   }

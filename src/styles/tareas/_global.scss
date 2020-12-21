@@ -1,0 +1,939 @@
+@import "_variables.scss";
+
+
+body {	
+	@include background-right;	
+	color: $blanco_tiza;	
+	background-position: center;		
+	position:relative;
+	@include background-cover;
+	@include tarea-font;
+
+
+	//Modales
+	.opciones-modal, .historico-modal {  
+
+	    .row{
+	        margin-left:0px;
+	        margin-right:0px;
+	    }  
+	    
+	    .modal-dialog {
+	        margin: 1rem auto;
+	        max-width: 95vw;
+	    }
+	    .modal-content {
+	        padding: 0px 0;
+	        text-align: center;
+	        h2 {
+	            color:white;
+	            font-size: 1.5em;
+	            font-weight:900;
+	            margin-bottom: 15px;
+	            -webkit-transition:all, .5s;
+	            -transition:all, .5s;
+	        }
+	        p {
+	            margin-bottom: 30px;
+	        }
+	        p.item-intro {
+	            font-size: 16px;
+	            font-style: italic;
+	            margin: 20px 0 30px;
+	            @include serif-font;
+	        }
+	        ul.list-inline {
+	            margin-top: 0;
+	            margin-bottom: 30px;
+	        }
+	        img {
+	            margin-bottom: 30px;
+	        }
+	        .btn {
+	            cursor: pointer;
+	            font-size:.8em;
+	            color:white;
+	        }
+	        i{
+	            font-size:.5em;
+	        }
+	        .perfil{
+	        	min-height:auto;
+	        }
+	        .tarea{
+	        	float:left;
+	        }
+
+	        .medalla{
+	        	width:100px;
+	        	height:auto;
+	        }
+	        .outsaider{
+	        	color:$gray-600!important;
+	        }
+	    }
+	    .close-modal {
+	        position: absolute;
+	        top: 25px;
+	        right: 25px;
+	        width: 75px;
+	        height: 75px;
+	        cursor: pointer;
+	        background-color: transparent;
+
+	        &:hover {
+	          opacity: 0.3;
+	        }
+	        .lr {
+	          /* Safari and Chrome */
+	          z-index: 1051;
+	          width: 1px;
+	          height: 75px;
+	          margin-left: 35px;
+	          /* IE 9 */
+	          -webkit-transform: rotate(45deg);
+	          -ms-transform: rotate(45deg);
+	          transform: rotate(45deg);
+	          background-color: $gray-900;
+	          .rl {
+	            /* Safari and Chrome */
+	            z-index: 1052;
+	            width: 1px;
+	            height: 75px;
+	            /* IE 9 */
+	            -webkit-transform: rotate(90deg);
+	            -ms-transform: rotate(90deg);
+	            transform: rotate(90deg);
+	            background-color: $gray-900;
+	          }
+	        }
+	    }
+	     img.fondo{
+
+	      	background:darken($primary, 5%);
+	      	border-radius:50%;
+	    	border:2px solid white;
+
+	      	-webkit-box-shadow: inset 0px 0px 49px -15px rgba(97,97,97,1);
+			-moz-box-shadow: inset 0px 0px 49px -15px rgba(97,97,97,1);
+			box-shadow: inset 0px 0px 49px -15px rgba(97,97,97,1);
+	     }
+	    img.img-fluid{
+
+	    	border-radius:50%;
+	    	
+	    	
+	    }
+
+	    .nav-tabs{
+	    	border-bottom:none;
+
+	    	h2{
+	    		margin-bottom:0px;
+	    	}
+	    	.nav-item{
+	    		padding-right:0px;
+	    		padding-left:0px;
+	    	}
+	    	.nav-link{
+	    		border-width:0px 0px 1px 0px ;
+	    		boder-style:solid;
+	    		border-color: transparent transparent  white transparent ;
+	    	}
+	    	
+	    	.nav-link.active.show{
+	    		background:$primary;
+	    		border-width:1px 1px 0px 1px ;
+	    		boder-style:solid;
+	    		border-color: white white  transparent white ;	    		
+	    		border-radius:15px 15px 0px 0px;
+	    		box-shadow: 0 -6px 6px 3px rgba(143, 143, 143,0.3);   		
+	    		
+	    	}
+	    }
+
+	    .tab-content{	  
+		 
+		  
+		  border-width: 1px;
+		  border-style: solid;
+		  border-image: 
+		    linear-gradient(
+		      to bottom, 
+		      white, 
+		      rgba(0, 0, 0, 0)
+		    ) 1 100%;
+		
+
+	    }
+
+	    @media(min-width:800px) {
+
+	        .modal-content {
+
+	        	&.opciones{
+	        		padding: 10% 0;
+	            	margin:10%;
+	        	}
+
+	        	.nombre{
+	        		font-size:7em;
+	        	}
+	            
+	            h2{font-size:2.5em;}
+
+	            a>h2:hover{
+					color: darken($primary, 10%);					  
+	            }           
+
+	            .btn{
+	                font-size:1.5em;
+	            }
+	        }
+	        .modal-dialog {
+	          margin: 1rem auto;
+	          max-width: 80vw;
+	          
+	        }
+	        .modal-content{
+	          min-height:vh;
+	        }	        
+	  }
+	  @media(min-width:1000px){
+
+	  	.modal-content {
+
+	        	&.opciones{
+	        		padding: 10% 0;
+	            	margin:10%;
+	        	}
+
+	        	.nombre{
+	        		font-size:7em;
+	        	}
+	            
+	            h2{font-size:2.5em;}
+
+	            a>h2:hover{
+					color: darken($primary, 10%);					  
+	            }           
+
+	            .btn{
+	                font-size:1.5em;
+	            }
+	        }
+	        .modal-dialog {
+	          margin: 1rem auto;
+	          max-width: 60vw;
+	          
+	        }
+	        .modal-content{
+	          min-height:75vh;
+	        }	 
+
+	  }
+	}
+
+	.container-fluid.row{
+
+		@media  (max-width: 1200px)   {
+			padding-right:0px!important;
+			padding-left:0px!important;
+			margin-right:-5px!important;
+			margin-left:-5px!important;		
+		}
+	}
+
+	p{
+		margin-bottom: 0!important;
+	}
+
+	.nota{
+		
+		width:100%;
+		text-align: left!important;
+		line-height: 0!important;	
+	    font-size:0.7rem;		
+
+		@media  (min-width: 1400px)   {
+			font-size:1rem;
+		}		
+	}
+
+	.tarea-icon{
+			border-radius:50%;
+			border:2px solid $blanco_tiza;
+		}
+
+	.tarea-icon.tablas{
+		border-radius:none!important;
+		border:none!important;
+	}
+
+	#carton{
+	        
+	  background: none;
+	  border: 0;
+	  box-sizing: border-box;
+	  margin: 1em;
+	  padding: 2% 4%;
+	  border-radius:10px; 
+	  
+	  position: relative;
+
+	  &::before,
+	  &::after {
+	  border-radius:10px;
+	    box-sizing: inherit;
+	    content: '';
+	    position: absolute;
+	    width: 100%;
+	    height: 100%;
+	  }
+	  
+
+	}
+
+	.item{
+		z-index:1000;	
+	  }
+
+	#toWelcomeee{
+		position:absolute;
+		top:25px;
+		left:25px;
+		width:35px;
+		height:35px;
+
+	}
+
+	#carton, #aciertos{
+	    
+
+	  &::before,
+	  &::after {
+	    // Set border to invisible, so we don't see a 4px border on a 0x0 element before the transition starts
+	    border: 4px solid transparent;
+	    width: 0;
+	    height: 0;
+	  }
+
+	  // This covers the top & right borders (expands right, then down)
+	  &::before {
+	    top: 0;
+	    left: 0;
+	  }
+
+	  // And this the bottom & left borders (expands left, then up)
+	  &::after {
+	    bottom: 0;
+	    right: 0;
+	  }
+	  
+	  &:hover {
+	    //color: $acierto;
+	  }
+
+	  // Hover styles
+	  &.fin::before,
+	  &::after {
+	    width: 100%;
+	    height: 100%;
+	  }
+
+	  &.fin::before {
+	    border-top-color: $acierto; // Make borders visible
+	    border-right-color: $acierto;
+	    transition:
+	      width 0.25s ease-out, // Width expands first
+	      height 0.25s ease-out 0.25s; // And then height
+	  }
+
+	  &.fin::after {
+	    border-bottom-color: $acierto; // Make borders visible
+	    border-left-color: $acierto;
+	    transition:
+	      border-color 0s ease-out 0.5s, // Wait for ::before to finish before showing border
+	      width 0.25s ease-out 0.5s, // And then exanding width
+	      height 0.25s ease-out 0.75s; // And finally height
+	  }
+	}
+
+
+
+	div{box-sizing: border-box;}
+
+
+	.container-fluid{
+		margin-top:15px;
+
+	}
+
+
+	#avatar{
+		min-height:80%;
+	}
+			
+	          
+	        
+	.avatar-box{
+	    position:absolute;
+	}
+
+	.avatar-img-parent{
+		@media  (max-width: 1400px)   {
+			padding-right: 5px;
+		}
+	}
+
+	.avatar-img{        
+	    position:relative;
+	    background-color: white;
+	    
+	    margin:0 auto;
+	    margin-bottom: 10px;
+
+	    -webkit-box-shadow: inset 0px 0px 46px -9px rgba(0,0,0,0.36);
+	    -moz-box-shadow: inset 0px 0px 46px -9px rgba(0,0,0,0.36);
+	    box-shadow: inset 0px 0px 46px -9px rgba(0,0,0,0.36);
+	}
+
+	.avatar-img, .avatar-box, .img-fluid{
+	     border-radius: 10px;
+	}
+
+	.avatar-img:after {
+	    content: "";
+	    display: block;
+	    padding-bottom: 90%;
+	}
+
+
+	.sombra, .marco {
+	  border: 1px solid #fff;
+	  border-radius: 20px;             
+	  background: #24C5D9;
+	  text-align: center;
+	  -webkit-box-shadow: -2px 2px 16px 3px rgba(0, 0, 0, 0.5);
+	          box-shadow: -2px 2px 16px 3px rgba(0, 0, 0, 0.5);
+	  -webkit-transition: box-shadow, .5s;
+	}      
+	.marco{
+		color:white;
+	}
+
+
+
+	.perfil{
+		margin-left:15px;
+	    //padding:2%;
+	    min-height: 20vh;
+
+	    .row{
+	    	margin:0px!important;
+		}
+
+		.foto{
+		  padding:0px;
+		  position:relative;
+		  margin-top:0px;
+		  margin-left:0px;
+		}
+
+		.img-fluid{
+		  position:absolute;
+		  top:0px;
+		  left:0px;
+		}
+
+		.centrar{
+		  display:flex;
+		  align-items:center;
+		  justify-content:center;
+		}
+		.nombre{
+		  font-size:3rem;
+		  font-weight: 900;   
+		  margin: auto;
+		  margin-left:-20px; 
+		  text-align: center; 
+		  
+		  padding:0px!important;         
+
+		}
+		.tareas{
+		    margin-top:2%;
+		    text-align:left;
+		    
+		}
+		.tarea{
+		    font-weight: bold;
+		    i{
+		    margin-left:5px;
+		    }
+		    
+		}
+
+		@media (min-width:600px){
+	    
+	    	padding:0%;
+	    	//margin-top:-10px;
+	    	min-height:35vh;
+	    	>.row{
+	    		margin-top:-10px!important;
+	    	}
+
+		    .nombre{
+		        font-size:3rem;                  
+
+		    }
+		    .tareas{
+			    margin-top:5%;
+			    text-align:left;
+			    
+			}
+
+		    .tarea{
+			    font-weight: bold;
+			    font-size:1.2rem;
+			    line-height: 0.7;
+		    
+			}
+		    
+	    }
+
+	    @media (min-width:1400px){  
+		    padding:5%;
+
+		    .nombre{
+		        font-size:400%;                  
+
+		    }
+		    .tarea{
+			    font-weight: bold;
+			    font-size:1.5rem;
+			    line-height: 0.7;
+		    
+			}
+		    
+	    }
+		
+	}
+
+
+
+	#vadorrin{	
+		position:relative;
+		width:30px;
+		margin-top:-10%;
+	}
+	.vadorrin{
+		position:absolute;
+		
+		width:400px;
+		height: auto;
+		top: 10%;
+		left:-15%;	
+		z-index: 9;
+
+
+		@media (min-width: 600px) {
+		 	width:160%;	 	
+		 	height: auto;		
+			top:30%;
+			left:-15%;			
+		 }	
+
+		 @media (min-width: 900px) {
+		 	width:130%;	 	
+		 	height: auto;		
+			top:30%;
+			left:-10%;			
+		 }	
+
+		 @media (min-width: 1370px) {
+		 	width:150%;	 	
+		 	height: auto;		
+			top:10%;
+			left:-15px;			
+		 }		
+	}
+
+	#pizarra{
+		position:relative;
+		display:flex;  
+	    justify-content:center;
+	    align-items:center;
+	    flex-direction:column ;
+	    position:relative;
+
+	    border-radius:30px;
+	    border: 1px solid #ffff;
+		
+		height: 90vh;
+		margin-top:5%;
+		float:left;
+		z-index:1;
+		position:relative;
+		
+		//@include color-pizarra();
+		background: linear-gradient(#7FBF3F, #458433);
+		//background:#458433;
+
+		text-align:center;		
+		padding:35px 35px;
+
+		@media only screen and (min-width: 800px)   {
+		 	width:75%;
+			height: 95vh;
+			padding:25px 15px;
+			margin:5px 0px ;
+			float:right;
+		 }		
+
+		
+		@media (min-width: 1370px) {
+
+			min-height: 90vh;
+			width:75%;
+			padding:20px 25px;
+			margin:0px 0px;
+			float:right;
+		}			
+		
+	}
+
+	.navbar {
+	    position: absolute;
+	    width:100%;
+	    top:0px;
+	    left:0px;
+	    .navbar-collapse{
+	    	width:auto;
+	    }
+
+	    img{
+	    	width:100px!important;
+	    }
+
+	    .navbar-toggler{
+	    	color:white;
+	    	border-color: rgba(255, 255, 255,0.5);
+	    	float:left;
+	    	transition:all, 0.5s;
+
+	    	&:hover{
+	    		color: darken($primary, 10%);
+	    		border-color: darken($primary, 10%);
+	    	}
+	    }
+
+	    .navbar-brand>img{
+	    	width:100px;
+	    }
+	    .nav-item{
+	    	display:inline-block;
+
+	    }
+
+	    .nav-link{
+	    	float:right;
+	    	font-size:1.5rem;
+	    	color:white!important;
+	    	margin-left:40px;
+
+	    	transition:all, 0.5s;
+
+	    	&:hover{    		
+	    		color:$primary!important;
+	    	}
+	    }
+
+	    .navbar-icon{
+	    	font-size:2.5rem;
+	    	margin-left:5px;
+	    	border:0px;
+	    }
+
+	    @media (min-width:800px){
+	    	img{
+	    	 width:150px!important;
+	    	}
+
+	    	.navbar-icon{
+		    	font-size:2rem;
+		    	margin-left:5px;
+		    	border:0px;
+		    }
+	    }
+
+	    @media (min-width:1400px){
+	    	img{
+	    	 width:200px!important;
+	    	}
+
+	    	.navbar-icon{
+		    	font-size:2.5rem;
+		    	margin-left:5px;
+		    	border:0px;
+		    }
+	    }
+
+	}
+
+	#carton{	
+		align-self:center;
+		margin:auto auto;
+		@media only screen and (max-width: 800px)   {
+		 	padding:0px 15px;
+		 }	
+	}
+
+	.fila{		
+		display:flex;  
+	    justify-content:center;
+	    align-items:center;
+		flex-direction:row ;
+		
+	}
+	.tiza{
+		height: 5px;
+		border-bottom:  3px solid #fff;
+		display:block;
+	}
+	
+
+
+	.resultado, .result{	
+
+		@include tarea-font;  	  	
+	  	@include input(2px); 
+	  	cursor: url('/img/tiza.png'),auto;
+	  	margin-top:3px; 	 	
+
+	  	@media only screen and (max-width: 800px){
+	  		padding-top: 5px;
+	  		@include input(1px); 
+	  	}	  	
+	}
+
+	.item{	
+		color: $blanco_tiza;	
+		text-align: center;	
+		width: 80px;
+		height: 80px;		
+		box-sizing: border-box;	
+		line-height: 1.15!important;
+		font-size: 4rem;		
+		background-color: transparent;	
+		cursor: url('/img/tareas/tiza.png'),auto;
+		box-sizing: border-box;
+	    
+
+		@media (max-width: 1370px) {
+			font-size: 2.2em;
+	  		width:50px;
+	  		height: 50px;
+		}
+
+		@media only screen and (max-width: 800px)   {
+			font-size: 1.3em;
+	  		width:30px;
+	  		height: 30px; 
+		}
+	}
+
+	.llevada{	
+		width: 55px;
+		height: 55px;	
+		font-size:2.5rem;
+		text-align: center;
+		margin:0 14px;
+		@include input(2px); 
+
+		@media (max-width: 1370px) {
+			
+			width: 40px ;
+			height: 40px ;	
+			font-size:1.5em;
+			margin:0 7px;
+		}	
+		@media only screen and (max-width: 800px){
+			
+			width: 25px ;
+			height: 25px ;		
+			font-size:1rem;
+			margin:0 4px;
+			
+
+		}
+	}
+
+	#linea{
+		width:110%;
+		border: 2px solid $blanco_tiza;
+		border-radius:4px;
+		margin-left: -5%;
+		top:95%;
+		@media (max-width: 800px) {
+			margin-top:5px !important;
+			width: 110% !important;
+		}
+
+		@media only screen and (max-width: 1370px)   {
+			border: 1px solid $blanco_tiza;
+		}
+		
+	}
+
+	#draggables{
+		z-index:2000;
+		align-self:center;
+		margin:auto auto;
+		padding-top:2%;
+		cursor: -webkit-grab; 
+		cursor: grab;
+			@media only screen and (max-width: 800px)   {
+		 		margin:auto 20%;
+		 	}
+		
+		.draggable{
+			display:inline-block;
+			//padding:0% 4%;		
+			margin-bottom: 0px;	
+			vertical-align: middle;
+			font-size: 3rem;		
+			border:1px solid rgba(255,255,255, 0.5);
+			border-radius:10%;
+			width:80px;
+			height:80px;
+
+			@media (max-width: 1370px) {
+				margin-top:0%;
+			 	font-size: 2em;
+			 	padding:10px 0px;			
+				width:60px ;
+		  		height: 60px ;
+		  		border-radius:10%; 
+		 	}
+
+		 	@media only screen and (max-width: 800px)   {
+		 		margin-top:10%;
+				font-size: 1.2em;
+				padding:0px 0px;			 
+				width:50px ;
+		  		height: 50px ; 
+
+		 	}
+		}
+		
+		 
+	}
+
+	.modal{
+		color:black;
+	}
+
+	.relative{
+		position:relative;
+	}
+	.absolute{
+		position:absolute;
+		left:0px;			
+	}
+
+	.resultado .llevada{
+		@include input(1px);	
+		@media only screen and (min-width: 1400px){
+			@include input(2px);
+		}
+	}
+	#llevadas{
+		display:flex;
+		align-items:center;
+		justify-content:center;
+	}
+
+	.acierto{
+		@include acierto(2px);
+		@media only screen and (min-width: 1400px){
+			@include acierto(3px);
+		}
+	}
+
+	.errado{
+		@include errado(2px);
+		@media only screen and (min-width: 1400px){
+			@include errado(3px);
+		}
+	}
+
+	.acertado{
+		border:none;
+	}
+
+	.relacionados{	
+		@include relacionados(2px);
+		@media only screen and (min-width: 1400px){
+			@include relacionados(3px);
+		}
+	}
+
+	.seleccionado{
+
+		@include seleccionado(2px);
+		@media only screen and (min-width: 1400px){
+			@include seleccionado(3px);
+		}	
+	}
+
+	.error{
+
+		@include error(2px);
+		@media only screen and (min-width: 1300px){
+			@include error(3px);
+		}
+	}
+
+	#errores{
+		position:absolute;
+		top:87%;
+		left:85%;
+		width:150px;
+	}
+
+	.marcaError{
+		color:$errado;
+		float:right;
+		font-size:2em;
+		margin-left:5%;
+		display:inline-block;	
+	}
+	.vacio{
+		border:none;	
+	}
+
+	@keyframes shadowPulse {
+	    0% {
+	        box-shadow: 0px 0px 20px px hsla(34, 89%, 61%, 1);
+	    }
+	    //hsl(34°, 89%, 61%)
+
+	    100% {
+	        box-shadow: 0px 0px 5px 0px hsla(0, 0%, 0%, 0);
+	    }
+	}
+
+	.parpadea{
+		border-radius: 50% 50% 50% 50%;
+		animation-name: shadowPulse;
+	    animation-duration: 2s;
+	    animation-iteration-count: 4;
+	    animation-timing-function: linear;
+	}
+
+}
+
+
+
+

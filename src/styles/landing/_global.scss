@@ -62,6 +62,19 @@ h6 {
   @include font('dosisextrabold');
 }
 
+.minus, .plus{
+  font-size: 2rem;
+  color: $amarillo;
+  border: none;
+  &:hover{
+    color: $primary;
+  }
+}
+
+.blue{
+  color: $primary;
+}
+
 
 
 

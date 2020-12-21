@@ -1,0 +1,43 @@
+// Typography
+//$font-family-sans-serif: "Nunito", sans-serif;
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+$font-family-sans-serif: 'Varela Round', sans-serif;
+
+$rojo_tiza: rgba(251, 44, 44, 0.9);
+$blanco_tiza: white;//rgba(255,255,255, 0.9)
+$acierto:#1cff5a;
+$errado:rgba(255, 204, 0, .5);
+$error:#e15424;
+$relacionados:#f4a742;
+$seleccionado:#FCFD86;
+$gris:rgba(211, 211, 211, 0.5);
+
+//Paleta de colores 
+
+$rojo:rgba(255,0,0,0.3);
+$verde:rgba(0,255,0,0.3);
+$azul:rgba(0,0,255,0.3);
+$amarillo:rgba(255,255,0,0.3);
+$naranja:rgba(255,140,0,0.3);
+$cereza:rgba(255,0,255,0.3);
+$verde-pizarra:#2d8659;//#058486
+$success:#5DE998 !default;
+$primary: #24C5D9 !default;
+$azul-claro:lighten($primary, 15%);
+
+//Grises
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #868e96 !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;

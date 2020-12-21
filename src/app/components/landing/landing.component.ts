@@ -1,10 +1,11 @@
 import { HostListener, Component, OnInit } from '@angular/core';
-import { Juego } from "./models/juego.model";
-import { Tarea } from "./models/tarea.model";
+import { Juego } from "../../shared/models/juego.model";
+import { Tarea } from "../../shared/models/tarea.model";
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { JsonPipe, ViewportScroller } from '@angular/common';
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
 
 @Component({
@@ -14,21 +15,19 @@ import { JsonPipe, ViewportScroller } from '@angular/common';
 })
 export class LandingComponent implements OnInit {
 
-  
-
   tareas: Tarea[] = [
-    { id: 1, 'name': 'amigos', 'selected': false },
-    { id: 2, 'name': 'suma1', 'selected': false },
-    { id: 3, 'name': 'suma', 'selected': false },
-    { id: 4, 'name': 'sumaCon', 'selected': false },
-    { id: 5, 'name': 'resta' , 'selected': false},
-    { id: 6, 'name': 'restaCon', 'selected': false },
-    { id: 7, 'name': 'tablas', 'selected': false },
-    { id: 8, 'name': 'tablas2' , 'selected': false},
-    { id: 9, 'name': 'multiplicarDeUno' , 'selected': false},
-    { id: 10, 'name': 'multiplicarDeDos' , 'selected': false},
-    { id: 11, 'name': 'dividir', 'selected': false },
-    { id: 12, 'name': 'dividirDeDos', 'selected': false }
+    { id: 1, 'name': 'amigos', 'selected': false, 'cantidad': 0 },
+    { id: 2, 'name': 'suma1', 'selected': false, 'cantidad': 0 },
+    { id: 3, 'name': 'suma', 'selected': false, 'cantidad': 0 },
+    { id: 4, 'name': 'sumaCon', 'selected': false, 'cantidad': 0 },
+    { id: 5, 'name': 'resta', 'selected': false, 'cantidad': 0 },
+    { id: 6, 'name': 'restaCon', 'selected': false, 'cantidad': 0 },
+    { id: 7, 'name': 'tablas', 'selected': false, 'cantidad': 0 },
+    { id: 8, 'name': 'tablas2', 'selected': false, 'cantidad': 0 },
+    { id: 9, 'name': 'multiplicarDeUno', 'selected': false, 'cantidad': 0 },
+    { id: 10, 'name': 'multiplicarDeDos', 'selected': false, 'cantidad': 0 },
+    { id: 11, 'name': 'dividir', 'selected': false, 'cantidad': 0 },
+    { id: 12, 'name': 'dividirDeDos', 'selected': false, 'cantidad': 0 }
   ];
 
   juegos: Juego[] = [
@@ -37,99 +36,120 @@ export class LandingComponent implements OnInit {
     { id: 3, 'name': 'pompas', 'selected': false },
     { id: 4, 'name': 'pizzero', 'selected': false },
     { id: 5, 'name': 'memcolor', 'selected': false },
-    { id: 6, 'name': 'cubo' , 'selected': false}];
+    { id: 6, 'name': 'cubo', 'selected': false }];
 
-    constructor(private modalService: NgbModal, private viewportScroller: ViewportScroller, private router: Router) {
-    
-    }
+  constructor(private modalService: NgbModal, private viewportScroller: ViewportScroller, private router: Router) {
+
+  }
 
   ngOnInit(): void {
   }
 
-  
+
   tareasSeleccionadas: Array<Tarea> = [];
   juegosSeleccionados: Array<Juego> = [];
   tareaSelected: boolean = false;
   juegoSelected: boolean = false;
   closeResult: string;
-  isScrolled: boolean;  
+  isScrolled: boolean;
 
   @HostListener("window:scroll")
   scrollEvent() {
     window.pageYOffset >= 80 ? (this.isScrolled = true) : (this.isScrolled = false);
   }
 
-  public onClick(landingModal): void { 
-    this.juegoSelected && this.tareaSelected?this.openModal(landingModal):
-    this.juegoSelected?this.viewportScroller.scrollToAnchor('tareas'):
-    this.viewportScroller.scrollToAnchor('juegos');    
+  modificaCantidadTarea(event) {
+    var target = event.currentTarget;
+    var idAttr = target.attributes.id.nodeValue;
+    let tarea = this.tareas.find(t => t.name === idAttr.split("-")[1]);
+
+    let operacion = idAttr.split("-")[0];
+    if (operacion == 'suma' && tarea.cantidad < 6) {
+      tarea.cantidad++;
+    } else if (operacion == 'resta' && tarea.cantidad > 0) {
+      tarea.cantidad--;
+    }
+    this.tareaSelected = this.tareas.find(t => t.cantidad > 0) ? true : false;
+    
+  }
+
+
+
+  public onClick(landingModal): void {    
+    this.juegoSelected && this.tareaSelected ? this.openModal(landingModal) :
+      this.juegoSelected ? this.viewportScroller.scrollToAnchor('tareas') :
+        this.viewportScroller.scrollToAnchor('juegos');
   }
 
   addTarea(tarea) {
-    
-      if (this.tareasSeleccionadas.indexOf(tarea) !== -1) {
-        this.tareasSeleccionadas.splice(this.tareasSeleccionadas.indexOf(tarea), 1);
-        this.tareasSeleccionadas = this.tareasSeleccionadas.filter(({ id }) => id!== tarea.id); 
-        tarea.selected=false;
-      }else{
-        tarea.selected=true;
-        this.tareasSeleccionadas.push(tarea);
-      }
-      if(this.tareasSeleccionadas.length>0){
-        this.tareaSelected = true;
-      }else{
-        this.tareaSelected = false;
-      }
 
-      console.log(JSON.stringify(this.tareasSeleccionadas));
-      console.log("Tareas selected =>"+this.tareaSelected);
-    
+    if (this.tareasSeleccionadas.indexOf(tarea) !== -1) {
+      this.tareasSeleccionadas.splice(this.tareasSeleccionadas.indexOf(tarea), 1);
+      this.tareasSeleccionadas = this.tareasSeleccionadas.filter(({ id }) => id !== tarea.id);
+      tarea.selected = false;
+    } else {
+      tarea.selected = true;
+      this.tareasSeleccionadas.push(tarea);
+    }
+    if (this.tareasSeleccionadas.length > 0) {
+      this.tareaSelected = true;
+    } else {
+      this.tareaSelected = false;
+    }
+
+    console.log(JSON.stringify(this.tareasSeleccionadas));
+    console.log("Tareas selected =>" + this.tareaSelected);
+    console.log("Juego selected =>" + this.juegoSelected);
+
   }
 
   addJuego(juego) {
-    
+
     if (this.juegosSeleccionados.indexOf(juego) !== -1) {
       this.juegosSeleccionados.splice(this.juegosSeleccionados.indexOf(juego), 1);
-      this.juegosSeleccionados = this.juegosSeleccionados.filter(({ id }) => id!== juego.id); 
-      juego.selected=false;
-    }else{
-      juego.selected=true;
+      this.juegosSeleccionados = this.juegosSeleccionados.filter(({ id }) => id !== juego.id);
+      juego.selected = false;
+    } else {
+      juego.selected = true;
       this.juegosSeleccionados.push(juego);
     }
-    if(this.juegosSeleccionados.length>0){
+    if (this.juegosSeleccionados.length > 0) {
       this.juegoSelected = true;
-    }else{
+    } else {
       this.juegoSelected = false;
     }
 
+    
+    console.log(JSON.stringify(this.tareas));
+    console.log("Tareas selected =>" + this.tareaSelected);
     console.log(JSON.stringify(this.juegosSeleccionados));
-    console.log("Jueago selected =>"+this.juegoSelected);
-  
-}
+    console.log("Jueago selected =>" + this.juegoSelected);
 
-openModal(element) {
-  if(this.juegosSeleccionados.length==0 || this.tareasSeleccionadas.length==0){
-    return;
-  }  
-  this.modalService.open(element, {  
-  }); 
-}
+  }
 
-seguir(element){
-  this.modalService.dismissAll();
-  localStorage.setItem('tareas', JSON.stringify(this.tareasSeleccionadas));
-  localStorage.setItem('juegos', JSON.stringify(this.juegosSeleccionados));
+  openModal(element) {
+    if (this.juegosSeleccionados.length == 0 || this.tareasSeleccionadas.length == 0) {
+      return;
+    }
+    this.modalService.open(element, {
+    });
+  }
 
-  this.router.navigateByUrl('/nombre');
-}
+  seguir(element) {
+    this.modalService.dismissAll();
+    localStorage.setItem('tareas', JSON.stringify(this.tareasSeleccionadas));
+    localStorage.setItem('juegos', JSON.stringify(this.juegosSeleccionados));
 
-scroll(target){
-  this.viewportScroller.scrollToAnchor(target);
-}
+    this.router.navigateByUrl('/nombre');
+  }
 
-
+  scroll(target) {
+    this.viewportScroller.scrollToAnchor(target);
+  }
 
 
- 
+
+
+
 
 }

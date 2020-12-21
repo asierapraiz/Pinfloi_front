@@ -238,14 +238,24 @@
   
         <div *ngFor="let tarea of tareas; index as index"
           class="col-6 col-sm-4 col-md-4 col-xl-3 portfolio-item wow fadeIn tareaItem" data-tipo="tarea">
-          <a class="portfolio-link redondo-top" data-toggle="modal" (click)="addTarea(tarea)">
+          <a class="portfolio-link redondo-top" data-toggle="modal" >
             <img alt="escolar satisfecho " class="img-fluid redondo-top "
               src="./../../assets/img/portfolio/{{tarea.name}}.png" />
           </a>
-          <div [ngClass]="(tarea.selected)?'seleccionado':''" class="portfolio-caption redondo-bottom ">
-            <h4>
+          <div [ngClass]="(tarea.selected)?'tarea-seleccionada':''" class="portfolio-caption redondo-bottom d-flex justify-content-between">
+            <button id="resta-{{tarea.name}}" (click)=" modificaCantidadTarea($event)" class="btn minus"  type="button">
+              <i class="fa fa-minus-circle"></i>
+          </button>
+          <div>
+            <h4 class="blue">
               {{tarea.name}}
             </h4>
+            <h4 *ngIf="tarea.cantidad!=0" class="blue">x{{tarea.cantidad}}</h4>
+          </div>
+
+            <button id="suma-{{tarea.name}}" (click)=" modificaCantidadTarea($event)" class="btn plus"  type="button">
+              <i class="fa fa-plus-circle"></i>
+          </button>
           </div>
         </div>
   
@@ -274,7 +284,7 @@
             <!-- <img alt="nuevo" class="img-fluid nuevo" src="img/juegos/nuevo.png" /> -->
   
           </a>
-          <div [ngClass]="(juego.selected)?'seleccionado':''" class="portfolio-caption redondo-bottom">
+          <div [ngClass]="(juego.selected)?'juego-seleccionado':''" class="portfolio-caption redondo-bottom">
             <h4>
               {{juego.name}}
             </h4>

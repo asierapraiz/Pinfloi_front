@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-nombre-form',
   templateUrl: './nombre-form.component.html',
-  styleUrls: ['./nombre-form.component.scss', './../../../styles/scss/auth.scss']
+  styleUrls: ['./nombre-form.component.scss','./../../../styles/landing/auth.scss']
 })
 export class NombreFormComponent implements OnInit {
 

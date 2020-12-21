@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Avatar } from './avatar.model';
+import { Avatar } from '../../shared/models/avatar.model';
 
 @Component({
   selector: 'app-avatar-form',
   templateUrl: './avatar-form.component.html',
-  styleUrls: ['./avatar-form.component.scss', './../../../styles/scss/auth.scss']
+  styleUrls: ['./avatar-form.component.scss', './../../../styles/landing/auth.scss']
 })
 export class AvatarFormComponent implements OnInit {
 
@@ -15,7 +15,8 @@ export class AvatarFormComponent implements OnInit {
     nariz:'nariz_1',
     boca: 'boca_1',
     cara: 'cara_1',
-    torso:'torso_1'
+    torso:'torso_1',
+    filtroPelo: '56'
   };
 
   pelos = Array(30).fill(null).map((x,i)=>i+1);

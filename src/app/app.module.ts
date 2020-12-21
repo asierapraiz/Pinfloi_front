@@ -32,12 +32,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RecuperarPassComponent } from './components/usuarios/recuperar-pass/recuperar-pass.component';
 import { ChangePassComponent } from './components/usuarios/change-pass/change-pass.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LandingComponent } from './components/landing/landing.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NombreFormComponent } from './components/nombre-form/nombre-form.component';
 import { AvatarFormComponent } from './components/avatar-form/avatar-form.component';
 import { JuegoComponent } from './components/juego/juego.component';
+import { ModalHistoricoComponent } from './components/tareas/modals/modal-historico/modal-historico.component';
+import { ModalCambiarComponent } from './components/tareas/modals/modal-cambiar/modal-cambiar.component';
+import { SumaComponent } from './components/tareas/suma/suma.component';
+import { TareaComponent } from './components/tareas/tarea/tarea.component';
+import { SafePipe } from './pipes/safe.pipe';
 
 
 
@@ -61,6 +65,7 @@ const routes: Routes = [
   { path: 'nombre', component: NombreFormComponent },
   { path: 'avatar', component: AvatarFormComponent },
   { path: 'juego/:id', component: JuegoComponent },
+  { path: 'tarea', component: SumaComponent },
   { path: '', redirectTo: '/landing', pathMatch: 'full' }
  
 ];
@@ -81,7 +86,12 @@ const routes: Routes = [
     LandingComponent,
     NombreFormComponent,
     AvatarFormComponent,
-    JuegoComponent
+    JuegoComponent,
+    ModalHistoricoComponent,
+    ModalCambiarComponent,
+    SumaComponent,   
+    TareaComponent, 
+    SafePipe
   ],
   imports: [
     SharedModule, 
@@ -91,7 +101,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
     BrowserAnimationsModule, MatDatepickerModule, MatMomentDateModule,
     ReactiveFormsModule, MatAutocompleteModule, MatInputModule, MatFormFieldModule, 
-    FontAwesomeModule, NgbModule
+    NgbModule
   ],
   providers: [ClienteService, UsuarioService,
     { provide: LOCALE_ID, useValue: 'es' },

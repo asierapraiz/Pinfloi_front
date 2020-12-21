@@ -1,0 +1,172 @@
+
+
+#pizarra{
+	position:relative!important;
+	flex-direction:column!important;
+	text-align:none!important;
+
+}
+
+.check{
+	margin-left:10px;		
+}
+
+
+
+#multiplicacion{
+	display:inline-block;	
+	font-size:8rem;
+	
+	p{ 
+		letter-spacing: 50px;
+		float:left;
+		margin:0 0;		
+	}
+
+	@media (max-width: 1370px) {
+		font-size:4rem;
+		
+
+		p{
+			letter-spacing: 10px;
+		}
+	}
+	@media (max-width: 800px) {		 
+	    font-size:3rem;	    
+	}	
+}
+
+
+
+#hueco{
+	display:inline-block;
+	margin:auto auto;
+	float:left;
+	width:180px;
+	height:180px;
+	box-sizing: border-box;
+	background-color:transparent;
+
+	@include input(2px);
+
+	@media (max-width: 1370px) {
+		width:100px;
+		height:100px;
+	}
+	@media (max-width: 800px) {		 
+	    width:70px;
+		height:70px;	    
+	}	
+	
+}
+
+#aciertos{
+	padding:2%;
+	position:absolute;
+	top:25px;
+	left:85%;
+	width:auto;
+	height:auto;
+
+	@media (min-width: 800px) {	
+		top:50px;	 
+	    left:80%;
+	}
+
+	@media (min-width: 1400px) {
+		top:100px;
+		left:85%;
+	}
+	
+
+}
+
+.aciertos{
+	display:block;
+	font-size:2rem;
+	>p{
+		margin:0px 0px!important;
+		float:right;
+	}
+	
+	
+
+	@media (max-width: 1370px) {
+		
+	}
+	@media (max-width: 800px) {		 
+	       font-size:1rem;
+	}	
+	
+}
+
+#ok{
+	width:50px;
+	height:50px;
+	float:left;
+	margin-right:5px;
+
+	}
+
+
+
+
+
+.opcion{
+	display:inline-block!important;
+	margin-left:20px!important;
+	width:180px;
+	height:auto!important;
+	border:1px solid rgba(255,255,255, 0.5);
+	border-radius:10%;
+	font-size: 8rem;
+	text-align:center;
+	
+
+	&:hover{
+		box-shadow:none;
+	}
+
+	@media (max-width: 1370px) {
+		font-size:4rem;		
+		width:100px;
+		height:100px;		
+	}
+	@media (max-width: 800px) {	
+		display:inline-block!important;	 
+	    width:70px;
+	    height:70px;
+	    font-size: 3rem;
+			    
+	}
+
+
+
+}
+
+.sinBorder{
+	border:none!important;
+}
+
+.rojo{
+	background-color:$rojo;
+}
+.azul{
+	background-color:$azul;
+}
+.verde{
+	background-color:$verde;
+}
+.amarillo{
+	background-color:$amarillo;
+}
+.cereza{
+	background-color:$cereza;
+}
+.naranja{
+	background-color:$naranja;
+}
+
+
+
+

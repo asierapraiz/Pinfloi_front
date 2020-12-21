@@ -1,0 +1,89 @@
+<!------------------------------------------------------------------------->
+<!-------------------- Modal histórico ------------------------------------>
+<!------------------------------------------------------------------------->
+<div id="historicoModal" aria-hidden="true" class=" historico-modal modal fade col-lg-12 mx-auto " role="dialog"
+    tabindex="-1">
+    <div class="modal-dialog ">
+        <div class="modal-content marco row">
+            <div class="modal-cabecera col-12">
+                <div class="perfil  row">
+                   
+                    <div class="card-title nombre col-7 col-md-9 col-lg-9">
+                        {{nombre}}
+                    </div>
+                </div>
+            </div>
+            <!------------------------------------------------------------------>
+            <!----------------------------Cuerpo Modal--------------------------->
+            <!------------------------------------------------------------------->
+            <div class="modal-cuerpo col-12">
+
+                <div class="col-sm-12 col-lg-12 ">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+                        <li class="nav-item col-6">
+                            <a aria-controls="histórico" aria-selected="false" class="nav-link active show"
+                                data-toggle="tab" href="#histórico" id="contact-tab" role="tab">
+                                <h2>Histórico</h2>
+                            </a>
+                        </li>
+
+                        <li class="nav-item col-6">
+                            <a aria-controls="sesión" aria-selected="false" class="nav-link " data-toggle="tab"
+                                href="#sesión" id="contact-tab" role="tab">
+                                <h2>Última sesión</h2>
+                            </a>
+                        </li>
+
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+
+                        <div class="tab-pane fade show active" id="histórico" role="tabpanel">
+                            <div class="row p-3 capa " data-capa="historico">                                
+
+                                <div class="historico-card col-12 row">
+                                    <div class="head col-4">
+                                        <h2 class="title">{{tarea}}</h2>
+                                    </div>
+                                    <div class="body col-8 ">
+                                        <!--
+                                        <div class="nivel">
+                                            <div class="gradiente " data-from="#24C5D9" data-to="#FFB103"
+                                                data-width="{{$valoracion->hechos}}%">
+
+                                            </div>
+
+                                        </div>-->
+                                    </div>
+                                </div>                                
+                                <h2 class="title col-12 outsaider">Sólo usuarios registrados</h2>
+                                
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="sesión" role="tabpanel">
+                            <div class="row p-3 capa" data-capa="sesión">
+                                <div class="tareas col-12 ">
+                                    
+                                    <!--Aqui se iterrarán las tareas guardadas en memoria como tareas-->
+                                    <div class="tarea col-12">
+                                        <h2 class="nombre-tarea "><i class="far fa-dot-circle"></i></h2>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-pie">
+                <img class="medalla" src="assets/img/insignias/medalla_restas.png" />
+                <img class="medalla" src="assets/img/insignias/medalla_sumas.png" />
+                <img class="medalla" src="assets/img/insignias/medalla_tablas.png" />
+                <img class="medalla" src="assets/img/insignias/medalla_dividir.png" />
+            </div>
+        </div>
+    </div>
+</div>
+<!--Fin modal historico-->

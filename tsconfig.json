@@ -19,5 +19,10 @@
     ],
     "module": "es2020",
     "baseUrl": "./"
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+    "enableIvy": false
   }
 }

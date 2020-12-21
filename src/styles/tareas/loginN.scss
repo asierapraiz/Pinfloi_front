@@ -1,0 +1,153 @@
+body {
+  
+  background: #86D9D5;
+  
+}
+
+.web {
+  border: 1px solid #fff;
+  border-radius: 4px;
+  min-width: 400px;
+  margin: auto;
+  margin-top: 60px;
+  text-align: center;
+
+  background: -webkit-gradient(linear, left top, right bottom, from(rgba(255, 51, 187, 0.7)), to(rgba(119, 51, 255, 0.7)));
+  background: linear-gradient(to right bottom, rgba(255, 51, 187, 0.7), rgba(119, 51, 255, 0.7)); 
+
+  -webkit-box-shadow: -2px 2px 16px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: -2px 2px 16px 3px rgba(0, 0, 0, 0.5);
+  -webkit-transition: box-shadow, .5s;
+
+  &.web:hover {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+}
+
+
+
+.fm h1 {
+  color: #fff;
+  font-size: 18pt;
+  margin-bottom: 80px;
+}
+
+.fm {
+  padding: 20px;
+}
+
+input[type=text] {
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 1px solid #fff;
+  background-color: transparent;
+  padding: 10px;
+  margin: 10px;
+  width: 200px;
+  color: #fff;
+  font-family: "Raleway", sans-serif;
+  font-size: 14pt;
+  -webkit-transition: border-bottom, .5s;
+}
+
+input[type=text]:hover {
+  border-bottom: 1px solid #e65c00;
+}
+
+input[type=password] {
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 1px solid #fff;
+  background-color: transparent;
+  padding: 10px;
+  margin: 10px;
+  width: 200px;
+  color: #fff;
+  font-family: "Raleway", sans-serif;
+  font-size: 14pt;
+  -webkit-transition: border-bottom, .5s;
+}
+
+input[type=password]:hover {
+  border-bottom: 1px solid #e65c00;
+}
+
+input[type=submit] {
+  border: 1px solid #fff;
+  border-radius: 2px 4px 2px 4px;
+  background: -webkit-gradient(linear, left top, right bottom, from(rgba(255, 51, 187, 0.7)), to(rgba(119, 51, 255, 0.7)));
+  background: linear-gradient(to right bottom, rgba(255, 51, 187, 0.7), rgba(119, 51, 255, 0.7));
+  padding: 10px 50px;
+  margin: 50px 0px;
+  font-family: "Raleway", sans-serif;
+  font-size: 14pt;
+  color: #fff;
+  -webkit-box-shadow: -2px 2px 16px 3px rgba(0, 0, 0, 0.5);
+          box-shadow: -2px 2px 16px 3px rgba(0, 0, 0, 0.5);
+  -webkit-transition: box-shadow, background, .5s;
+}
+
+input[type=submit]:hover {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background: -webkit-gradient(linear, left top, right bottom, from(#e65c00), to(rgba(119, 51, 255, 0.7)));
+  background: linear-gradient(to right bottom, #e65c00, rgba(119, 51, 255, 0.7));
+}
+
+.clc {
+  color: #fff;
+  font-size: 18pt;
+}
+
+.me {
+  margin: 20px;
+}
+
+.me a {
+  margin: 10px;
+  font-size: 22pt;
+  text-decoration: none;
+  color: #fff;
+  -webkit-transition: color, .5s;
+}
+
+.me a:hover {
+  color: #333;
+}
+
+.forgot {
+  color: white;
+}
+
+.forgot:hover {
+  text-decoration: none;
+}
+
+::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: rgba(215, 213, 213, 0.47);
+}
+
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: rgba(215, 213, 213, 0.47);
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: rgba(215, 213, 213, 0.47);
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: rgba(215, 213, 213, 0.47);
+}
+
+::placeholder {
+  /* Most modern browsers support this now. */
+  color: rgba(215, 213, 213, 0.47);
+}
+
