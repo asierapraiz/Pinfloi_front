@@ -38,6 +38,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NombreFormComponent } from './components/nombre-form/nombre-form.component';
 import { AvatarFormComponent } from './components/avatar-form/avatar-form.component';
 import { JuegoComponent } from './components/juego/juego.component';
+import { SumaComponent } from './components/tareas/suma/suma.component';
+import { TareaComponent } from './components/tareas/tarea/tarea.component';
+import { ModalsComponent } from './components/tareas/modals/modals.component';
+import { ModalCambiarComponent } from './components/tareas/modals/modal-cambiar/modal-cambiar.component';
+import { ModalHistoricoComponent } from './components/tareas/modals/modal-historico/modal-historico.component';
 
 
 
@@ -81,7 +86,12 @@ const routes: Routes = [
     LandingComponent,
     NombreFormComponent,
     AvatarFormComponent,
-    JuegoComponent
+    JuegoComponent,
+    SumaComponent,
+    TareaComponent,
+    ModalsComponent,
+    ModalCambiarComponent,
+    ModalHistoricoComponent
   ],
   imports: [
     SharedModule, 

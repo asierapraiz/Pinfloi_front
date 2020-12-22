@@ -243,7 +243,7 @@
               src="./../../assets/img/portfolio/{{tarea.name}}.png" />
           </a>
           <div [ngClass]="(tarea.selected)?'tarea-seleccionada':''" class="portfolio-caption redondo-bottom d-flex justify-content-between">
-            <button id="resta-{{tarea.name}}" (click)=" modificaCantidadTarea($event)" class="btn minus"  type="button">
+            <button id="resta-{{tarea.name}}" (click)=" removeTarea($event)" class="btn minus"  type="button">
               <i class="fa fa-minus-circle"></i>
           </button>
           <div>
@@ -253,7 +253,7 @@
             <h4 *ngIf="tarea.cantidad!=0" class="blue">x{{tarea.cantidad}}</h4>
           </div>
 
-            <button id="suma-{{tarea.name}}" (click)=" modificaCantidadTarea($event)" class="btn plus"  type="button">
+            <button id="suma-{{tarea.name}}" (click)=" addTarea($event)" class="btn plus"  type="button">
               <i class="fa fa-plus-circle"></i>
           </button>
           </div>
@@ -601,16 +601,16 @@
     <div class="modal-body ">
   
       <div class="row d-flex justify-content-center">
-        <div *ngFor="let tareaS of tareasSeleccionadas; index as index" class="col-6 col-sm-4 col-md-4 col-xl-3">
-          <img alt="escolar satisfecho " class="img-fluid redondo-top-bottom m-1 relative"
-            src="./../../assets/img/portfolio/{{tareaS.name}}.png" />
-            <label class="tareas-modal-cantidad " >x{{tareaS.cantidad}}</label>
+        <div *ngFor="let tareaM of tareasParaModal; index as index" class="col-6 col-sm-4 col-md-4 col-xl-3">
+          <img alt="tarea seleccionada" class="img-fluid redondo-top-bottom m-1 relative"
+            src="./../../assets/img/portfolio/{{tareaM.name}}.png" />
+            <label *ngIf="tareaM.cantidad>1" class="tareas-modal-cantidad " >x{{tareaM.cantidad}}</label>
         </div>
       </div>
       
       <div class="row d-flex justify-content-center">
         <div *ngFor="let juegoS of juegosSeleccionados" class="col-6 col-sm-4 col-md-4 col-xl-3 portfolio-item">
-          <img alt="escolar satisfecho" class="img-fluid redondo-top-bottom m-1"
+          <img alt="juego seleccionado" class="img-fluid redondo-top-bottom m-1"
             src="./../../assets/img/juegos/{{juegoS.name}}.png" />
         </div>
       </div>

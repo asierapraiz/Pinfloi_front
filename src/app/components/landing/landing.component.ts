@@ -5,6 +5,7 @@ import { Tarea } from "./../../models/tarea.model";
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { JsonPipe, ViewportScroller } from '@angular/common';
+import { throwMatDialogContentAlreadyAttachedError } from '@angular/material/dialog';
 
 
 @Component({
@@ -47,6 +48,7 @@ export class LandingComponent implements OnInit {
 
 
   tareasSeleccionadas: Array<Tarea> = [];
+  tareasParaModal: Array<Tarea> = [];
   juegosSeleccionados: Array<Juego> = [];
   tareaSelected: boolean = false;
   juegoSelected: boolean = false;
@@ -58,14 +60,43 @@ export class LandingComponent implements OnInit {
     window.pageYOffset >= 80 ? (this.isScrolled = true) : (this.isScrolled = false);
   }
 
-  public onClick(landingModal): void {
-    //Incluyo en tareas selecionadas las tareas de la lista tareas que tengas catidad>0
-    this.tareasSeleccionadas = this.tareas.filter(function(tarea, index, arr){ 
+  addTarea(event){
+    var target = event.currentTarget;
+    var idAttr = target.attributes.id.nodeValue;
+    let operacion = idAttr.split("-")[0];
+    let tarea = this.tareas.find(t => t.name === idAttr.split("-")[1]);
+    if(tarea.cantidad<6){
+      tarea.cantidad++;      
+      this.tareasSeleccionadas.push(tarea);
+    }        
+    this.tareaSelected = this.tareas.find(t => t.cantidad > 0) ? true : false;
+    console.log("Tareas seleccionadas =>"+JSON.stringify(this.tareasSeleccionadas));
+  }
+
+  removeTarea(event){
+    var target = event.currentTarget;
+    var idAttr = target.attributes.id.nodeValue;
+    let operacion = idAttr.split("-")[0];
+    let tarea = this.tareas.find(t => t.name === idAttr.split("-")[1]);
+    let tareaSeleccionada= this.tareasSeleccionadas.find(t => t.name === idAttr.split("-")[1]);
+ 
+    if(tarea.cantidad>0){
+      tarea.cantidad--;
+      this.tareasSeleccionadas.splice(this.tareasSeleccionadas.findIndex(v => v.name === operacion), 1);
+    }   
+    this.tareaSelected = this.tareas.find(t => t.cantidad > 0) ? true : false;
+    console.log("Tareas seleccionadas =>"+JSON.stringify(this.tareasSeleccionadas));  
+
+  }
+
+  public onClick(landingModal): void {  
+    this.tareasParaModal=this.tareas.filter(function(tarea){
       return tarea.cantidad>0;
     });
-    console.log(JSON.stringify(this.tareasSeleccionadas));
+    
+    console.log("Tareas seleccionadas =>"+JSON.stringify(this.tareasSeleccionadas));
 
-    //Añadir loas tares a tareas seleccionadas
+    //Añadir las tareas seleccionadas
     this.juegoSelected && this.tareaSelected ? this.modalService.open(landingModal) :
       this.juegoSelected ? this.viewportScroller.scrollToAnchor('tareas') :
         this.viewportScroller.scrollToAnchor('juegos');
@@ -91,20 +122,7 @@ export class LandingComponent implements OnInit {
     console.log("Jueago selected =>" + this.juegoSelected);
 
   }
-
-  modificaCantidadTarea(event) {
-    var target = event.currentTarget;
-    var idAttr = target.attributes.id.nodeValue;
-    let tarea = this.tareas.find(t => t.name === idAttr.split("-")[1]);
-    let operacion = idAttr.split("-")[0];
-    if (operacion == 'suma' && tarea.cantidad < 6) {
-      tarea.cantidad++;
-    } else if (operacion == 'resta' && tarea.cantidad > 0) {
-      tarea.cantidad--;
-    }
-    this.tareaSelected = this.tareas.find(t => t.cantidad > 0) ? true : false;
-
-  }
+  
 
   openModal(element) {
     if (this.juegosSeleccionados.length == 0 || this.tareasSeleccionadas.length == 0) {
