@@ -238,7 +238,7 @@
   
         <div *ngFor="let tarea of tareas; index as index"
           class="col-6 col-sm-4 col-md-4 col-xl-3 portfolio-item wow fadeIn tareaItem" data-tipo="tarea">
-          <a id="suma-{{tarea.name}}" class="portfolio-link redondo-top" data-toggle="modal" (click)="modificaCantidadTarea($event)">
+          <a id="suma-{{tarea.name}}" class="portfolio-link redondo-top" data-toggle="modal" (click)="addTarea($event)">
             <img alt="escolar satisfecho " class="img-fluid redondo-top "
               src="./../../assets/img/portfolio/{{tarea.name}}.png" />
           </a>
@@ -284,7 +284,7 @@
             <!-- <img alt="nuevo" class="img-fluid nuevo" src="img/juegos/nuevo.png" /> -->
   
           </a>
-          <div [ngClass]="(juego.selected)?'seleccionado':''" class="portfolio-caption redondo-bottom">
+          <div [ngClass]="(juego.selected)?'juego-seleccionado':''" class="portfolio-caption redondo-bottom">
             <h4>
               {{juego.name}}
             </h4>
@@ -602,7 +602,7 @@
   
       <div class="row d-flex justify-content-center">
         <div *ngFor="let tareaM of tareasParaModal; index as index" class="col-6 col-sm-4 col-md-4 col-xl-3">
-          <img alt="tarea seleccionada" class="img-fluid redondo-top-bottom m-1 relative"
+          <img alt="tarea-seleccionada" class="img-fluid redondo-top-bottom m-1 relative"
             src="./../../assets/img/portfolio/{{tareaM.name}}.png" />
             <label *ngIf="tareaM.cantidad>1" class="tareas-modal-cantidad " >x{{tareaM.cantidad}}</label>
         </div>

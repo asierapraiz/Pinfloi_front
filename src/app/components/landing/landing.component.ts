@@ -1,6 +1,7 @@
 import { HostListener, Component, OnInit } from '@angular/core';
-import { Juego } from "./models/juego.model";
-import { Tarea } from "./../../models/tarea.model";
+import { Juego } from "../../core/models/juego.model";
+import { Tarea } from "../../core/models/tarea.model";
+import { LocalStorageService } from "../../core/services/local-storage.service";
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
@@ -39,9 +40,9 @@ export class LandingComponent implements OnInit {
     { id: 5, 'name': 'memcolor', 'selected': false },
     { id: 6, 'name': 'cubo', 'selected': false }];
 
-  constructor(private modalService: NgbModal, private viewportScroller: ViewportScroller, private router: Router) {
+  constructor(private localStorage: LocalStorageService, private modalService: NgbModal, private viewportScroller: ViewportScroller, private router: Router) {}
 
-  }
+  
 
   ngOnInit(): void {
   }
@@ -66,8 +67,8 @@ export class LandingComponent implements OnInit {
     let operacion = idAttr.split("-")[0];
     let tarea = this.tareas.find(t => t.name === idAttr.split("-")[1]);
     if(tarea.cantidad<6){
-      tarea.cantidad++;      
-      this.tareasSeleccionadas.push(tarea);
+      tarea.cantidad++;            
+      this.tareasSeleccionadas.push(Object.assign({},tarea));
     }        
     this.tareaSelected = this.tareas.find(t => t.cantidad > 0) ? true : false;
     console.log("Tareas seleccionadas =>"+JSON.stringify(this.tareasSeleccionadas));
@@ -89,10 +90,16 @@ export class LandingComponent implements OnInit {
 
   }
 
-  public onClick(landingModal): void {  
+  public onClick(landingModal){  
+    //Recalculo e id de las tareas por el indice 
+    this.tareasSeleccionadas.map((t, index)=>{
+      t.id=index;       
+      return t.name;
+    });
+
     this.tareasParaModal=this.tareas.filter(function(tarea){
       return tarea.cantidad>0;
-    });
+    });     
     
     console.log("Tareas seleccionadas =>"+JSON.stringify(this.tareasSeleccionadas));
 
@@ -117,12 +124,9 @@ export class LandingComponent implements OnInit {
     } else {
       this.juegoSelected = false;
     }
-
     console.log(JSON.stringify(this.juegosSeleccionados));
     console.log("Jueago selected =>" + this.juegoSelected);
-
-  }
-  
+  } 
 
   openModal(element) {
     if (this.juegosSeleccionados.length == 0 || this.tareasSeleccionadas.length == 0) {
@@ -133,9 +137,10 @@ export class LandingComponent implements OnInit {
   }
 
   seguir(element) {
-    this.modalService.dismissAll();
-    localStorage.setItem('tareas', JSON.stringify(this.tareasSeleccionadas));
-    localStorage.setItem('juegos', JSON.stringify(this.juegosSeleccionados));
+    this.modalService.dismissAll();  
+    this.localStorage.setTareas(this.tareasSeleccionadas);    
+    this.localStorage.setTareaActual(this.tareasSeleccionadas[0]);
+    this.localStorage.setJuegos(this.juegosSeleccionados);
 
     this.router.navigateByUrl('/nombre');
   }

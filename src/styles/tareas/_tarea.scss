@@ -1,0 +1,57 @@
+.h-100{
+    height: 98vh!important;
+}
+           
+.perfil{                
+    height: 30vh;
+}
+.vadorrin{
+    
+   
+}
+
+.avatar-box{
+    position:absolute;
+}
+
+.avatar-img{        
+    position:relative;
+    background-color: white;
+    
+    margin:0 auto;
+    margin-bottom: 10px;
+
+    -webkit-box-shadow: inset 0px 0px 46px -9px rgba(0,0,0,0.36);
+    -moz-box-shadow: inset 0px 0px 46px -9px rgba(0,0,0,0.36);
+    box-shadow: inset 0px 0px 46px -9px rgba(0,0,0,0.36);
+}
+
+.avatar-img, .avatar-box, .img-fluid{
+     border-radius: 10px;
+}
+
+.avatar-img:after {
+    content: "";
+    display: block;
+    padding-bottom: 90%;
+}
+
+.datos{
+    color:white;
+    text-align:right;
+}
+.sombra {
+    border: 1px solid #fff;
+    border-radius: 10px;             
+    background: #24C5D9;
+    text-align: center;
+    -webkit-box-shadow: -2px 2px 16px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: -2px 2px 16px 3px rgba(0, 0, 0, 0.5);
+    -webkit-transition: box-shadow, .5s;
+}
+.vadorrin{
+    z-index:5;
+    margin-top:0vh;
+}
+
+            

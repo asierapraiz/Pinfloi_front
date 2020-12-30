@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import { LocalStorageService } from "../../core/services/local-storage.service";
+
 
 @Component({
   selector: 'app-nombre-form',
@@ -12,7 +14,7 @@ export class NombreFormComponent implements OnInit {
   animacion: boolean;
   paused: boolean;
 
-  constructor(private router: Router) { }
+  constructor(private localStorage: LocalStorageService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -60,7 +62,7 @@ export class NombreFormComponent implements OnInit {
   }
   
   start(){    
-    localStorage.setItem('nombre', JSON.stringify(this.nombre));
+    this.localStorage.setNombre(this.nombre);
     this.router.navigateByUrl('/avatar');
   }
 

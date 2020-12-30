@@ -68,9 +68,8 @@ body{
 
 .tareaItem, .juegoItem { transition: all .2s ease-in-out; }
 .tareaItem:hover, .juegoItem:hover { transform: scale(1.1); }
-.seleccionado { 
+.juego-seleccionado { 
    background-color: #16a8fd!important;
-
 }
 
 .right{

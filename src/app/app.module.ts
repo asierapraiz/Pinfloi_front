@@ -40,9 +40,9 @@ import { AvatarFormComponent } from './components/avatar-form/avatar-form.compon
 import { JuegoComponent } from './components/juego/juego.component';
 import { SumaComponent } from './components/tareas/suma/suma.component';
 import { TareaComponent } from './components/tareas/tarea/tarea.component';
-import { ModalsComponent } from './components/tareas/modals/modals.component';
 import { ModalCambiarComponent } from './components/tareas/modals/modal-cambiar/modal-cambiar.component';
 import { ModalHistoricoComponent } from './components/tareas/modals/modal-historico/modal-historico.component';
+import { SafePipe } from './pipes/safe.pipe';
 
 
 
@@ -66,6 +66,8 @@ const routes: Routes = [
   { path: 'nombre', component: NombreFormComponent },
   { path: 'avatar', component: AvatarFormComponent },
   { path: 'juego/:id', component: JuegoComponent },
+  { path: 'tarea/suma', component: SumaComponent },
+
   { path: '', redirectTo: '/landing', pathMatch: 'full' }
  
 ];
@@ -88,10 +90,10 @@ const routes: Routes = [
     AvatarFormComponent,
     JuegoComponent,
     SumaComponent,
-    TareaComponent,
-    ModalsComponent,
+    TareaComponent,    
     ModalCambiarComponent,
-    ModalHistoricoComponent
+    ModalHistoricoComponent,
+    SafePipe
   ],
   imports: [
     SharedModule, 

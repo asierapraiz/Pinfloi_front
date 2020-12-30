@@ -1,0 +1,114 @@
+
+
+input{
+	outline:0; 
+}
+
+#lineaDiv{
+	top:0px;
+	width:320%;
+	height: 100%;
+	margin-top: 0px;
+	border-width: 4px;
+	border-style: none none solid solid ;
+	border-color:$blanco_tiza;
+	border-radius:3px;
+
+
+	@media only screen and (max-width: 800px)   {
+		margin-top: 5px;
+		border-width: 3px;
+	}
+
+}
+
+
+
+#f1{
+	//margin-top:8px;
+
+	@media only screen and (max-width: 800px)   {
+		margin-top: 3px;
+	}
+}
+
+
+#fin{
+	position:absolute;
+	left:0px;
+	top:0px;
+	z-index: 4;	
+	width: 150%;
+	height: auto;
+	display: none;
+}
+
+
+#muestra{
+	width:200px;
+	height:400px;
+	margin: 0 auto;
+	color:black;
+}
+
+#llevadas{	
+	position:absolute;
+	transform: translateY(-300%);
+	top:105%;
+	left:60%;
+	width:125px;
+	height:125px;
+	border:1px dashed rgba(255,255,255, 0.5);
+	font-size:1.2rem;
+	z-index:2000;
+
+	&.seleccionado{
+		@include relacionados(2px);
+	}
+
+	
+
+	@media only screen and (min-width: 768px)   {
+		width:80px;
+		height:80px;
+		top:85%;
+		left:70%;
+	}
+	@media (min-width: 1370px) {
+	 	width:110px;
+		height:110px;
+		top:95%;
+		left:70%;
+	 }
+
+}
+
+
+#llevada{
+	margin-top:30%;
+	font-size:2.5rem;
+	@media only screen and (max-width: 800px)   {
+		font-size:2rem;
+	}
+}
+
+#papelera{
+	display:none;	
+	position:absolute;
+	top:1%;
+	left:80%;
+	font-size:1.5rem;
+	cursor:pointer;
+	z-index:1000;
+	
+
+	@media only screen and (max-width: 800px)   {
+		font-size:1.5rem;
+	}
+
+	
+}
+
+.resultado{
+	margin-top:5px;
+}

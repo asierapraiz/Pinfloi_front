@@ -1,0 +1,92 @@
+
+
+@mixin background-right(){
+
+  background: rgba(250,250,250,1);
+  background: -moz-linear-gradient(left, rgba(250,250,250,1) 0%, rgba(94,196,224,1) 99%, rgba(94,196,224,1) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(250,250,250,1)), color-stop(99%, rgba(94,196,224,1)), color-stop(100%, rgba(94,196,224,1)));
+  background: -webkit-linear-gradient(left, rgba(250,250,250,1) 0%, rgba(94,196,224,1) 99%, rgba(94,196,224,1) 100%);
+  background: -o-linear-gradient(left, rgba(250,250,250,1) 0%, rgba(94,196,224,1) 99%, rgba(94,196,224,1) 100%);
+  background: -ms-linear-gradient(left, rgba(250,250,250,1) 0%, rgba(94,196,224,1) 99%, rgba(94,196,224,1) 100%);
+  background: linear-gradient(to right, rgba(250,250,250,1) 0%, rgba(94,196,224,1) 99%, rgba(94,196,224,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafafa', endColorstr='#5ec4e0', GradientType=1 );
+}
+
+@mixin background-top(){
+  background: rgba(94,196,224,1);
+  background: -moz-linear-gradient(top, rgba(94,196,224,1) 0%, rgba(250,250,250,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(94,196,224,1)), color-stop(100%, rgba(250,250,250,1)));
+  background: -webkit-linear-gradient(top, rgba(94,196,224,1) 0%, rgba(250,250,250,1) 100%);
+  background: -o-linear-gradient(top, rgba(94,196,224,1) 0%, rgba(250,250,250,1) 100%);
+  background: -ms-linear-gradient(top, rgba(94,196,224,1) 0%, rgba(250,250,250,1) 100%);
+  background: linear-gradient(to bottom, rgba(94,196,224,1) 0%, rgba(250,250,250,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5ec4e0', endColorstr='#fafafa', GradientType=0 );
+}
+
+@mixin background-cover() {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+@mixin input($a){
+	border: $a dashed $gris;
+  border-radius:($a*2);
+}
+
+@mixin relacionados($a){
+	border: $a dashed $relacionados;
+  border-radius:($a*2);
+}
+
+@mixin seleccionado($a){
+  border: $a+1 dashed $seleccionado;
+  border-radius:($a*2);
+}
+
+@mixin acierto($a){
+	border: $a+1 dashed $acierto!important;
+  border-radius:($a*2);
+}
+
+@mixin errado($a){
+  border: $a dashed $errado!important;
+  border-radius:($a*2);
+}
+
+@mixin error($a){
+	border: $a dashed $error;
+  border-radius:($a*2);
+}
+
+@mixin separa($a){
+	margin-left: 30%-($a*3);
+}
+
+// Font Mixins
+@mixin serif-font {
+  font-family: 'Droid Serif', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+@mixin script-font {
+  font-family: 'Kaushan Script', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+@mixin body-font {
+  font-family: 'Roboto Slab', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+@mixin heading-font {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+@mixin tarea-font {
+  font-family: 'Varela Round', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-weight: bold;
+}
+
+@mixin color-pizarra {
+  background: #458433;
+  -webkit-box-shadow: inset 0px 0px 20px 0px rgba(0,0,0,0.5);
+-moz-box-shadow: inset 0px 0px 20px 0px rgba(0,0,0,0.5);
+box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.5);
+  
+}

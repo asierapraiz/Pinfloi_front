@@ -1,0 +1,49 @@
+#linea{
+			
+	//padding-top: 0px;
+	width: 90%!important;
+	margin-top:3px;
+	margin-left: 10%!important;
+
+}
+
+
+
+
+#f0, #f1, #f4{
+	height: 55px;
+	@media (max-width: 1370px) {
+		height: 40px;
+	}
+	@media (max-width: 800px) {
+		height: 25px ;
+	} 		
+ }
+ #f0{
+ 	margin-bottom:3px;
+ }
+ #f4{
+ 	margin-top:10px;
+ 	margin-bottom:5px;
+ }
+ #f6{
+ 	margin-bottom:5px;
+ }
+
+ #f7{
+ 	margin-top:10px !important;
+ }
+
+ .noItem{
+ 	height:0px !important;
+ }
+
+
+
+ 
+
+
+
+
+
+

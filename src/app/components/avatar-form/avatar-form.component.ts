@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Avatar } from './avatar.model';
+import {Router} from '@angular/router';
+import { LocalStorageService } from "../../core/services/local-storage.service";
+
 
 @Component({
   selector: 'app-avatar-form',
@@ -41,7 +44,7 @@ export class AvatarFormComponent implements OnInit {
   private torsoAzul = 'hue-rotate(0deg) brightness(100%) saturate(1) contrast(100%) sepia(0)';
 
 
-  constructor() { }
+  constructor(private localStorage: LocalStorageService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -54,5 +57,11 @@ export class AvatarFormComponent implements OnInit {
     let ele=document.querySelector('#indefinido');    
     ele.classList.add("d-none");          
   };
+
+  continuar(){    
+    this.localStorage.setAvatar(this.avatar);    
+    let tareaActual = JSON.parse(localStorage.getItem("tareaActual") || "[]");  
+    this.router.navigateByUrl('/tarea/'+tareaActual.name);
+  }
 
 }
