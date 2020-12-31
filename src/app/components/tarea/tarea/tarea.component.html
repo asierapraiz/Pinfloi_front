@@ -1,0 +1,14 @@
+<h3>Tarea</h3>
+<nav> 
+  <button><a routerLink="./suma" routerLinkActive="active">Suma</a></button>
+  <button><a routerLink="./resta" routerLinkActive="active">resta</a></button>
+  <button><a routerLink="./mensaje" >Mensaje</a></button>
+
+</nav>
+<h3>Intentos: {{intentos}}</h3>
+<h3>Errores: {{errores}}</h3>
+
+<div  [@routeAnimations]="prepareRoute(outlet)">
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>
+

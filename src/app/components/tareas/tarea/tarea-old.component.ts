@@ -11,7 +11,7 @@ let tarea = 'suma';
   templateUrl: './tarea.component.html',
   styleUrls: ['./tarea.component.scss', './../../../../styles/scss/auth.scss']
 })
-export class TareaComponent implements OnInit {
+export class TareaOldComponent implements OnInit {
 
   usados: number[] = [];
   noUsar: number[] = [];

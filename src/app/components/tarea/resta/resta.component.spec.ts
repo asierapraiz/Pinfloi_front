@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TareaOldComponent } from './tarea-old.component';
+import { RestaComponent } from './resta.component';
 
-describe('TareaComponent', () => {
-  let component: TareaOldComponent;
-  let fixture: ComponentFixture<TareaOldComponent>;
+describe('RestaComponent', () => {
+  let component: RestaComponent;
+  let fixture: ComponentFixture<RestaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TareaOldComponent ]
+      declarations: [ RestaComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TareaOldComponent);
+    fixture = TestBed.createComponent(RestaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

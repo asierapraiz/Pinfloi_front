@@ -1,12 +1,12 @@
 import { Renderer2, ViewChild, ElementRef, Component, OnInit, AfterViewInit } from '@angular/core';
-import { TareaComponent } from './../tarea/tarea.component';
+import { TareaOldComponent } from '../tarea/tarea-old.component';
 
 @Component({
   selector: 'app-suma',
   templateUrl: './suma.component.html',
   styleUrls: ['./suma.component.scss']
 })
-export class SumaComponent extends TareaComponent implements OnInit, AfterViewInit {
+export class SumaOldComponent extends TareaOldComponent implements OnInit, AfterViewInit {
 
   columnas!: number;
   filas!: any[];

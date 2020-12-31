@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SumaComponent } from './suma.component';
+import { SumaOldComponent } from './suma-old.component';
 
 describe('SumaComponent', () => {
-  let component: SumaComponent;
-  let fixture: ComponentFixture<SumaComponent>;
+  let component: SumaOldComponent;
+  let fixture: ComponentFixture<SumaOldComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SumaComponent ]
+      declarations: [ SumaOldComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SumaComponent);
+    fixture = TestBed.createComponent(SumaOldComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -5,16 +5,12 @@ import { SharedModule } from './../app/shared/shared.module';
 import { DirectivaComponent } from './components/directiva/directiva.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
 import { FormComponent } from './components/clientes/form.component';
-
 import { ClienteService } from './components/clientes/cliente.service';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { registerLocaleData } from '@angular/common';
 import localeES from '@angular/common/locales/es';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { DetalleComponent } from './components/clientes/detalle/detalle.component';
@@ -38,11 +34,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NombreFormComponent } from './components/nombre-form/nombre-form.component';
 import { AvatarFormComponent } from './components/avatar-form/avatar-form.component';
 import { JuegoComponent } from './components/juego/juego.component';
-import { SumaComponent } from './components/tareas/suma/suma.component';
-import { TareaComponent } from './components/tareas/tarea/tarea.component';
+import { SumaOldComponent } from './components/tareas/suma/suma-old.component';
+import { TareaOldComponent } from './components/tareas/tarea/tarea-old.component';
 import { ModalCambiarComponent } from './components/tareas/modals/modal-cambiar/modal-cambiar.component';
 import { ModalHistoricoComponent } from './components/tareas/modals/modal-historico/modal-historico.component';
 import { SafePipe } from './pipes/safe.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -66,8 +64,10 @@ const routes: Routes = [
   { path: 'nombre', component: NombreFormComponent },
   { path: 'avatar', component: AvatarFormComponent },
   { path: 'juego/:id', component: JuegoComponent },
-  { path: 'tarea/suma', component: SumaComponent },
-
+  { path: 'tareas/suma', component: SumaOldComponent },
+  { 
+    path: 'tarea', loadChildren: () => import('./components/tarea/tarea.module').then(m => m.TareaModule), 
+  },
   { path: '', redirectTo: '/landing', pathMatch: 'full' }
  
 ];
@@ -89,8 +89,8 @@ const routes: Routes = [
     NombreFormComponent,
     AvatarFormComponent,
     JuegoComponent,
-    SumaComponent,
-    TareaComponent,    
+    SumaOldComponent,
+    TareaOldComponent,    
     ModalCambiarComponent,
     ModalHistoricoComponent,
     SafePipe
