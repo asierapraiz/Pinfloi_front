@@ -95,11 +95,12 @@ export class TareaOldComponent implements OnInit {
     }
 
     this.seleccionado = event.target;
+    /*
     let itemList = document.getElementsByClassName('seleccionado');
     for (var i = 0; i < itemList.length; i++) {
       itemList[i].classList.remove('seleccionado');
       itemList[i].classList.remove('relacionados');
-    }
+    }*/
     var target = event.target || event.srcElement || event.currentTarget;
     var idAttr = target.attributes.id;
     target.classList.add('seleccionado');

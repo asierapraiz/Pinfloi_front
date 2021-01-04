@@ -6,6 +6,7 @@ import { RouterOutlet , Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-mensaje',
   templateUrl: './mensaje.component.html',
+  animations: [slideInAnimation],
   styleUrls: ['./mensaje.component.scss']
 })
 export class MensajeComponent implements OnInit {

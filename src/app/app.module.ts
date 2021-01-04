@@ -38,9 +38,7 @@ import { SumaOldComponent } from './components/tareas/suma/suma-old.component';
 import { TareaOldComponent } from './components/tareas/tarea/tarea-old.component';
 import { ModalCambiarComponent } from './components/tareas/modals/modal-cambiar/modal-cambiar.component';
 import { ModalHistoricoComponent } from './components/tareas/modals/modal-historico/modal-historico.component';
-import { SafePipe } from './pipes/safe.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 
 
 
@@ -92,8 +90,7 @@ const routes: Routes = [
     SumaOldComponent,
     TareaOldComponent,    
     ModalCambiarComponent,
-    ModalHistoricoComponent,
-    SafePipe
+    ModalHistoricoComponent
   ],
   imports: [
     SharedModule, 

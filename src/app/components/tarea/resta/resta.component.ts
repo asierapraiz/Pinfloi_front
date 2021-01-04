@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterOutlet , Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-resta',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.router.navigate(['../suma'], { relativeTo: this.route });
   }
 
 }

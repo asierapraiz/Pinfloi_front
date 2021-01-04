@@ -13,7 +13,7 @@ const tareaRoutes: Routes = [
     //canActivate: [AuthGuard],
     children: [      
           { path: 'suma', component: SumaComponent, data: {animation: 'SumaPage'}  },
-          { path: 'resta', component: RestaComponent, data: {animation: 'RestaPage'}  } ,
+          { path: 'resta', component: RestaComponent, data: {animation: 'RestaPage'}  },
           { path: 'mensaje', component: MensajeComponent, data: {animation: 'MensajePage'}  }     
     
     ]

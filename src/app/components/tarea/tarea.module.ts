@@ -5,10 +5,17 @@ import { TareaComponent } from './tarea/tarea.component';
 import { RestaComponent } from './resta/resta.component';
 import { TareaRoutingModule } from './tarea-routing.module';
 import { MensajeComponent } from './mensaje/mensaje.component';
+import { SafePipe } from './../../pipes/safe.pipe';
 
 
 @NgModule({
-  declarations: [SumaComponent, TareaComponent, RestaComponent, MensajeComponent],
+  declarations: [
+    SumaComponent, 
+    TareaComponent, 
+    RestaComponent, 
+    MensajeComponent,
+    SafePipe
+  ],
   imports: [
     CommonModule,
     TareaRoutingModule   
