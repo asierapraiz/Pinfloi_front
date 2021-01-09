@@ -1,16 +1,18 @@
 import { ElementRef, Component, OnInit } from '@angular/core';
 import { RouterOutlet, Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { slideInAnimation } from './../../../animations/slide-animation';
+import { slideInAnimation, fadeInAnimation, flyInOut } from './../../../animations';
 import { TareaService } from './../services/tarea.service';
 import { Avatar } from '../../../core/models/avatar.model';
 import { Tarea } from '../../../core/models/tarea.model';
 
 
+
 @Component({
   selector: 'app-tarea',
   templateUrl: './tarea.component.html',
-  animations: [slideInAnimation],
+  animations: [slideInAnimation, fadeInAnimation, flyInOut],
+  host: { '[@routeAnimations ]': '' },
   styleUrls: ['./tarea.component.scss']
 })
 export class TareaComponent implements OnInit {
@@ -22,6 +24,7 @@ export class TareaComponent implements OnInit {
   inputs!: number;
   huecoSeleccionado: any;
   aciertos: number = 0;
+
 
   avatar: Avatar = JSON.parse(localStorage.getItem("avatar") || "[]");
   tarea: Tarea = JSON.parse(localStorage.getItem("tareaActual") || "[]");
@@ -35,7 +38,7 @@ export class TareaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
   }
 
   ngAfterViewInit() {
@@ -56,14 +59,13 @@ export class TareaComponent implements OnInit {
 
   }
 
- 
-
-  
-
-  seleccionaOpcion(opcion: any) {     
+  seleccionaOpcion(opcion: any) {
+    if (!this.huecoSeleccionado) {
+      alert("NO hay un hueco seleccionado");
+    }
 
     if (opcion.target.attributes['data-valor'].value == this.huecoSeleccionado.attributes['data-valor'].value) {
-      
+
       this.huecoSeleccionado.classList.remove('acertado');
       this.huecoSeleccionado.classList.add('acierto');
       this.huecoSeleccionado.innerHTML = opcion.target.attributes['data-valor'].value;
@@ -73,13 +75,16 @@ export class TareaComponent implements OnInit {
       this.huecoSeleccionado.innerHTML = opcion.target.attributes['data-valor'].value;
 
       this.errores++;
-      if(this.errores==3){
+      if (this.errores > 2) {
         //alert("Has fallado tres veces tendrás que empezar otra vez.");
         this.errores = 0;
         this.intentos++;
-        this.router.navigate(['./resta'], { relativeTo: this.route });        
+        setTimeout(() => {
+          this.router.navigate(['./mensaje'], { relativeTo: this.route });
+        }, 2000);
+
       }
-      
+
     }
   }
 

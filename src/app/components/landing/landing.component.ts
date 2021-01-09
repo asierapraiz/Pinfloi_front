@@ -2,7 +2,7 @@ import { HostListener, Component, OnInit } from '@angular/core';
 import { Juego } from "../../core/models/juego.model";
 import { Tarea } from "../../core/models/tarea.model";
 import { LocalStorageService } from "../../core/services/local-storage.service";
-
+import { slideInAnimation, fadeInAnimation } from './../../animations/index';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { JsonPipe, ViewportScroller } from '@angular/common';
@@ -12,6 +12,8 @@ import { throwMatDialogContentAlreadyAttachedError } from '@angular/material/dia
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
+  animations: [slideInAnimation],
+  host: { '[@routeAnimations]': '' },
   styleUrls: ['./landing.component.css']
 })
 export class LandingComponent implements OnInit {
@@ -40,9 +42,9 @@ export class LandingComponent implements OnInit {
     { id: 5, 'name': 'memcolor', 'selected': false },
     { id: 6, 'name': 'cubo', 'selected': false }];
 
-  constructor(private localStorage: LocalStorageService, private modalService: NgbModal, private viewportScroller: ViewportScroller, private router: Router) {}
+  constructor(private localStorage: LocalStorageService, private modalService: NgbModal, private viewportScroller: ViewportScroller, private router: Router) { }
 
-  
+
 
   ngOnInit(): void {
   }
@@ -61,47 +63,47 @@ export class LandingComponent implements OnInit {
     window.pageYOffset >= 80 ? (this.isScrolled = true) : (this.isScrolled = false);
   }
 
-  addTarea(event){
+  addTarea(event) {
     var target = event.currentTarget;
     var idAttr = target.attributes.id.nodeValue;
     let operacion = idAttr.split("-")[0];
     let tarea = this.tareas.find(t => t.name === idAttr.split("-")[1]);
-    if(tarea.cantidad<6){
-      tarea.cantidad++;            
-      this.tareasSeleccionadas.push(Object.assign({},tarea));
-    }        
+    if (tarea.cantidad < 6) {
+      tarea.cantidad++;
+      this.tareasSeleccionadas.push(Object.assign({}, tarea));
+    }
     this.tareaSelected = this.tareas.find(t => t.cantidad > 0) ? true : false;
-    console.log("Tareas seleccionadas =>"+JSON.stringify(this.tareasSeleccionadas));
+    console.log("Tareas seleccionadas =>" + JSON.stringify(this.tareasSeleccionadas));
   }
 
-  removeTarea(event){
+  removeTarea(event) {
     var target = event.currentTarget;
     var idAttr = target.attributes.id.nodeValue;
     let operacion = idAttr.split("-")[0];
     let tarea = this.tareas.find(t => t.name === idAttr.split("-")[1]);
-    let tareaSeleccionada= this.tareasSeleccionadas.find(t => t.name === idAttr.split("-")[1]);
- 
-    if(tarea.cantidad>0){
+    let tareaSeleccionada = this.tareasSeleccionadas.find(t => t.name === idAttr.split("-")[1]);
+
+    if (tarea.cantidad > 0) {
       tarea.cantidad--;
       this.tareasSeleccionadas.splice(this.tareasSeleccionadas.findIndex(v => v.name === operacion), 1);
-    }   
+    }
     this.tareaSelected = this.tareas.find(t => t.cantidad > 0) ? true : false;
-    console.log("Tareas seleccionadas =>"+JSON.stringify(this.tareasSeleccionadas));  
+    console.log("Tareas seleccionadas =>" + JSON.stringify(this.tareasSeleccionadas));
 
   }
 
-  public onClick(landingModal){  
+  public onClick(landingModal) {
     //Recalculo e id de las tareas por el indice 
-    this.tareasSeleccionadas.map((t, index)=>{
-      t.id=index;       
+    this.tareasSeleccionadas.map((t, index) => {
+      t.id = index;
       return t.name;
     });
 
-    this.tareasParaModal=this.tareas.filter(function(tarea){
-      return tarea.cantidad>0;
-    });     
-    
-    console.log("Tareas seleccionadas =>"+JSON.stringify(this.tareasSeleccionadas));
+    this.tareasParaModal = this.tareas.filter(function (tarea) {
+      return tarea.cantidad > 0;
+    });
+
+    console.log("Tareas seleccionadas =>" + JSON.stringify(this.tareasSeleccionadas));
 
     //Añadir las tareas seleccionadas
     this.juegoSelected && this.tareaSelected ? this.modalService.open(landingModal) :
@@ -109,7 +111,7 @@ export class LandingComponent implements OnInit {
         this.viewportScroller.scrollToAnchor('juegos');
   }
 
-   addJuego(juego) {
+  addJuego(juego) {
 
     if (this.juegosSeleccionados.indexOf(juego) !== -1) {
       this.juegosSeleccionados.splice(this.juegosSeleccionados.indexOf(juego), 1);
@@ -126,7 +128,7 @@ export class LandingComponent implements OnInit {
     }
     console.log(JSON.stringify(this.juegosSeleccionados));
     console.log("Jueago selected =>" + this.juegoSelected);
-  } 
+  }
 
   openModal(element) {
     if (this.juegosSeleccionados.length == 0 || this.tareasSeleccionadas.length == 0) {
@@ -137,8 +139,8 @@ export class LandingComponent implements OnInit {
   }
 
   seguir(element) {
-    this.modalService.dismissAll();  
-    this.localStorage.setTareas(this.tareasSeleccionadas);    
+    this.modalService.dismissAll();
+    this.localStorage.setTareas(this.tareasSeleccionadas);
     this.localStorage.setTareaActual(this.tareasSeleccionadas[0]);
     this.localStorage.setJuegos(this.juegosSeleccionados);
 

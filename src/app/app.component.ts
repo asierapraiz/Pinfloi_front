@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { slideInAnimation } from './animations/slide-animation';
-
+import { slideInAnimation } from './animations/index';
+import { RouterOutlet } from '@angular/router';
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  animations: [slideInAnimation ],
+  animations: [slideInAnimation],
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
@@ -15,4 +15,10 @@ export class AppComponent {
   curso: string = "Angular con Spring 5";
 
   profesor: string = "Andrés Guzmán"
+
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
+  }
+
+
 }

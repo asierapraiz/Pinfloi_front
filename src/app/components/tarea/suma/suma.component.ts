@@ -1,7 +1,7 @@
 import { ElementRef, Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { TareaService } from './../services/tarea.service';
-import { slideInAnimation } from './../../../animations/slide-animation';
+import { slideInAnimation } from './../../../animations/index';
 import TareaUtils from './../tarea-utils';
 
 @Component({
@@ -15,10 +15,8 @@ import TareaUtils from './../tarea-utils';
 export class SumaComponent extends TareaUtils implements OnInit {
 
   subscription!: Subscription;
-  columnas!: number;
-  filas!: any[];
   llevada: boolean = true;
-  carton!: Element | null;
+
 
 
   constructor(protected ts: TareaService,
@@ -39,26 +37,14 @@ export class SumaComponent extends TareaUtils implements OnInit {
     this.creaOperacion();
     this.resuelveOperacion();
     this.muestraOperacion();
-    /*
-        this.ts.seleccionaOpcion$.subscribe(
-          number => {   
-            console.log("REcogiendo el eventodeseleccionaOpcion$");
-            this.comprueba(number);        
-          });*/
+
   }
 
   ngAfterViewInit() {
     this.addEventListeners();
-  }  
-
-  addEventListeners() {
-    console.log("En addEventListeners");
-    //Añado los eventos en los elementos de la suma
-    let elementos = this.elementRef.nativeElement.querySelectorAll('.target');
-    elementos.forEach((anchor: HTMLElement) => {
-      anchor.addEventListener('click', this.seleccionaHueco.bind(this))
-    })
   }
+
+
 
   creaOperacion() {
 
@@ -113,7 +99,6 @@ export class SumaComponent extends TareaUtils implements OnInit {
     }
   }
 
-  //Funcion para calcular los valores del resultado
   resuelveOperacion() {
     console.log("En resuelveOperacion");
 
@@ -203,6 +188,8 @@ export class SumaComponent extends TareaUtils implements OnInit {
 
       //Añado la fila      
       this.htmlToAdd += fila;
+
+
     }
 
   }

@@ -3,7 +3,7 @@
 
 body {	
 	@include background-right;	
-	//color: $blanco_tiza;	
+	color: $blanco_tiza;	
 	background-position: center;		
 	position:relative;
 	@include background-cover;
@@ -277,9 +277,8 @@ body {
 	  box-sizing: border-box;
 	  margin: 1em;
 	  padding: 2% 4%;
-	  border-radius:10px; 
+	  border-radius:10px;   
 	  
-	  position: relative;
 
 	  &::before,
 	  &::after {
@@ -294,8 +293,10 @@ body {
 
 	}
 
+	
+
 	.item{
-		z-index:1000;	
+		z-index:9;	
 	  }
 
 	#toWelcomeee{
@@ -554,25 +555,23 @@ body {
 		 @media (min-width: 1370px) {
 		 	width:150%;	 	
 		 	height: auto;		
-			top:10%;
-			left:-15px;			
+			 left:-15px;			
+			 top:10%;
 		 }		
 	}
 
 	#pizarra{
-		position:relative;
-		display:flex;  
+		display: flex;
+		flex-direction: column;
 	    justify-content:center;
-	    align-items:center;
-	    flex-direction:column ;
-	    position:relative;
-
-	    border-radius:30px;
-	    border: 1px solid #ffff;
+		align-items:center;
 		
-		height: 90vh;
-		margin-top:5%;
-		float:left;
+	    flex-direction:column ;
+	    border-radius:30px;
+	    border: 1px solid #ffff;		
+		height: 90vh;	
+		width:100%;	
+		margin-top:5%;		
 		z-index:1;
 		position:relative;
 		
@@ -582,9 +581,22 @@ body {
 
 		text-align:center;		
 		padding:35px 35px;
+		
+
+		.pizarra-body{
+			height:80%;
+  			display: flex;
+			justify-content:center;
+  			align-items:center;
+  			flex-direction: column;
+		}
+
+		.pizarra-footer{
+  			height:20%;
+		}
 
 		@media only screen and (min-width: 800px)   {
-		 	width:75%;
+		 	
 			height: 95vh;
 			padding:25px 15px;
 			margin:5px 0px ;
@@ -595,13 +607,15 @@ body {
 		@media (min-width: 1370px) {
 
 			min-height: 90vh;
-			width:75%;
+			
 			padding:20px 25px;
 			margin:0px 0px;
 			float:right;
 		}			
 		
 	}
+
+	
 
 	.navbar {
 	    position: absolute;
@@ -706,9 +720,9 @@ body {
 
 	.resultado, .result{	
 
+		cursor: pointer;
 		@include tarea-font;  	  	
-	  	@include input(2px); 
-	  	cursor: url('/img/tiza.png'),auto;
+	  	@include input(2px); 	  	
 	  	margin-top:3px; 	 	
 
 	  	@media only screen and (max-width: 800px){
@@ -725,8 +739,7 @@ body {
 		box-sizing: border-box;	
 		line-height: 1.15!important;
 		font-size: 4rem;		
-		background-color: transparent;	
-		cursor: url('/img/tareas/tiza.png'),auto;
+		background-color: transparent;		
 		box-sizing: border-box;
 	    
 
@@ -791,16 +804,13 @@ body {
 		z-index:2000;
 		align-self:center;
 		margin:auto auto;
-		padding-top:2%;
-		cursor: -webkit-grab; 
-		cursor: grab;
+		padding-top:2%;		
 			@media only screen and (max-width: 800px)   {
 		 		margin:auto 20%;
 		 	}
 		
 		.draggable{
-			display:inline-block;
-			//padding:0% 4%;		
+			display:inline-block;			
 			margin-bottom: 0px;	
 			vertical-align: middle;
 			font-size: 3rem;		
@@ -808,6 +818,7 @@ body {
 			border-radius:10%;
 			width:80px;
 			height:80px;
+			cursor: pointer;
 
 			@media (max-width: 1370px) {
 				margin-top:0%;
@@ -896,11 +907,22 @@ body {
 		}
 	}
 
-	#errores{
-		position:absolute;
-		top:87%;
-		left:85%;
-		width:150px;
+	#tarea-info{
+		display:flex;
+		flex-direction: column;
+		align-items:flex-start;
+		
+	}
+
+	#errores, #intentos{
+		display:flex;
+		flex-direction: row;
+		align-items:center;
+		justify-content:flex-start;		
+	}
+
+	.error-icon, .intento-icon{
+		margin-right: .2rem;		
 	}
 
 	.marcaError{

@@ -47,7 +47,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 registerLocaleData(localeES, 'es');
 
 const routes: Routes = [
-  { path: 'landing', component: LandingComponent },
+  { path: 'landing', component: LandingComponent, data: { animation: 'LandingPage' } },
   { path: 'directivas', component: DirectivaComponent },
   { path: 'clientes', component: ClientesComponent },
   { path: 'clientes/page/:page', component: ClientesComponent },
@@ -59,23 +59,23 @@ const routes: Routes = [
   { path: 'registro', component: RegistroComponent },
   { path: 'recuperar_pass', component: RecuperarPassComponent },
   { path: 'user/changePassword', component: ChangePassComponent },
-  { path: 'nombre', component: NombreFormComponent },
-  { path: 'avatar', component: AvatarFormComponent },
-  { path: 'juego/:id', component: JuegoComponent },
+  { path: 'nombre', component: NombreFormComponent, data: { animation: 'NameFormPage' } },
+  { path: 'avatar', component: AvatarFormComponent, data: { animation: 'AvatarFormPage' } },
+  { path: 'juego/:id', component: JuegoComponent, data: { animation: 'GamePage' } },
   { path: 'tareas/suma', component: SumaOldComponent },
-  { 
-    path: 'tarea', loadChildren: () => import('./components/tarea/tarea.module').then(m => m.TareaModule), 
+  {
+    path: 'tarea', loadChildren: () => import('./components/tarea/tarea.module').then(m => m.TareaModule)
   },
   { path: '', redirectTo: '/landing', pathMatch: 'full' }
- 
+
 ];
 
 @NgModule({
   declarations: [
-    AppComponent,       
+    AppComponent,
     DirectivaComponent,
     ClientesComponent,
-    FormComponent,    
+    FormComponent,
     DetalleComponent,
     LoginComponent,
     DetalleFacturaComponent,
@@ -88,18 +88,18 @@ const routes: Routes = [
     AvatarFormComponent,
     JuegoComponent,
     SumaOldComponent,
-    TareaOldComponent,    
+    TareaOldComponent,
     ModalCambiarComponent,
     ModalHistoricoComponent
   ],
   imports: [
-    SharedModule, 
+    SharedModule,
     BrowserModule,
     HttpClientModule,
-    FormsModule,    
+    FormsModule,
     RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
     BrowserAnimationsModule, MatDatepickerModule, MatMomentDateModule,
-    ReactiveFormsModule, MatAutocompleteModule, MatInputModule, MatFormFieldModule, 
+    ReactiveFormsModule, MatAutocompleteModule, MatInputModule, MatFormFieldModule,
     FontAwesomeModule, NgbModule
   ],
   providers: [ClienteService, UsuarioService,

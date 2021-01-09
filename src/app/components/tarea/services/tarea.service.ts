@@ -23,7 +23,7 @@ export class TareaService {
     this.addItemToBasketSource.next(text);
   }
   seleccionaHueco(value: any){
-    console.log("En selecciona hueco del servicio :"+value);
+    console.log("En selecciona hueco del servicio :"+value.attributes['data-valor'].value);
     this.seleccionaHuecoSource.next(value);
   }
 

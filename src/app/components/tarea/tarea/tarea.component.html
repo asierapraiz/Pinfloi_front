@@ -1,120 +1,115 @@
-<!--
-<h3>Tarea</h3>
-<nav> 
-  <button><a routerLink="./suma" routerLinkActive="active">Suma</a></button>
-  <button><a routerLink="./resta" routerLinkActive="active">resta</a></button>
-  <button><a routerLink="./mensaje" >Mensaje</a></button>
-
-</nav>
-<h3>Intentos: {{intentos}}</h3>
-<h3>Errores: {{errores}}</h3>
-<button data-valor="5" class=" opcion " >Selecciona 5</button>
-<button data-valor="6" class=" opcion " >Selecciona 6</button>
-
--->
-
 <div class="container-fluid row ">
-  <div class="col-izq col-12 col-md-3 ">
-      <div class="row">
-          <div class="perfil marco col-11 ">
-              <div class="row ">
-                  <div class="col-5 col-md-4 avatar foto">
-                      <img class="w-100" src="assets/img/avatar/marco.png"/>
-                      <img class="img-fluid torso" src="assets/img/avatar/torsos/{{avatar.torso}}.png"/>
-                      <img class="img-fluid cara" src="assets/img/avatar/caras/{{avatar.cara}}.png"/>
-                      <img class="img-fluid ojos" src="assets/img/avatar/ojos/{{avatar.ojos}}.png"/>
-                      <img class="img-fluid cejas" src="assets/img/avatar/cejas/{{avatar.cejas}}.png"/>
-                      <img class="img-fluid pelo" src="assets/img/avatar/pelos/{{avatar.pelo}}.png" />
-                      <img class="img-fluid boca" src="assets/img/avatar/bocas/{{avatar.boca}}.png"/>
-                      <img class="img-fluid nariz" src="assets/img/avatar/nariz/{{avatar.nariz}}.png"/>
-                  </div>
-                  <div class="card-title nombre col-7 col-md-7 ">
-                      {{user}}
-                  </div>
-                  
-                  <p>Aciertos: {{aciertos}}</p><br>
-                  <p>Errores: {{errores}}</p><br>
-                  <p>Intetnos:{{intentos}}</p><br>
-                  <div class="tareas col-12 ">    
+    <div class="col-izq col-12 col-md-3 ">
+        <div class="row">
+            <div class="perfil marco col-11 ">
+                <div class="row ">
+                    <div class="col-5 col-md-4 avatar foto">
+                        <img class="w-100" src="assets/img/avatar/marco.png" />
+                        <img class="img-fluid torso" src="assets/img/avatar/torsos/{{avatar.torso}}.png" />
+                        <img class="img-fluid cara" src="assets/img/avatar/caras/{{avatar.cara}}.png" />
+                        <img class="img-fluid ojos" src="assets/img/avatar/ojos/{{avatar.ojos}}.png" />
+                        <img class="img-fluid cejas" src="assets/img/avatar/cejas/{{avatar.cejas}}.png" />
+                        <img class="img-fluid pelo" src="assets/img/avatar/pelos/{{avatar.pelo}}.png" />
+                        <img class="img-fluid boca" src="assets/img/avatar/bocas/{{avatar.boca}}.png" />
+                        <img class="img-fluid nariz" src="assets/img/avatar/nariz/{{avatar.nariz}}.png" />
+                    </div>
+                    <div class="card-title nombre col-7 col-md-7 ">
+                        {{user}}
+                    </div>
+                    <div id="tarea-info">
+                        <div id="intentos">
+                            <p>Intentos:</p>
+                            <i @flyInOut *ngFor="let a of [].constructor(intentos)"
+                                class="intento-icon fa fa-circle fa-1x text-sucess"></i>
+                        </div>
+                        <div id="errores">
+                            <p>Errores:</p>
+                            <i @flyInOut *ngFor="let a of [].constructor(errores)"
+                                class="error-icon fa fa-circle fa-1x text-danger "></i>
+                        </div>
 
-                  
-                  </div>
-              </div>
-          </div>
-          <div class="wow bounceInLeft col-5 col-sm-4 col-md-12" id="vadorrin">
-              <img class="vadorrin " id="pose" src="assets/img/vadorrin/Pose.png"/>
-              <img class="vadorrin " hidden="" id="guiña" src="assets/img/vadorrin/Guina.png "/>
-              <img class="vadorrin " hidden="" id="miraPanel" src="assets/img/vadorrin/MiraPanel.png"/>
-              <img class="vadorrin " hidden="" id="triste" src="assets/img/vadorrin/Triste.png"/>
-          </div>
-      </div>
-  </div>
-  <div class="col-dch col-12 col-md-9 sombra {{tarea}} ralative" id="pizarra">
-      <nav class="navbar  navbar-dark " id="mainNav">
-          <div class="container"><!--navbar-expand-lg-->
-              <a id="toWelcome" class="navbar-brand js-scroll-trigger wow bounceInDown " href="/">
-                  <img class="logo" src="assets/img/logo/Pinfloi.svg" width="auto"/>
-              </a>
-              <div> 
-                  <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right navbar-icon" data-toggle="modal" data-target="#opcionesModal"  type="button">
-                      <i class="fa fa-bars"></i>
-                  </button>
+                        <div class="tareas col-12 ">
+                        </div>
 
-                  <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right navbar-icon" data-toggle="modal" data-target="#historicoModal"  type="button">
-                      <i id="btn-historico" class="fa fa-history"></i>
-                  </button>
+                    </div>
+                </div>
+            </div>
+            <div class="wow bounceInLeft col-5 col-sm-4 col-md-12" id="vadorrin">
+                <img class="vadorrin " id="pose" src="assets/img/vadorrin/Pose.png" />
+                <img class="vadorrin " hidden="" id="guiña" src="assets/img/vadorrin/Guina.png " />
+                <img class="vadorrin " hidden="" id="miraPanel" src="assets/img/vadorrin/MiraPanel.png" />
+                <img class="vadorrin " hidden="" id="triste" src="assets/img/vadorrin/Triste.png" />
+            </div>
+        </div>
+    </div>
+    <div class="col-dch col-12 col-md-9 sombra {{tarea}} ralative " id="pizarra">
+        <nav class="navbar  navbar-dark " id="mainNav">
+            <div class="container">
+                <a id="toWelcome" class="navbar-brand js-scroll-trigger wow bounceInDown " href="/">
+                    <img class="logo" src="assets/img/logo/Pinfloi.svg" width="auto" />
+                </a>
+                <div>
+                    <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+                        class="navbar-toggler navbar-toggler-right navbar-icon" data-toggle="modal"
+                        data-target="#opcionesModal" type="button">
+                        <i class="fa fa-bars"></i>
+                    </button>
 
-                  <button id ="volumen-switch" class="navbar-toggler navbar-toggler-right navbar-icon"  type="button">
-                      <i class="fa fa-volume-off"></i>
-                  </button>
-              </div>                
-          </div>
-      </nav>        
-      
-      <!--<div class="wow fadeIn" id="carton" [innerHtml]="htmlToAdd | safe: 'html' "></div>     
-      
-      -->
-      <div  [@routeAnimations]="prepareRoute(outlet)">
-        <router-outlet #outlet="outlet"></router-outlet>
-      </div>
-      
-      <div class="wow fadeIn" id="draggables">
-          <div class="draggable " data-valor="0" id="0">
-              0
-          </div>
-          <div class="draggable " data-valor="1" id="1">
-              1
-          </div>
-          <div class="draggable " data-valor="2" id="2">
-              2
-          </div>
-          <div class="draggable " data-valor="3" id="3">
-              3
-          </div>
-          <div class="draggable " data-valor="4" id="4">
-              4
-          </div>
-          <div class="draggable " data-valor="5" id="5">
-              5
-          </div>
-          <div class="draggable " data-valor="6" id="6">
-              6
-          </div>
-          <div class="draggable " data-valor="7" id="7">
-              7
-          </div>
-          <div class="draggable " data-valor="8" id="8">
-              8
-          </div>
-          <div class="draggable " data-valor="9" id="9">
-              9
-          </div>             
-      </div>
-  </div>
+                    <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+                        class="navbar-toggler navbar-toggler-right navbar-icon" data-toggle="modal"
+                        data-target="#historicoModal" type="button">
+                        <i id="btn-historico" class="fa fa-history"></i>
+                    </button>
+
+                    <button id="volumen-switch" class="navbar-toggler navbar-toggler-right navbar-icon" type="button">
+                        <i class="fa fa-volume-off"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="pizarra-body">
+            <div [@routeAnimations]="prepareRoute(outlet)">
+                <router-outlet #outlet="outlet"></router-outlet>
+            </div>
+        </div>
+
+        <div id="draggables" class="pizarra-footer">
+            <div class="draggable " data-valor="0">
+                0
+            </div>
+            <div class="draggable " data-valor="1">
+                1
+            </div>
+            <div class="draggable " data-valor="2">
+                2
+            </div>
+            <div class="draggable " data-valor="3">
+                3
+            </div>
+            <div class="draggable " data-valor="4">
+                4
+            </div>
+            <div class="draggable " data-valor="5">
+                5
+            </div>
+            <div class="draggable " data-valor="6">
+                6
+            </div>
+            <div class="draggable " data-valor="7">
+                7
+            </div>
+            <div class="draggable " data-valor="8" id="8">
+                8
+            </div>
+            <div class="draggable " data-valor="9" id="9">
+                9
+            </div>
+        </div>
+
+
+
+
+
+    </div>
 </div>
-
-
-
-
-
-

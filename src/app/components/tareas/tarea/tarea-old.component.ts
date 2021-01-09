@@ -134,8 +134,6 @@ export class TareaOldComponent implements OnInit {
 
   error() {
     this.errores++;
-    debugger;
-
 
     if (this.errores == this.maxErrores) {
 

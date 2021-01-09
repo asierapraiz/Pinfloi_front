@@ -1,250 +1,252 @@
 <!-- Navigation -->
 <nav [ngClass]="{'navbar-shrink': isScrolled}" class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger wow slideInLeft " (click)="scroll('page-top')" >
-        <img alt="logo Pinfloi" class="logo" src="assets/img/logo/pinfloi-logo.png" width="auto" />
-      </a>
-      <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
-        class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive" data-toggle="collapse" type="button">
-        <i class="fa fa-bars">
-        </i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto ">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" (click)="scroll('portfolio')">
-              Tareas
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" (click)="scroll('juegos')" >
-              Juegos
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" (click)="scroll('videos')" >
-              Vídeos
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" (click)="scroll('about')" >
-              Resultados
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" (click)="scroll('team')" >
-              Equipo
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" (click)="scroll('contact')" >
-              Contacto
-            </a>
-          </li>
-        </ul>
-      </div>
+  <div class="container">
+    <a class="navbar-brand js-scroll-trigger wow slideInLeft " (click)="scroll('page-top')">
+      <img alt="logo Pinfloi" class="logo" src="assets/img/logo/pinfloi-logo.png" width="auto" />
+    </a>
+    <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+      class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive" data-toggle="collapse" type="button">
+      <i class="fa fa-bars">
+      </i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto ">
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" (click)="scroll('portfolio')">
+            Tareas
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" (click)="scroll('juegos')">
+            Juegos
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" (click)="scroll('videos')">
+            Vídeos
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" (click)="scroll('about')">
+            Resultados
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" (click)="scroll('team')">
+            Equipo
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" (click)="scroll('contact')">
+            Contacto
+          </a>
+        </li>
+      </ul>
     </div>
-  </nav>
-  
-  <!-- Header -->
-  <header id="header"  class="masthead row ">
-  
-    <div class="container wow fadeIn " data-wow-delay="1s">
-      <div class="row d-flex justify-content-center ">
-        <div class="intro-text col-12 col-md-12">
-          <h2 class="intro-heading ">
-            Aprende jugando
-          </h2>
-  
-        </div>
-  
-  
+  </div>
+</nav>
+
+<!-- Header -->
+<header id="header" class="masthead row ">
+
+  <div class="container wow fadeIn " data-wow-delay="1s">
+    <div class="row d-flex justify-content-center ">
+      <div class="intro-text col-12 col-md-12">
+        <h2 class="intro-heading ">
+          Aprende jugando
+        </h2>
+
       </div>
-  
-      <div class=" col-12 d-flex justify-content-center opciones">
-        <!--
+
+
+    </div>
+
+    <div class=" col-12 d-flex justify-content-center opciones">
+      <!--
             <a class="btn btn-primary btn-xl js-scroll-trigger m-1 " href="{{route('login')}}">
                 Tienes cuenta?
             </a>
             <a class="btn btn-primary btn-xl js-scroll-trigger m-1 " href="{{route('register')}}">
                 Crea una!!
             </a>-->
-        <a class="btn btn-primary btn-xl js-scroll-trigger m-1 shadow-pulse" (click)="onClick('portfolio')"  id="prueba-primero">
-          Pruébalo
-        </a>
-      </div>
+      <a class="btn btn-primary btn-xl js-scroll-trigger m-1 shadow-pulse" (click)="onClick('portfolio')"
+        id="prueba-primero">
+        Pruébalo
+      </a>
     </div>
-  </header>
-  
-  <!-- About -->
-  <section id="about">
-    <div class="container">
-      <div class="row">
-  
-        <div class="col-lg-12 text-center ">
-          <div class="row justify-content-center">
-  
-            <div class=" intro-video  col-10 col-md-6 col-lg-4 col-xl-5 wow slideInRight">
-              <video id="intro-video" class=" shadow-lg rounded-bm embed-responsive "
-                poster="/storage/videos/intro/poster/telon.png" preload='auto' controls autoplay data-title="Intro">
-                <source src="assets/videos/intro/intro.mp4" type="video/mp4">
-                To view this video please enable JavaScript, and consider upgrading to a web browser that
-                <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
-  
-              </video>
-  
-            </div>
+  </div>
+</header>
+
+<!-- About -->
+<section id="about">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-12 text-center ">
+        <div class="row justify-content-center">
+
+          <div class=" intro-video  col-10 col-md-6 col-lg-4 col-xl-5 wow slideInRight">
+            <video id="intro-video" class=" shadow-lg rounded-bm embed-responsive "
+              poster="/storage/videos/intro/poster/telon.png" preload='auto' controls autoplay data-title="Intro">
+              <source src="assets/videos/intro/intro.mp4" type="video/mp4">
+              To view this video please enable JavaScript, and consider upgrading to a web browser that
+              <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+
+            </video>
+
           </div>
-          <h1 class="section-subheading text-primary">
-            Pinfloi es un método online para aprender matemáticas de una forma divertida.
-          </h1>
-          <h2 class="section-heading text-primary">
-            Llegamos más lejos
-          </h2>
-          <h2 class="section-heading wow fadeIn">
-            <img alt="Escolares contetnos" id="grupo" src="assets/img/about/grupo_2.png" />
-          </h2>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-12">
-          <ul class="timeline">
-            <li class="timeline-inverted">
-              <div class="timeline-image wow slideInLeft">
-                <img alt="escolar satisfecho" class="rounded-circle img-fluid img-about"
-                  src="assets/img/about/nino_1.png" />
-  
-              </div>
-              <div class="timeline-panel">
-                <div class="timeline-heading section-subheading text-primary">
-                  <h2>
-                    Qué es Pinfloi?
-  
-                  </h2>
-                </div>
-                <div class="timeline-body">
-                  <p class="text-muted">
-                    Pinfloi es la mejor manera de aprender matemáticas. Con los vídeos , juegos y tareas, he aprendido un
-                    montón y mis padres están super contentos. Jugando he aprendido las tablas de multiplic
-  
-  
-                  </p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="timeline-image wow slideInRight ">
-                <img alt="escolar satisfecho" class="rounded-circle img-fluid img-about"
-                  src="assets/img/about/nino_4.png" />
-  
-              </div>
-              <div class="timeline-panel">
-                <div class="timeline-heading section-subheading text-primary">
-                  <h2>
-                    Concentración
-                  </h2>
-                </div>
-                <div class="timeline-body">
-                  <p class="text-muted">
-                    El tiempo se me pasa volando con Pinfloi, sin darme cuenta ya he hecho 10 ejercicios de matemáticas.
-                    Con Pinfloi el aburrimientos de vuestros hijos entre 4 y 10 años; está solucionado! En Pinfloi se
-                    aúnan las matemáticas y el entretenimiento.
-                  </p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="timeline-image wow slideInRight">
-                <img alt="escolar satisfecho" class="rounded-circle img-fluid img-about"
-                  src="assets/img/about/nino_3.png" />
-  
-              </div>
-              <div class="timeline-panel">
-                <div class="timeline-heading section-subheading text-primary">
-                  <h2>
-                    Pinfloi funciona?
-                  </h2>
-                </div>
-                <div class="timeline-body">
-                  <p class="text-muted">
-                    Porsupuesto, desde que uso Pinfloi, mis notas han mejorado y mis padres no tienen que insistirme para
-                    que haga los ejercicios de matemáticas. A qué estás esperando? Crea tu avatar y unéte a Pinfloi!
-                  </p>
-                </div>
-              </div>
-            </li>
-            <li class="timeline-inverted">
-              <div class="timeline-image wow slideInRight">
-                <img alt="escolar satisfecho" class="rounded-circle img-fluid img-about"
-                  src="assets/img/about/nino_2.png" />
-  
-              </div>
-              <div class="timeline-panel">
-                <div class="timeline-heading section-subheading text-primary">
-                  <h2>
-                    Que tienes que hacer?
-                  </h2>
-                </div>
-                <div class="timeline-body">
-                  <p class="text-muted">
-                    Es multiplataforma, lo puedes utilizar en cualquier disposivo, ya sea móvil, tablet o un ordenador,
-                    tanto en casa o el que tengais en el aula de informática de tu cole. Nuestro equipo irá añadiendo
-                    nuevos ejercicios y nuevos juegos con los que disfrutar.
-                  </p>
-                </div>
-              </div>
-            </li>
-            <li class="timeline-inverted piloto">
-              <div class="timeline-image wow pulse animated " data-wow-delay="0.15" data-wow-duration="2s"
-                data-wow-iteration="infinite"
-                style="visibility: visible; animation-iteration-count: 3; animation-name: pulse;">
-                <img alt="escolar satisfecho" class="rounded-circle img-fluid img-about"
-                  src="assets/img/about/piloto.png" />
-  
-              </div>
-              <div class="timeline-panel">
-                <div class="timeline-heading section-subheading text-primary invisible">
-  
-                  <h2>
-                    Que tienes que hacer?
-                  </h2>
-                </div>
-                <div class="timeline-body invisible">
-                  <p class="text-muted">
-                    Es multiplataforma, lo puedes utilizar en cualquier disposivo, ya sea móvil, tablet o un ordenador,
-                    tanto en casa o el que tengais en el aula de informática de tu cole. Nuestro equipo irá añadiendo
-                    nuevos ejercicios y nuevos juegos con los que disfrutar.
-                  </p>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
+        <h1 class="section-subheading text-primary">
+          Pinfloi es un método online para aprender matemáticas de una forma divertida.
+        </h1>
+        <h2 class="section-heading text-primary">
+          Llegamos más lejos
+        </h2>
+        <h2 class="section-heading wow fadeIn">
+          <img alt="Escolares contetnos" id="grupo" src="assets/img/about/grupo_2.png" />
+        </h2>
       </div>
     </div>
-  </section>
-  
-  <!-- Tareas Grid -->
-  <section id="portfolio">
-    <div class="container">
-      <div class="row d-flex justify-content-center wow fadeIn">
-        <div class="col-lg-12 text-center ">
-          <h2 class="section-heading mb-5">
-            Tareas
-          </h2>
-        </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <ul class="timeline">
+          <li class="timeline-inverted">
+            <div class="timeline-image wow slideInLeft">
+              <img alt="escolar satisfecho" class="rounded-circle img-fluid img-about"
+                src="assets/img/about/nino_1.png" />
+
+            </div>
+            <div class="timeline-panel">
+              <div class="timeline-heading section-subheading text-primary">
+                <h2>
+                  Qué es Pinfloi?
+
+                </h2>
+              </div>
+              <div class="timeline-body">
+                <p class="text-muted">
+                  Pinfloi es la mejor manera de aprender matemáticas. Con los vídeos , juegos y tareas, he aprendido un
+                  montón y mis padres están super contentos. Jugando he aprendido las tablas de multiplic
+
+
+                </p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="timeline-image wow slideInRight ">
+              <img alt="escolar satisfecho" class="rounded-circle img-fluid img-about"
+                src="assets/img/about/nino_4.png" />
+
+            </div>
+            <div class="timeline-panel">
+              <div class="timeline-heading section-subheading text-primary">
+                <h2>
+                  Concentración
+                </h2>
+              </div>
+              <div class="timeline-body">
+                <p class="text-muted">
+                  El tiempo se me pasa volando con Pinfloi, sin darme cuenta ya he hecho 10 ejercicios de matemáticas.
+                  Con Pinfloi el aburrimientos de vuestros hijos entre 4 y 10 años; está solucionado! En Pinfloi se
+                  aúnan las matemáticas y el entretenimiento.
+                </p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="timeline-image wow slideInRight">
+              <img alt="escolar satisfecho" class="rounded-circle img-fluid img-about"
+                src="assets/img/about/nino_3.png" />
+
+            </div>
+            <div class="timeline-panel">
+              <div class="timeline-heading section-subheading text-primary">
+                <h2>
+                  Pinfloi funciona?
+                </h2>
+              </div>
+              <div class="timeline-body">
+                <p class="text-muted">
+                  Porsupuesto, desde que uso Pinfloi, mis notas han mejorado y mis padres no tienen que insistirme para
+                  que haga los ejercicios de matemáticas. A qué estás esperando? Crea tu avatar y unéte a Pinfloi!
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="timeline-inverted">
+            <div class="timeline-image wow slideInRight">
+              <img alt="escolar satisfecho" class="rounded-circle img-fluid img-about"
+                src="assets/img/about/nino_2.png" />
+
+            </div>
+            <div class="timeline-panel">
+              <div class="timeline-heading section-subheading text-primary">
+                <h2>
+                  Que tienes que hacer?
+                </h2>
+              </div>
+              <div class="timeline-body">
+                <p class="text-muted">
+                  Es multiplataforma, lo puedes utilizar en cualquier disposivo, ya sea móvil, tablet o un ordenador,
+                  tanto en casa o el que tengais en el aula de informática de tu cole. Nuestro equipo irá añadiendo
+                  nuevos ejercicios y nuevos juegos con los que disfrutar.
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="timeline-inverted piloto">
+            <div class="timeline-image wow pulse animated " data-wow-delay="0.15" data-wow-duration="2s"
+              data-wow-iteration="infinite"
+              style="visibility: visible; animation-iteration-count: 3; animation-name: pulse;">
+              <img alt="escolar satisfecho" class="rounded-circle img-fluid img-about"
+                src="assets/img/about/piloto.png" />
+
+            </div>
+            <div class="timeline-panel">
+              <div class="timeline-heading section-subheading text-primary invisible">
+
+                <h2>
+                  Que tienes que hacer?
+                </h2>
+              </div>
+              <div class="timeline-body invisible">
+                <p class="text-muted">
+                  Es multiplataforma, lo puedes utilizar en cualquier disposivo, ya sea móvil, tablet o un ordenador,
+                  tanto en casa o el que tengais en el aula de informática de tu cole. Nuestro equipo irá añadiendo
+                  nuevos ejercicios y nuevos juegos con los que disfrutar.
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
-      <div class="row">
-  
-        <div *ngFor="let tarea of tareas; index as index"
-          class="col-6 col-sm-4 col-md-4 col-xl-3 portfolio-item wow fadeIn tareaItem" data-tipo="tarea">
-          <a id="suma-{{tarea.name}}" class="portfolio-link redondo-top" data-toggle="modal" (click)="addTarea($event)">
-            <img alt="escolar satisfecho " class="img-fluid redondo-top "
-              src="./../../assets/img/portfolio/{{tarea.name}}.png" />
-          </a>
-          <div [ngClass]="(tarea.selected)?'tarea-seleccionada':''" class="portfolio-caption redondo-bottom d-flex justify-content-between">
-            <button id="resta-{{tarea.name}}" (click)=" removeTarea($event)" class="btn minus"  type="button">
-              <i class="fa fa-minus-circle"></i>
+    </div>
+  </div>
+</section>
+
+<!-- Tareas Grid -->
+<section id="portfolio">
+  <div class="container">
+    <div class="row d-flex justify-content-center wow fadeIn">
+      <div class="col-lg-12 text-center ">
+        <h2 class="section-heading mb-5">
+          Tareas
+        </h2>
+      </div>
+    </div>
+    <div class="row">
+
+      <div *ngFor="let tarea of tareas; index as index"
+        class="col-6 col-sm-4 col-md-4 col-xl-3 portfolio-item wow fadeIn tareaItem" data-tipo="tarea">
+        <a id="suma-{{tarea.name}}" class="portfolio-link redondo-top" data-toggle="modal" (click)="addTarea($event)">
+          <img alt="escolar satisfecho " class="img-fluid redondo-top "
+            src="./../../assets/img/portfolio/{{tarea.name}}.png" />
+        </a>
+        <div [ngClass]="(tarea.selected)?'tarea-seleccionada':''"
+          class="portfolio-caption redondo-bottom d-flex justify-content-between">
+          <button id="resta-{{tarea.name}}" (click)=" removeTarea($event)" class="btn minus" type="button">
+            <i class="fa fa-minus-circle"></i>
           </button>
           <div>
             <h4 class="blue">
@@ -253,372 +255,374 @@
             <h4 *ngIf="tarea.cantidad!=0" class="blue">x{{tarea.cantidad}}</h4>
           </div>
 
-            <button id="suma-{{tarea.name}}" (click)=" addTarea($event)" class="btn plus"  type="button">
-              <i class="fa fa-plus-circle"></i>
+          <button id="suma-{{tarea.name}}" (click)=" addTarea($event)" class="btn plus" type="button">
+            <i class="fa fa-plus-circle"></i>
           </button>
-          </div>
         </div>
-  
       </div>
+
     </div>
-  </section>
-  
-  <!-- Juegos Grid -->
-  <section id="juegos">
-    <div class="container">
-      <div class="row d-flex justify-content-center wow fadeIn">
-        <div class="col-lg-12 text-center ">
-          <h2 class="section-heading mb-5">
-            Juegos
-          </h2>
-        </div>
-      </div>
-      <div class="row">
-  
-        <div *ngFor="let juego of juegos" class="col-6 col-sm-4 col-md-4 col-xl-3 portfolio-item wow fadeIn tareaItem"
-          data-name="juego" data-target="juego" data-tipo="juego">
-          <a class="portfolio-link redondo-top" data-toggle="modal" (click)="addJuego(juego)">
-            <img alt="escolar satisfecho" class="img-fluid redondo-top"
-              src="./../../assets/img/juegos/{{juego.name}}.png" />
-  
-            <!-- <img alt="nuevo" class="img-fluid nuevo" src="img/juegos/nuevo.png" /> -->
-  
-          </a>
-          <div [ngClass]="(juego.selected)?'juego-seleccionado':''" class="portfolio-caption redondo-bottom">
-            <h4>
-              {{juego.name}}
-            </h4>
-          </div>
-        </div>
-        <div class="col-6 col-sm-4 col-md-4 col-xl-3 portfolio-item wow fadeIn ">
-          <a class="portfolio-link redondo">
-            <img alt="escolar satisfecho" class="img-fluid redondo" src="./../../assets/img/juegos/coming-soon-es.png" />
-          </a>
-        </div>
-        <div class="col-6 col-sm-4 col-md-4 col-xl-3 portfolio-item wow fadeIn ">
-          <a class="portfolio-link redondo">
-            <img alt="escolar satisfecho" class="img-fluid redondo" src="./../../assets/img/juegos/coming-soon-es.png" />
-          </a>
-        </div>
-  
-      </div>
-      <div class="col-lg-12 text-center " id="continua-btn">
-        <h2 class=" btn btn-success col-6 col-lg-6 btn-submit ">
-          Comencemos
+  </div>
+</section>
+
+<!-- Juegos Grid -->
+<section id="juegos">
+  <div class="container">
+    <div class="row d-flex justify-content-center wow fadeIn">
+      <div class="col-lg-12 text-center ">
+        <h2 class="section-heading mb-5">
+          Juegos
         </h2>
       </div>
     </div>
-  </section>
-  <!-- Vídeos Grid -->
-  <section id="videos">
-    <div class="container">
-      <div class="row d-flex justify-content-center wow fadeIn">
-        <div class="col-lg-12 text-center ">
-          <h2 class="section-heading mb-5">
-            Aprende con vídeos
-          </h2>
+    <div class="row">
+
+      <div *ngFor="let juego of juegos" class="col-6 col-sm-4 col-md-4 col-xl-3 portfolio-item wow fadeIn tareaItem"
+        data-name="juego" data-target="juego" data-tipo="juego">
+        <a class="portfolio-link redondo-top" data-toggle="modal" (click)="addJuego(juego)">
+          <img alt="escolar satisfecho" class="img-fluid redondo-top"
+            src="./../../assets/img/juegos/{{juego.name}}.png" />
+
+          <!-- <img alt="nuevo" class="img-fluid nuevo" src="img/juegos/nuevo.png" /> -->
+
+        </a>
+        <div [ngClass]="(juego.selected)?'juego-seleccionado':''" class="portfolio-caption redondo-bottom">
+          <h4>
+            {{juego.name}}
+          </h4>
         </div>
       </div>
-      <div class="row justify-content-center">
-        <div class="col-4 portfolio-item wow fadeIn mb-4 ">
-          <a class="portfolio-link ">
-            <img alt="escolar satisfecho" class="img-fluid sombra redondo-todo"
-              src="./../../assets/img/videos/coming-soon-es.png" />
-          </a>
-        </div>
+      <div class="col-6 col-sm-4 col-md-4 col-xl-3 portfolio-item wow fadeIn ">
+        <a class="portfolio-link redondo">
+          <img alt="escolar satisfecho" class="img-fluid redondo" src="./../../assets/img/juegos/coming-soon-es.png" />
+        </a>
       </div>
+      <div class="col-6 col-sm-4 col-md-4 col-xl-3 portfolio-item wow fadeIn ">
+        <a class="portfolio-link redondo">
+          <img alt="escolar satisfecho" class="img-fluid redondo" src="./../../assets/img/juegos/coming-soon-es.png" />
+        </a>
+      </div>
+
     </div>
-  </section>
-  <section class="" id="team">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <h2 class="section-heading ">
-            Nuestro gran equipo
-          </h2>
-          <h3 class="section-subheading text-muted">
-            Andar mirando, nos hace ver.
-          </h3>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="team-member">
-            <img alt="desarrolladora web" class="mx-auto rounded-circle" src="./../../assets/img/team/ane.jpg" />
-            <h4>
-            </h4>
-            <p class="text-muted">
-              Una lianta
-            </p>
-            <!--
-                          <ul class="list-inline social-buttons">
-                              <li class="list-inline-item">
-                                  <a href="#">
-                                      <i class="fab fa-twitter">
-                                      </i>
-                                  </a>
-                              </li>
-                              <li class="list-inline-item">
-                                  <a href="#">
-                                      <i class="fab fa-facebook-f">
-                                      </i>
-                                  </a>
-                              </li>
-                              <li class="list-inline-item">
-                                  <a href="#">
-                                      <i class="fab fa-linkedin-in">
-                                      </i>
-                                  </a>
-                              </li>
-                          </ul>-->
-  
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="team-member">
-            <img alt="desarrolladora web" class="mx-auto rounded-circle" src="./../../assets/img/team/asier2.jpg" />
-            <h4>
-            </h4>
-            <p class="text-muted">
-              The boss
-            </p>
-            <!--
-                          <ul class="list-inline social-buttons">
-                              <li class="list-inline-item">
-                                  <a href="#">
-                                      <i class="fab fa-twitter">
-                                      </i>
-                                  </a>
-                              </li>
-                              <li class="list-inline-item">
-                                  <a href="#">
-                                      <i class="fab fa-facebook-f">
-                                      </i>
-                                  </a>
-                              </li>
-                              <li class="list-inline-item">
-                                  <a href="#">
-                                      <i class="fab fa-linkedin-in">
-                                      </i>
-                                  </a>
-                              </li>
-                          </ul>-->
-  
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="team-member">
-            <img alt="desarrolladora web" class="mx-auto rounded-circle" src="./../../assets/img/team/maite.jpg" />
-            <h4>
-            </h4>
-            <p class="text-muted">
-              La barbie
-            </p>
-            <!--
-                          <ul class="list-inline social-buttons">
-                              <li class="list-inline-item">
-                                  <a href="#">
-                                      <i class="fab fa-twitter">
-                                      </i>
-                                  </a>
-                              </li>
-                              <li class="list-inline-item">
-                                  <a href="#">
-                                      <i class="fab fa-facebook-f">
-                                      </i>
-                                  </a>
-                              </li>
-                              <li class="list-inline-item">
-                                  <a href="#">
-                                      <i class="fab fa-linkedin-in">
-                                      </i>
-                                  </a>
-                              </li>
-                          </ul>-->
-  
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-8 mx-auto text-center">
-          <p class="large text-muted">
-            Decirle a las hormigas que suelten ya las migas y se las coman, que ya vale de currar.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <span class="copyright">
-            Copyright © Pinfloi 2018
-          </span>
-        </div>
-        <div class="col-md-4">
-          <ul class="list-inline social-buttons">
-            <li class="list-inline-item">
-              <a href="#">
-                <i class="fa fa-twitter">
-                </i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <i class="fa fa-facebook-f">
-                </i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <i class="fa fa-linkedin-in">
-                </i>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <ul class="list-inline quicklinks">
-            <li class="list-inline-item">
-              <a href="#">
-                Privacy Policy
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                Terms of Use
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <!------------------------------------------------------------------------->
-  <!-------------------- Modal ---------------------------------------------->
-  <!------------------------------------------------------------------------->
-  <div class="seleccion-modal modal col-lg-12 mx-auto " id="modal" role="dialog" tabindex="-1">
-    <div class="modal-dialog ">
-      <div class="modal-content">
-        <div class="row">
-          <div class=" mx-auto">
-            <div class="modal-body row d-flex justify-content-center">
-              <!-- Project Details Go Here -->
-              <h2 class="">
-                Esta es tu selección.
-              </h2>
-              <div class="col-12 ">
-                <i class="fa fa-circle fa-1x text-primary">
-                </i>
-                <i class="fa fa-circle fa-1x text-success">
-                </i>
-                <i class="fa fa-circle fa-1x text-info">
-                </i>
-              </div>
-              <!-- Tareas Modal -->
-              <div class="col-12 col-lg-8 row d-flex justify-content-center">
-                <div class=" col-sm-6 col-md-5 modal-item " id="question">
-                  <img alt="interrogante" class="img-fluid" src="img/portfolio/question.png" />
-                </div>
-  
-                <div *ngFor="let tarea of tareas" class=" col-6 col-sm-3 col-md-3 modal-item redondo-todo hidden"
-                  id="modal-tarea-{{tarea.id}}">
-                  <img alt="tarea {{tarea.name}}" class="redondo-todo img-fluid" src="img/portfolio/{{tarea.name}}.png" />
-                  <div>
-                    <h4>
-                      {{tarea.name}}
-                    </h4>
-                  </div>
-                </div>
-  
-              </div>
-              <!--//Fin tareas modal-->
-              <div class="col-12 ">
-                <i class="fa fa-circle fa-1x text-primary">
-                </i>
-                <i class="fa fa-circle fa-1x text-success">
-                </i>
-                <i class="fa fa-circle fa-1x text-info">
-                </i>
-              </div>
-              <!-- Juegos Modal -->
-              <div class="row col-10 mt-3 d-flex justify-content-center" id="modal-juegos">
-  
-                <div *ngFor="let juego of juegos" class="col-sm-6 col-md-3 modal-item modal-juego redondo-todo hidden"
-                  id="modal-juego-{{juego.id}}">
-                  <img alt="videojuego " class="img-fluid redondo-todo" src="img/juegos/{{juego}}.png" />
-                </div>
-              </div>
-              <!--//Fin juegos modal-->
-              <div class="col-12 mx-auto">
-                <i class="fa fa-circle fa-1x text-primary ">
-                </i>
-                <i class="fa fa-circle fa-1x text-success ">
-                </i>
-                <i class="fa fa-circle fa-1x text-info ">
-                </i>
-              </div>
-            </div>
-            <div class=" row d-flex justify-content-center pb-4">
-              <div class="col-lg-12 text-center " id="continua-btn">
-                <button class=" btn btn-primary col-4 col-lg-3 " data-dismiss="modal" id="volver">
-                  <i class="fa fa-arrow-circle-left fa-2x float-left">
-                  </i>
-                  Volver
-                </button>
-                <button class=" btn btn-primary col-4 col-lg-3" id="enviar">
-                  Siguiente
-                  <i class="fa fa-arrow-circle-right fa-2x float-right">
-                  </i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-      </div>
-  
+    <div class="col-lg-12 text-center " id="continua-btn">
+      <h2 class=" btn btn-success col-6 col-lg-6 btn-submit ">
+        Comencemos
+      </h2>
     </div>
   </div>
-  
-  <!--Arrow-->
-  <a [ngClass]="tareaSelected?'visible':''" [ngClass]="tareaSelected&&juegoSelected?'rotate':''"
-    (click)="onClick(landingModal)" class="js-scroll-trigger btn-primary shadow-pulse"  id="mLateral">
-    <i class="fa fa-angle-double-down">
-    </i>
-  </a>
-  
-  <!--ModalngModal-->
-  <ng-template #landingModal let-modal id="landingModal">
-    <div class="modal-header ">
-      <h1 class="modal-title" id="modal-basic-title">Esta es tu selección</h1>  
-      
+</section>
+<!-- Vídeos Grid -->
+<section id="videos">
+  <div class="container">
+    <div class="row d-flex justify-content-center wow fadeIn">
+      <div class="col-lg-12 text-center ">
+        <h2 class="section-heading mb-5">
+          Aprende con vídeos
+        </h2>
+      </div>
     </div>
-    <div class="modal-body ">
-  
-      <div class="row d-flex justify-content-center">
-        <div *ngFor="let tareaM of tareasParaModal; index as index" class="col-6 col-sm-4 col-md-4 col-xl-3">
-          <img alt="tarea-seleccionada" class="img-fluid redondo-top-bottom m-1 relative"
-            src="./../../assets/img/portfolio/{{tareaM.name}}.png" />
-            <label *ngIf="tareaM.cantidad>1" class="tareas-modal-cantidad " >x{{tareaM.cantidad}}</label>
+    <div class="row justify-content-center">
+      <div class="col-4 portfolio-item wow fadeIn mb-4 ">
+        <a class="portfolio-link ">
+          <img alt="escolar satisfecho" class="img-fluid sombra redondo-todo"
+            src="./../../assets/img/videos/coming-soon-es.png" />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="" id="team">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 class="section-heading ">
+          Nuestro gran equipo
+        </h2>
+        <h3 class="section-subheading text-muted">
+          Andar mirando, nos hace ver.
+        </h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="team-member">
+          <img alt="desarrolladora web" class="mx-auto rounded-circle" src="./../../assets/img/team/ane.jpg" />
+          <h4>
+          </h4>
+          <p class="text-muted">
+            Una lianta
+          </p>
+          <!--
+                          <ul class="list-inline social-buttons">
+                              <li class="list-inline-item">
+                                  <a href="#">
+                                      <i class="fab fa-twitter">
+                                      </i>
+                                  </a>
+                              </li>
+                              <li class="list-inline-item">
+                                  <a href="#">
+                                      <i class="fab fa-facebook-f">
+                                      </i>
+                                  </a>
+                              </li>
+                              <li class="list-inline-item">
+                                  <a href="#">
+                                      <i class="fab fa-linkedin-in">
+                                      </i>
+                                  </a>
+                              </li>
+                          </ul>-->
+
         </div>
       </div>
-      
-      <div class="row d-flex justify-content-center">
-        <div *ngFor="let juegoS of juegosSeleccionados" class="col-6 col-sm-4 col-md-4 col-xl-3 portfolio-item">
-          <img alt="juego seleccionado" class="img-fluid redondo-top-bottom m-1"
-            src="./../../assets/img/juegos/{{juegoS.name}}.png" />
+      <div class="col-sm-4">
+        <div class="team-member">
+          <img alt="desarrolladora web" class="mx-auto rounded-circle" src="./../../assets/img/team/asier2.jpg" />
+          <h4>
+          </h4>
+          <p class="text-muted">
+            The boss
+          </p>
+          <!--
+                          <ul class="list-inline social-buttons">
+                              <li class="list-inline-item">
+                                  <a href="#">
+                                      <i class="fab fa-twitter">
+                                      </i>
+                                  </a>
+                              </li>
+                              <li class="list-inline-item">
+                                  <a href="#">
+                                      <i class="fab fa-facebook-f">
+                                      </i>
+                                  </a>
+                              </li>
+                              <li class="list-inline-item">
+                                  <a href="#">
+                                      <i class="fab fa-linkedin-in">
+                                      </i>
+                                  </a>
+                              </li>
+                          </ul>-->
+
         </div>
       </div>
-  
+      <div class="col-sm-4">
+        <div class="team-member">
+          <img alt="desarrolladora web" class="mx-auto rounded-circle" src="./../../assets/img/team/maite.jpg" />
+          <h4>
+          </h4>
+          <p class="text-muted">
+            La barbie
+          </p>
+          <!--
+                          <ul class="list-inline social-buttons">
+                              <li class="list-inline-item">
+                                  <a href="#">
+                                      <i class="fab fa-twitter">
+                                      </i>
+                                  </a>
+                              </li>
+                              <li class="list-inline-item">
+                                  <a href="#">
+                                      <i class="fab fa-facebook-f">
+                                      </i>
+                                  </a>
+                              </li>
+                              <li class="list-inline-item">
+                                  <a href="#">
+                                      <i class="fab fa-linkedin-in">
+                                      </i>
+                                  </a>
+                              </li>
+                          </ul>-->
+
+        </div>
+      </div>
     </div>
-    <div class="mi-modal-footer">
-      <button id="enviar" type="button" class="btn btn-primary col-4 col-lg-3" (click)="modal.close('Save click')"><i class="fa fa-angle-left"></i>Volver</button>     
-      <div class="separador-horizontal"></div>
-      <button id="enviar" type="button" class="btn btn-primary col-4 col-lg-3" (click)="seguir(landingModal)">Seguir<i class="fa fa-angle-right"></i></button>
+    <div class="row">
+      <div class="col-lg-8 mx-auto text-center">
+        <p class="large text-muted">
+          Decirle a las hormigas que suelten ya las migas y se las coman, que ya vale de currar.
+        </p>
+      </div>
     </div>
-  </ng-template>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <span class="copyright">
+          Copyright © Pinfloi 2018
+        </span>
+      </div>
+      <div class="col-md-4">
+        <ul class="list-inline social-buttons">
+          <li class="list-inline-item">
+            <a href="#">
+              <i class="fa fa-twitter">
+              </i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">
+              <i class="fa fa-facebook-f">
+              </i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">
+              <i class="fa fa-linkedin-in">
+              </i>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="#">
+              Privacy Policy
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">
+              Terms of Use
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+<!------------------------------------------------------------------------->
+<!-------------------- Modal ---------------------------------------------->
+<!------------------------------------------------------------------------->
+<div class="seleccion-modal modal col-lg-12 mx-auto " id="modal" role="dialog" tabindex="-1">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="row">
+        <div class=" mx-auto">
+          <div class="modal-body row d-flex justify-content-center">
+            <!-- Project Details Go Here -->
+            <h2 class="">
+              Esta es tu selección.
+            </h2>
+            <div class="col-12 ">
+              <i class="fa fa-circle fa-1x text-primary">
+              </i>
+              <i class="fa fa-circle fa-1x text-success">
+              </i>
+              <i class="fa fa-circle fa-1x text-info">
+              </i>
+            </div>
+            <!-- Tareas Modal -->
+            <div class="col-12 col-lg-8 row d-flex justify-content-center">
+              <div class=" col-sm-6 col-md-5 modal-item " id="question">
+                <img alt="interrogante" class="img-fluid" src="img/portfolio/question.png" />
+              </div>
+
+              <div *ngFor="let tarea of tareas" class=" col-6 col-sm-3 col-md-3 modal-item redondo-todo hidden"
+                id="modal-tarea-{{tarea.id}}">
+                <img alt="tarea {{tarea.name}}" class="redondo-todo img-fluid" src="img/portfolio/{{tarea.name}}.png" />
+                <div>
+                  <h4>
+                    {{tarea.name}}
+                  </h4>
+                </div>
+              </div>
+
+            </div>
+            <!--//Fin tareas modal-->
+            <div class="col-12 ">
+              <i class="fa fa-circle fa-1x text-primary">
+              </i>
+              <i class="fa fa-circle fa-1x text-success">
+              </i>
+              <i class="fa fa-circle fa-1x text-info">
+              </i>
+            </div>
+            <!-- Juegos Modal -->
+            <div class="row col-10 mt-3 d-flex justify-content-center" id="modal-juegos">
+
+              <div *ngFor="let juego of juegos" class="col-sm-6 col-md-3 modal-item modal-juego redondo-todo hidden"
+                id="modal-juego-{{juego.id}}">
+                <img alt="videojuego " class="img-fluid redondo-todo" src="img/juegos/{{juego}}.png" />
+              </div>
+            </div>
+            <!--//Fin juegos modal-->
+            <div class="col-12 mx-auto">
+              <i class="fa fa-circle fa-1x text-primary ">
+              </i>
+              <i class="fa fa-circle fa-1x text-success ">
+              </i>
+              <i class="fa fa-circle fa-1x text-info ">
+              </i>
+            </div>
+          </div>
+          <div class=" row d-flex justify-content-center pb-4">
+            <div class="col-lg-12 text-center " id="continua-btn">
+              <button class=" btn btn-primary col-4 col-lg-3 " data-dismiss="modal" id="volver">
+                <i class="fa fa-arrow-circle-left fa-2x float-left">
+                </i>
+                Volver
+              </button>
+              <button class=" btn btn-primary col-4 col-lg-3" id="enviar">
+                Siguiente
+                <i class="fa fa-arrow-circle-right fa-2x float-right">
+                </i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+    </div>
+
+  </div>
+</div>
+
+<!--Arrow-->
+<a [ngClass]="tareaSelected?'visible':''" [ngClass]="tareaSelected&&juegoSelected?'rotate':''"
+  (click)="onClick(landingModal)" class="js-scroll-trigger btn-primary shadow-pulse" id="mLateral">
+  <i class="fa fa-angle-double-down">
+  </i>
+</a>
+
+<!--ModalngModal-->
+<ng-template #landingModal let-modal id="landingModal">
+  <div class="modal-header ">
+    <h1 class="modal-title" id="modal-basic-title">Esta es tu selección</h1>
+
+  </div>
+  <div class="modal-body ">
+
+    <div class="row d-flex justify-content-center">
+      <div *ngFor="let tareaM of tareasParaModal; index as index" class="col-6 col-sm-4 col-md-4 col-xl-3">
+        <img alt="tarea-seleccionada" class="img-fluid redondo-top-bottom m-1 relative"
+          src="./../../assets/img/portfolio/{{tareaM.name}}.png" />
+        <label *ngIf="tareaM.cantidad>1" class="tareas-modal-cantidad ">x{{tareaM.cantidad}}</label>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+      <div *ngFor="let juegoS of juegosSeleccionados" class="col-6 col-sm-4 col-md-4 col-xl-3 portfolio-item">
+        <img alt="juego seleccionado" class="img-fluid redondo-top-bottom m-1"
+          src="./../../assets/img/juegos/{{juegoS.name}}.png" />
+      </div>
+    </div>
+
+  </div>
+  <div class="mi-modal-footer">
+    <button id="enviar" type="button" class="btn btn-primary col-4 col-lg-3" (click)="modal.close('Save click')"><i
+        class="fa fa-angle-left"></i>Volver</button>
+    <div class="separador-horizontal"></div>
+    <button id="enviar" type="button" class="btn btn-primary col-4 col-lg-3" (click)="seguir(landingModal)">Seguir<i
+        class="fa fa-angle-right"></i></button>
+  </div>
+</ng-template>

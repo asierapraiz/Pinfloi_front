@@ -15,6 +15,9 @@ export default class TareaUtils {
     inputs: number = 0;
     aciertos: number = 0;
     errores: number = 0;
+    columnas!: number;
+    filas!: any[];
+    carton!: Element | null;
 
     elementos!: any;
     htmlToAdd: string = "";
@@ -24,20 +27,28 @@ export default class TareaUtils {
         protected elementRef: ElementRef
     ) { }
 
+    addEventListeners() {
+        console.log("En addEventListeners");
+        //Añado los eventos en los elementos de la suma
+        let huecos = this.elementRef.nativeElement.querySelectorAll('.target');
+
+        huecos.forEach((hueco: HTMLElement) => {
+            hueco.addEventListener('click', this.seleccionaHueco.bind(this))
+        })
+    }
+
 
 
     seleccionaHueco(element: any) {
-
         if (this.seleccionado != null) {
             this.seleccionado.classList.remove('seleccionado');
-        }        
+        }
         this.ts.seleccionaHueco(element.target);
-
         this.seleccionado = element.target;
         this.seleccionado.classList.add('seleccionado');
-        console.log("El hueco seleccionado tien data-valor=" + this.seleccionado.attributes['data-valor'].value);
-    
     }
+
+
 
     dameNum(min: number, max: number) {
         this.usados = [];
@@ -52,6 +63,8 @@ export default class TareaUtils {
         }
         return numero;
     }
+
+
 
 
 
