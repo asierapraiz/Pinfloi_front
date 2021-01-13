@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModalCambiarComponent } from './modal-cambiar.component';
+import { TareasComponent } from './tareas.component';
 
-describe('ModalCambiarComponent', () => {
-  let component: ModalCambiarComponent;
-  let fixture: ComponentFixture<ModalCambiarComponent>;
+describe('TareasComponent', () => {
+  let component: TareasComponent;
+  let fixture: ComponentFixture<TareasComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ModalCambiarComponent ]
+      declarations: [ TareasComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ModalCambiarComponent);
+    fixture = TestBed.createComponent(TareasComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

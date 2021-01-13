@@ -1,7 +1,7 @@
-import { ElementRef, Component, OnInit } from '@angular/core';
+import { ElementRef, HostBinding, Component, OnInit } from '@angular/core';
 import { RouterOutlet, Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { slideInAnimation, fadeInAnimation, flyInOut } from './../../../animations';
+import { routeAnimations, flyInOut } from './../../../animations';
 import { TareaService } from './../services/tarea.service';
 import { Avatar } from '../../../core/models/avatar.model';
 import { Tarea } from '../../../core/models/tarea.model';
@@ -11,11 +11,11 @@ import { Tarea } from '../../../core/models/tarea.model';
 @Component({
   selector: 'app-tarea',
   templateUrl: './tarea.component.html',
-  animations: [slideInAnimation, fadeInAnimation, flyInOut],
-  host: { '[@routeAnimations ]': '' },
+  animations: [routeAnimations, flyInOut],
   styleUrls: ['./tarea.component.scss']
 })
 export class TareaComponent implements OnInit {
+
 
   subscription!: Subscription;
   errores: number = 0;

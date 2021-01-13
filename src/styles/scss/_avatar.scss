@@ -44,9 +44,7 @@
         margin-bottom:2%;
         width:50%;
         float:right;
-        .navbar{
-            padding: .2rem 0rem;
-        }
+        
     }
 
     #avatar-container .img-fluid{
@@ -174,7 +172,7 @@
     #myTabContent{
       overflow-y:auto;
       overflow-x:hidden;
-      max-height:60vh;
+      height:60vh;
       width:100%;
     }
 
@@ -288,9 +286,7 @@
             width:100%;
             float:none;
 
-            .navbar{
-                padding: .2rem 0rem;
-            }
+            
             .selector{
                  margin-right: 3px; 
             }

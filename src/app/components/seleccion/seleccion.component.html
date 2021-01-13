@@ -1,0 +1,23 @@
+<div class="aside">
+    <h1>Routing Animations</h1>
+    <ul>
+
+    </ul>
+
+</div>
+<div class="body">
+    <div class="main-route-container" [@routerAnimations]="prepRouteTransition(outlet)">
+        <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+</div>
+<div class="footer">
+    <!--Arrow-->
+    <a (click)="next()" class="js-scroll-trigger btn-primary shadow-pulse mLateral fromRight">
+        <i class="fa fa-angle-double-right">
+        </i>
+    </a>
+    <a (click)="before()" class="js-scroll-trigger btn-primary shadow-pulse mLateral fromLeft">
+        <i class="fa fa-angle-double-left">
+        </i>
+    </a>
+</div>

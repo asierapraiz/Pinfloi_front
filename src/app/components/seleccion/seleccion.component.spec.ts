@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TareaOldComponent } from './tarea-old.component';
+import { SeleccionComponent } from './seleccion.component';
 
-describe('TareaComponent', () => {
-  let component: TareaOldComponent;
-  let fixture: ComponentFixture<TareaOldComponent>;
+describe('SeleccionComponent', () => {
+  let component: SeleccionComponent;
+  let fixture: ComponentFixture<SeleccionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TareaOldComponent ]
+      declarations: [ SeleccionComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TareaOldComponent);
+    fixture = TestBed.createComponent(SeleccionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

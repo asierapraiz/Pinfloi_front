@@ -3,7 +3,7 @@
 
 body {	
 	@include background-right;	
-	color: $blanco_tiza;	
+	//color: $blanco_tiza;	
 	background-position: center;		
 	position:relative;
 	@include background-cover;
@@ -561,6 +561,7 @@ body {
 	}
 
 	#pizarra{
+		color: $blanco_tiza;
 		display: flex;
 		flex-direction: column;
 	    justify-content:center;
@@ -582,7 +583,21 @@ body {
 		text-align:center;		
 		padding:35px 35px;
 		
-
+		.pizarra-header{
+			position:absolute;
+			height: 3rem;
+			width: 100%;
+			padding: 1rem;
+			top:0px;
+  			display: flex;
+			justify-content: flex-end;
+  			align-items:center;
+			  flex-direction: row;
+			  
+			  button{
+				  color: $blanco_tiza;
+			  }
+		}
 		.pizarra-body{
 			height:80%;
   			display: flex;
@@ -617,83 +632,7 @@ body {
 
 	
 
-	.navbar {
-	    position: absolute;
-	    width:100%;
-	    top:0px;
-	    left:0px;
-	    .navbar-collapse{
-	    	width:auto;
-	    }
-
-	    img{
-	    	width:100px!important;
-	    }
-
-	    .navbar-toggler{
-	    	color:white;
-	    	border-color: rgba(255, 255, 255,0.5);
-	    	float:left;
-	    	transition:all, 0.5s;
-
-	    	&:hover{
-	    		color: darken($primary, 10%);
-	    		border-color: darken($primary, 10%);
-	    	}
-	    }
-
-	    .navbar-brand>img{
-	    	width:100px;
-	    }
-	    .nav-item{
-	    	display:inline-block;
-
-	    }
-
-	    .nav-link{
-	    	float:right;
-	    	font-size:1.5rem;
-	    	color:white!important;
-	    	margin-left:40px;
-
-	    	transition:all, 0.5s;
-
-	    	&:hover{    		
-	    		color:$primary!important;
-	    	}
-	    }
-
-	    .navbar-icon{
-	    	font-size:2.5rem;
-	    	margin-left:5px;
-	    	border:0px;
-	    }
-
-	    @media (min-width:800px){
-	    	img{
-	    	 width:150px!important;
-	    	}
-
-	    	.navbar-icon{
-		    	font-size:2rem;
-		    	margin-left:5px;
-		    	border:0px;
-		    }
-	    }
-
-	    @media (min-width:1400px){
-	    	img{
-	    	 width:200px!important;
-	    	}
-
-	    	.navbar-icon{
-		    	font-size:2.5rem;
-		    	margin-left:5px;
-		    	border:0px;
-		    }
-	    }
-
-	}
+	
 
 	#carton{	
 		align-self:center;
@@ -732,7 +671,7 @@ body {
 	}
 
 	.item{	
-		color: $blanco_tiza;	
+		//color: $blanco_tiza;	
 		text-align: center;	
 		width: 80px;
 		height: 80px;		
@@ -777,7 +716,6 @@ body {
 			height: 25px ;		
 			font-size:1rem;
 			margin:0 4px;
-			
 
 		}
 	}
@@ -799,8 +737,7 @@ body {
 		
 	}
 
-	#draggables{
-		color: $blanco_tiza;
+	#draggables{		
 		z-index:2000;
 		align-self:center;
 		margin:auto auto;
@@ -835,7 +772,6 @@ body {
 				padding:0px 0px;			 
 				width:50px ;
 		  		height: 50px ; 
-
 		 	}
 		}
 		

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { slideInAnimation, fadeInAnimation } from './../../../animations/index';
+import { routeAnimations } from './../../../animations/index';
 import { TareaService } from './../services/tarea.service';
 import { RouterOutlet, Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-mensaje',
   templateUrl: './mensaje.component.html',
-  animations: [fadeInAnimation],
+  animations: [routeAnimations],
   host: { '[@routeAnimations]': '' },
   styleUrls: ['./mensaje.component.scss']
 })

@@ -2,12 +2,12 @@ import { ElementRef, Component, OnInit } from '@angular/core';
 import { RouterOutlet, Router, ActivatedRoute } from '@angular/router';
 import { TareaService } from './../services/tarea.service';
 import TareaUtils from './../tarea-utils';
-import { fadeInAnimation } from './../../../animations/index';
+import { routeAnimations } from './../../../animations/index';
 
 @Component({
   selector: 'app-resta',
   templateUrl: './resta.component.html',
-  animations: [fadeInAnimation],
+  animations: [routeAnimations],
   host: { '[@routeAnimations]': '' },
   styleUrls: ['./resta.component.scss']
 })

@@ -1,0 +1,49 @@
+<section id="juegos">
+    <div class="container">
+        <div class="row d-flex justify-content-center wow fadeIn">
+            <div class="col-lg-12 text-center ">
+                <h3 class="section-heading mb-5">
+                    Selecciona los juegos que quieras jugar
+                </h3>
+            </div>
+        </div>
+        <div class="row">
+
+            <div *ngFor="let juego of juegos"
+                class="col-6 col-sm-4 col-md-4 col-xl-3 portfolio-item wow fadeIn tareaItem" data-name="juego"
+                data-target="juego" data-tipo="juego">
+                <a class="portfolio-link redondo-top" data-toggle="modal" (click)="addJuego(juego)">
+                    <img alt="escolar satisfecho" class="img-fluid redondo-top"
+                        src="./../../assets/img/juegos/{{juego.name}}.png" />
+
+                    <!-- <img alt="nuevo" class="img-fluid nuevo" src="img/juegos/nuevo.png" /> -->
+
+                </a>
+                <div [ngClass]="(juego.selected)?'juego-seleccionado':''" class="portfolio-caption redondo-bottom">
+                    <h4>
+                        {{juego.name}}
+                    </h4>
+                </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-4 col-xl-3 portfolio-item wow fadeIn ">
+                <a class="portfolio-link redondo">
+                    <img alt="escolar satisfecho" class="img-fluid redondo"
+                        src="./../../assets/img/juegos/coming-soon-es.png" />
+                </a>
+            </div>
+            <div class="col-6 col-sm-4 col-md-4 col-xl-3 portfolio-item wow fadeIn ">
+                <a class="portfolio-link redondo">
+                    <img alt="escolar satisfecho" class="img-fluid redondo"
+                        src="./../../assets/img/juegos/coming-soon-es.png" />
+                </a>
+            </div>
+
+        </div>
+        <div class="col-lg-12 text-center " id="continua-btn">
+            <h2 class=" btn btn-success col-6 col-lg-6 btn-submit ">
+                Comencemos
+            </h2>
+        </div>
+    </div>
+
+</section>

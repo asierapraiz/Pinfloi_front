@@ -1,13 +1,13 @@
 import { ElementRef, Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { TareaService } from './../services/tarea.service';
-import { slideInAnimation } from './../../../animations/index';
+import { routeAnimations } from './../../../animations/index';
 import TareaUtils from './../tarea-utils';
 
 @Component({
   selector: 'app-suma',
   templateUrl: './suma.component.html',
-  animations: [slideInAnimation],
+  animations: [routeAnimations],
   // attach the fade in animation to the host (root) element of this component
 
   styleUrls: ['./suma.component.scss']

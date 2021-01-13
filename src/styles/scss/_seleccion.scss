@@ -1,38 +1,43 @@
-#mLateral{
-      
-    position:fixed;
-    right:-180px;
+.mLateral{
+  z-index:12;
+    width:6rem;
+    height: 6rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:fixed;    
     bottom:50px;
     text-align:center;
-    font-size:2rem;
+    font-size:3rem;
     font-weight:900;
     color:white;
     z-index:2000;
     @include font('dosisbold');
-    border-radius:50%;
-    padding: 0rem 1rem;      
+    border-radius:50%; 
      
 
     &:hover,:visited,:active{
       text-decoration:none;
-    }
-
-    &.visible{
-        right:25px;
-    }  
-  
+    }       
 
     &.rotate{
         transition: transform $transition-time ease-out;
-        transform:rotate(-90deg);
-        right:30px;        
+        transform:rotate(-90deg);               
+    }
+
+    &.fromRight{
+      right:30px;    
+       
+    }
+
+    &.fromLeft{
+      left:30px;
     }
 
     
 
     @media(min-width:768px){
-        font-size:3.5rem;
-        padding:.3rem 2rem .3rem 2rem;  
+        font-size:3.5rem;       
         &.visible{
           right:30px;
         } 
@@ -42,8 +47,7 @@
     @media (min-width: 1400px){   
 
 	    #mLateral{     
-	        font-size:5rem;
-	        padding:0rem 2.5rem 0rem 2.5rem;
+	        font-size:5rem;	        
 	    }
     }
 }

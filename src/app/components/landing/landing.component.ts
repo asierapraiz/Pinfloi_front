@@ -2,18 +2,15 @@ import { HostListener, Component, OnInit } from '@angular/core';
 import { Juego } from "../../core/models/juego.model";
 import { Tarea } from "../../core/models/tarea.model";
 import { LocalStorageService } from "../../core/services/local-storage.service";
-import { slideInAnimation, fadeInAnimation } from './../../animations/index';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
-import { JsonPipe, ViewportScroller } from '@angular/common';
-import { throwMatDialogContentAlreadyAttachedError } from '@angular/material/dialog';
+import { ViewportScroller } from '@angular/common';
 
 
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
-  animations: [slideInAnimation],
-  host: { '[@routeAnimations]': '' },
+
   styleUrls: ['./landing.component.css']
 })
 export class LandingComponent implements OnInit {

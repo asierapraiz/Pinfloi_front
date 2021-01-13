@@ -34,11 +34,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NombreFormComponent } from './components/nombre-form/nombre-form.component';
 import { AvatarFormComponent } from './components/avatar-form/avatar-form.component';
 import { JuegoComponent } from './components/juego/juego.component';
-import { SumaOldComponent } from './components/tareas/suma/suma-old.component';
-import { TareaOldComponent } from './components/tareas/tarea/tarea-old.component';
-import { ModalCambiarComponent } from './components/tareas/modals/modal-cambiar/modal-cambiar.component';
-import { ModalHistoricoComponent } from './components/tareas/modals/modal-historico/modal-historico.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TareasComponent } from './components/tareas/tareas.component';
+import { JuegosComponent } from './components/juegos/juegos.component';
+import { SeleccionComponent } from './components/seleccion/seleccion.component';
+
 
 
 
@@ -59,10 +59,21 @@ const routes: Routes = [
   { path: 'registro', component: RegistroComponent },
   { path: 'recuperar_pass', component: RecuperarPassComponent },
   { path: 'user/changePassword', component: ChangePassComponent },
-  { path: 'nombre', component: NombreFormComponent, data: { animation: 'NameFormPage' } },
-  { path: 'avatar', component: AvatarFormComponent, data: { animation: 'AvatarFormPage' } },
   { path: 'juego/:id', component: JuegoComponent, data: { animation: 'GamePage' } },
-  { path: 'tareas/suma', component: SumaOldComponent },
+  {
+    path: 'seleccion', component: SeleccionComponent, data: { animation: 'SeleccionPage' },
+    children: [
+      { path: '', component: TareasComponent, data: { animation: '1' } },
+      { path: 'tareas', component: TareasComponent, data: { animation: '2' } },
+      { path: 'juegos', component: JuegosComponent, data: { animation: '3' } },
+      { path: 'nombre', component: NombreFormComponent, data: { animation: '4' } },
+      { path: 'avatar', component: AvatarFormComponent, data: { animation: '5' } },
+
+
+    ]
+  },
+
+
   {
     path: 'tarea', loadChildren: () => import('./components/tarea/tarea.module').then(m => m.TareaModule)
   },
@@ -87,10 +98,9 @@ const routes: Routes = [
     NombreFormComponent,
     AvatarFormComponent,
     JuegoComponent,
-    SumaOldComponent,
-    TareaOldComponent,
-    ModalCambiarComponent,
-    ModalHistoricoComponent
+    TareasComponent,
+    JuegosComponent,
+    SeleccionComponent
   ],
   imports: [
     SharedModule,

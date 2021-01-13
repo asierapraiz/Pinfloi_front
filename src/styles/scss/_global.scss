@@ -12,6 +12,7 @@ body {
   @include font ('dosisbold');
   font-size: 1.3rem;
   background-color:white!important;
+  color: $primary;
 }
 
 .minus, .plus{
@@ -141,7 +142,10 @@ section {
       font-size: 40px!important;
     }
 
-    
+    .btn.focus, .btn:focus {
+    outline: 0;
+    box-shadow: none;
+    }    
 
   }
   @media(min-width:1400px) {

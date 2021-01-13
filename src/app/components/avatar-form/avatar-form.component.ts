@@ -2,16 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Avatar } from './avatar.model';
 import { Router } from '@angular/router';
 import { LocalStorageService } from "../../core/services/local-storage.service";
-import { slideInAnimation, fadeInAnimation } from './../../animations/index';
 
 
 
 @Component({
   selector: 'app-avatar-form',
   templateUrl: './avatar-form.component.html',
-  animations: [slideInAnimation],
-  host: { '[@routeAnimations]': '' },
-
   styleUrls: ['./avatar-form.component.scss', './../../../styles/scss/auth.scss']
 })
 export class AvatarFormComponent implements OnInit {

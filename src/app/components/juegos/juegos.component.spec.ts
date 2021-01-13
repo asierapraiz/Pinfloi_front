@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModalHistoricoComponent } from './modal-historico.component';
+import { JuegosComponent } from './juegos.component';
 
-describe('ModalHistoricoComponent', () => {
-  let component: ModalHistoricoComponent;
-  let fixture: ComponentFixture<ModalHistoricoComponent>;
+describe('JuegosComponent', () => {
+  let component: JuegosComponent;
+  let fixture: ComponentFixture<JuegosComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ModalHistoricoComponent ]
+      declarations: [ JuegosComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ModalHistoricoComponent);
+    fixture = TestBed.createComponent(JuegosComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
