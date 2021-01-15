@@ -3,22 +3,21 @@
     <div class="container">
         <div class="row d-flex justify-content-center ">
             <div class="col-lg-12 text-center ">
-                <h4 class="section-heading mb-5">
+                <h3 class="section-heading mb-5">
                     Selecciona las tareas que quieras practicar
-                </h4>
+                </h3>
             </div>
         </div>
         <div class="row">
             <div *ngFor="let tarea of tareas; index as index" class="col-6 col-sm-4 col-md-3 portfolio-item  tareaItem "
                 data-tipo="tarea">
                 <a id="suma-{{tarea.name}}" class="portfolio-link redondo-top" data-toggle="modal"
-                    (click)="addTarea($event)">
-                    <img alt="escolar satisfecho " class="img-fluid redondo-top "
-                        src="./../../assets/img/portfolio/{{tarea.name}}.png" />
+                    (click)="addTarea(tarea)">
+                    <img class="img-fluid redondo-top " src="./../../assets/img/portfolio/{{tarea.name}}.png" />
                 </a>
                 <div [ngClass]="(tarea.selected)?'tarea-seleccionada':''"
                     class="portfolio-caption redondo-bottom d-flex justify-content-between">
-                    <button id="resta-{{tarea.name}}" (click)=" removeTarea($event)" class="btn minus" type="button">
+                    <button id="resta-{{tarea.name}}" (click)=" removeTarea(tarea)" class="btn minus" type="button">
                         <i class="fa fa-minus-circle"></i>
                     </button>
                     <div>
@@ -27,7 +26,7 @@
                         </h4>
                         <h4 *ngIf="tarea.cantidad!=0" class="blue">x{{tarea.cantidad}}</h4>
                     </div>
-                    <button id="suma-{{tarea.name}}" (click)=" addTarea($event)" class="btn plus" type="button">
+                    <button id="suma-{{tarea.name}}" (click)=" addTarea(tarea)" class="btn plus" type="button">
                         <i class="fa fa-plus-circle"></i>
                     </button>
                 </div>

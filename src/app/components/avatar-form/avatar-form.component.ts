@@ -2,17 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { Avatar } from './avatar.model';
 import { Router } from '@angular/router';
 import { LocalStorageService } from "../../core/services/local-storage.service";
+import { fadeInAnimation } from './../../animations';
+import { SeleccionService } from './../seleccion/services/seleccion.service';
+
+
 
 
 
 @Component({
   selector: 'app-avatar-form',
   templateUrl: './avatar-form.component.html',
-  styleUrls: ['./avatar-form.component.scss', './../../../styles/scss/auth.scss']
+  styleUrls: ['./avatar-form.component.scss', './../../../styles/scss/auth.scss'],
+  animations: [fadeInAnimation]
 })
 export class AvatarFormComponent implements OnInit {
 
   public avatar: Avatar = {
+    definido: false,
     pelo: 'pelo_1',
     cejas: 'cejas_1',
     ojos: 'ojo_1',
@@ -45,9 +51,15 @@ export class AvatarFormComponent implements OnInit {
   private torsoAzul = 'hue-rotate(0deg) brightness(100%) saturate(1) contrast(100%) sepia(0)';
 
 
-  constructor(private localStorage: LocalStorageService, private router: Router) { }
+  constructor(private ss: SeleccionService, private localStorage: LocalStorageService, private router: Router) { }
 
   ngOnInit(): void {
+
+    if (this.localStorage.getSeleccion().avatar && this.localStorage.getSeleccion().avatar.definido == true) {
+      this.avatar = this.localStorage.getSeleccion().avatar;
+      this.seleccion();
+    }
+
   }
 
   seleccion() {
@@ -55,8 +67,11 @@ export class AvatarFormComponent implements OnInit {
     while (elements.length > 0) {
       elements[0].classList.remove("d-none");
     }
-    let ele = document.querySelector('#indefinido');
-    ele.classList.add("d-none");
+    document.querySelector('#indefinido').classList.add("d-none");
+    document.querySelector('#indefinido-aside').classList.add("d-none");
+
+    this.avatar.definido = true;
+    this.ss.seleccionaAvatar(this.avatar);
   };
 
   continuar() {

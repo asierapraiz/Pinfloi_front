@@ -1,5 +1,6 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { Tarea } from "../../core/models/tarea.model";
+import { SeleccionService } from './../seleccion/services/seleccion.service';
 
 
 
@@ -32,12 +33,13 @@ export class TareasComponent implements OnInit {
   ];
 
 
-  constructor() { }
+  constructor(private ss: SeleccionService) { }
 
   ngOnInit(): void {
   }
 
-  addTarea(event) {
+  addTarea(tarea: any) {
+    /*
     var target = event.currentTarget;
     var idAttr = target.attributes.id.nodeValue;
     let operacion = idAttr.split("-")[0];
@@ -48,6 +50,13 @@ export class TareasComponent implements OnInit {
     }
     this.tareaSelected = this.tareas.find(t => t.cantidad > 0) ? true : false;
     console.log("Tareas seleccionadas =>" + JSON.stringify(this.tareasSeleccionadas));
+    */
+
+
+    this.ss.seleccionaTarea(tarea);
+
+
+
   }
 
   removeTarea(event) {
@@ -86,5 +95,7 @@ export class TareasComponent implements OnInit {
     //     this.viewportScroller.scrollToAnchor('juegos');
 
   }
+
+
 
 }

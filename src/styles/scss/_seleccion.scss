@@ -1,3 +1,102 @@
+.aside{
+    padding:2rem 2rem;
+    color:rgb(51, 138, 224);
+    z-index:9;
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:15%;
+    height: 100vh;
+    background-color: rgba(14, 110, 206, 0.336);
+    border-right: 1px solid white ;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);    
+      
+    .avatar{
+      width: 100%;      
+      padding: 0.5rem;
+      background-color: #24C5D9;
+      display: flex;
+      align-items: space-around;   
+      justify-content:center;
+      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.281);
+      border: solid 1px white;
+      border-radius: 6px;
+      
+      .foto{
+        position:relative;
+        width:30%;
+        height:auto;
+        .img-fluid{
+          position:absolute;
+          top:0px;
+          left:0%;  
+        }
+      }
+      .foto:after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+      }
+      .nombre{
+        color: white;
+        width:70%;   
+        display: flex;
+        justify-content:center;
+        align-items:center;
+      }
+    }
+  
+    ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+    display: flex;
+    align-items: center ;  
+    justify-content:space-around;
+  
+  .tarea-seleccionada, .juego-seleccionado {
+    display: flex;
+    align-items: center ;  
+    justify-content:space-around;
+    display: flex;
+    width: 180px;
+    line-height: 50px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    background-color: rgba(50, 164, 230, 0.774);
+    color: white;
+    border: solid 1px white;
+    border-radius: 6px;
+    margin: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.281);
+    
+  }
+
+  .juego-img{
+    width: 50px;    
+  }
+
+  .trash{
+    font-size: 2.5rem;
+    text-shadow: 0 5px 12px rgba(0, 0, 0, 0.281);
+    opacity:0;
+    
+  }
+  .trash:hover{
+    opacity:1;
+    cursor: pointer;
+  }
+  
+}
+}
+
+
+
 .mLateral{
   z-index:12;
     width:6rem;

@@ -1,11 +1,4 @@
 
-body{
-  background-image: url('/../assets/img/fondos/fondoDibujosB.png') !important;
-  background-size: cover !important;
-  background-position: center center !important;
-  background-repeat: repeat-y !important; 
-}
-
 :root {
   
   --color-white: white;  
@@ -16,10 +9,14 @@ body{
   
 }
 
+.caja{
+  padding: 3rem;
+}
+
 
 
 .cosa{
-  animation-iteration-count: 3;
+  animation-iteration-count: 6;
 }
 
 @mixin inerShadow {

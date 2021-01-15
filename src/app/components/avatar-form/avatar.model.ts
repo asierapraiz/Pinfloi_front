@@ -1,9 +1,10 @@
 export class Avatar {
-    pelo: string; 
-    cejas: string;    
-    ojos: string;     
-    nariz: string;
-    boca: string; 
-    cara: string;
-    torso: string;     
-  }
+  definido: boolean;
+  pelo: string;
+  cejas: string;
+  ojos: string;
+  nariz: string;
+  boca: string;
+  cara: string;
+  torso: string;
+}

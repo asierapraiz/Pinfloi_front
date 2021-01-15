@@ -1,5 +1,7 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { Juego } from "../../core/models/juego.model";
+import { SeleccionService } from './../seleccion/services/seleccion.service';
+import { LocalStorageService } from "../../core/services/local-storage.service";
 
 
 @Component({
@@ -22,13 +24,18 @@ export class JuegosComponent implements OnInit {
     { id: 6, 'name': 'cubo', 'selected': false }];
 
 
-  constructor() { }
+  constructor(private ss: SeleccionService, private localStorage: LocalStorageService) { }
 
   ngOnInit(): void {
+    if (this.localStorage.getSeleccion().juegosSeleccionados) {
+      this.juegosSeleccionados = this.localStorage.getSeleccion().juegosSeleccionados;
+    }
+
   }
 
   addJuego(juego) {
 
+    /*
     if (this.juegosSeleccionados.indexOf(juego) !== -1) {
       this.juegosSeleccionados.splice(this.juegosSeleccionados.indexOf(juego), 1);
       this.juegosSeleccionados = this.juegosSeleccionados.filter(({ id }) => id !== juego.id);
@@ -43,7 +50,11 @@ export class JuegosComponent implements OnInit {
       this.juegoSelected = false;
     }
     console.log(JSON.stringify(this.juegosSeleccionados));
-    console.log("Jueago selected =>" + this.juegoSelected);
+    console.log("Jueago selected =>" + this.juegoSelected);*/
+
+    this.ss.seleccionaJuego(juego);
   }
+
+
 
 }

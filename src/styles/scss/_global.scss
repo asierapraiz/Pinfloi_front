@@ -5,14 +5,21 @@
  }
 html {
   scroll-behavior: smooth;
+ 
 }
 
 body {  
   overflow-x: hidden;
   @include font ('dosisbold');
   font-size: 1.3rem;
-  background-color:white!important;
+  
   color: $primary;
+
+  background-image: url('/../assets/img/fondos/fondoDibujosB.png') !important;
+  background-size: cover !important;
+  //background-position: center center !important;
+  //background-repeat: repeat-y !important;  
+   //transition: 0.2s all ease-out;
 }
 
 .minus, .plus{
@@ -109,19 +116,15 @@ section {
   }
 
   @media(min-width:768px) {
-
     padding: 10px;
-
     h1.section-subheading{
       font-size: 2rem;
-    }
-
-    
-    
+    }    
+    /*
     background-image: url('/img/fondos/fondoDibujosB.png')!important;
     background-size: 100%!important;   
     
-    background-repeat: repeat-y!important;
+    background-repeat: repeat-y!important;*/
 
 
 

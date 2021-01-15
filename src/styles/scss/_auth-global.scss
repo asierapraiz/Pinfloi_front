@@ -1,15 +1,5 @@
  @import "variables.scss";
- body{
-	 background-image:none!important;
-	 background-attachment: fixed;
-    
-    @media(min-width:768px){
-		background-image: url('/img/fondos/fondoDibujosB.png')!important;
-        background-size: cover!important;   
-        background-position: center center!important;
-        background-repeat: repeat-y!important;
-	}
-}
+
 
 .container{
 	margin: 0 auto;

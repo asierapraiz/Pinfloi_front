@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { LocalStorageService } from "../../core/services/local-storage.service";
+import { SeleccionService } from './../seleccion/services/seleccion.service';
+
 
 
 @Component({
@@ -14,56 +16,64 @@ export class NombreFormComponent implements OnInit {
   animacion: boolean;
   paused: boolean;
 
-  constructor(private localStorage: LocalStorageService, private router: Router) { }
+  constructor(private ss: SeleccionService, private localStorage: LocalStorageService, private router: Router) { }
 
   ngOnInit(): void {
+    if (this.localStorage.getSeleccion().nombre) {
+      this.nombre = this.localStorage.getSeleccion().nombre;
+    }
   }
 
-  keyDown(){
-  
-    console.log("Tamaño nombre :"+this.nombre.length);
-    this.animacion= false;
-    this.paused=true;   
-    
-    if(this.nombre.length<20){
-      document.getElementById('cara').style.left = (0+this.nombre.length)+ "px";
-      document.getElementById('cara').style.top = 25+ "px";
-      document.getElementById('ojoIzq').style.left = 5+(2*this.nombre.length)+ "px";
-      document.getElementById('irisIzq').style.left = 5+(0.2*this.nombre.length)+ "px";
-      document.getElementById('brilloIzq').style.left = 5+(0.2*this.nombre.length)+ "px";
-      document.getElementById('ojoDch').style.left = 45+(2*this.nombre.length)+ "px";
-      document.getElementById('irisIzq').style.left = 5+(0.2*this.nombre.length)+ "px";
-      document.getElementById('brilloIzq').style.left = 5+(0.2*this.nombre.length)+ "px";
-    }  
-  
+  keyDown() {
+    this.ss.seleccionaNombre(this.nombre);
+    //console.log("Tamaño nombre :" + this.nombre.length);
+    this.animacion = false;
+    this.paused = true;
+
+    if (this.nombre.length < 20) {
+      document.getElementById('cara').style.left = (0 + this.nombre.length) + "px";
+      document.getElementById('cara').style.top = 25 + "px";
+      document.getElementById('ojoIzq').style.left = 5 + (2 * this.nombre.length) + "px";
+      document.getElementById('irisIzq').style.left = 5 + (0.2 * this.nombre.length) + "px";
+      document.getElementById('brilloIzq').style.left = 5 + (0.2 * this.nombre.length) + "px";
+      document.getElementById('ojoDch').style.left = 45 + (2 * this.nombre.length) + "px";
+      document.getElementById('irisIzq').style.left = 5 + (0.2 * this.nombre.length) + "px";
+      document.getElementById('brilloIzq').style.left = 5 + (0.2 * this.nombre.length) + "px";
+    }
+
   }
-  
-  
-  keyUp(){	
-  
-    document.getElementById('cara').style.left = 0  + "px";
-    document.getElementById('cara').style.top = 0+ "px";
-    document.getElementById('ojoIzq').style.left = 25+ "px";
-    document.getElementById('ojoIzq').style.top = 30+ "px";
-    document.getElementById('irisIzq').style.left = 5+ "px";
-    document.getElementById('irisIzq').style.top = 40+ "%";
-    document.getElementById('brilloIzq').style.left = 5+ "px";
-    document.getElementById('brilloIzq').style.top =42+ "%";
-  
-    document.getElementById('ojoDch').style.left = 65+ "px";
-    document.getElementById('ojoDch').style.top = 30+ "px";
-    document.getElementById('irisDch').style.left = 5+ "px";
-    document.getElementById('irisDch').style.top = 40+ "%";
-    document.getElementById('brilloDch').style.left = 5+ "px";
-    document.getElementById('brilloDch').style.top =42+ "%";
-    
-    this.animacion= true;
-    this.paused=false;
+
+
+
+
+  keyUp() {
+
+    document.getElementById('cara').style.left = 0 + "px";
+    document.getElementById('cara').style.top = 0 + "px";
+    document.getElementById('ojoIzq').style.left = 25 + "px";
+    document.getElementById('ojoIzq').style.top = 30 + "px";
+    document.getElementById('irisIzq').style.left = 5 + "px";
+    document.getElementById('irisIzq').style.top = 40 + "%";
+    document.getElementById('brilloIzq').style.left = 5 + "px";
+    document.getElementById('brilloIzq').style.top = 42 + "%";
+
+    document.getElementById('ojoDch').style.left = 65 + "px";
+    document.getElementById('ojoDch').style.top = 30 + "px";
+    document.getElementById('irisDch').style.left = 5 + "px";
+    document.getElementById('irisDch').style.top = 40 + "%";
+    document.getElementById('brilloDch').style.left = 5 + "px";
+    document.getElementById('brilloDch').style.top = 42 + "%";
+
+    this.animacion = true;
+    this.paused = false;
   }
-  
-  start(){    
+
+  start() {
     this.localStorage.setNombre(this.nombre);
+
     this.router.navigateByUrl('/avatar');
   }
+
+
 
 }

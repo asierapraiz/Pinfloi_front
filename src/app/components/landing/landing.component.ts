@@ -47,7 +47,7 @@ export class LandingComponent implements OnInit {
   }
 
 
-  tareasSeleccionadas: Array<Tarea> = [];
+  tareasSeleccionadas: Tarea[] = [];
   tareasParaModal: Array<Tarea> = [];
   juegosSeleccionados: Array<Juego> = [];
   tareaSelected: boolean = false;

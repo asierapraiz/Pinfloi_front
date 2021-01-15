@@ -3,6 +3,17 @@ import { RouterOutlet } from '@angular/router';
 import { Router } from '@angular/router';
 import { routeAnimations } from './../../animations';
 import { trigger, transition, style, animate, query, group, animateChild } from '@angular/animations';
+import { Juego } from "../../core/models/juego.model";
+import { Tarea } from "../../core/models/tarea.model";
+import { SeleccionService } from './services/seleccion.service';
+import { flyInFromLeft } from './../../animations';
+import { Avatar } from './../avatar-form/avatar.model';
+import { Seleccion } from "../../core/models/seleccion.model";
+import { LocalStorageService } from "../../core/services/local-storage.service";
+
+
+
+
 
 const SHARED_ANIMATION_STYLES = [
   style({ position: 'relative', height: '!' }),
@@ -45,6 +56,8 @@ const rutas = [
     'next': '/tarea'
   }
 ];
+
+
 
 
 @Component({
@@ -94,15 +107,100 @@ const rutas = [
           ], { delay: '500ms' })
         ])
       ]),
-    ]),
+    ]), flyInFromLeft
   ]
 })
 export class SeleccionComponent implements OnInit {
+  tareasSeleccionadas: Tarea[] = [];
+  juegosSeleccionados: Array<Juego> = [];
+  nombre: String;
 
 
-  constructor(private _router: Router) { }
+  public avatar: Avatar = {
+    definido: false,
+    pelo: 'pelo_1',
+    cejas: 'cejas_1',
+    ojos: 'ojo_1',
+    nariz: 'nariz_1',
+    boca: 'boca_1',
+    cara: 'cara_1',
+    torso: 'torso_1'
+  };
+
+  seleccion: Seleccion = {
+    nombre: '',
+    avatar: {},
+    tareasSeleccionadas: [],
+    juegosSeleccionados: []
+  }
+
+
+  constructor(private ls: LocalStorageService, private ss: SeleccionService, private _router: Router) {
+
+  }
 
   ngOnInit(): void {
+
+    this.ls.getSeleccion() ? this.seleccion = this.ls.getSeleccion() : null;
+
+    if (this.ls.getSeleccion().avatar && this.ls.getSeleccion().avatar.definido == true) {
+      console.log("Hay avatar");
+      this.avatar = this.ls.getSeleccion().avatar;
+
+      let elements = document.getElementsByClassName('d-none');
+      while (elements.length > 0) {
+        elements[0].classList.remove("d-none");
+      }
+      document.querySelector('#indefinido-aside').classList.add("d-none");
+
+    }
+    this.ls.getSeleccion().nombre ? this.nombre = this.ls.getSeleccion().nombre : '';
+
+    this.ls.getSeleccion().tareasSeleccionadas ? this.tareasSeleccionadas = this.ls.getSeleccion().tareasSeleccionadas : '';
+    this.ls.getSeleccion().juegosSeleccionados ? this.juegosSeleccionados = this.ls.getSeleccion().juegosSeleccionados : '';
+
+
+
+
+    this.ss.seleccionaTarea$.subscribe(
+      (tarea) => {
+        this.tareasSeleccionadas.push(tarea);
+        this.seleccion.tareasSeleccionadas = this.tareasSeleccionadas;
+        this.ls.setSeleccion(this.seleccion);
+      }
+    );
+
+    this.ss.seleccionaJuego$.subscribe(
+      (juego) => {
+        this.juegosSeleccionados.push(juego);
+        this.seleccion.juegosSeleccionados = this.juegosSeleccionados;
+        this.ls.setSeleccion(this.seleccion);
+      }
+    );
+
+    this.ss.seleccionaAvatar$.subscribe(
+      (avatar) => {
+        this.avatar = avatar;
+        this.seleccion.avatar = avatar;
+        this.ls.setSeleccion(this.seleccion);
+      }
+    );
+
+    this.ss.seleccionaNombre$.subscribe(
+      (nombre) => {
+        this.nombre = nombre;
+        this.seleccion.nombre = nombre;
+        this.ls.setSeleccion(this.seleccion);
+      }
+    );
+
+  }
+
+
+  delete(tipo, index) {
+    tipo == 'tarea' ? this.tareasSeleccionadas.splice(index, 1) : this.juegosSeleccionados.splice(index, 1);
+
+    this.ls.setSeleccion(this.seleccion);
 
   }
 
@@ -110,10 +208,11 @@ export class SeleccionComponent implements OnInit {
     return outlet.activatedRouteData['animation'] || '';
   }
 
-
   get activeRoutePath(): string {
     return this._router.url;
   }
+
+
 
   isActiveRoute(path: string) {
     if (path.length > 1) {
@@ -131,6 +230,9 @@ export class SeleccionComponent implements OnInit {
     let next = rutas.find(e => e.actual == this.activeRoutePath);
     this._router.navigate([next.next]);
   }
+
+
+
 
 
 
