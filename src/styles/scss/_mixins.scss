@@ -149,4 +149,15 @@
       -webkit-box-shadow: -2px 2px 16px 3px rgba(0, 0, 0, 0.5);
               box-shadow: -2px 2px 16px 3px rgba(0, 0, 0, 0.5);
       -webkit-transition: box-shadow, .5s;
+    }   
+
+    //Sombra marco con borde y animacion
+@mixin sombra-marco-redondo{
+      border: 1px solid #fff;
+      border-radius: 50%;           
+      background: #24C5D9;
+      text-align: center;
+      -webkit-box-shadow: -2px 2px 16px 3px rgba(0, 0, 0, 0.5);
+              box-shadow: -2px 2px 16px 3px rgba(0, 0, 0, 0.5);
+      -webkit-transition: box-shadow, .5s;
     }    

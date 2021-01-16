@@ -7,4 +7,6 @@ export class Seleccion {
     avatar: Avatar;
     tareasSeleccionadas: Tarea[];
     juegosSeleccionados: Juego[];
+    tareaActual: number;
+    juegoActual: number;
 }

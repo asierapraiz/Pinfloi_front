@@ -1,7 +1,8 @@
 <div class="aside">
 
     <div class="avatar ">
-        <div class="foto">
+
+        <div id="aside-foto" class="foto enlace" routerLink="./avatar">
             <img class="img-fluid" src="assets/img/avatar/marco.png" />
             <img id="indefinido-aside" class="img-fluid " src="assets/img/avatar/sin-avatar.png" />
             <img class="img-fluid torso d-none" src="assets/img/avatar/torsos/{{avatar.torso}}.png" />
@@ -13,13 +14,13 @@
             <img class="img-fluid nariz d-none" src="assets/img/avatar/nariz/{{avatar.nariz}}.png" />
         </div>
 
-        <div class="nombre">
+        <div class="nombre enlace" routerLink="./nombre">
             <p>{{nombre}}</p>
         </div>
     </div>
 
 
-    <h1 @flyInFromLeft *ngIf="tareasSeleccionadas.length>0">Tareas</h1>
+    <h1 @flyInFromLeft *ngIf="tareasSeleccionadas.length>0" routerLink="./tareas" class="enlace">Tareas</h1>
     <ul class="tareas">
         <li @flyInFromLeft *ngFor="let tarea of tareasSeleccionadas; index as index">
             <div class="inner tarea-seleccionada ">
@@ -29,7 +30,7 @@
         </li>
     </ul>
     <br>
-    <h1 @flyInFromLeft *ngIf="juegosSeleccionados.length>0">Juegos</h1>
+    <h1 class="enlace" @flyInFromLeft *ngIf="juegosSeleccionados.length>0" routerLink="./juegos">Juegos</h1>
     <ul class="juegos">
         <li @flyInFromLeft *ngFor="let juego of juegosSeleccionados; index as index" class=" ">
             <div class="inner juego-seleccionado">

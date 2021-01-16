@@ -38,6 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TareasComponent } from './components/tareas/tareas.component';
 import { JuegosComponent } from './components/juegos/juegos.component';
 import { SeleccionComponent } from './components/seleccion/seleccion.component';
+import { ResumenComponent } from './components/resumen/resumen.component';
 
 
 
@@ -68,6 +69,8 @@ const routes: Routes = [
       { path: 'juegos', component: JuegosComponent, data: { animation: '3' } },
       { path: 'nombre', component: NombreFormComponent, data: { animation: '4' } },
       { path: 'avatar', component: AvatarFormComponent, data: { animation: '5' } },
+      { path: 'resumen', component: ResumenComponent, data: { animation: '6' } },
+
 
 
     ]
@@ -100,7 +103,8 @@ const routes: Routes = [
     JuegoComponent,
     TareasComponent,
     JuegosComponent,
-    SeleccionComponent
+    SeleccionComponent,
+    ResumenComponent
   ],
   imports: [
     SharedModule,

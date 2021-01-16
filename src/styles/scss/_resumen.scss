@@ -1,0 +1,44 @@
+section#resumen {
+    width: 100vw;
+    height:100vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    
+
+    .mensaje{
+        color:white;
+        width: 60%;
+        
+            
+        background-color: aqua;        
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+            
+        @include sombra-marco-redondo;  
+
+        &::after{
+            content: "";
+            display: block;
+            padding-bottom: 30%;
+        }
+        .cabecera{
+            margin-top:300px;
+            color:white;
+            //height: 200px;
+            h1{
+            color:white!important;
+            font-size: 5rem;
+            font-weight: 300;
+            text-shadow: 0 0 3px black;           
+            }
+        }
+        .next-btn{
+            margin-top:2rem;
+            font-size: 2rem;
+        }
+        
+    }
+    
+}

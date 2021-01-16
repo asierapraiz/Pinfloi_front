@@ -90,9 +90,15 @@ li {
   .trash:hover{
     opacity:1;
     cursor: pointer;
-  }
-  
+  }  
 }
+ .enlace:focus{
+   outline: none;
+ }
+ .enlace:hover{
+   cursor: pointer;   
+
+ }
 }
 
 

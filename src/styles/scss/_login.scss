@@ -67,7 +67,7 @@ input[type=text], input[type=email]{
 	//width:250px;
 
 	color:#fff;
-	font-family:"Nunito", sans-serif;
+	//font-family:"Nunito", sans-serif;
 	font-size:20pt;
 	font-weight:bold;
 	-webkit-transition:border-bottom, .5s;
@@ -89,7 +89,7 @@ input[type=password]{
 	margin:10px;
 	//width:250px;
 	color:#fff;
-	font-family:"Nunito", sans-serif;
+	//font-family:"Nunito", sans-serif;
 	font-size:17pt;
 	-webkit-transition:border-bottom, .5s;
 }
@@ -98,7 +98,7 @@ input[type=password]:hover{
 	border-bottom:1px solid white;
 }
 
-input[type=submit], .avatar-btn{
+input[type=submit], .avatar-btn, .next-btn{
 	border:1px solid #fff;
 	border-radius:50px;
 	display:inline-block;
@@ -115,7 +115,7 @@ input[type=submit], .avatar-btn{
 	
 	padding:10px 50px;
 	margin:0px 10px 20px 10px;
-	font-family:"Raleway", sans-serif;
+	//font-family:"Raleway", sans-serif;
 	font-size:14pt;
 	color:#fff;
 	box-shadow:-2px 2px 16px 3px rgba(0,0,0,0.5);
@@ -129,7 +129,7 @@ input[type=submit], .avatar-btn{
 		padding:10px 50px;
 	}
 }
-input[type=submit]:hover{
+input[type=submit]:hover, .avatar-btn:hover, .next-btn:hover{
 	box-shadow:none;
 
 	background:$amarillo;	

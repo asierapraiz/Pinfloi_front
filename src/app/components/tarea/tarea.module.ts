@@ -8,17 +8,18 @@ import { MensajeComponent } from './mensaje/mensaje.component';
 import { SafePipe } from './../../pipes/safe.pipe';
 
 
+
 @NgModule({
   declarations: [
-    SumaComponent, 
-    TareaComponent, 
-    RestaComponent, 
+    SumaComponent,
+    TareaComponent,
+    RestaComponent,
     MensajeComponent,
     SafePipe
   ],
   imports: [
     CommonModule,
-    TareaRoutingModule   
+    TareaRoutingModule
   ]
 })
 export class TareaModule { }

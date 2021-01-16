@@ -5,6 +5,10 @@ import { routeAnimations, flyInOut } from './../../../animations';
 import { TareaService } from './../services/tarea.service';
 import { Avatar } from '../../../core/models/avatar.model';
 import { Tarea } from '../../../core/models/tarea.model';
+import { LocalStorageService } from "./../../../core/services/local-storage.service";
+import { Seleccion } from "../../../core/models/seleccion.model";
+
+
 
 
 
@@ -26,19 +30,32 @@ export class TareaComponent implements OnInit {
   aciertos: number = 0;
 
 
-  avatar: Avatar = JSON.parse(localStorage.getItem("avatar") || "[]");
-  tarea: Tarea = JSON.parse(localStorage.getItem("tareaActual") || "[]");
-  user: string = JSON.parse(localStorage.getItem("nombre") || "[]");
+  avatar: Avatar;
+  tareasSeleccionadas: Tarea[];
+  tarea: Tarea;
+  user: string;
+
+  seleccion: Seleccion = {
+    nombre: '',
+    avatar: {},
+    tareasSeleccionadas: [],
+    juegosSeleccionados: []
+  }
 
 
   constructor(private ts: TareaService,
     private router: Router,
     private route: ActivatedRoute,
-    private elementRef: ElementRef) {
+    private elementRef: ElementRef,
+    private ls: LocalStorageService,) {
   }
 
   ngOnInit(): void {
+    this.ls.getSeleccion() ? this.seleccion = this.ls.getSeleccion() : this.noHaySeleccion();
 
+    this.avatar = this.seleccion.avatar;
+    this.tareasSeleccionadas = this.seleccion.tareasSeleccionadas;
+    this.user = this.seleccion.nombre;
   }
 
   ngAfterViewInit() {
@@ -57,6 +74,10 @@ export class TareaComponent implements OnInit {
 
     this.inputs = document.getElementsByClassName("target").length;
 
+  }
+
+  noHaySeleccion() {
+    alert("NO hay seleccion");
   }
 
   seleccionaOpcion(opcion: any) {

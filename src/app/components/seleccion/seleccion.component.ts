@@ -53,6 +53,11 @@ const rutas = [
   {
     'actual': '/seleccion/avatar',
     'before': '/seleccion/nombre',
+    'next': '/seleccion/resumen'
+  },
+  {
+    'actual': '/seleccion/resumen',
+    'before': '/seleccion/avatar',
     'next': '/tarea'
   }
 ];
