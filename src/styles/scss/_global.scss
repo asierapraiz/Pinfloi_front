@@ -10,17 +10,19 @@ html {
 
 body {  
   overflow-x: hidden;
+  
   @include font ('dosisbold');
   font-size: 1.3rem;
   
   color: $primary;
-
-  background-image: url('/../assets/img/fondos/fondoDibujosB.png') !important;
-  background-size: cover !important;
+  background-color: white;
+  //background-image: url('/../assets/img/fondos/fondoDibujosB.png') !important;
+  //background-size: cover !important;
   //background-position: center center !important;
   //background-repeat: repeat-y !important;  
    //transition: 0.2s all ease-out;
 }
+
 
 .minus, .plus{
   font-size: 2rem;
@@ -168,6 +170,10 @@ section {
     }
 
   }
+}
+
+.orange{
+  color:$amarillo;
 }
 
 .tareas-modal-cantidad{

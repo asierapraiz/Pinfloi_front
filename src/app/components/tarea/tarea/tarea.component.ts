@@ -39,7 +39,9 @@ export class TareaComponent implements OnInit {
     nombre: '',
     avatar: {},
     tareasSeleccionadas: [],
-    juegosSeleccionados: []
+    juegosSeleccionados: [],
+    tareaActual: 0,
+    juegoActual: 0
   }
 
 

@@ -2,11 +2,11 @@
 
 
 body {	
-	@include background-right;	
+	//@include background-right;	
 	//color: $blanco_tiza;	
 	background-position: center;		
 	position:relative;
-	@include background-cover;
+	//@include background-cover;
 	@include tarea-font;
 
 

@@ -9,7 +9,7 @@ section#resumen {
     .mensaje{
         color:white;
         width: 60%;
-        
+        padding:3rem;
             
         background-color: aqua;        
         align-items: center;
@@ -42,3 +42,11 @@ section#resumen {
     }
     
 }
+
+
+    ul.alert {
+        li{
+        list-style-type: none;
+    }
+    }
+

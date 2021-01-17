@@ -116,9 +116,11 @@ const rutas = [
   ]
 })
 export class SeleccionComponent implements OnInit {
+
   tareasSeleccionadas: Tarea[] = [];
   juegosSeleccionados: Array<Juego> = [];
   nombre: String;
+  hasNext: boolean = true;
 
 
   public avatar: Avatar = {
@@ -136,7 +138,9 @@ export class SeleccionComponent implements OnInit {
     nombre: '',
     avatar: {},
     tareasSeleccionadas: [],
-    juegosSeleccionados: []
+    juegosSeleccionados: [],
+    tareaActual: 0,
+    juegoActual: 0
   }
 
 
@@ -145,6 +149,7 @@ export class SeleccionComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
 
     this.ls.getSeleccion() ? this.seleccion = this.ls.getSeleccion() : null;
 
@@ -229,10 +234,13 @@ export class SeleccionComponent implements OnInit {
 
   before() {
     let next = rutas.find(e => e.actual == this.activeRoutePath);
+    this.hasNext = next.before == '/seleccion/resumen' ? false : true;
     this._router.navigate([next.before]);
+
   }
   next() {
     let next = rutas.find(e => e.actual == this.activeRoutePath);
+    this.hasNext = next.next == '/seleccion/resumen' ? false : true;
     this._router.navigate([next.next]);
   }
 

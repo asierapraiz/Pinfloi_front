@@ -1,4 +1,4 @@
-<section id="resumen" class="body ">
+<section id="resumen" class="body main-route-details">
 
 
     <div class="mensaje">
@@ -6,8 +6,56 @@
             <h1>Comienza tu aventura y aprende juegando.</h1>
         </div>
         <div class="boton">
-            <button class="btn btn-large next-btn" (click)="continuar()" id="guardar">Comenzar</button>
+            <button @jump_to_tarea class="btn btn-large next-btn" (click)="continuar(resumnenModal)"
+                id="guardar">Comenzar</button>
         </div>
     </div>
+
+
+    <!--ModalngModal-->
+    <ng-template #resumnenModal let-modal id="resumnenModal">
+        <div class="modal-header ">
+            <h1 class="modal-title" id="modal-basic-title">Te faltan datos por rellenar</h1>
+
+        </div>
+        <div class="modal-body ">
+            <ul class="alert">
+                <li *ngIf="seleccion.avatar.boca=='' ">
+                    <h3 class="modal-title orange" id="modal-basic-title">El avatar
+                    </h3>
+                </li>
+                <li *ngIf="seleccion.nombre !='' ">
+                    <h3 class="modal-title orange" id="modal-basic-title">El nombre</h3>
+                </li>
+                <li *ngIf="seleccion.tareasSeleccionadas.length==0 ">
+                    <h3 class="modal-title orange" id="modal-basic-title">
+                        Las tareas</h3>
+                </li>
+                <li *ngIf="seleccion.juegosSeleccionados.length==0 ">
+                    <h3 class="modal-title orange" id="modal-basic-title">
+                        El juego
+                    </h3>
+                </li>
+
+
+            </ul>
+
+
+            <!-- <div class="row d-flex justify-content-center">
+                <div *ngFor="let juegoS of juegosSeleccionados" class="col-6 col-sm-4 col-md-4 col-xl-3 portfolio-item">
+                    <img alt="juego seleccionado" class="img-fluid redondo-top-bottom m-1"
+                        src="./../../assets/img/juegos/{{juegoS.name}}.png" />
+                </div>
+            </div> -->
+
+        </div>
+        <!-- <div class="mi-modal-footer">
+            <button id="enviar" type="button" class="btn btn-primary col-4 col-lg-3"
+                (click)="modal.close('Save click')"><i class="fa fa-angle-left"></i>Volver</button>
+            <div class="separador-horizontal"></div>
+            <button id="enviar" type="button" class="btn btn-primary col-4 col-lg-3"
+                (click)="seguir(landingModal)">Seguir<i class="fa fa-angle-right"></i></button>
+        </div> -->
+    </ng-template>
 
 </section>
