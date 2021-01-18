@@ -17,7 +17,7 @@
                 </a>
                 <div [ngClass]="(tarea.selected)?'tarea-seleccionada':''"
                     class="portfolio-caption redondo-bottom d-flex justify-content-between">
-                    <button id="resta-{{tarea.name}}" (click)=" removeTarea(tarea)" class="btn minus" type="button">
+                    <button id="resta-{{tarea.name}}" (click)="removeTarea(tarea)" class="btn minus" type="button">
                         <i class="fa fa-minus-circle"></i>
                     </button>
                     <div>

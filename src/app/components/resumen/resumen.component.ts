@@ -27,6 +27,7 @@ export class ResumenComponent implements OnInit {
   tareasSeleccionadas: Tarea[] = [];
   juegosSeleccionados: Array<Juego> = [];
   nombre: String;
+  todoOK: boolean = false;
 
   public avatar: Avatar = {
     definido: false,
@@ -48,24 +49,40 @@ export class ResumenComponent implements OnInit {
 
     this.ls.getSeleccion() ? this.seleccion = this.ls.getSeleccion() : null;
 
+    if (this.seleccion.nombre != '' &&
+      this.seleccion.avatar['definido'] == true &&
+      this.seleccion.tareasSeleccionadas.length > 0 &&
+      this.seleccion.juegosSeleccionados.length > 0
+    ) {
+      this.todoOK = true;
+    }
+
 
   }
 
   continuar(resumnenModal) {
-    debugger;
+
     this.seleccion.tareaActual = 0;
+    this.router.navigateByUrl('/tarea/' + this.ls.getSeleccion().tareasSeleccionadas[this.seleccion.tareaActual].name);
+
 
     // setTimeout(() => {
     //   this.router.navigateByUrl('/tarea/' + this.ls.getSeleccion().tareasSeleccionadas[this.seleccion.tareaActual].name);
 
     // }, 3000);
-    if (this.seleccion.nombre != '' ||
-      this.seleccion.avatar != '' ||
+    /*
+    if (this.seleccion.nombre == '' ||
+      this.seleccion.avatar['definido'] == false ||
       this.seleccion.tareasSeleccionadas.length > 0 ||
       this.seleccion.juegosSeleccionados.length > 0
     ) {
+      debugger;
+      this.router.navigateByUrl('/tarea/' + this.ls.getSeleccion().tareasSeleccionadas[this.seleccion.tareaActual].name);
+
+    } else {
       this.openModal(resumnenModal);
-    }
+    }*/
+
 
 
   }

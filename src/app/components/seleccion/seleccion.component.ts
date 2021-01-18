@@ -209,7 +209,7 @@ export class SeleccionComponent implements OnInit {
 
   delete(tipo, index) {
     tipo == 'tarea' ? this.tareasSeleccionadas.splice(index, 1) : this.juegosSeleccionados.splice(index, 1);
-
+    this.seleccion.tareasSeleccionadas = this.tareasSeleccionadas;
     this.ls.setSeleccion(this.seleccion);
 
   }

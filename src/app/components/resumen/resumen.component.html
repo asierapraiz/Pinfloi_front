@@ -2,10 +2,36 @@
 
 
     <div class="mensaje">
+
         <div class="cabecera">
-            <h1>Comienza tu aventura y aprende jugando.</h1>
+            <h1 *ngIf="todoOK">Comienza tu aventura y aprende jugando.</h1>
+            <h1 *ngIf="!todoOK" class="title" id="modal-basic-title">Te faltan datos por rellenar</h1>
         </div>
-        <div class="boton">
+        <div class="body">
+            <div *ngIf="!todoOK" class="header">
+
+                <ul class="errores">
+                    <li *ngIf="seleccion.avatar['definido']== false ">
+                        <h3 class="modal-title " id="modal-basic-title">El avatar
+                        </h3>
+                    </li>
+                    <li *ngIf="seleccion.nombre =='' ">
+                        <h3 class="modal-title " id="modal-basic-title">El nombre</h3>
+                    </li>
+                    <li *ngIf="seleccion.tareasSeleccionadas.length==0 ">
+                        <h3 class="modal-title " id="modal-basic-title">
+                            Las tareas</h3>
+                    </li>
+                    <li *ngIf="seleccion.juegosSeleccionados.length==0 ">
+                        <h3 class="modal-title " id="modal-basic-title">
+                            El juego
+                        </h3>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <div *ngIf="todoOK" class="boton">
             <button @jump_to_tarea class="btn btn-large next-btn" (click)="continuar(resumnenModal)"
                 id="guardar">Comenzar</button>
         </div>
@@ -18,26 +44,47 @@
             <h1 class="modal-title" id="modal-basic-title">Te faltan datos por rellenar</h1>
 
         </div>
-        <div class="modal-body ">
+        <div *ngIf="todoOK" class="modal-header ">
+            <h1 class="modal-title" id="modal-basic-title">Te faltan datos por rellenar</h1>
+
             <ul class="alert">
-                <li *ngIf="seleccion.avatar.boca=='' ">
-                    <h3 class="modal-title orange" id="modal-basic-title">El avatar
+                <li *ngIf="seleccion.avatar['definido']== false ">
+                    <h3 class="modal-title " id="modal-basic-title">El avatar
                     </h3>
                 </li>
-                <li *ngIf="seleccion.nombre !='' ">
-                    <h3 class="modal-title orange" id="modal-basic-title">El nombre</h3>
+                <li *ngIf="seleccion.nombre =='' ">
+                    <h3 class="modal-title " id="modal-basic-title">El nombre</h3>
                 </li>
                 <li *ngIf="seleccion.tareasSeleccionadas.length==0 ">
-                    <h3 class="modal-title orange" id="modal-basic-title">
+                    <h3 class="modal-title " id="modal-basic-title">
                         Las tareas</h3>
                 </li>
                 <li *ngIf="seleccion.juegosSeleccionados.length==0 ">
-                    <h3 class="modal-title orange" id="modal-basic-title">
+                    <h3 class="modal-title " id="modal-basic-title">
                         El juego
                     </h3>
                 </li>
+            </ul>
 
-
+        </div>
+        <div class="modal-body ">
+            <ul class="alert">
+                <li *ngIf="seleccion.avatar['definido']== false ">
+                    <h3 class="modal-title " id="modal-basic-title">El avatar
+                    </h3>
+                </li>
+                <li *ngIf="seleccion.nombre =='' ">
+                    <h3 class="modal-title " id="modal-basic-title">El nombre</h3>
+                </li>
+                <li *ngIf="seleccion.tareasSeleccionadas.length==0 ">
+                    <h3 class="modal-title " id="modal-basic-title">
+                        Las tareas</h3>
+                </li>
+                <li *ngIf="seleccion.juegosSeleccionados.length==0 ">
+                    <h3 class="modal-title " id="modal-basic-title">
+                        El juego
+                    </h3>
+                </li>
             </ul>
 
 
