@@ -63,8 +63,6 @@ const rutas = [
 ];
 
 
-
-
 @Component({
   selector: 'app-seleccion',
   templateUrl: './seleccion.component.html',
@@ -150,6 +148,8 @@ export class SeleccionComponent implements OnInit {
 
   ngOnInit(): void {
 
+    let next = rutas.find(e => e.actual == this.activeRoutePath);
+    this.hasNext = next.actual == '/seleccion/resumen' ? false : true;
 
     this.ls.getSeleccion() ? this.seleccion = this.ls.getSeleccion() : null;
 
