@@ -1,4 +1,4 @@
-import { ElementRef, Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ElementRef, Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { TareaService } from './../services/tarea.service';
 import { routeAnimations } from './../../../animations/index';
@@ -134,6 +134,18 @@ export class SumaComponent extends TareaUtils implements OnInit {
       }
       fila = "";
     }
+
+    //Pinto la operacion en el lateral
+    for (var f = 0; f < 3; f++) {
+      var fila = "";
+
+      for (var c = 0; c < this.columnas; c++) {
+
+        fila += this.filas[f][c] + " ";
+      }
+      console.log(fila);
+      fila = "";
+    }
   }
 
   muestraOperacion() {
@@ -157,7 +169,7 @@ export class SumaComponent extends TareaUtils implements OnInit {
           if (this.filas[f][c] == ".") {
             fila += "<p class='item llevada vacio' ></p>";
           } else {
-            fila += "<p  id='" + f + "" + c + "' class='item llevada target' data-valor='" + this.filas[f][c] + "' ></p>";
+            fila += "<p  id='" + f + "" + c + "' class='item llevada input target' data-valor='" + this.filas[f][c] + "' ></p>";
           }
         }
         else if (f < this.filas.length - 1) {
@@ -172,7 +184,7 @@ export class SumaComponent extends TareaUtils implements OnInit {
           }
         } else {
           if (this.filas[f][c] != ".") {
-            fila += "<p id='" + f + "" + c + "'class='item resultado target' data-valor='" + this.filas[f][c] + "'></p>";
+            fila += "<p id='" + f + "" + c + "'class='item resultado input target' data-valor='" + this.filas[f][c] + "'></p>";
           } else {
             fila += "<p class='item vacio'  data-valor='.'></p>";
           }

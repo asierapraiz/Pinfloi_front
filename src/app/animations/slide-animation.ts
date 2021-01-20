@@ -119,5 +119,5 @@ export const routeAnimations =
         transition('* <=> SumaPage', routeFadeIn),
         transition('* <=> RestaPage', routeFadeIn),
         transition('* <=> MensajePage', routeFadeIn),
-        transition('* <=> GamePage', routeAnimationToRight)
+        transition('* => GamePage', routeAnimationToRight)
     ]);

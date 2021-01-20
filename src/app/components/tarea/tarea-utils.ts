@@ -1,5 +1,7 @@
 import { ElementRef } from '@angular/core';
+import { faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { TareaService } from './../tarea/services/tarea.service';
+
 
 
 
@@ -18,6 +20,8 @@ export default class TareaUtils {
     columnas!: number;
     filas!: any[];
     carton!: Element | null;
+    ciclo: number = 0;
+
 
     elementos!: any;
     htmlToAdd: string = "";
@@ -50,13 +54,18 @@ export default class TareaUtils {
 
 
 
-    dameNum(min: number, max: number) {
-        this.usados = [];
-        //console.log("min:"+min+"---Max:"+max);
+    dameNum(min: number = 0, max: number) {
+        this.ciclo++;
+        console.log(this.ciclo);
+        this.ciclo > 100 ? this.noUsar = [] : '';
+        //console.log("min:"+min+"---Max:"+max);        
         let numero: number = 0;
-        let num = Math.floor(Math.random() * max) + min;
-        if (this.usados.includes(num)) {//Si es un 0 y ya esta usado                
+        let num = Math.floor(Math.random() * (max - min + 1) + min);
+        if (this.noUsar.includes(num)) {
             this.dameNum(min, max);
+        } else if (this.usados.includes(num)) {//Si es un 0 y ya está usado   
+            this.noUsar.push(num)
+            numero = num;
         } else {//Si no se ha usado
             this.usados.push(num);
             numero = num;

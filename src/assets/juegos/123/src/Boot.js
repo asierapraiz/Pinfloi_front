@@ -1,13 +1,13 @@
-var vidas=1;
-var nombre="123";
-var ranking=[
-	{'usuario':'volando', 'puntos' : '50'},
-	{'usuario':'ane', 'puntos' : '60'},
-	{'usuario':'xela', 'puntos' : '55'},
-	{'usuario':'maite', 'puntos' : '40'}
+var vidas = 1;
+var nombre = "123";
+var ranking = [
+	{ 'usuario': 'volando', 'puntos': '50' },
+	{ 'usuario': 'ane', 'puntos': '60' },
+	{ 'usuario': 'xela', 'puntos': '55' },
+	{ 'usuario': 'maite', 'puntos': '40' }
 ];
 
-var url= "../../assets/juegos/123/";
+var url = "../../assets/123/";
 
 // the game itself
 var game;
@@ -28,7 +28,7 @@ var gameOptions = {
 }
 
 // once the window has been completely loaded...
-window.onload = function() {
+window.onload = function () {
 
 	// create a 500x500 pixels game using CANVAS rendering
 	game = new Phaser.Game(500, 500, Phaser.CANVAS);
@@ -38,33 +38,33 @@ window.onload = function() {
 }
 
 // "PlayGame" state
-var playGame = function(game){}
+var playGame = function (game) { }
 playGame.prototype = {
 
 	// when the state preloads...
-    preload: function(){
+	preload: function () {
 
-        // making the game cover the biggest window area possible while showing all content
-        game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-        game.scale.pageAlignHorizontally = true;
-        game.scale.pageAlignVertically = true;
+		// making the game cover the biggest window area possible while showing all content
+		game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+		game.scale.pageAlignHorizontally = true;
+		game.scale.pageAlignVertically = true;
 
 		// do not pause the game when it loses focus
 		game.stage.disableVisibilityChange = true;
 
-        // changing background color
-        game.stage.backgroundColor = 0x444444;
+		// changing background color
+		game.stage.backgroundColor = 0x444444;
 
 		// preloading images
-		game.load.image("timebar", url+"img/timebar.png");
+		game.load.image("timebar", url + "img/timebar.png");
 
 		// preloading a spritesheet where each sprite is 400x50 pixels
-		game.load.spritesheet("buttons", url+"img/buttons.png", 400, 50);
+		game.load.spritesheet("buttons", url + "img/buttons.png", 400, 50);
 
-    },
+	},
 
 	// when the state has been created...
-    create: function(){
+	create: function () {
 
 		// it's not game over yet...
 		this.isGameOver = false;
@@ -88,13 +88,13 @@ playGame.prototype = {
 		// let's start building all possible questions with this loop
 		// ranging from 1 (only one operator, like 1+1) to maxSumLen
 		// (in this case 5, like 1+1+1+1-1-1)
-		for(var i = 1; i < gameOptions.maxSumLen; i++){
+		for (var i = 1; i < gameOptions.maxSumLen; i++) {
 
 			// defining sumsArray[i] as an array of three empty arrays
-			this.sumsArray[i]=[[], [], []];
+			this.sumsArray[i] = [[], [], []];
 
 			// looping from 1 to 3, which are the possible results of each sum
-			for(var j = 1; j <= 3; j++){
+			for (var j = 1; j <= 3; j++) {
 
 				// buildTrees is the core of the script, see it explained
 				// some lines below
@@ -106,7 +106,7 @@ playGame.prototype = {
 		console.log(this.sumsArray);
 
 		// questionText is the text object which will display the question
-		this.questionText = game.add.text(250 , 160, "-", {
+		this.questionText = game.add.text(250, 160, "-", {
 			font: "bold 72px Arial"
 		});
 
@@ -119,7 +119,7 @@ playGame.prototype = {
 		});
 
 		// loop to create the three answer buttons
-		for(i = 0;i < 3; i++){
+		for (i = 0; i < 3; i++) {
 
 			// creation of the answer button, set to frame "i".
 			// Calls checkAnswer callback function once triggered
@@ -127,7 +127,7 @@ playGame.prototype = {
 		}
 
 		// adding the time bar
-		var numberTimer =  game.add.sprite(50, 250, "timebar");
+		var numberTimer = game.add.sprite(50, 250, "timebar");
 
 		// creation of a graphic mask covering the three answer buttons
 		this.buttonMask = game.add.graphics(50, 250);
@@ -146,13 +146,13 @@ playGame.prototype = {
 	// currentIndex: it's the amount of operands already placed in the sum
 	// limit: the max amount of operands allowed in the question
 	// currentString: the string generated so far
-	buildThrees: function(initialNummber, currentIndex, limit, currentString){
+	buildThrees: function (initialNummber, currentIndex, limit, currentString) {
 
 		// the possible operands, from -3 to 3, excluding the zero
 		var numbersArray = [-3, -2, -1, 1, 2, 3];
 
 		// looping from 0 to numbersArray's length
-		for(var i = 0; i < numbersArray.length; i++){
+		for (var i = 0; i < numbersArray.length; i++) {
 
 			// "sum" is the sum between the first number and current numberArray item
 			var sum = initialNummber + numbersArray[i];
@@ -163,14 +163,14 @@ playGame.prototype = {
 			var outputString = currentString + (numbersArray[i] < 0 ? "" : "+") + numbersArray[i];
 
 			// if sum is between 1 and 3 and we reached the limit of operands we want...
-			if(sum > 0 && sum < 4 && currentIndex == limit){
+			if (sum > 0 && sum < 4 && currentIndex == limit) {
 
 				// then push the output string into sumsArray[amount of operands][result]
 				this.sumsArray[limit][sum - 1].push(outputString);
 			}
 
 			// if the amount of operands is still below the amount we want...
-			if(currentIndex < limit){
+			if (currentIndex < limit) {
 
 				// recursively calling buildThrees, passing as arguments:
 				// the current sum
@@ -183,13 +183,13 @@ playGame.prototype = {
 	},
 
 	// this method asks next question
-	nextNumber: function(){
+	nextNumber: function () {
 
 		// updating score text
 		this.scoreText.text = "Score: " + this.score.toString() + "\nBest Score: " + this.topScore.toString();
 
 		// if we already answered more than one question...
-		if(this.correctAnswers > 1){
+		if (this.correctAnswers > 1) {
 
 			// stopping time tween
 			this.timeTween.stop();
@@ -199,7 +199,7 @@ playGame.prototype = {
 		}
 
 		// if we already answered at least one question...
-		if(this.correctAnswers > 0){
+		if (this.correctAnswers > 0) {
 
 			// tween to slide out the mask, unvealing what's behind it
 			this.timeTween = game.add.tween(this.buttonMask).to({
@@ -207,7 +207,7 @@ playGame.prototype = {
 			}, gameOptions.timeToAnswer, Phaser.Easing.Linear.None, true);
 
 			// callback to be triggered when the tween ends
-			this.timeTween.onComplete.add(function(){
+			this.timeTween.onComplete.add(function () {
 
 				// calling "gameOver" method. "?" is the string to display
 				this.gameOver("?");
@@ -225,42 +225,42 @@ playGame.prototype = {
 	},
 
 	// method to check the answer, the argument is the button pressed
-	checkAnswer: function(button){
+	checkAnswer: function (button) {
 
 		// we check the answer only if it's not game over yet
-		if(!this.isGameOver){
+		if (!this.isGameOver) {
 
 			// button frame is equal to randomSum means the answer is correct
-			if(button.frame == this.randomSum){
+			if (button.frame == this.randomSum) {
 
 				// score is increased according to the time spent to answer
-     			this.score += Math.floor((this.buttonMask.x + 350) / 4);
+				this.score += Math.floor((this.buttonMask.x + 350) / 4);
 
 				// one more correct answer
 				this.correctAnswers++;
 
 				// moving on to next question
 				this.nextNumber();
-     		}
+			}
 
 			// wrong answer
-     		else{
+			else {
 
 				// if it's not the first question...
-     			if(this.correctAnswers > 1) {
+				if (this.correctAnswers > 1) {
 
 					// stop the tween
 					this.timeTween.stop();
-     			}
+				}
 
 				// calling "gameOver" method. "button.frame + 1" is the string to display
-     			this.gameOver(button.frame + 1);
+				this.gameOver(button.frame + 1);
 			}
 		}
 	},
 
 	// method to end the game. The argument is the string to write
-	gameOver: function(gameOverString){
+	gameOver: function (gameOverString) {
 
 		// changing background color
 		game.stage.backgroundColor = "#ff0000";
@@ -275,7 +275,7 @@ playGame.prototype = {
 		localStorage.setItem(gameOptions.localStorageName, Math.max(this.score, this.topScore));
 
 		// restart the game after two seconds
-		game.time.events.add(Phaser.Timer.SECOND * 2, function(){
+		game.time.events.add(Phaser.Timer.SECOND * 2, function () {
 			game.state.start("PlayGame");
 		}, this);
 	}

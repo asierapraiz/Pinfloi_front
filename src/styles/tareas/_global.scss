@@ -360,22 +360,16 @@ body {
 	  }
 	}
 
-
-
 	div{box-sizing: border-box;}
 
 
 	.container-fluid{
 		margin-top:15px;
-
 	}
-
 
 	#avatar{
 		min-height:80%;
-	}
-			
-	          
+	}	          
 	        
 	.avatar-box{
 	    position:absolute;
@@ -424,7 +418,6 @@ body {
 	}
 
 
-
 	.perfil{
 		margin-left:15px;
 	    //padding:2%;
@@ -457,22 +450,19 @@ body {
 		  font-weight: 900;   
 		  margin: auto;
 		  margin-left:-20px; 
-		  text-align: center; 
-		  
-		  padding:0px!important;         
+		  text-align: center; 		  
+		  padding:0px!important;   
 
 		}
 		.tareas{
 		    margin-top:2%;
-		    text-align:left;
-		    
+		    text-align:left;	    
 		}
 		.tarea{
 		    font-weight: bold;
 		    i{
 		    margin-left:5px;
-		    }
-		    
+		    }		    
 		}
 
 		@media (min-width:600px){
@@ -485,40 +475,31 @@ body {
 	    	}
 
 		    .nombre{
-		        font-size:3rem;                  
-
+		        font-size:3rem; 
 		    }
 		    .tareas{
 			    margin-top:5%;
-			    text-align:left;
-			    
+			    text-align:left;			    
 			}
-
 		    .tarea{
 			    font-weight: bold;
 			    font-size:1.2rem;
-			    line-height: 0.7;
-		    
-			}
-		    
+			    line-height: 0.7;		    
+			}		    
 	    }
 
 	    @media (min-width:1400px){  
 		    padding:5%;
 
 		    .nombre{
-		        font-size:400%;                  
-
+		        font-size:400%; 
 		    }
 		    .tarea{
 			    font-weight: bold;
 			    font-size:1.5rem;
-			    line-height: 0.7;
-		    
-			}
-		    
-	    }
-		
+			    line-height: 0.7;		    
+			}		    
+	    }		
 	}
 
 
@@ -526,37 +507,35 @@ body {
 	#vadorrin{	
 		position:relative;
 		width:30px;
-		margin-top:-10%;
+		height: 600px;
+		display:flex;
+		align-items:flex-end;
+		
 	}
 	.vadorrin{
 		position:absolute;
 		
 		width:400px;
-		height: auto;
-		top: 10%;
+		height: auto;		
 		left:-15%;	
 		z-index: 9;
 
-
 		@media (min-width: 600px) {
 		 	width:160%;	 	
-		 	height: auto;		
-			top:30%;
+		 	height: auto;				
 			left:-15%;			
 		 }	
 
 		 @media (min-width: 900px) {
 		 	width:130%;	 	
 		 	height: auto;		
-			top:30%;
 			left:-10%;			
 		 }	
 
 		 @media (min-width: 1370px) {
 		 	width:150%;	 	
 		 	height: auto;		
-			 left:-15px;			
-			 top:10%;
+			left:-15px;					
 		 }		
 	}
 
@@ -760,7 +739,7 @@ body {
 			@media (max-width: 1370px) {
 				margin-top:0%;
 			 	font-size: 2em;
-			 	padding:10px 0px;			
+			 	//padding:10px 0px;			
 				width:60px ;
 		  		height: 60px ;
 		  		border-radius:10%; 

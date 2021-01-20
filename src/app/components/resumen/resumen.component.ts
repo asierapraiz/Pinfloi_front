@@ -56,14 +56,14 @@ export class ResumenComponent implements OnInit {
     ) {
       this.todoOK = true;
     }
-
-
   }
 
   continuar(resumnenModal) {
 
     this.seleccion.tareaActual = 0;
-    this.router.navigateByUrl('/tarea/' + this.ls.getSeleccion().tareasSeleccionadas[this.seleccion.tareaActual].name);
+    this.seleccion.juegoActual = 0;
+    this.ls.setSeleccion(this.seleccion);
+    this.router.navigateByUrl('/tarea');
 
 
     // setTimeout(() => {
