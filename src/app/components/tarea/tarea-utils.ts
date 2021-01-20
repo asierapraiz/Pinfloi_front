@@ -33,23 +33,31 @@ export default class TareaUtils {
 
     addEventListeners() {
         console.log("En addEventListeners");
-        //Añado los eventos en los elementos de la suma
+        //Añado los eventos en los elementos de la tarea, targets y inputs
         let huecos = this.elementRef.nativeElement.querySelectorAll('.target');
 
         huecos.forEach((hueco: HTMLElement) => {
             hueco.addEventListener('click', this.seleccionaHueco.bind(this))
+        })
+
+        let inputs = this.elementRef.nativeElement.querySelectorAll('.item');
+        inputs.forEach((hueco: HTMLElement) => {
+            hueco.addEventListener('click', this.seleccionaHueco.bind(this));
         })
     }
 
 
 
     seleccionaHueco(element: any) {
+        console.log("En seleccionaHueco");
         if (this.seleccionado != null) {
             this.seleccionado.classList.remove('seleccionado');
         }
         this.ts.seleccionaHueco(element.target);
         this.seleccionado = element.target;
         this.seleccionado.classList.add('seleccionado');
+
+
     }
 
 
@@ -73,6 +81,13 @@ export default class TareaUtils {
         return numero;
     }
 
+    limpiaRelacionados() {
+        //Limpio
+        let relacionados = document.getElementsByClassName('relacionados');
+        while (relacionados.length > 0) {
+            relacionados[0].classList.remove("relacionados");
+        }
+    }
 
 
 

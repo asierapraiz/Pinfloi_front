@@ -20,7 +20,7 @@ export class MensajeComponent implements OnInit {
   constructor(private ls: LocalStorageService, private ts: TareaService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    swal('Error Upload: ', 'Mejor si lo intentas de nuevo.', 'error');
+    swal('Mejor si lo intentas de nuevo.', 'Has tenido 3 fallos. ', 'error');
 
     setTimeout(() => {
       let s = this.ls.getSeleccion();

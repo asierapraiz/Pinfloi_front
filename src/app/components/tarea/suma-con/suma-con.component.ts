@@ -5,17 +5,15 @@ import { routeAnimations } from './../../../animations/index';
 import TareaUtils from './../tarea-utils';
 
 @Component({
-  selector: 'app-suma',
-  templateUrl: './suma.component.html',
-  animations: [routeAnimations],
-  // attach the fade in animation to the host (root) element of this component
-
-  styleUrls: ['./suma.component.scss']
+  selector: 'app-suma-con',
+  templateUrl: './suma-con.component.html',
+  styleUrls: ['./suma-con.component.scss']
 })
-export class SumaComponent extends TareaUtils implements OnInit {
+
+export class SumaConComponent extends TareaUtils implements OnInit {
 
   subscription!: Subscription;
-  llevada: boolean = false;
+  llevada: boolean = true;
 
 
 
@@ -220,10 +218,11 @@ export class SumaComponent extends TareaUtils implements OnInit {
   marcaRelacionados(elemento) {
 
     this.limpiaRelacionados();
-
     var fila = elemento.target.id[0];
     var columna = elemento.target.id[1];
 
+    var llevada = 0;
+    var decena = 0;
     if (fila == 3) {
       //Si es el último valor...
       if (columna == 0 || columna == 1) {

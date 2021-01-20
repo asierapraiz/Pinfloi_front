@@ -4,21 +4,17 @@ import { TareaService } from './../services/tarea.service';
 import { routeAnimations } from './../../../animations/index';
 import TareaUtils from './../tarea-utils';
 
-
 @Component({
-  selector: 'app-resta',
-  templateUrl: './resta.component.html',
-  styleUrls: ['./resta.component.scss'],
-  animations: [routeAnimations]
-  //host: { '[@routeAnimations]': '' },
-
+  selector: 'app-resta-con',
+  templateUrl: './resta-con.component.html',
+  styleUrls: ['./resta-con.component.scss']
 })
-export class RestaComponent extends TareaUtils implements OnInit {
+export class RestaConComponent extends TareaUtils implements OnInit {
 
 
   intentos: number = 0;
   carton!: Element;
-  llevada: boolean = false;
+  llevada: boolean = true;
   resultado = new Array(3);
 
   constructor(protected ts: TareaService,
@@ -52,53 +48,35 @@ export class RestaComponent extends TareaUtils implements OnInit {
     var rest1;
     var rest2;
 
-    if (this.llevada == true) {
+    switch (this.columnas) {
+      case 2:
+        rest1 = this.dameNum(50, 95);
+        rest1 = rest1 + "";
+        rest2 = this.dameNum(15, 49);
+        rest2 = rest2 + "";
+        break;
 
-      switch (this.columnas) {
-        case 2:
-          rest1 = this.dameNum(50, 95);
-          rest1 = rest1 + "";
-          rest2 = this.dameNum(15, 49);
-          rest2 = rest2 + "";
-          break;
-
-        case 3:
-          rest1 = this.dameNum(500, 955);
-          rest1 = rest1 + "";
-          rest2 = this.dameNum(150, 499);
-          rest2 = rest2 + "";
-          break;
-        case 4:
-          rest1 = this.dameNum(5000, 9555);
-          rest1 = rest1 + "";
-          rest2 = this.dameNum(1500, 4999);
-          rest2 = rest2 + "";
-          break;
-        case 5:
-          rest1 = this.dameNum(50000, 95555);
-          rest1 = rest1 + "";
-          rest2 = this.dameNum(15000, 49999);
-          rest2 = rest2 + "";
-          break;
-      }
-
-    } else {
-
-      //Me aseguro que los números inferiores son menores.
-      rest1 = new Array(this.columnas);
-      rest2 = new Array(this.columnas);
-
-      for (var a = 0; a <= this.columnas - 1; a++) {
-        let num;
-        do {
-          num = this.dameNum(4, 9);
-        } while (num == 0)
-        rest1[a] = num;
-        rest2[a] = this.dameNum(0, rest1[a]);
-      }
-      //rest1 = rest1.join('');
-      //rest2 = rest2.join('');
+      case 3:
+        rest1 = this.dameNum(500, 955);
+        rest1 = rest1 + "";
+        rest2 = this.dameNum(150, 499);
+        rest2 = rest2 + "";
+        break;
+      case 4:
+        rest1 = this.dameNum(5000, 9555);
+        rest1 = rest1 + "";
+        rest2 = this.dameNum(1500, 4999);
+        rest2 = rest2 + "";
+        break;
+      case 5:
+        rest1 = this.dameNum(50000, 95555);
+        rest1 = rest1 + "";
+        rest2 = this.dameNum(15000, 49999);
+        rest2 = rest2 + "";
+        break;
     }
+
+
 
 
 
@@ -191,15 +169,24 @@ export class RestaComponent extends TareaUtils implements OnInit {
       for (var c = 0; c < this.columnas; c++) {
 
         if (f == 0) {
-          fila += "<p id='" + f + "" + c + "' class='item'>" + this.filas[f][c] + "</p>";
+          if (this.filas[f][c] == this.resultado[f][c]) {
+            fila += "<p id='" + f + "" + c + "' class='item'>" + this.filas[f][c] + "</p>";
+          } else {
+            fila += "<p id='" + f + "" + c + "' class='item input' data-valor='" + this.resultado[f][c] + "' >" + this.filas[f][c] + "</p>";
+          }
 
 
         } else if (f == 1) {
-          fila += "<p id='" + f + "" + c + "' class='item'>" + this.filas[f][c] + "</p>";
+          if (this.filas[f][c] != this.resultado[f][c]) {
+            fila += "<p id='" + f + "" + c + "' class='item input' data-valor='" + this.resultado[f][c] + "' >" + this.filas[f][c] + "</p>";
+          } else {
+            fila += "<p id='" + f + "" + c + "' class='item '>" + this.filas[f][c] + "</p>";
+
+          }
 
         } else {
 
-          fila += "<p id='" + f + "" + c + "' class='resultado item  target' data-valor='" + this.resultado[f][c] + "' ></p>";
+          fila += "<p id='" + f + "" + c + "' class='resultado item target' data-valor='" + this.resultado[f][c] + "' ></p>";
 
         }
 
@@ -213,11 +200,43 @@ export class RestaComponent extends TareaUtils implements OnInit {
       }
       //Añado la fila      
       this.htmlToAdd += fila;
-
     }
 
 
-
+    //Añado el popup+1 a las llevadas
+    /*$(".sustraendo").on('mouseenter', function(){	
+  
+      var elemento=$(this);
+      var valor=$(this).val();
+      var mas=$(this).siblings(".masuno");
+      mas.stop(true, true);
+  
+        if(mas.is(':hidden')){
+            mas.fadeIn();
+        }
+        mas.on('click',function(){
+          valor ++;
+          elemento.val(valor);
+          comprueba(elemento, carton);
+        });
+      });
+  
+      $(".masuno").on('mouseenter', function(){
+        $(this).stop(true, true).show();
+      });
+  
+      $(".sustraendo").on('change',function(){  			
+          var valor=$(this).val(); 
+          var elemento=$(this);   		
+          comprueba(elemento, carton);
+        });
+  
+      $(".sustraendo").on('mouseleave', function(){    
+        $(this).siblings(".masuno").fadeOut(1000);
+  
+      });*/
+    ////////////////////Fin del popup+1
+    //alert(document.getElementsByClassName("resultado").length+"--"+document.getElementsByClassName("input target").length);
   }
 
   marcaRelacionados(elemento) {
@@ -226,6 +245,7 @@ export class RestaComponent extends TareaUtils implements OnInit {
 
     var fila = elemento.target.id[0];
     var columna = elemento.target.id[1];
+
 
     if (fila == 3) {
       //Si es el último valor...
@@ -253,6 +273,7 @@ export class RestaComponent extends TareaUtils implements OnInit {
           document.getElementById(`${a}${columna}`).classList.add("relacionados");
           document.getElementById("0" + columna).classList.add("parpadea");
         }
+
       }
     } else if (fila == 0) {
       document.getElementById(elemento.target.id).classList.add("relacionados");
@@ -265,8 +286,12 @@ export class RestaComponent extends TareaUtils implements OnInit {
       document.getElementById("1" + columna).classList.add("relacionados");
       document.getElementById("0" + columna).classList.add("relacionados");
 
+      if (document.getElementById("1" + columna).textContent > document.getElementById("0" + columna).textContent) {
+        document.getElementById("1" + (columna - 1)).classList.add("relacionados");
+      }
     }
   }
+
 
 
 }

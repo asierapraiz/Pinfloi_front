@@ -6,6 +6,8 @@ import { RestaComponent } from './resta/resta.component';
 import { TareaRoutingModule } from './tarea-routing.module';
 import { MensajeComponent } from './mensaje/mensaje.component';
 import { SafePipe } from './../../pipes/safe.pipe';
+import { RestaConComponent } from './resta-con/resta-con.component';
+import { SumaConComponent } from './suma-con/suma-con.component';
 
 
 
@@ -15,7 +17,9 @@ import { SafePipe } from './../../pipes/safe.pipe';
     TareaComponent,
     RestaComponent,
     MensajeComponent,
-    SafePipe
+    SafePipe,
+    RestaConComponent,
+    SumaConComponent
   ],
   imports: [
     CommonModule,

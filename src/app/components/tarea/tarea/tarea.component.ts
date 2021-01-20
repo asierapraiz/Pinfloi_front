@@ -33,7 +33,7 @@ export class TareaComponent implements OnInit {
 
   avatar: Avatar;
   tareasSeleccionadas: Tarea[];
-  tarea: Tarea;
+  tarea: string = 'restaCon';
   user: string;
 
   seleccion: Seleccion = {
@@ -52,8 +52,10 @@ export class TareaComponent implements OnInit {
     private elementRef: ElementRef,
     private ls: LocalStorageService,) {
 
-    let s = this.ls.getSeleccion();
-    this.router.navigate(['./' + s.tareasSeleccionadas[s.tareaActual].name], { relativeTo: this.route });
+
+    this.seleccion = this.ls.getSeleccion();
+    this.tarea = this.seleccion.tareasSeleccionadas[this.seleccion.tareaActual].name;
+    this.router.navigate(['./' + `${this.tarea}`], { relativeTo: this.route });
 
   }
 
@@ -64,6 +66,7 @@ export class TareaComponent implements OnInit {
     this.avatar = this.seleccion.avatar;
     this.tareasSeleccionadas = this.seleccion.tareasSeleccionadas;
     this.user = this.seleccion.nombre;
+    //this.tarea = this.seleccion.tareasSeleccionadas[this.seleccion.tareaActual].name;
 
   }
 
@@ -79,7 +82,7 @@ export class TareaComponent implements OnInit {
         this.huecoSeleccionado = hueco;
       }
     );
-    this.inputs = document.getElementsByClassName("input").length;
+    this.inputs = document.getElementsByClassName("input").length + document.getElementsByClassName("target").length;
 
   }
 
@@ -102,15 +105,33 @@ export class TareaComponent implements OnInit {
   }
 
   seleccionaOpcion(opcion: any) {
+
     if (!this.huecoSeleccionado || this.huecoSeleccionado.classList.contains('acierto')) {
       return;
     }
 
-    if (opcion.target.attributes['data-valor'].value == this.huecoSeleccionado.attributes['data-valor'].value) {
+    if (this.huecoSeleccionado.classList.contains('llevada')) {
 
+      this.huecoSeleccionado.innerHTML = opcion.target.attributes['data-valor'].value;
+
+    } else if (this.huecoSeleccionado.classList.contains('target')) {
+
+      this.huecoSeleccionado.innerHTML = opcion.target.attributes['data-valor'].value;
+
+    } else if (this.huecoSeleccionado.classList.contains('input')) {
+
+      let resultado = parseInt(opcion.target.attributes['data-valor'].value) + parseInt(this.huecoSeleccionado.textContent);
+      this.huecoSeleccionado.innerHTML = '' + resultado;
+
+    }
+
+    if (this.huecoSeleccionado.textContent == this.huecoSeleccionado.attributes['data-valor'].value) {
+
+      if (parseInt(this.huecoSeleccionado.textContent) > 9) {
+        this.huecoSeleccionado.classList.add('font-size-min');
+      }
       //this.huecoSeleccionado.classList.remove('acertado');
       this.huecoSeleccionado.classList.add('acierto');
-      this.huecoSeleccionado.innerHTML = opcion.target.attributes['data-valor'].value;
       this.aciertos++;
       if (this.aciertos == this.inputs) {
         //Muestro modal y navego a juego
@@ -120,7 +141,7 @@ export class TareaComponent implements OnInit {
     } else {
       this.huecoSeleccionado.classList.remove('acierto');
       this.huecoSeleccionado.classList.add('error');
-      this.huecoSeleccionado.innerHTML = opcion.target.attributes['data-valor'].value;
+
 
       this.errores++;
       if (this.errores > 2) {
@@ -132,8 +153,10 @@ export class TareaComponent implements OnInit {
         }, 2000);
 
       }
-
     }
+
+    this.limpiaRelacionados();
+
   }
   ajugar() {
     setTimeout(() => {
@@ -156,6 +179,14 @@ export class TareaComponent implements OnInit {
 
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
+  }
+
+  limpiaRelacionados() {
+    //Limpio
+    let relacionados = document.getElementsByClassName('relacionados');
+    while (relacionados.length > 0) {
+      relacionados[0].classList.remove("relacionados");
+    }
   }
 
 

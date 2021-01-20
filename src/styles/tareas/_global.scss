@@ -295,9 +295,7 @@ body {
 
 	
 
-	.item{
-		z-index:9;	
-	  }
+
 
 	#toWelcomeee{
 		position:absolute;
@@ -513,12 +511,12 @@ body {
 		
 	}
 	.vadorrin{
-		position:absolute;
-		
+		z-index:-1;
+		position:absolute;		
 		width:400px;
 		height: auto;		
 		left:-15%;	
-		z-index: 9;
+		
 
 		@media (min-width: 600px) {
 		 	width:160%;	 	
@@ -659,6 +657,12 @@ body {
 		font-size: 4rem;		
 		background-color: transparent;		
 		box-sizing: border-box;
+		z-index:9;
+
+		&.font-size-min{
+			padding-top:0.3rem;
+			font-size: 3rem;
+		}
 	    
 
 		@media (max-width: 1370px) {
@@ -717,7 +721,7 @@ body {
 	}
 
 	#draggables{		
-		z-index:2000;
+		z-index:20;
 		align-self:center;
 		margin:auto auto;
 		padding-top:2%;		
@@ -734,7 +738,12 @@ body {
 			border-radius:10%;
 			width:80px;
 			height:80px;
+
 			cursor: pointer;
+			&.font-size-min{
+				padding-top:1%;
+				font-size: 2.2rem;
+			}
 
 			@media (max-width: 1370px) {
 				margin-top:0%;
