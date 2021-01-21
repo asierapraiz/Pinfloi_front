@@ -6,6 +6,8 @@ import { SumaConComponent } from './suma-con/suma-con.component';
 import { RestaComponent } from './resta/resta.component';
 import { RestaConComponent } from './resta-con/resta-con.component';
 import { MensajeComponent } from './mensaje/mensaje.component';
+import { TablasComponent } from './tablas/tablas.component';
+
 
 
 const tareaRoutes: Routes = [
@@ -17,7 +19,8 @@ const tareaRoutes: Routes = [
       { path: 'sumaCon', component: SumaConComponent, data: { animation: 'SumaConPage' } },
       { path: 'resta', component: RestaComponent, data: { animation: 'RestaPage' } },
       { path: 'restaCon', component: RestaConComponent, data: { animation: 'RestaConPage' } },
-      { path: 'mensaje', component: MensajeComponent, data: { animation: 'MensajePage' } }
+      { path: 'mensaje', component: MensajeComponent, data: { animation: 'MensajePage' } },
+      { path: 'tablas', component: TablasComponent, data: { animation: 'TablasPage' } }
 
     ]
   }

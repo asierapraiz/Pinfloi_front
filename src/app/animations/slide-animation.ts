@@ -118,6 +118,7 @@ export const routeAnimations =
         transition('* <=> TareaPage', routeAnimationToRight),
         transition('* <=> SumaPage', routeFadeIn),
         transition('* <=> RestaPage', routeFadeIn),
+        transition('* <=> TablasPage', routeFadeIn),
         transition('* <=> MensajePage', routeFadeIn),
         transition('* => GamePage', routeAnimationToRight)
     ]);

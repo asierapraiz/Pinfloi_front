@@ -14,10 +14,7 @@ import TareaUtils from './../tarea-utils';
 })
 export class SumaComponent extends TareaUtils implements OnInit {
 
-  subscription!: Subscription;
   llevada: boolean = false;
-
-
 
   constructor(protected ts: TareaService,
     protected elementRef: ElementRef) {

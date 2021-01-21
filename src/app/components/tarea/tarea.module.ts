@@ -8,6 +8,7 @@ import { MensajeComponent } from './mensaje/mensaje.component';
 import { SafePipe } from './../../pipes/safe.pipe';
 import { RestaConComponent } from './resta-con/resta-con.component';
 import { SumaConComponent } from './suma-con/suma-con.component';
+import { TablasComponent } from './tablas/tablas.component';
 
 
 
@@ -19,7 +20,8 @@ import { SumaConComponent } from './suma-con/suma-con.component';
     MensajeComponent,
     SafePipe,
     RestaConComponent,
-    SumaConComponent
+    SumaConComponent,
+    TablasComponent
   ],
   imports: [
     CommonModule,

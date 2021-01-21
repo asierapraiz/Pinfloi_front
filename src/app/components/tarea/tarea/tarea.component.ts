@@ -29,6 +29,7 @@ export class TareaComponent implements OnInit {
   inputs!: number;
   huecoSeleccionado: Element;
   aciertos: number = 0;
+  showDragables: boolean;
 
 
   avatar: Avatar;
@@ -56,10 +57,13 @@ export class TareaComponent implements OnInit {
     this.seleccion = this.ls.getSeleccion();
     this.tarea = this.seleccion.tareasSeleccionadas[this.seleccion.tareaActual].name;
     this.router.navigate(['./' + `${this.tarea}`], { relativeTo: this.route });
-
+    if (this.tarea == 'tablas') {
+      this.showDragables = false;
+    }
   }
 
   ngOnInit(): void {
+
 
     this.ls.getSeleccion() ? this.seleccion = this.ls.getSeleccion() : this.noHaySeleccion();
 
