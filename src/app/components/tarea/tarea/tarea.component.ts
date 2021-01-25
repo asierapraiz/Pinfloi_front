@@ -30,6 +30,7 @@ export class TareaComponent implements OnInit {
   huecoSeleccionado: Element;
   aciertos: number = 0;
   showDragables: boolean;
+  tablasHechas: number[] = [];
 
 
   avatar: Avatar;
@@ -51,7 +52,7 @@ export class TareaComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private elementRef: ElementRef,
-    private ls: LocalStorageService,) {
+    private ls: LocalStorageService) {
 
 
     this.seleccion = this.ls.getSeleccion();
@@ -64,8 +65,9 @@ export class TareaComponent implements OnInit {
 
   ngOnInit(): void {
 
-
     this.ls.getSeleccion() ? this.seleccion = this.ls.getSeleccion() : this.noHaySeleccion();
+
+    this.ls.getTablasHechas() ? this.tablasHechas = this.ls.getTablasHechas() : '';
 
     this.avatar = this.seleccion.avatar;
     this.tareasSeleccionadas = this.seleccion.tareasSeleccionadas;
@@ -86,6 +88,21 @@ export class TareaComponent implements OnInit {
         this.huecoSeleccionado = hueco;
       }
     );
+
+    this.ts.seleccionaOpcion$.subscribe(
+      (opcion) => {
+        this.seleccionaOpcion(opcion);
+      }
+    );
+
+    this.ts.tablaHecha$.subscribe(
+      (ladel) => {
+        this.tablasHechas.push(ladel);
+        this.ls.setTablasHechas(this.tablasHechas);
+        this.ajugar();
+      }
+    );
+
     this.inputs = document.getElementsByClassName("input").length + document.getElementsByClassName("target").length;
 
   }
@@ -109,6 +126,7 @@ export class TareaComponent implements OnInit {
   }
 
   seleccionaOpcion(opcion: any) {
+
 
     if (!this.huecoSeleccionado || this.huecoSeleccionado.classList.contains('acierto')) {
       return;
@@ -192,6 +210,4 @@ export class TareaComponent implements OnInit {
       relacionados[0].classList.remove("relacionados");
     }
   }
-
-
 }

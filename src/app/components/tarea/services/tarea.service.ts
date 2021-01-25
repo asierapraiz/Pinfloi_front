@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Subject} from 'rxjs';
+import { Subject } from 'rxjs';
 
 
 @Injectable({
@@ -13,23 +13,31 @@ export class TareaService {
   private seleccionaHuecoSource = new Subject<any>();
   seleccionaHueco$ = this.seleccionaHuecoSource.asObservable();
 
-  private addItemToBasketSource = new Subject<number>();
-  addItemToBasket$ = this.addItemToBasketSource.asObservable();
+  private seleccionaOpcionSource = new Subject<any>();
+  seleccionaOpcion$ = this.seleccionaOpcionSource.asObservable();
+
+  private tablaHechaSource = new Subject<number>();
+  tablaHecha$ = this.tablaHechaSource.asObservable();
 
   private resetChild = new Subject();
   reset$ = this.resetChild.asObservable();
-  
-  addItemToBasket(text: number) {    
-    this.addItemToBasketSource.next(text);
+
+  tablaHecha(text: number) {
+    this.tablaHechaSource.next(text);
   }
-  seleccionaHueco(value: any){
-    console.log("En selecciona hueco del servicio :"+value.attributes['data-valor'].value);
+  seleccionaHueco(value: any) {
+    console.log("En selecciona hueco del servicio :" + value.attributes['data-valor'].value);
     this.seleccionaHuecoSource.next(value);
   }
 
-  reset(){
+  seleccionaOpcion(value: any) {
+    console.log("En selecciona opcion del servicio :" + value.target.attributes['data-valor'].value);
+    this.seleccionaOpcionSource.next(value);
+  }
+
+  reset() {
     console.log("En el servicio");
     this.resetChild.next();
-  } 
-     
+  }
+
 }

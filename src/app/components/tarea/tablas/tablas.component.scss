@@ -1,0 +1,75 @@
+@import "./../../../../styles/tareas/variables";
+
+//Opciones que aparecen al princio
+#elijeOpcion {
+    width: 500px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    > h3 {
+        font-size: 4rem;
+        display: inline-block;
+    }
+}
+
+#opciones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.opcion {
+    font-size: 1.7rem;
+    border-radius: 50%;
+    border: 2px solid $blanco_tiza;
+    margin: 5px;
+    padding: 0.5rem 1rem;
+    -webkit-transition: color, 0.2s;
+    -transition: color, 0.2s;
+    webkit-transition: border-color, 0.2s;
+    -transition: border-color, 0.2s;
+}
+.opcion:hover {
+    color: $primary;
+    border-color: #24c5d9;
+}
+
+.tablas-draggable-list {
+    z-index: 10;
+}
+.tablas-draggable,
+.selected {
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10%;
+
+    webkit-transition: all 1s linear;
+    transition: all 0.2s linear;
+    &:hover {
+        cursor: pointer;
+        color: rgb(243, 182, 51);
+        border: 2px solid rgba(54, 177, 235, 0.5);
+    }
+
+    @media (min-width: 1024px) {
+        width: 65px;
+        height: 65px;
+        margin-bottom: 0.5rem;
+    }
+
+    @media (min-width: 1400px) {
+        width: 80px;
+        height: 80px;
+        font-size: 3rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+#draggables.tablas {
+    padding-top: 0%;
+}
+.out {
+    display: none !important;
+}

@@ -21,6 +21,9 @@ export class LocalStorageService {
   setTareas(tareasSeleccionadas) { localStorage.setItem('tareas', JSON.stringify(tareasSeleccionadas)); }
   setTareaActual(tareasSeleccionadas) { localStorage.setItem('tareaActual', JSON.stringify(tareasSeleccionadas)); }
 
+  getTablasHechas() { return JSON.parse(localStorage.getItem("tablasHechas") || "[]"); }
+  setTablasHechas(tablas) { localStorage.setItem('tablasHechas', JSON.stringify(tablas)); }
+  clearTablasHechas() { localStorage.setItem('tablasHechas', "") };
 
   setSeleccion(seleccion) { localStorage.setItem('seleccion', JSON.stringify(seleccion)); }
   getSeleccion() { return JSON.parse(localStorage.getItem("seleccion") || "{}") };

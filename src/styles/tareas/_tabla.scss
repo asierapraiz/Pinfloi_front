@@ -1,341 +1,204 @@
-
-body{
-	
-	#comodines{
-		position:absolute;
-		top:55px;
-		left:5%;
-		z-index:100;	
-	}
-
-	.comodin{
-		font-size:3.3rem;
-		display:block;
-		width:60px;
-		height:60px;
-		border-radius:50%;
-		border: 2px solid $blanco_tiza;	  	
-	}
-
-	#elijeOpcion{
-		width: 500px;
-		position:absolute;
-		margin-left:130%;
-		top:50%;
-		left:65%;
-		transform: translate(-30%, -50%);		
-		display:flex;  
-	    justify-content:center;
-	    align-items:center;
-	    flex-direction:column ;
-	    
-    
-	    >h3{
-		    font-size:4rem;
-		    display:inline-block;   
-
-	    }	
-	}
-
-	#opciones{
-	
-		display:flex;  
-	    justify-content:center;
-	    align-items:center;
-	    flex-direction:row ;	    
-		
-	}
-	.opcion{
-		font-size:1.7rem;	
-		
-		border-radius:50%;
-		border: 2px solid $blanco_tiza;
-		margin:5px;
-		padding:.5rem 1rem;
-		-webkit-transition:color, .2s;
-	    -transition:color, .2s;
-	    webkit-transition:border-color, .2s;
-		-transition:border-color, .2s;	
-	}
-	.opcion:hover{
-		color:$primary;
-
-		border-color:#24C5D9
-	}
-
-	#repaso{
-		width: 600px;
-		height: 850px;  
+body {
+	#comodines {
 		position: absolute;
-		top:50px;
-		left: 40%;  
-		background-image:url("/img/repaso.png");
+		top: 55px;
+		left: 5%;
+		z-index: 10;
+	}
+
+	.comodin {
+		font-size: 3.3rem;
+		display: block;
+		width: 60px;
+		height: 60px;
+		border-radius: 50%;
+		border: 2px solid $blanco_tiza;
+	}
+
+	#repaso {
+		width: 600px;
+		height: 850px;
+		position: absolute;
+		top: 50px;
+		left: 40%;
+		background-image: url("/img/repaso.png");
 		background-repeat: no-repeat;
 		background-size: 100% 100%;
-		z-index: 100;  
-		text-align:center;
-		padding-top:11%;
-
-		
+		z-index: 10;
+		text-align: center;
+		padding-top: 11%;
 	}
 
-	#volver{
-		position:absolute;
-		bottom:10px;
-		right:10px;
-		width:200px;
-		height:100px;
-		cursor:pointer;
-		z-index:100;
-		cursor:pointer;
+	#volver {
+		position: absolute;
+		bottom: 10px;
+		right: 10px;
+		width: 200px;
+		height: 100px;
+		cursor: pointer;
+		z-index: 10;
+		cursor: pointer;
 		background-image: url("/img/volver.png");
 		background-repeat: no-repeat;
-	  	background-size: 100% 100%;
-	  	
+		background-size: 100% 100%;
 	}
 
-
-	.itemRepaso{
-		
-		font-size:2.2rem;
-		font-weight: 900;		
+	.itemRepaso {
+		font-size: 2.2rem;
+		font-weight: 900;
 	}
 
-	#pizarra{
-		position:relative!important;
-		flex-direction:row!important;
-		text-align:none!important;
-		min-height: 95vh!important;
+	#pizarra {
+		position: relative !important;
+		flex-direction: row !important;
+		text-align: none !important;
+		min-height: 95vh !important;
 	}
 
-	#carton{
+	#carton {
 		//margin-left:30%;
-		display:flex;
-  		flex-direction:row;
-  		
-  		-webkit-transition:all, .5s;
-         -transition:all, .5s;
+		display: flex;
+		flex-direction: row;
 
-  		&.fin{
-  			margin-left:15%;
-  			padding-right:5%;
-  		}	
+		-webkit-transition: all, 0.5s;
+		-transition: all, 0.5s;
 
+		&.fin {
+			margin-left: 15%;
+			padding-right: 5%;
+		}
 	}
 
-	.bloque{
-		width:250px;		
-		margin:0% 5%;
-
+	.bloque {
+		width: 250px;
+		margin: 0% 5%;
 	}
 
-
-	.fila{
-		width:225px;
-		display:block!important;
-		height:60px;
-		z-index:1000;
-		margin-bottom:5px;	
-
+	.fila {
+		width: 225px;
+		display: block !important;
+		height: 60px;
+		z-index: 10;
+		margin-bottom: 5px;
 	}
 
-	.multiplicacion,.resultado{
-		display:inline-block;
-		float:left;
-		font-size:2rem;
-		margin:auto;
-
-		
+	.multiplicacion,
+	.resultado {
+		display: inline-block;
+		float: left;
+		font-size: 2rem;
+		margin: auto;
 	}
-	.multiplicacion.diez{
-		font-size:1.6rem;
+	.multiplicacion.diez {
+		font-size: 1.6rem;
 	}
 
-	.resultado{
-		position:relative;
-		display:inline-block;
-		margin-left:2%;
-		float:left;
-		width:50px;
-		height:50px;
+	.resultado {
+		z-index: 10;
+		position: relative;
+		display: inline-block;
+		margin-left: 2%;
+		float: left;
+		width: 50px;
+		height: 50px;
 		box-sizing: border-box;
-		background-color:transparent;
-
-		
+		background-color: transparent;
+	}
+	.resultado:hover {
+		cursor: pointer;
+		color: #f3b633;
+		border: 2px solid #f3b633;
 	}
 
-	
-
-	.draggable{
-
-		background:transparent;
-		display:block!important;
-		
-		font-size: 2rem!important;
-		
-		margin-bottom:5px!important;
-		margin-top:0%;	
-		width:60px!important;
-		height:60px!important;
-
-		webkit-transition:all 1s linear;
-		transition:all 1s linear;
-
-
-		@media  (min-width: 1024px)   {
-
-			width:65px!important;
-			height:65px!important;
-
-
-		}
-
-		@media  (min-width: 1400px)   {
-			width:80px!important;
-			height:80px!important;
-
-		}
-
-		
-
-		
+	.sinBorder {
+		border: none !important;
 	}
 
-	#draggables.tablas{	
-		padding-top:0%;	
-	}
-
-	.sinBorder{
-		border:none!important;
-	}
-	
-	
-
-	@media  (min-width: 1024px)   {
-		.draggable{
-			font-size:2rem!important;
+	@media (min-width: 1024px) {
+		.draggable {
+			font-size: 2rem !important;
 		}
-		 .multiplicacion,.resultado{
-			font-size:2rem!important;
+		.multiplicacion,
+		.resultado {
+			font-size: 2rem !important;
 		}
-		.multiplicacion.diez{
-			font-size:1.8rem!important;
+		.multiplicacion.diez {
+			font-size: 1.8rem !important;
 		}
 
-		.bloque{
-			width:250px;		
-			margin:0% 10%;
-
+		.bloque {
+			width: 250px;
+			margin: 0% 10%;
 		}
 
-		#carton{
-
-			
-
-			&.fin{
-	  			margin-left:10%;
-	  			padding-right:15%;
-	  		}
+		#carton {
+			&.fin {
+				margin-left: 10%;
+				padding-right: 15%;
+			}
 		}
 
-
-		.fila{		
-			width:250px;	
-			height:70px;
-			z-index:1000;
-			margin-bottom:2px;
+		.fila {
+			width: 250px;
+			height: 70px;
+			z-index: 1000;
+			margin-bottom: 2px;
 		}
 
-		.resultado{				
-			width:49px;
-			height:49px;		
+		.resultado {
+			width: 49px;
+			height: 49px;
 		}
 	}
 
-	@media  (min-width: 1400px)   {
-		.draggable{
-			font-size:3rem!important;
+	@media (min-width: 1400px) {
+		.draggable {
+			font-size: 3rem !important;
 		}
 
-		#elijeOpcion{
+		#elijeOpcion {
+			width: 800px;
 
-			width: 800px;    
-	    
-		    >h3{
-			    font-size:7rem;
-			    font-weight:bold;
-			    display:inline-block;  
-			}	
+			> h3 {
+				font-size: 7rem;
+				font-weight: bold;
+				display: inline-block;
+			}
 		}
 
-		.opcion{
-			font-size:4rem;			
-			padding:.5rem 2rem;			
+		.opcion {
+			font-size: 4rem;
+			padding: 0.5rem 2rem;
 		}
 
-		 .multiplicacion,.resultado{
-			font-size:3.2rem!important;
+		.multiplicacion,
+		.resultado {
+			font-size: 3.2rem !important;
 		}
-		.multiplicacion.diez{
-			font-size:2.7rem!important;
-		}
-
-		#carton{
-
-			
-
-			&.fin{
-	  			margin-left:10%;
-	  			padding-right:25%;
-	  		}
+		.multiplicacion.diez {
+			font-size: 2.7rem !important;
 		}
 
-		.bloque{
-			width:250px;		
-			margin:0% 15%;
-
+		#carton {
+			&.fin {
+				margin-left: 10%;
+				padding-right: 25%;
+			}
 		}
 
-		.fila{			
-			height:85px;
-			z-index:1000;
-			margin-bottom:5px;
+		.bloque {
+			width: 250px;
+			margin: 0% 15%;
 		}
-		.resultado{				
-			width:74px;
-			height:74px;		
+
+		.fila {
+			height: 85px;
+			z-index: 1000;
+			margin-bottom: 5px;
+		}
+		.resultado {
+			width: 74px;
+			height: 74px;
 		}
 	}
-	
-
-		
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

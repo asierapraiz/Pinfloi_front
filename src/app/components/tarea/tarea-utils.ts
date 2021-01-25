@@ -33,6 +33,7 @@ export default class TareaUtils {
 
     addEventListeners() {
         console.log("En addEventListeners");
+
         //Añado los eventos en los elementos de la tarea, targets y inputs
         let huecos = this.elementRef.nativeElement.querySelectorAll('.target');
 
@@ -49,15 +50,13 @@ export default class TareaUtils {
 
 
     seleccionaHueco(element: any) {
-        console.log("En seleccionaHueco");
+
         if (this.seleccionado != null) {
             this.seleccionado.classList.remove('seleccionado');
         }
         this.ts.seleccionaHueco(element.target);
         this.seleccionado = element.target;
         this.seleccionado.classList.add('seleccionado');
-
-
     }
 
 

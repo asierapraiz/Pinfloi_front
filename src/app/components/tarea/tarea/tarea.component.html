@@ -1,48 +1,48 @@
-<div class="container-fluid tarea ">
-    <aside class="sidebar">
+<div class="container-fluid row ">
+    <div class="col-izq col-12 col-md-3 ">
+        <div class="row">
+            <div class="perfil marco col-11 ">
+                <div class="row ">
+                    <div class="col-5 col-md-4 avatar foto">
+                        <img class="w-100" src="assets/img/avatar/marco.png" />
+                        <img class="img-fluid torso" src="assets/img/avatar/torsos/{{avatar.torso}}.png" />
+                        <img class="img-fluid cara" src="assets/img/avatar/caras/{{avatar.cara}}.png" />
+                        <img class="img-fluid ojos" src="assets/img/avatar/ojos/{{avatar.ojos}}.png" />
+                        <img class="img-fluid cejas" src="assets/img/avatar/cejas/{{avatar.cejas}}.png" />
+                        <img class="img-fluid pelo" src="assets/img/avatar/pelos/{{avatar.pelo}}.png" />
+                        <img class="img-fluid boca" src="assets/img/avatar/bocas/{{avatar.boca}}.png" />
+                        <img class="img-fluid nariz" src="assets/img/avatar/nariz/{{avatar.nariz}}.png" />
+                    </div>
+                    <div class="card-title nombre col-7 col-md-7 ">
+                        {{user}}
+                    </div>
+                    <div id="tarea-info">
+                        <div id="intentos">
+                            <p>Intentos:</p>
+                            <i @flyInOut *ngFor="let a of [].constructor(intentos)"
+                                class="intento-icon fa fa-circle fa-1x text-sucess"></i>
+                        </div>
+                        <div id="errores">
+                            <p>Errores:</p>
+                            <i @flyInOut *ngFor="let a of [].constructor(errores)"
+                                class="error-icon fa fa-circle fa-1x text-danger "></i>
+                        </div>
 
-        <div class="perfil marco ">
+                        <div class="tareas col-12 ">
+                        </div>
 
-            <div class=" avatar foto">
-                <img class="w-100" src="assets/img/avatar/marco.png" />
-                <img class="img-fluid torso" src="assets/img/avatar/torsos/{{avatar.torso}}.png" />
-                <img class="img-fluid cara" src="assets/img/avatar/caras/{{avatar.cara}}.png" />
-                <img class="img-fluid ojos" src="assets/img/avatar/ojos/{{avatar.ojos}}.png" />
-                <img class="img-fluid cejas" src="assets/img/avatar/cejas/{{avatar.cejas}}.png" />
-                <img class="img-fluid pelo" src="assets/img/avatar/pelos/{{avatar.pelo}}.png" />
-                <img class="img-fluid boca" src="assets/img/avatar/bocas/{{avatar.boca}}.png" />
-                <img class="img-fluid nariz" src="assets/img/avatar/nariz/{{avatar.nariz}}.png" />
-            </div>
-            <div class=" nombre  ">
-                {{user}}
-            </div>
-            <div id="tarea-info">
-                <div id="intentos">
-                    <p>Intentos:</p>
-                    <i @flyInOut *ngFor="let a of [].constructor(intentos)"
-                        class="intento-icon fa fa-circle fa-1x text-sucess"></i>
+                    </div>
                 </div>
-                <div id="errores">
-                    <p>Errores:</p>
-                    <i @flyInOut *ngFor="let a of [].constructor(errores)"
-                        class="error-icon fa fa-circle fa-1x text-danger "></i>
-                </div>
-
-                <div class="tareas col-12 ">
-                </div>
-
             </div>
-
+            <div class=" col-5 col-sm-4 col-md-12" id="vadorrin">
+                <img class="vadorrin " id="pose" src="assets/img/vadorrin/Pose.png" />
+                <img class="vadorrin " hidden="" id="guiña" src="assets/img/vadorrin/Guina.png " />
+                <img class="vadorrin " hidden="" id="miraPanel" src="assets/img/vadorrin/MiraPanel.png" />
+                <img class="vadorrin " hidden="" id="triste" src="assets/img/vadorrin/Triste.png" />
+            </div>
         </div>
-        <!-- <div class=" col-5 col-sm-4 col-md-12" id="vadorrin">
-            <img class="vadorrin " id="pose" src="assets/img/vadorrin/Pose.png" />
-            <img class="vadorrin " hidden="" id="guiña" src="assets/img/vadorrin/Guina.png " />
-            <img class="vadorrin " hidden="" id="miraPanel" src="assets/img/vadorrin/MiraPanel.png" />
-            <img class="vadorrin " hidden="" id="triste" src="assets/img/vadorrin/Triste.png" />
-        </div> -->
-
-    </aside>
-    <main class="main sombra {{tarea}} ralative " id="pizarra">
+    </div>
+    <div class="col-dch col-12 col-md-9 sombra {{tarea}} ralative row" id="pizarra">
         <div class="pizarra-header">
             <!-- <img class="logo" src="assets/img/logo/Pinfloi.svg" width="auto" /> -->
 
@@ -64,8 +64,8 @@
         </div>
 
 
-        <div class="pizarra-body">
-            <div [@routeAnimations]="prepareRoute(outlet)">
+        <div class="pizarra-body col-12 ">
+            <div class="col-12" [@routeAnimations]="prepareRoute(outlet)">
                 <router-outlet #outlet="outlet"></router-outlet>
             </div>
         </div>
@@ -117,6 +117,5 @@
 
 
 
-    </main>
-    <div class="sidebar-right"></div>
+    </div>
 </div>

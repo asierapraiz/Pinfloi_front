@@ -1,36 +1,38 @@
 // Styling for the portfolio section
-#portfolio, #juegos, #tareas {
-.img-fluid{
-  border-radius:10px;
-}
-.nuevo{
-  position:absolute;
-  top:-10px;
-  left:-10px;
-  width:50%;
-  heght:auto;
-}
-.btn-submit{
-  visibility:hidden;
-}
+#portfolio,
+#juegos,
+#tareas {
+  .img-fluid {
+    border-radius: 10px;
+  }
+  .nuevo {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 50%;
+    heght: auto;
+  }
+  .btn-submit {
+    visibility: hidden;
+  }
   .portfolio-item {
     right: 0;
     margin: 0 0 15px;
-    padding-right:5px!important;
-    padding-left:5px!important;
+    padding-right: 5px !important;
+    padding-left: 5px !important;
 
-      @media(min-width:768px){
-        padding-right:15px!important;
-        padding-left:15px!important;
-      }
+    @media (min-width: 768px) {
+      padding-right: 15px !important;
+      padding-left: 15px !important;
+    }
     .portfolio-link {
       position: relative;
       display: block;
       max-width: 400px;
       margin: 0 auto;
       cursor: pointer;
-      border-radius:10px;
-      
+      border-radius: 10px;
+
       .portfolio-hover {
         position: absolute;
         width: 100%;
@@ -39,9 +41,9 @@
         -moz-transition: all ease 0.5s;
         transition: all ease 0.5s;
         opacity: 0;
-        background: fade-out($primary, .1);
-        border-radius:10px;
-        
+        background: fade-out($primary, 0.1);
+        border-radius: 10px;
+
         &:hover {
           opacity: 1;
         }
@@ -78,7 +80,7 @@
         font-size: 16px;
         font-style: italic;
         margin: 0;
-        @include font('dosisbold');
+        @include font("dosisbold");
       }
     }
   }
@@ -87,110 +89,100 @@
   }
 }
 
-
 .portfolio-modal {
+  .row {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
 
-  
-    
-  
+  .modal-dialog {
+    margin: 1rem auto;
+    max-width: 95vw;
+  }
+  .modal-content {
+    padding: 0px 0;
+    text-align: center;
+    h2 {
+      color: $primary;
+      font-size: 1.5em;
+      margin-bottom: 15px;
+    }
+    p {
+      margin-bottom: 30px;
+    }
+    p.item-intro {
+      font-size: 16px;
+      font-style: italic;
+      margin: 20px 0 30px;
+      @include font("dosisbold");
+    }
+    ul.list-inline {
+      margin-top: 0;
+      margin-bottom: 30px;
+    }
+    img {
+      margin-bottom: 30px;
+    }
+    .btn {
+      cursor: pointer;
+      font-size: 0.8em;
+      color: white;
+    }
+    i {
+      font-size: 0.5em;
+    }
+  }
+  .close-modal {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 75px;
+    height: 75px;
+    cursor: pointer;
+    background-color: transparent;
 
-    .row{
-        margin-left:0px;
-        margin-right:0px;
-    }  
-    
-    .modal-dialog {
-        margin: 1rem auto;
-        max-width: 95vw;
+    &:hover {
+      opacity: 0.3;
     }
-    .modal-content {
-        padding: 0px 0;
-        text-align: center;
-        h2 {
-            color:$primary;
-            font-size: 1.5em;
-            margin-bottom: 15px;
-        }
-        p {
-            margin-bottom: 30px;
-        }
-        p.item-intro {
-            font-size: 16px;
-            font-style: italic;
-            margin: 20px 0 30px;
-            @include font('dosisbold');
-        }
-        ul.list-inline {
-            margin-top: 0;
-            margin-bottom: 30px;
-        }
-        img {
-            margin-bottom: 30px;
-        }
-        .btn {
-            cursor: pointer;
-            font-size:.8em;
-            color:white;
-        }
-        i{
-            font-size:.5em;
-        }
-    }
-    .close-modal {
-        position: absolute;
-        top: 25px;
-        right: 25px;
-        width: 75px;
+    .lr {
+      /* Safari and Chrome */
+      z-index: 10;
+      width: 1px;
+      height: 75px;
+      margin-left: 35px;
+      /* IE 9 */
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+      background-color: $gray-900;
+      .rl {
+        /* Safari and Chrome */
+        z-index: 10;
+        width: 1px;
         height: 75px;
-        cursor: pointer;
-        background-color: transparent;
-
-        &:hover {
-          opacity: 0.3;
-        }
-        .lr {
-          /* Safari and Chrome */
-          z-index: 1051;
-          width: 1px;
-          height: 75px;
-          margin-left: 35px;
-          /* IE 9 */
-          -webkit-transform: rotate(45deg);
-          -ms-transform: rotate(45deg);
-          transform: rotate(45deg);
-          background-color: $gray-900;
-          .rl {
-            /* Safari and Chrome */
-            z-index: 1052;
-            width: 1px;
-            height: 75px;
-            /* IE 9 */
-            -webkit-transform: rotate(90deg);
-            -ms-transform: rotate(90deg);
-            transform: rotate(90deg);
-            background-color: $gray-900;
-          }
-        }
+        /* IE 9 */
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+        background-color: $gray-900;
+      }
     }
-    @media(min-width:800px) {
+  }
+  @media (min-width: 800px) {
+    .modal-content {
+      padding: 20px 0;
 
-        .modal-content {
+      h2 {
+        font-size: 2.5em;
+      }
 
-            padding: 20px 0;
-
-            h2{
-                font-size:2.5em;
-            }
-
-            .btn{
-                font-size:1.5em;
-            }
-        }
-        .modal-dialog {
-          margin: 1rem auto;
-          max-width: 80vw;
-        }
-
-        
+      .btn {
+        font-size: 1.5em;
+      }
+    }
+    .modal-dialog {
+      margin: 1rem auto;
+      max-width: 80vw;
+    }
   }
 }
