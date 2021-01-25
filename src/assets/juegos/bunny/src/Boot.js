@@ -106,10 +106,10 @@ bunny.Preloader.prototype = {
         /*
                 var preloadBG = this.add.sprite((this.world.width - 580) * 0.5, (this.world.height + 150) * 0.5, 'loading-background');
                 var preloadProgress = this.add.sprite((this.world.width - 560) * 0.5, (this.world.height + 170) * 0.5, 'loading-progress');
-        
-                //  Load the Google WebFont Loader script
-                this.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
-                this.load.setPreloadSprite(preloadProgress);*/
+        */
+        //  Load the Google WebFont Loader script
+        this.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
+        //this.load.setPreloadSprite(preloadProgress);
 
 
         this._preloadResources();
@@ -174,11 +174,12 @@ bunny.Preloader.resources = {
         ["laser", url + "sfx/rayo.wav"],
         ["quejas", url + "sfx/quejas.ogg"],
         ["derrape", url + "sfx/derrape.wav"]
-    ],
-    'font': [
-        ['font', 'fonts/font.png', 'fonts/font.fnt']
-
     ]
+    // ,
+    // 'font': [
+    //     ['font', url + 'fonts/font.png', url + 'fonts/font.fnt']
+
+    // ]
 };
 
 
@@ -190,6 +191,11 @@ bunny.Preloader.resources = {
 bunny.MainMenu = function (game) { };
 bunny.MainMenu.prototype = {
 
+    preload: function () {
+        game.load.bitmapFont("font", url + "fonts/font.png", url + "fonts/font.fnt");
+
+
+    },
     create: function () {
         //this.add.sprite(0, 0, 'background');
         var title = this.add.sprite(this.world.width * 0.5, (this.world.height - 100) * 0.5, 'title');
@@ -906,6 +912,7 @@ bunny.Game.prototype = {
             this.grupo.add(this.bubble);
 
             this.bubbleText = this.add.bitmapText(0, 0, "font", (this._score).toString(), 150);
+
             this.bubbleText.anchor.set(0.5);
             this.bubbleText.tint = "#fff";
             this.bubble.addChild(this.bubbleText);
