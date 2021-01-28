@@ -7,6 +7,8 @@ import { Renderer2 } from '@angular/core';
 import { LocalStorageService } from "./../../../core/services/local-storage.service";
 import { flyInFromDown } from './../../../animations';
 import { trigger, transition, state, animate, style, AnimationEvent } from '@angular/animations';
+import { Router } from '@angular/router';
+
 
 
 
@@ -99,7 +101,7 @@ export class TablasComponent extends TareaUtils implements OnInit {
   lista: number[];
   listaMezclada: number[];
   showOpciones: boolean = true;
-  opcionesList: number[] = [2, 3, 4, 5];
+  opcionesList: number[];
   opcionSeleccionada: number;
   opciones: Element
   tabla: Element;
@@ -109,6 +111,7 @@ export class TablasComponent extends TareaUtils implements OnInit {
 
 
   constructor(
+    private router: Router,
     protected ts: TareaService,
     private renderer: Renderer2,
     protected elementRef: ElementRef,
@@ -117,7 +120,14 @@ export class TablasComponent extends TareaUtils implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("ngOnOnit");
+    let url = this.router.url;
+    var tipoTabla = url.substring(url.length - 1, url.length);
+
+    if (tipoTabla == '5') {
+      this.opcionesList = [2, 3, 4, 5];
+    } else {
+      this.opcionesList = [6, 7, 8, 9];
+    }
 
     this.intentos = 0;
     this.columnas = 4;
@@ -129,9 +139,6 @@ export class TablasComponent extends TareaUtils implements OnInit {
     this.listaMezclada = this.source.slice(0, 5);
     this.shuffle(this.listaMezclada);
 
-    // this.creaOperacion();
-    // this.resuelveOperacion();
-    // this.muestraOperacion();
   }
 
   toggle() {
