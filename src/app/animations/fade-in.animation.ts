@@ -40,3 +40,16 @@ export const flyInFromLeft =
         ])
     ]);
 
+export const flyInFromDown =
+    trigger('flyInFromDown', [
+        state('in', style({ opacity: 1, transform: 'translateX(0)' })),
+        transition('void => *', [
+            style({ opacity: 0, transform: 'translateY(-50%)', height: '*' }),
+            animate('0.5s 0.1s ' + NICE_EASING)
+        ]),
+        transition('* => void', [
+            style({ opacity: 1, height: '*' }),
+            animate(250, style({ opacity: 0, height: 0 }))
+        ])
+    ]);
+

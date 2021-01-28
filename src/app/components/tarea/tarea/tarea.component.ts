@@ -29,14 +29,14 @@ export class TareaComponent implements OnInit {
   inputs!: number;
   huecoSeleccionado: Element;
   aciertos: number = 0;
-  showDragables: boolean;
+  showDragables: boolean = true;
   tablasHechas: number[] = [];
-
 
   avatar: Avatar;
   tareasSeleccionadas: Tarea[];
   tarea: string = 'restaCon';
   user: string;
+  isOpen: boolean = true;
 
   seleccion: Seleccion = {
     nombre: '',
@@ -57,10 +57,14 @@ export class TareaComponent implements OnInit {
 
     this.seleccion = this.ls.getSeleccion();
     this.tarea = this.seleccion.tareasSeleccionadas[this.seleccion.tareaActual].name;
-    this.router.navigate(['./' + `${this.tarea}`], { relativeTo: this.route });
+
     if (this.tarea == 'tablas') {
       this.showDragables = false;
     }
+
+
+    this.router.navigate(['./' + `${this.tarea}`], { relativeTo: this.route });
+
   }
 
   ngOnInit(): void {
@@ -75,6 +79,8 @@ export class TareaComponent implements OnInit {
     //this.tarea = this.seleccion.tareasSeleccionadas[this.seleccion.tareaActual].name;
 
   }
+
+
 
   ngAfterViewInit() {
     //Añado los eventos en los elementos de las opciones

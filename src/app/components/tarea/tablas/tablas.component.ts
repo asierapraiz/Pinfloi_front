@@ -5,6 +5,9 @@ import { routeAnimations } from './../../../animations/index';
 import TareaUtils from './../tarea-utils';
 import { Renderer2 } from '@angular/core';
 import { LocalStorageService } from "./../../../core/services/local-storage.service";
+import { flyInFromDown } from './../../../animations';
+import { trigger, transition, state, animate, style, AnimationEvent } from '@angular/animations';
+
 
 
 
@@ -12,7 +15,81 @@ import { LocalStorageService } from "./../../../core/services/local-storage.serv
 @Component({
   selector: 'app-tablas',
   templateUrl: './tablas.component.html',
-  styleUrls: ['./tablas.component.scss']
+  styleUrls: ['./tablas.component.scss'],
+  animations: [
+    trigger('showLista', [
+      // ...
+      state('open', style({
+
+        opacity: 1,
+        left: 0
+      })),
+      state('closed', style({
+
+        opacity: 0,
+        top: -200
+
+      })),
+      transition('open => closed', [
+        animate('1s')
+      ]),
+      transition('closed => open', [
+        animate('0.5s')
+      ]),
+      transition('* => closed', [
+        animate('1s')
+      ]),
+      transition('* => open', [
+        animate('0.5s')
+      ]),
+      transition('open <=> closed', [
+        animate('0.5s')
+      ]),
+      transition('* => open', [
+        animate('1s',
+          style({ opacity: '*' }),
+        ),
+      ]),
+      transition('* => *', [
+        animate('1s')
+      ]),
+    ],
+    ),
+    trigger('showTabla', [
+      // ...
+      state('open', style({
+        opacity: 1
+      })),
+      state('closed', style({
+        opacity: 0
+      })),
+      transition('open => closed', [
+        animate('1s')
+      ]),
+      transition('closed => open', [
+        animate('0.5s')
+      ]),
+      transition('* => closed', [
+        animate('1s')
+      ]),
+      transition('* => open', [
+        animate('0.5s')
+      ]),
+      transition('open <=> closed', [
+        animate('0.5s')
+      ]),
+      transition('* => open', [
+        animate('1s',
+          style({ opacity: '*' }),
+        ),
+      ]),
+      transition('* => *', [
+        animate('1s')
+      ]),
+    ],
+    ),
+  ],
+
 })
 export class TablasComponent extends TareaUtils implements OnInit {
 
@@ -27,6 +104,8 @@ export class TablasComponent extends TareaUtils implements OnInit {
   opciones: Element
   tabla: Element;
   huecoSeleccionado: Element;
+  showLista: boolean = true;
+  showTabla: boolean = false;
 
 
   constructor(
@@ -53,6 +132,11 @@ export class TablasComponent extends TareaUtils implements OnInit {
     // this.creaOperacion();
     // this.resuelveOperacion();
     // this.muestraOperacion();
+  }
+
+  toggle() {
+    this.showLista = !this.showLista;
+    this.showTabla = !this.showTabla;
   }
   shuffle(array) {
     array.sort(() => Math.random() - 0.5);
@@ -89,12 +173,14 @@ export class TablasComponent extends TareaUtils implements OnInit {
   //Creo los elementos en la pantalla.
   creaElementos(element) {
 
+    this.toggle()
+
     this.ladel = element.target.getAttribute('data-ladel');
 
     this.showOpciones = false;
     this.aciertos = 0;
-    this.tabla.classList.remove('out');
-    this.opciones.classList.add('out');
+    // this.tabla.classList.remove('out');
+    // this.opciones.classList.add('out');
 
   }
 
@@ -128,20 +214,21 @@ export class TablasComponent extends TareaUtils implements OnInit {
       }
       if (this.aciertos == 5) {
 
-        this.tabla.classList.add('out');
+        this.showTabla = !this.showTabla;
+
         setTimeout(() => {
           this.lista = this.source.slice(5);
           this.listaMezclada = this.source.slice(5);
           this.shuffle(this.listaMezclada);
-          this.tabla.classList.remove('out');
-        }, 1000);
+          this.showTabla = !this.showTabla;
+        }, 1200);
 
       }
     } else {
       this.huecoSeleccionado.classList.remove('acierto');
       this.huecoSeleccionado.classList.add('error');
-
       this.errores++;
+
       if (this.errores > 3) {
         /*
                 setTimeout(() => {

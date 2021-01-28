@@ -28,17 +28,17 @@ export class ResumenComponent implements OnInit {
   juegosSeleccionados: Array<Juego> = [];
   nombre: String;
   todoOK: boolean = false;
-
-  public avatar: Avatar = {
-    definido: false,
-    pelo: 'pelo_1',
-    cejas: 'cejas_1',
-    ojos: 'ojo_1',
-    nariz: 'nariz_1',
-    boca: 'boca_1',
-    cara: 'cara_1',
-    torso: 'torso_1'
-  };
+  /*
+    public avatar: Avatar = {
+      definido: false,
+      pelo: 'pelo_1',
+      cejas: 'cejas_1',
+      ojos: 'ojo_1',
+      nariz: 'nariz_1',
+      boca: 'boca_1',
+      cara: 'cara_1',
+      torso: 'torso_1'
+    };*/
 
   seleccion!: Seleccion;
 
@@ -63,6 +63,7 @@ export class ResumenComponent implements OnInit {
     this.seleccion.tareaActual = 0;
     this.seleccion.juegoActual = 0;
     this.ls.setSeleccion(this.seleccion);
+    this.ls.clearTablasHechas();
     this.router.navigateByUrl('/tarea');
 
 

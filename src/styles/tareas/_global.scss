@@ -84,7 +84,7 @@ body {
 			}
 			.lr {
 				/* Safari and Chrome */
-				z-index: 10;
+				z-index: 1051;
 				width: 1px;
 				height: 75px;
 				margin-left: 35px;
@@ -95,7 +95,7 @@ body {
 				background-color: $gray-900;
 				.rl {
 					/* Safari and Chrome */
-					z-index: 10;
+					z-index: 1052;
 					width: 1px;
 					height: 75px;
 					/* IE 9 */
@@ -250,7 +250,6 @@ body {
 	}
 
 	#carton {
-		z-index: 10;
 		background: none;
 		border: 0;
 		box-sizing: border-box;
@@ -615,6 +614,13 @@ body {
 		box-sizing: border-box;
 		z-index: 9;
 
+		&.de-tabla {
+			width: 50px;
+		}
+		&.big {
+			width: 80px;
+		}
+
 		&.font-size-min {
 			padding-top: 0.3rem;
 			font-size: 3rem;
@@ -672,7 +678,7 @@ body {
 	}
 
 	#draggables {
-		z-index: 10;
+		z-index: 20;
 		align-self: center;
 		margin: auto auto;
 		padding-top: 2%;

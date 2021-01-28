@@ -1,9 +1,22 @@
 @import "./../../../../styles/tareas/variables";
 
+#open-close {
+    z-index: 11;
+}
+#showTabla {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
+    opacity: 0;
+    top: -30px;
+}
+
 //Opciones que aparecen al princio
 #elijeOpcion {
+    z-index: 10;
     width: 500px;
-    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;

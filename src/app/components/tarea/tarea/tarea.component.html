@@ -64,8 +64,8 @@
         </div>
 
 
-        <div class="pizarra-body col-12 ">
-            <div class="col-12" [@routeAnimations]="prepareRoute(outlet)">
+        <div class="pizarra-body ">
+            <div [@routeAnimations]="prepareRoute(outlet)">
                 <router-outlet #outlet="outlet"></router-outlet>
             </div>
         </div>
