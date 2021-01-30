@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { TareaService } from './../services/tarea.service';
 import { routeAnimations } from './../../../animations/index';
 import TareaUtils from './../tarea-utils';
+import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'app-multiplicar',
@@ -38,7 +39,7 @@ export class MultiplicarComponent extends TareaUtils implements OnInit {
   ngOnInit(): void {
 
     this.creaOperacion();
-    //this.resuelveOperacion();
+    this.resuelveOperacion();
     this.muestraOperacion();
 
   }
@@ -56,12 +57,10 @@ export class MultiplicarComponent extends TareaUtils implements OnInit {
 
   creaOperacion() {
 
-    //Crea array
-
     var min;
     var max;
     var multiplicadores = this.columnas - this.multiplicador;
-    //alert(multiplicadores);
+
     switch (this.dificultad) {
       case "desconocida":
         min = 1;
@@ -83,7 +82,7 @@ export class MultiplicarComponent extends TareaUtils implements OnInit {
 
 
     //Creo un array por cada fila
-    debugger;
+
     for (let fila = 0; fila < this.numFilas; fila++) {
       //Segun que tipo de fila sea, se rrellena de una u otra forma
       this.filas[fila] = new Array(this.columnas);
@@ -117,31 +116,24 @@ export class MultiplicarComponent extends TareaUtils implements OnInit {
         }
       }
     }
-    //Fin crea array
 
+    //Muestro por consola
+    this.muestraPorConsola();
 
+  }
 
-
-    /*
-  0 1 2 3 4 5 6    
-  . . . . . .  0  			  
-  1 2 3 4 5 6  1 
-  . . . . x 2  2  
-  -------------
-  . . . . . . .  3 		
-  	
-  */
-    //Recorro la fila
-
+  resuelveOperacion() {
+    //Recorro las fila
     for (let fila = this.filas[0].length - 1; fila >= this.filas[0].length - (this.filas[0].length - 1); fila--) {
 
-      var resultado = parseInt(this.filas[1][fila]) * parseInt(this.filas[2][this.filas[0].length - 1]);
+      var resultado = (parseInt(this.filas[1][fila]) * parseInt(this.filas[2][this.filas[0].length - 1]));
+
+      //Si hay llevada la sumo
+      if (this.filas[0][fila] != ".") {
+        resultado = resultado + this.filas[0][fila];
+      }
 
       if (resultado > 9) {
-        //Si hay llevada la sumo
-        if (this.filas[0][fila] != ".") {
-          resultado = resultado + this.filas[0][fila];
-        }
         //Separo las decenas
         var decenas = Math.floor(resultado / 10);
         //Si  es el último valor lo pongo al lado dela unidad
@@ -156,21 +148,14 @@ export class MultiplicarComponent extends TareaUtils implements OnInit {
 
         this.filas[3][fila] = resultado;
 
-      } else {//Siel resultado es menor de 10
-
-        //Si hay llevada la sumo
-        //if(this.filas[0][fila]!="."){////////////////////////////////////////////ojo
-        resultado = resultado + this.filas[0][fila];
-        //}
-        //Coloco el resultado						
+      } else {//Siel resultado es menor de 10        				
         this.filas[3][fila] = resultado;
       }
     }
+    this.muestraPorConsola();
+  }
 
-
-
-
-
+  muestraPorConsola() {
     for (var f = 0; f <= 3; f++) {
       var fila = "";
       for (var c = 0; c < this.filas[0].length; c++) {
@@ -180,6 +165,7 @@ export class MultiplicarComponent extends TareaUtils implements OnInit {
       fila = "";
     }
   }
+
 
   muestraOperacion() {
 
@@ -202,7 +188,7 @@ export class MultiplicarComponent extends TareaUtils implements OnInit {
             fila += "<p class='item vacio llevada'></p>";
 
           } else {
-            fila += "<p id='" + f + "" + c + "' class='item llevada' data-valor='" + this.filas[f][c] + "' ></p>";
+            fila += "<p id='" + f + "" + c + "' class='item llevada target' data-valor='" + this.filas[f][c] + "' ></p>";
 
           }
 
@@ -234,7 +220,7 @@ export class MultiplicarComponent extends TareaUtils implements OnInit {
         } else if (f == 3) {
 
           if (this.filas[f][c] != ".") {
-            fila += "<p id='" + f + "" + c + "' class='item noLlevada resultado ' data-valor='" + this.filas[f][c] + "'></p>";
+            fila += "<p id='" + f + "" + c + "' class='item noLlevada target resultado ' data-valor='" + this.filas[f][c] + "'></p>";
 
           } else {
             fila += "<p class='item vacio' data-valor='.'></p>";
@@ -269,38 +255,71 @@ export class MultiplicarComponent extends TareaUtils implements OnInit {
 
   marcaRelacionados(elemento) {
 
-    console.log(elemento);
-
     this.limpiaRelacionados();
 
-    var fila = (elemento.id)[0];
-    var columna = (elemento.id)[1];
+    var fila = elemento.target.id[0];
+    var columna = parseInt(elemento.target.id[1]);
 
     var llevada;
     var decena;
     let multiplicando = "1";
-    let multiplicador = "2";
+    let multiplicador = "2" + (this.filas[0].length - 1);
 
 
-    //Si es el último y resulado es > 10
-    if (columna == this.filas[0].length - (this.filas[0].length - 1)) {
-      llevada = "0" + columna;
-      decena = "3" + (columna - 1);
-      multiplicando += columna;
-      multiplicador += this.filas[0].length - 1;
+    if (fila == 0) {
+      let resultado = "3" + (columna + 1);
+      multiplicando += (columna + 1);
+      decena = "0" + columna;//soy yo
+      document.getElementById(resultado).classList.add("relacionados");
+      document.getElementById("3" + (columna + 1)).classList.add("seleccionado");
+      document.getElementById(decena).classList.add("seleccionado");
+
+      if (this.filas[0][columna + 1] != '.') {
+        document.getElementById('0' + (columna + 1)).classList.add("relacionados");
+      }
 
     } else {
-      llevada = "0" + columna;
-      decena = "0" + (columna - 1);
-      multiplicando += columna;
-      multiplicador += this.filas[0].length - 1;
+      //Si es el último y resulado es > 10
+      if (columna == this.filas[0].length - (this.filas[0].length - 1)) {
+
+        llevada = "0" + columna;
+        decena = "3" + (columna - 1);
+        multiplicando += columna;
+        document.getElementById(elemento.target.id).classList.add("seleccionado");
+      } else if (columna == 0) {
+
+        multiplicando += (columna + 1);
+        document.getElementById('31').classList.add("relacionados");
+        document.getElementById(elemento.target.id).classList.add("seleccionado");
+
+        if (this.filas[0][columna + 1] != '.') {
+          llevada = "0" + (columna + 1);
+          document.getElementById(llevada).classList.add("relacionados");
+        }
+
+      } else {
+
+        if (this.filas[0][columna - 1] != '.') {
+          llevada = "0" + (columna - 1);
+          document.getElementById(llevada).classList.add("relacionados");
+        }
+
+        multiplicando += columna;
+        document.getElementById(elemento.target.id).classList.add("seleccionado");
+      }
+
+      //Este es común para todos los casos
+      if (this.filas[0][columna] != '.') {
+        llevada = "0" + columna;
+        document.getElementById(llevada).classList.add("relacionados");
+      }
     }
 
 
-    document.getElementById(elemento.id).classList.add("relacionados");
-    document.getElementById(decena).classList.add("relacionados");
+
     document.getElementById(multiplicando).classList.add("relacionados");
-    document.getElementById(multiplicador).classList.add("parpadea");
+    document.getElementById(multiplicador).classList.add("relacionados");
+
 
 
   }

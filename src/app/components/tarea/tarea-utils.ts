@@ -81,7 +81,6 @@ export default class TareaUtils {
     }
 
     dameNumEx(min, max, lista) {
-        debugger;
 
         var num = Math.floor(Math.random() * (max - min + 1) + min);
 
@@ -97,6 +96,11 @@ export default class TareaUtils {
         let relacionados = document.getElementsByClassName('relacionados');
         while (relacionados.length > 0) {
             relacionados[0].classList.remove("relacionados");
+        }
+
+        let seleccionado = document.getElementsByClassName('seleccionado');
+        while (seleccionado.length > 0) {
+            seleccionado[0].classList.remove("seleccionado");
         }
     }
 
