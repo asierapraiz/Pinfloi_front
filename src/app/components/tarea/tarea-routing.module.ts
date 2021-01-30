@@ -7,6 +7,8 @@ import { RestaComponent } from './resta/resta.component';
 import { RestaConComponent } from './resta-con/resta-con.component';
 import { MensajeComponent } from './mensaje/mensaje.component';
 import { TablasComponent } from './tablas/tablas.component';
+import { MultiplicarComponent } from './multiplicar/multiplicar.component';
+
 
 
 
@@ -21,8 +23,8 @@ const tareaRoutes: Routes = [
       { path: 'restaCon', component: RestaConComponent, data: { animation: 'RestaConPage' } },
       { path: 'mensaje', component: MensajeComponent, data: { animation: 'MensajePage' } },
       { path: 'tablas-2-5', component: TablasComponent, data: { animation: 'TablasPage' } },
-      { path: 'tablas-6-9', component: TablasComponent, data: { animation: 'TablasPage' } }
-
+      { path: 'tablas-6-9', component: TablasComponent, data: { animation: 'TablasPage' } },
+      { path: 'multiplicarDe1', component: MultiplicarComponent, data: { animation: 'TablasPage' } }
     ]
   }
 ];

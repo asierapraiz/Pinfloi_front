@@ -27,10 +27,11 @@ export class TareasComponent implements OnInit {
     { id: 6, 'name': 'restaCon', 'selected': false, 'cantidad': 0 },
     { id: 7, 'name': 'tablas-2-5', 'selected': false, 'cantidad': 0 },
     { id: 7, 'name': 'tablas-6-9', 'selected': false, 'cantidad': 0 },
-    { id: 8, 'name': 'tablas2', 'selected': false, 'cantidad': 0 },
-    { id: 9, 'name': 'multiplicarDeUno', 'selected': false, 'cantidad': 0 },
+    //{ id: 8, 'name': 'tablas2', 'selected': false, 'cantidad': 0 },
+    { id: 9, 'name': 'multiplicarDe1', 'selected': false, 'cantidad': 0 },
+    { id: 9, 'name': 'multiplicarDe2', 'selected': false, 'cantidad': 0 },
     { id: 11, 'name': 'dividir', 'selected': false, 'cantidad': 0 },
-    { id: 12, 'name': 'dividirDeDos', 'selected': false, 'cantidad': 0 }
+    { id: 12, 'name': 'dividirDe2', 'selected': false, 'cantidad': 0 }
   ];
 
 

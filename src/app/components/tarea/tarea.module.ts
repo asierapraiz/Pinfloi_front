@@ -9,6 +9,7 @@ import { SafePipe } from './../../pipes/safe.pipe';
 import { RestaConComponent } from './resta-con/resta-con.component';
 import { SumaConComponent } from './suma-con/suma-con.component';
 import { TablasComponent } from './tablas/tablas.component';
+import { MultiplicarComponent } from './multiplicar/multiplicar.component';
 
 
 
@@ -21,7 +22,8 @@ import { TablasComponent } from './tablas/tablas.component';
     SafePipe,
     RestaConComponent,
     SumaConComponent,
-    TablasComponent
+    TablasComponent,
+    MultiplicarComponent
   ],
   imports: [
     CommonModule,

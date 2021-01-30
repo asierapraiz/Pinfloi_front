@@ -80,6 +80,18 @@ export default class TareaUtils {
         return numero;
     }
 
+    dameNumEx(min, max, lista) {
+        debugger;
+
+        var num = Math.floor(Math.random() * (max - min + 1) + min);
+
+        if (!lista.includes(num)) {
+            return num;
+        } else {
+            return this.dameNumEx(min, max, lista);
+        }
+    }
+
     limpiaRelacionados() {
         //Limpio
         let relacionados = document.getElementsByClassName('relacionados');
