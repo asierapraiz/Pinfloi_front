@@ -1,9 +1,7 @@
 import { ElementRef, Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { TareaService } from './../services/tarea.service';
-import { routeAnimations } from './../../../animations/index';
 import TareaUtils from './../tarea-utils';
-import { threadId } from 'worker_threads';
+
 
 @Component({
   selector: 'app-multiplicar',
@@ -12,11 +10,6 @@ import { threadId } from 'worker_threads';
 })
 export class MultiplicarComponent extends TareaUtils implements OnInit {
 
-  usados = [];
-  noRepetir = [];
-  difcultad = "desconocida";
-  ok1 = false;
-  ok2 = false;
   carton!: Element;
   multiplicadorLista = new Array();
   multiplicandoLista = new Array();
@@ -26,10 +19,8 @@ export class MultiplicarComponent extends TareaUtils implements OnInit {
   dificultad = "medio";
   columnas = parseInt(this.multiplicando) + 1;
   filas = new Array(4);
-  inputs = 0;
-  acertados = 0;
-  errores = 0;
-  maxErrores = 3;
+
+
 
   constructor(protected ts: TareaService,
     protected elementRef: ElementRef) {
@@ -153,17 +144,6 @@ export class MultiplicarComponent extends TareaUtils implements OnInit {
       }
     }
     this.muestraPorConsola();
-  }
-
-  muestraPorConsola() {
-    for (var f = 0; f <= 3; f++) {
-      var fila = "";
-      for (var c = 0; c < this.filas[0].length; c++) {
-        fila += this.filas[f][c] + " ";
-      }
-      console.log(fila);
-      fila = "";
-    }
   }
 
 
@@ -323,5 +303,17 @@ export class MultiplicarComponent extends TareaUtils implements OnInit {
 
 
   }
+
+  muestraPorConsola() {
+    for (var f = 0; f <= 3; f++) {
+      var fila = "";
+      for (var c = 0; c < this.filas[0].length; c++) {
+        fila += this.filas[f][c] + " ";
+      }
+      console.log(fila);
+      fila = "";
+    }
+  }
+
 
 }

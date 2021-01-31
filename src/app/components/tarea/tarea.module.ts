@@ -10,6 +10,7 @@ import { RestaConComponent } from './resta-con/resta-con.component';
 import { SumaConComponent } from './suma-con/suma-con.component';
 import { TablasComponent } from './tablas/tablas.component';
 import { MultiplicarComponent } from './multiplicar/multiplicar.component';
+import { MultiplicarDeDosComponent } from './multiplicar-de-dos/multiplicar-de-dos.component';
 
 
 
@@ -23,7 +24,8 @@ import { MultiplicarComponent } from './multiplicar/multiplicar.component';
     RestaConComponent,
     SumaConComponent,
     TablasComponent,
-    MultiplicarComponent
+    MultiplicarComponent,
+    MultiplicarDeDosComponent
   ],
   imports: [
     CommonModule,
