@@ -26,7 +26,7 @@ export class TareaService {
     this.tablaHechaSource.next(text);
   }
   seleccionaHueco(value: any) {
-    console.log("En selecciona hueco del servicio :" + value.attributes['data-valor'].value);
+    //console.log("En selecciona hueco del servicio :" + value.attributes['data-valor'].value);
     this.seleccionaHuecoSource.next(value);
   }
 

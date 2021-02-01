@@ -187,7 +187,7 @@ export class MultiplicarDeDosComponent extends TareaUtils implements OnInit {
   }
 
   muestraOperacion() {
-    console.log(this.filas[0].length);
+
     document.getElementById('carton').classList.add('deDos');
     for (var f = 0; f < this.numFilas; f++) {
       //Creo las filas.
@@ -365,14 +365,5 @@ export class MultiplicarDeDosComponent extends TareaUtils implements OnInit {
     document.getElementById(llevada).classList.add("parpadea");
   }
 
-  muestraPorConsola() {
-    for (var f = 0; f <= 3; f++) {
-      var fila = "";
-      for (var c = 0; c < this.filas[0].length; c++) {
-        fila += this.filas[f][c] + " ";
-      }
-      console.log(fila);
-      fila = "";
-    }
-  }
+
 }

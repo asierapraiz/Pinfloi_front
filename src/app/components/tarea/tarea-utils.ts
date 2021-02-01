@@ -32,7 +32,6 @@ export default class TareaUtils {
     ) { }
 
     addEventListeners() {
-        console.log("En addEventListeners");
 
         //Añado los eventos en los elementos de la tarea, targets y inputs
         let huecos = this.elementRef.nativeElement.querySelectorAll('.target');
@@ -41,19 +40,24 @@ export default class TareaUtils {
             hueco.addEventListener('click', this.seleccionaHueco.bind(this))
         })
 
-        let inputs = this.elementRef.nativeElement.querySelectorAll('.item');
-        inputs.forEach((hueco: HTMLElement) => {
-            hueco.addEventListener('click', this.seleccionaHueco.bind(this));
-        })
+        // let inputs = this.elementRef.nativeElement.querySelectorAll('.item');
+        // inputs.forEach((hueco: HTMLElement) => {
+        //     hueco.addEventListener('click', this.seleccionaHueco.bind(this));
+        // })
     }
 
 
 
     seleccionaHueco(element: any) {
+        element.stopPropagation();
+        if (element.target.id == 'papelera') {
+            return;
+        }
 
         if (this.seleccionado != null) {
             this.seleccionado.classList.remove('seleccionado');
         }
+
         this.ts.seleccionaHueco(element.target);
         this.seleccionado = element.target;
         this.seleccionado.classList.add('seleccionado');
@@ -63,7 +67,7 @@ export default class TareaUtils {
 
     dameNum(min: number = 0, max: number) {
         this.ciclo++;
-        console.log(this.ciclo);
+        //console.log(this.ciclo);
         this.ciclo > 100 ? this.noUsar = [] : '';
         //console.log("min:"+min+"---Max:"+max);        
         let numero: number = 0;
@@ -101,6 +105,21 @@ export default class TareaUtils {
         let seleccionado = document.getElementsByClassName('seleccionado');
         while (seleccionado.length > 0) {
             seleccionado[0].classList.remove("seleccionado");
+        }
+    }
+
+    muestraPorConsola() {
+
+        this.filas;
+        //debugger;
+
+        for (var f = 0; f < this.filas.length; f++) {
+            var fila = "";
+            for (var c = 0; c < this.filas[0].length; c++) {
+                fila += this.filas[f][c] + " ";
+            }
+            console.log(fila);
+            fila = "";
         }
     }
 
