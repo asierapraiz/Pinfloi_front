@@ -11,6 +11,7 @@ import { SumaConComponent } from './suma-con/suma-con.component';
 import { TablasComponent } from './tablas/tablas.component';
 import { MultiplicarComponent } from './multiplicar/multiplicar.component';
 import { MultiplicarDeDosComponent } from './multiplicar-de-dos/multiplicar-de-dos.component';
+import { DividirComponent } from './dividir/dividir.component';
 
 
 
@@ -25,7 +26,8 @@ import { MultiplicarDeDosComponent } from './multiplicar-de-dos/multiplicar-de-d
     SumaConComponent,
     TablasComponent,
     MultiplicarComponent,
-    MultiplicarDeDosComponent
+    MultiplicarDeDosComponent,
+    DividirComponent
   ],
   imports: [
     CommonModule,

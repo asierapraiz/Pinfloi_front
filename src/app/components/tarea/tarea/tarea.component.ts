@@ -111,6 +111,8 @@ export class TareaComponent implements OnInit {
 
     this.inputs = document.getElementsByClassName("input").length + document.getElementsByClassName("target").length;
 
+    document.getElementById('pizarra').addEventListener('click', this.limpiaTodo);
+
   }
 
   noHaySeleccion() {
@@ -132,6 +134,11 @@ export class TareaComponent implements OnInit {
   }
 
   seleccionaOpcion(opcion: any) {
+    if (this.huecoSeleccionado.id == 'llevadas') {
+      document.getElementById('llevada').innerHTML = opcion.target.attributes['data-valor'].value;
+      return;
+    }
+
 
 
     if (!this.huecoSeleccionado || this.huecoSeleccionado.classList.contains('acierto')) {
@@ -214,6 +221,19 @@ export class TareaComponent implements OnInit {
     let relacionados = document.getElementsByClassName('relacionados');
     while (relacionados.length > 0) {
       relacionados[0].classList.remove("relacionados");
+    }
+  }
+
+  limpiaTodo() {
+    //Limpio
+    let relacionados = document.getElementsByClassName('relacionados');
+    while (relacionados.length > 0) {
+      relacionados[0].classList.remove("relacionados");
+    }
+
+    let seleccionados = document.getElementsByClassName('seleccionado');
+    while (seleccionados.length > 0) {
+      seleccionados[0].classList.remove("seleccionado");
     }
   }
 }

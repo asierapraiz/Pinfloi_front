@@ -1,5 +1,4 @@
 import { ElementRef, Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { TareaService } from './../services/tarea.service';
 import { routeAnimations } from './../../../animations/index';
 import TareaUtils from './../tarea-utils';
