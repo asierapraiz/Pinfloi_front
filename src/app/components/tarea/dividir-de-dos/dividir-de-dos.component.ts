@@ -98,8 +98,7 @@ export class DividirDeDosComponent extends TareaUtils implements OnInit {
     for (var a = this.dividendo + 1, i = 0; a < (this.dividendo + 1) + resultado.length; a++, i++) {
       this.filas[1][a] = resultado[i];
     }
-    //Elimino las columnas vacias
-    debugger;
+    //Elimino las columnas vacias    
     if (this.dividendo + this.divisor > this.dividendo + resultado.length) {
       var x = this.dividendo + this.divisor + 1;
     } else {
@@ -137,7 +136,7 @@ export class DividirDeDosComponent extends TareaUtils implements OnInit {
             this.filas[f][n - 2] = 'x';
           }
           //Coloco el resto
-          var resto = (parseInt(up) % parseInt(localDivisor)).toString();
+          let resto = (parseInt(up) % parseInt(localDivisor)).toString();
           //&& up.length==3
           if (resto.length == 1) {
             console.log('estoy aqui');
@@ -153,15 +152,7 @@ export class DividirDeDosComponent extends TareaUtils implements OnInit {
         }
       }
     }
-    //Muestro por consola
-    for (var f = 0; f < this.filas.length; f++) {
-      var fila = "";
-      for (var c = 0; c < this.columnas; c++) {
-        fila += this.filas[f][c] + " ";
-      }
-      console.log(fila);
-      fila = "";
-    }
+    this.muestraPorConsola();
   }
 
   muestraOperacion() {

@@ -110,9 +110,6 @@ export default class TareaUtils {
 
     muestraPorConsola() {
 
-        this.filas;
-        debugger;
-
         for (var f = 0; f < this.filas.length; f++) {
             var fila = "";
             for (var c = 0; c < this.filas[0].length; c++) {
