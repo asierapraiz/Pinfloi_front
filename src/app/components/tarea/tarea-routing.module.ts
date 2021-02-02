@@ -10,6 +10,8 @@ import { TablasComponent } from './tablas/tablas.component';
 import { MultiplicarComponent } from './multiplicar/multiplicar.component';
 import { MultiplicarDeDosComponent } from './multiplicar-de-dos/multiplicar-de-dos.component';
 import { DividirComponent } from './dividir/dividir.component';
+import { DividirDeDosComponent } from './dividir-de-dos/dividir-de-dos.component';
+
 
 
 
@@ -30,7 +32,8 @@ const tareaRoutes: Routes = [
       { path: 'tablas-6-9', component: TablasComponent, data: { animation: 'TablasPage' } },
       { path: 'multiplicarDe1', component: MultiplicarComponent, data: { animation: 'TablasPage' } },
       { path: 'multiplicarDe2', component: MultiplicarDeDosComponent, data: { animation: 'TablasPage' } },
-      { path: 'dividir', component: DividirComponent, data: { animation: 'TablasPage' } }
+      { path: 'dividir', component: DividirComponent, data: { animation: 'TablasPage' } },
+      { path: 'dividirDe2', component: DividirDeDosComponent, data: { animation: 'TablasPage' } }
     ]
   }
 ];
