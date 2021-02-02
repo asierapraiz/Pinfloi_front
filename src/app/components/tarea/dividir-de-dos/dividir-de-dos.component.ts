@@ -93,7 +93,7 @@ export class DividirDeDosComponent extends TareaUtils implements OnInit {
     }
     var res = Math.floor(parseInt(localDividendo) / parseInt(localDivisor));
     var resultado = res.toString();
-    var resto = parseInt(localDividendo) % parseInt(localDivisor);
+
     //Guardo los valores de la solución "resultado" en la fila y casilas correspondientes.
     for (var a = this.dividendo + 1, i = 0; a < (this.dividendo + 1) + resultado.length; a++, i++) {
       this.filas[1][a] = resultado[i];
@@ -137,7 +137,7 @@ export class DividirDeDosComponent extends TareaUtils implements OnInit {
             this.filas[f][n - 2] = 'x';
           }
           //Coloco el resto
-          var resto = up % localDivisor + "";
+          var resto = (parseInt(up) % parseInt(localDivisor)).toString();
           //&& up.length==3
           if (resto.length == 1) {
             console.log('estoy aqui');
