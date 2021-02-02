@@ -111,7 +111,7 @@ export default class TareaUtils {
     muestraPorConsola() {
 
         this.filas;
-        //debugger;
+        debugger;
 
         for (var f = 0; f < this.filas.length; f++) {
             var fila = "";
