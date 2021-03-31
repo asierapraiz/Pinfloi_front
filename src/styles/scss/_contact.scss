@@ -1,7 +1,7 @@
 // Styling for the contact section
 section#contact {
   background-color: $gray-900;
-  background-image: url('/img/map-image.png');
+  background-image: url("/img/map-image.png");
   background-repeat: no-repeat;
   background-position: center;
   .section-heading {
@@ -27,21 +27,21 @@ section#contact {
   ::-webkit-input-placeholder {
     font-weight: 700;
     color: $gray-400;
-    @include font('dosisbold');
+    @include font("dosisbold");
   }
   :-moz-placeholder {
     font-weight: 700;
     color: $gray-400;
-    @include font('dosisbold');
+    @include font("dosisbold");
   }
   ::-moz-placeholder {
     font-weight: 700;
     color: $gray-400;
-    @include font('dosisbold');
+    @include font("dosisbold");
   }
   :-ms-input-placeholder {
     font-weight: 700;
     color: $gray-400;
-    @include font('dosisbold');
+    @include font("dosisbold");
   }
 }

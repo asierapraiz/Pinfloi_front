@@ -109,8 +109,23 @@ export const routeAnimations =
     trigger('routeAnimations', [
         transition('LandingPage => SeleccionPage', routeAnimationToRight),
         transition('SeleccionPage => LandingPage', routeAnimationToLeft),
+        transition('LandingPage => NodoBg', routeAnimationToRight),
+        transition('NodoBg => LandingPage', routeAnimationToLeft),
+        transition('NodoDos => Nodo', routeAnimationToLeft),
+        transition('NodoDos => Nombre', routeAnimationToRight),
+        transition('Nodo => NodoDos', routeAnimationToRight),
+        transition('Nombre => NodoDos', routeAnimationToLeft),
+        transition('Nombre => Avatar', routeAnimationToRight),
+        transition('Nodo => Login', routeAnimationToRight),
+        transition('NodoDos => RegistroPage', routeAnimationToRight),
+        transition('RegistroPage => Login', routeAnimationToRight),
+        transition('RegistroPage => NodoBg', routeAnimationToLeft),
+        transition('Login => Nodo', routeAnimationToLeft),
+        transition('Login => Avatar', routeAnimationToRight),
+        transition('NodoBg => RetoPage', routeAnimationToRight),
+        transition('NodoPage => NodoDosPage', routeAnimationToRight),
+        transition('JuegosPage => TareaPage', routeAnimationToRight),
         transition('TareasPage => JuegosPage', routeAnimationToRight),
-        transition('JuegosPage => TareasPage', routeAnimationToLeft),
         transition('JuegosPage => NameFormPage', routeAnimationToRight),
         transition('NameFormPage => JuegosPage', routeAnimationToLeft),
         transition('NameFormPage => AvatarFormPage', routeAnimationToRight),
@@ -120,5 +135,6 @@ export const routeAnimations =
         transition('* <=> RestaPage', routeFadeIn),
         transition('* <=> TablasPage', routeFadeIn),
         transition('* <=> MensajePage', routeFadeIn),
-        transition('* => GamePage', routeAnimationToRight)
+        transition('* <=> GamePage', routeAnimationToRight),
+
     ]);

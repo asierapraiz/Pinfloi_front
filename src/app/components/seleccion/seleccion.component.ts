@@ -1,7 +1,7 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Router } from '@angular/router';
-import { routeAnimations } from './../../animations';
+//import { routeAnimations } from './../../animations';
 import { trigger, transition, style, animate, query, group, animateChild } from '@angular/animations';
 import { Juego } from "../../core/models/juego.model";
 import { Tarea } from "../../core/models/tarea.model";
@@ -43,16 +43,16 @@ const rutas = [
   {
     'actual': '/seleccion/juegos',
     'before': '/seleccion/tareas',
-    'next': '/seleccion/nombre'
-  },
-  {
-    'actual': '/seleccion/nombre',
-    'before': '/seleccion/juegos',
     'next': '/seleccion/avatar'
   },
   {
     'actual': '/seleccion/avatar',
-    'before': '/seleccion/nombre',
+    'before': '/seleccion/juegos',
+    'next': '/seleccion/nombre'
+  },
+  {
+    'actual': '/seleccion/nombre',
+    'before': '/seleccion/avatar',
     'next': '/seleccion/resumen'
   },
   {
@@ -119,28 +119,10 @@ export class SeleccionComponent implements OnInit {
   juegosSeleccionados: Array<Juego> = [];
   nombre: String;
   hasNext: boolean = true;
+  seleccion: Seleccion = new Seleccion();
 
 
-  public avatar: Avatar = {
-    definido: false,
-    pelo: 'pelo_1',
-    cejas: 'cejas_1',
-    ojos: 'ojo_1',
-    nariz: 'nariz_1',
-    boca: 'boca_1',
-    cara: 'cara_1',
-    torso: 'torso_1'
-  };
-
-  seleccion: Seleccion = {
-    nombre: '',
-    avatar: {},
-    tareasSeleccionadas: [],
-    juegosSeleccionados: [],
-    tareaActual: 0,
-    juegoActual: 0
-  }
-
+  public avatar: Avatar = new Avatar();
 
   constructor(private ls: LocalStorageService, private ss: SeleccionService, private _router: Router) {
 
@@ -170,7 +152,11 @@ export class SeleccionComponent implements OnInit {
     this.ls.getSeleccion().juegosSeleccionados ? this.juegosSeleccionados = this.ls.getSeleccion().juegosSeleccionados : '';
 
 
+    this.eventsSuscriptons();
 
+  }
+
+  eventsSuscriptons() {
 
     this.ss.seleccionaTarea$.subscribe(
       (tarea) => {
@@ -203,9 +189,7 @@ export class SeleccionComponent implements OnInit {
         this.ls.setSeleccion(this.seleccion);
       }
     );
-
   }
-
 
   delete(tipo, index) {
     tipo == 'tarea' ? this.tareasSeleccionadas.splice(index, 1) : this.juegosSeleccionados.splice(index, 1);
@@ -239,15 +223,11 @@ export class SeleccionComponent implements OnInit {
 
   }
   next() {
+    console.log("En next");
     let next = rutas.find(e => e.actual == this.activeRoutePath);
+
     this.hasNext = next.next == '/seleccion/resumen' ? false : true;
     this._router.navigate([next.next]);
   }
-
-
-
-
-
-
 
 }

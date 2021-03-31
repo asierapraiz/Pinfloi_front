@@ -1,153 +1,123 @@
 // Styling for the masthead
 
 header.masthead {
-margin-bottom:-100px;
-  position:relative; 
+  margin-bottom: -100px;
+  position: relative;
   text-align: center;
   color: $amarillo;
   //-webkit-transition:background-image, 1.5s;
   //-transition:background-image, 1.5s;
-  background-image: url('../../assets/img/header-bg-2.jpg');
+  background-image: url("../../assets/img/header-bg-1.png");
   background-repeat: no-repeat;
   background-attachment: scroll;
-  background-position:  25% 60%; 
+  background-position: 25% 60%;
   background-size: cover;
 
- 
   .intro-text {
     padding-top: 100px;
     padding-bottom: 20px;
 
-    
-
     .intro-lead-in {
-      visibility:hidden;
+      visibility: hidden;
       font-size: 60px;
       //font-style: italic;
       line-height: 10px;
       margin-bottom: 0px;
-      @include font('dosisextrabold');
+      @include font("dosisextrabold");
       -webkit-text-stroke-width: 2px;
       -webkit-text-stroke-color: white;
     }
 
     .intro-heading {
-     
       font-size: 2.7rem;
       //font-weight: 900;
       line-height: 40px;
       //text-align:left;
       padding-top: 130px;
       margin-bottom: 10px;
-      @include font('dosisextrabold');
+      @include font("dosisextrabold");
       -webkit-text-stroke-width: 1px;
       -webkit-text-stroke-color: rgb(243, 241, 241);
       text-shadow: 0px 0px 40px #4faed3;
     }
-
-    
-
-    
   }
-  .header-img{
-    z-index:-10;
-   position:absolute;
-   width:100%;
-   height:100%;
+  .header-img {
+    z-index: -10;
+    position: absolute;
+    width: 100%;
+    height: 100%;
   }
 
-   .opciones{
-      margin-bottom: 120px;
-    } 
-    .btn-xl{
-      font-size: 18px!important;
-    } 
-
-
-
-  
+  .opciones {
+    margin-bottom: 120px;
+  }
+  .btn-xl {
+    font-size: 18px !important;
+  }
 }
-@media(min-width:768px) {
+@media (min-width: 768px) {
   header.masthead {
     .intro-text {
       padding-top: 0px;
       padding-bottom: 0px;
       .intro-lead-in {
-        font-size: 40px;        
+        font-size: 40px;
         line-height: 40px;
         margin-bottom: 25px;
-        
       }
       .intro-heading {
         font-size: 60px;
         //text-align:left;
         font-weight: 900;
-        line-height: 85px;  
-        padding-top: 75px;      
-        margin-bottom: 0px;        
+        line-height: 85px;
+        padding-top: 75px;
+        margin-bottom: 0px;
         -webkit-text-stroke-width: 2px;
       }
-     
     }
-    .opciones{
+    .opciones {
       margin-bottom: 150px;
-    } 
-    .btn-xl{
-      font-size: 30px!important;
-    }   
-      
-  } 
-  
+    }
+    .btn-xl {
+      font-size: 30px !important;
+    }
+  }
 }
-@media(min-width:1400px) {
+@media (min-width: 1400px) {
   header.masthead {
-
-  margin-bottom:-150px;
+    margin-bottom: -150px;
 
     .intro-text {
       padding-top: 120px;
       //padding-bottom: 120px;
       .intro-lead-in {
         visibility: hidden;
-        font-size: 150px;        
+        font-size: 150px;
         line-height: 40px;
-        margin-bottom: 0px;        
-        
+        margin-bottom: 0px;
       }
       .intro-heading {
-
         font-size: 90px;
         font-weight: 900;
         line-height: 125px;
         margin-top: 100px;
-        
+
         margin-bottom: 0px;
         -webkit-text-stroke-width: 3px;
-        
       }
-
-      
     }
-    .opciones{
+    .opciones {
       margin-bottom: 180px;
     }
 
-     .btn-xl{
-      font-size: 40px!important;
-    }  
-
+    .btn-xl {
+      font-size: 40px !important;
+    }
   }
-  
 }
 
-@media(min-width:1600px) {
+@media (min-width: 1600px) {
   .intro-heading {
-
-        
-        //margin-left:-200px;
-        }
+    //margin-left:-200px;
+  }
 }
-
-
-
-

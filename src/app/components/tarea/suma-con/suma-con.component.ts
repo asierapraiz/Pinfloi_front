@@ -1,5 +1,5 @@
 import { ElementRef, Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { iif, Subscription } from 'rxjs';
 import { TareaService } from './../services/tarea.service';
 import { routeAnimations } from './../../../animations/index';
 import TareaUtils from './../tarea-utils';
@@ -173,7 +173,7 @@ export class SumaConComponent extends TareaUtils implements OnInit {
           if (this.filas[f][c] == ".") {
             fila += "<p class='item llevada vacio' ></p>";
           } else {
-            fila += "<p  id='" + f + "" + c + "' class='item llevada input ' data-valor='" + this.filas[f][c] + "' ></p>";
+            fila += "<p  id='" + f + "" + c + "' class='item llevada input target' data-valor='" + this.filas[f][c] + "' ></p>";
           }
         }
         else if (f < this.filas.length - 1) {
@@ -228,15 +228,19 @@ export class SumaConComponent extends TareaUtils implements OnInit {
       if (columna == 0 || columna == 1) {
         if (columna == "0") {
           document.getElementById(elemento.target.id).classList.add("relacionados");
+          if (document.getElementById((this.columnas + 1) + "1")) {
+            document.getElementById((this.columnas + 1) + "1").classList.add("relacionados");
+          }
 
-          document.getElementById((this.columnas + 1) + "1").classList.add("relacionados");
           for (var a = this.columnas; a >= 1; a--) {
             document.getElementById(a + "1").classList.add("relacionados");
             document.getElementById("01").classList.add("parpadea");
           }
         } else {
           document.getElementById(elemento.target.id).classList.add("relacionados");
-          document.getElementById((this.columnas + 1) + "0").classList.add("relacionados");
+          if (document.getElementById((this.columnas + 1) + "0")) {
+            document.getElementById((this.columnas + 1) + "0").classList.add("relacionados");
+          }
           for (var a = this.columnas; a >= 1; a--) {
             document.getElementById(`${a}${columna}`).classList.add("relacionados");
             document.getElementById("0" + columna).classList.add("parpadea");
@@ -244,17 +248,27 @@ export class SumaConComponent extends TareaUtils implements OnInit {
         }
       } else {
         document.getElementById(elemento.target.id).classList.add("relacionados");
-        document.getElementById("0" + (columna - 1)).classList.add("relacionados");
-        for (var a = this.columnas; a >= 1; a--) {
+        if (document.getElementById("0" + (columna - 1))) {
+          document.getElementById("0" + (columna - 1)).classList.add("relacionados");
+        }
+
+
+        for (var a = 2; a >= 1; a--) {
+          let b = `${a}${columna}`;
           document.getElementById(`${a}${columna}`).classList.add("relacionados");
-          document.getElementById("0" + columna).classList.add("parpadea");
+
+          //document.getElementById("0" + columna).classList.add("parpadea");
         }
       }
     } else if (fila == 0) {
       document.getElementById(elemento.target.id).classList.add("relacionados");
-      document.getElementById((this.columnas + 1) + (columna + 1)).classList.add("relacionados");
+      if (document.getElementById((this.columnas + 1) + (columna + 1))) {
+        document.getElementById((this.columnas + 1) + (columna + 1)).classList.add("relacionados");
+      }
       for (var a = this.columnas; a >= 1; a--) {
-        document.getElementById(`${a}${(columna + 1)}`).classList.add("relacionados");
+        if (document.getElementById(`${a}${(columna + 1)}`)) {
+          document.getElementById(`${a}${(columna + 1)}`).classList.add("relacionados");
+        }
       }
     } else if (fila == 2) { //Si es una suma sin llevada
       //document.getElementById(elemento.target.id).classList.add("relacionados");

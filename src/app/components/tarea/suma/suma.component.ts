@@ -3,6 +3,7 @@ import { TareaService } from './../services/tarea.service';
 import { routeAnimations } from './../../../animations/index';
 import TareaUtils from './../tarea-utils';
 
+
 @Component({
   selector: 'app-suma',
   templateUrl: './suma.component.html',
@@ -172,7 +173,7 @@ export class SumaComponent extends TareaUtils implements OnInit {
           if (this.filas[f][c] == ".") {
             fila += "<p class='item llevada vacio' ></p>";
           } else {
-            fila += "<p  id='" + f + "" + c + "' class='item llevada input ' data-valor='" + this.filas[f][c] + "' ></p>";
+            fila += "<p  id='" + f + "" + c + "' class='item llevada input target' data-valor='" + this.filas[f][c] + "' ></p>";
           }
         }
         else if (f < this.filas.length - 1) {
@@ -220,12 +221,11 @@ export class SumaComponent extends TareaUtils implements OnInit {
 
     var fila = elemento.target.id[0];
     var columna = elemento.target.id[1];
-
+    document.getElementById(elemento.target.id).classList.add("relacionados");
     if (fila == 3) {
       //Si es el último valor...
       if (columna == 0 || columna == 1) {
         if (columna == "0") {
-          document.getElementById(elemento.target.id).classList.add("relacionados");
 
           document.getElementById((this.columnas + 1) + "1").classList.add("relacionados");
           for (var a = this.columnas; a >= 1; a--) {
@@ -233,7 +233,7 @@ export class SumaComponent extends TareaUtils implements OnInit {
             document.getElementById("01").classList.add("parpadea");
           }
         } else {
-          document.getElementById(elemento.target.id).classList.add("relacionados");
+
           document.getElementById((this.columnas + 1) + "0").classList.add("relacionados");
           for (var a = this.columnas; a >= 1; a--) {
             document.getElementById(`${a}${columna}`).classList.add("relacionados");
@@ -241,7 +241,7 @@ export class SumaComponent extends TareaUtils implements OnInit {
           }
         }
       } else {
-        document.getElementById(elemento.target.id).classList.add("relacionados");
+
         document.getElementById("0" + (columna - 1)).classList.add("relacionados");
         for (var a = this.columnas; a >= 1; a--) {
           document.getElementById(`${a}${columna}`).classList.add("relacionados");
@@ -249,13 +249,13 @@ export class SumaComponent extends TareaUtils implements OnInit {
         }
       }
     } else if (fila == 0) {
-      document.getElementById(elemento.target.id).classList.add("relacionados");
+
       document.getElementById((this.columnas + 1) + (columna + 1)).classList.add("relacionados");
       for (var a = this.columnas; a >= 1; a--) {
         document.getElementById(`${a}${(columna + 1)}`).classList.add("relacionados");
       }
     } else if (fila == 2) { //Si es una suma sin llevada
-      //document.getElementById(elemento.target.id).classList.add("relacionados");
+
       document.getElementById("1" + columna).classList.add("relacionados");
       document.getElementById("0" + columna).classList.add("relacionados");
 

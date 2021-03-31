@@ -11,18 +11,18 @@
             <div *ngIf="!todoOK" class="header">
 
                 <ul class="errores">
-                    <li *ngIf="seleccion.avatar['definido']== false ">
+                    <li *ngIf="reto.avatar['definido']== false ">
                         <h3 class="modal-title " id="modal-basic-title">El avatar
                         </h3>
                     </li>
-                    <li *ngIf="seleccion.nombre =='' ">
+                    <li *ngIf="reto.nombre =='' ">
                         <h3 class="modal-title " id="modal-basic-title">El nombre</h3>
                     </li>
-                    <li *ngIf="seleccion.tareasSeleccionadas.length==0 ">
+                    <li *ngIf="reto.tareasSeleccionadas.length==0 ">
                         <h3 class="modal-title " id="modal-basic-title">
                             Las tareas</h3>
                     </li>
-                    <li *ngIf="seleccion.juegosSeleccionados.length==0 ">
+                    <li *ngIf="reto.juegosSeleccionados.length==0 ">
                         <h3 class="modal-title " id="modal-basic-title">
                             El juego
                         </h3>
@@ -48,18 +48,18 @@
             <h1 class="modal-title" id="modal-basic-title">Te faltan datos por rellenar</h1>
 
             <ul class="alert">
-                <li *ngIf="seleccion.avatar['definido']== false ">
+                <li *ngIf="reto.avatar['definido']== false ">
                     <h3 class="modal-title " id="modal-basic-title">El avatar
                     </h3>
                 </li>
-                <li *ngIf="seleccion.nombre =='' ">
+                <li *ngIf="reto.nombre =='' ">
                     <h3 class="modal-title " id="modal-basic-title">El nombre</h3>
                 </li>
-                <li *ngIf="seleccion.tareasSeleccionadas.length==0 ">
+                <li *ngIf="reto.tareasSeleccionadas.length==0 ">
                     <h3 class="modal-title " id="modal-basic-title">
                         Las tareas</h3>
                 </li>
-                <li *ngIf="seleccion.juegosSeleccionados.length==0 ">
+                <li *ngIf="reto.juegosSeleccionados.length==0 ">
                     <h3 class="modal-title " id="modal-basic-title">
                         El juego
                     </h3>
@@ -69,18 +69,18 @@
         </div>
         <div class="modal-body ">
             <ul class="alert">
-                <li *ngIf="seleccion.avatar['definido']== false ">
+                <li *ngIf="reto.avatar['definido']== false ">
                     <h3 class="modal-title " id="modal-basic-title">El avatar
                     </h3>
                 </li>
-                <li *ngIf="seleccion.nombre =='' ">
+                <li *ngIf="reto.nombre =='' ">
                     <h3 class="modal-title " id="modal-basic-title">El nombre</h3>
                 </li>
-                <li *ngIf="seleccion.tareasSeleccionadas.length==0 ">
+                <li *ngIf="reto.tareasSeleccionadas.length==0 ">
                     <h3 class="modal-title " id="modal-basic-title">
                         Las tareas</h3>
                 </li>
-                <li *ngIf="seleccion.juegosSeleccionados.length==0 ">
+                <li *ngIf="reto.juegosSeleccionados.length==0 ">
                     <h3 class="modal-title " id="modal-basic-title">
                         El juego
                     </h3>

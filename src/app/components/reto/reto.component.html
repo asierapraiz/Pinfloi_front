@@ -1,0 +1,68 @@
+<section class="seleccion">
+    <img class="bg" src="assets/img/fondos/fondoDibujosB.png" alt="">
+    <div class="aside">
+
+        <div class="avatar ">
+
+            <div id="aside-foto" class="foto enlace" routerLink="./avatar">
+                <img class="img-fluid" src="assets/img/avatar/marco.png" />
+                <img id="indefinido-aside" class="img-fluid " src="assets/img/avatar/sin-avatar.png" />
+                <img class="img-fluid torso d-none" src="assets/img/avatar/torsos/torso_{{avatar.torso}}.png" />
+                <img class="img-fluid cara d-none" src="assets/img/avatar/caras/cara_{{avatar.cara}}.png" />
+                <img class="img-fluid ojos d-none" src="assets/img/avatar/ojos/ojo_{{avatar.ojos}}.png" />
+                <img class="img-fluid cejas d-none" src="assets/img/avatar/cejas/cejas_{{avatar.cejas}}.png" />
+                <img class="img-fluid pelo d-none" src="assets/img/avatar/pelos/pelo_{{avatar.pelo}}.png" />
+                <img class="img-fluid boca d-none" src="assets/img/avatar/bocas/boca_{{avatar.boca}}.png" />
+                <img class="img-fluid nariz d-none" src="assets/img/avatar/nariz/nariz_{{avatar.nariz}}.png" />
+            </div>
+
+            <div id="username" class="nombre enlace" routerLink="./nombre">
+                <p>{{nombre}}</p>
+            </div>
+        </div>
+
+
+        <h1 @flyInFromLeft *ngIf="tareasSeleccionadas.length>0" routerLink="./tareas" class="enlace">Tareas</h1>
+        <ul class="tareas">
+            <li @flyInFromLeft *ngFor="let tarea of tareasSeleccionadas; index as index">
+                <div class="inner tarea-seleccionada ">
+                    <span>{{ tarea.name }}</span>
+                </div>
+                <span (click)="delete('tarea',index)" class=" trash"><i class="fa fa-trash"></i></span>
+            </li>
+        </ul>
+        <br>
+        <h1 class="enlace" @flyInFromLeft *ngIf="juegosSeleccionados.length>0" routerLink="./juegos">Juegos</h1>
+        <ul class="juegos">
+            <li @flyInFromLeft *ngFor="let juego of juegosSeleccionados; index as index" class=" ">
+                <div class="inner juego-seleccionado">
+                    <span>{{ juego.name }}</span>
+                    <div class="juego-img"><img class="img-fluid" src="./../../assets/img/juegos/{{juego.name}}.png" />
+                    </div>
+                </div>
+                <span (click)="delete('juego',index)" class=" trash"><i class="fa fa-trash"></i></span>
+            </li>
+        </ul>
+
+    </div>
+    <div class="body">
+        <div class="main-route-container" [@routerAnimations]="prepRouteTransition(outlet)">
+            <router-outlet #outlet="outlet"></router-outlet>
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <!--Arrow-->
+
+        <a (click)="before()" class="js-scroll-trigger btn-primary shadow-pulse mLateral fromLeft">
+            <i class="fa fa-angle-double-left">
+            </i>
+        </a>
+
+        <a *ngIf="hasNext" (click)="next()" class="js-scroll-trigger btn-primary shadow-pulse mLateral fromRight">
+            <i class="fa fa-angle-double-right">
+            </i>
+        </a>
+    </div>
+</section>

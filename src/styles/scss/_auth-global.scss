@@ -1,40 +1,154 @@
- @import "variables.scss";
+@import "variables.scss";
 
-
-.container{
-	margin: 0 auto;
-	padding-right:2px!important;
-	padding-left:2px!important;
-	display: -webkit-flex; /* Safari */
-	  -webkit-justify-content: center; /* Safari 6.1+ */
-	  display: flex;
-	  justify-content: center;
+h1 {
+	font-size: 40pt;
+	color: white;
 }
 
-.caja{
-	border:1px solid #fff;
-	border-radius:10px;
-	box-shadow:-2px 2px 16px 3px rgba(0,0,0,0.5);
-	-webkit-transition:box-shadow, .5s;
-	margin:auto;
-	background:$primary;
-	text-align:center;
+.caja {
+	border: 1px solid #fff;
+	border-radius: 10px;
+	box-shadow: -2px 2px 16px 3px rgba(0, 0, 0, 0.5);
+	-webkit-transition: box-shadow, 0.5s;
+	margin: auto;
+	background: $primary;
+	text-align: center;
 	margin-bottom: 5px;
 
-	&.caja:hover{
-		box-shadow:none;
+	&.caja:hover {
+		box-shadow: none;
 	}
 }
+.form-control:focus {
+	background-color: transparent !important;
+	color: white !important;
+}
+input,
+button {
+	outline: none;
+	font-size: 25pt;
+}
 
-.web{	
-	margin-top:10px;	
-	@media(min-width:768px){
-		margin-top:50px;	
-	}
+input[type="text"],
+input[type="email"] {
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	border-bottom: 1px solid white;
+	background-color: transparent;
+	padding: 10px;
+	margin: 10px;
+	//width:250px;
 
-	@media(min-width:1200px) and (max-width:1400px) {
-		margin-top:15px;
-		max-width:500px;
-		padding:0px 20px;
+	color: #fff;
+	//font-family:"Nunito", sans-serif;
+	font-size: 20pt;
+	font-weight: bold;
+	-webkit-transition: border-bottom, 0.5s;
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover {
+	border-bottom: 1px solid white;
+}
+
+input[type="password"] {
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	border-bottom: 1px solid white;
+	background-color: transparent;
+	padding: 10px;
+	margin: 10px;
+	//width:250px;
+	color: #fff;
+	//font-family:"Nunito", sans-serif;
+	font-size: 17pt;
+	-webkit-transition: border-bottom, 0.5s;
+}
+
+input[type="password"]:hover {
+	border-bottom: 1px solid white;
+}
+
+input[type="submit"],
+button[type="submit"],
+.avatar-btn,
+.next-btn {
+	border: 1px solid #fff;
+	border-radius: 50px;
+	display: inline-block;
+	margin: 0 auto;
+	background: rgba(3, 84, 245, 1);
+	background: -moz-linear-gradient(
+		45deg,
+		rgba(3, 84, 245, 1) 0%,
+		rgba(39, 230, 230, 1) 87%,
+		rgba(39, 230, 230, 1) 100%
+	);
+	background: -webkit-gradient(
+		left bottom,
+		right top,
+		color-stop(0%, rgba(3, 84, 245, 1)),
+		color-stop(87%, rgba(39, 230, 230, 1)),
+		color-stop(100%, rgba(39, 230, 230, 1))
+	);
+	background: -webkit-linear-gradient(
+		45deg,
+		rgba(3, 84, 245, 1) 0%,
+		rgba(39, 230, 230, 1) 87%,
+		rgba(39, 230, 230, 1) 100%
+	);
+	background: -o-linear-gradient(
+		45deg,
+		rgba(3, 84, 245, 1) 0%,
+		rgba(39, 230, 230, 1) 87%,
+		rgba(39, 230, 230, 1) 100%
+	);
+	background: -ms-linear-gradient(
+		45deg,
+		rgba(3, 84, 245, 1) 0%,
+		rgba(39, 230, 230, 1) 87%,
+		rgba(39, 230, 230, 1) 100%
+	);
+	background: linear-gradient(45deg, rgba(3, 84, 245, 1) 0%, rgba(39, 230, 230, 1) 87%, rgba(39, 230, 230, 1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0354f5', endColorstr='#27e6e6', GradientType=1 );
+
+	padding: 0.3rem 3rem;
+	margin: 0px 10px 20px 10px;
+	//font-family:"Raleway", sans-serif;
+	font-size: 25pt;
+	color: #fff;
+	box-shadow: -2px 2px 16px 3px rgba(0, 0, 0, 0.5);
+	-webkit-transition: box-shadow, background, 0.5s;
+
+	@media (min-width: 1200px) and (max-width: 1400px) {
+		margin: 30px 0px;
 	}
+	@media (min-width: 1400) {
+		margin: 50px 10px 20px 10px;
+		padding: 10px 50px;
+	}
+}
+input[type="submit"]:hover,
+button[type="submit"]:hover,
+.avatar-btn:hover,
+.next-btn:hover {
+	box-shadow: none;
+	background: $amarillo;
+}
+
+.clc {
+	color: #fff;
+	font-size: 18pt;
+	margin: auto auto;
+}
+
+.error-message {
+	font-size: 0.8rem;
+	color: rgb(94, 109, 128) !important;
+	position: absolute;
+}
+input.ng-touched.ng-invalid {
+	border-color: rgb(94, 109, 128) !important;
 }

@@ -10,13 +10,14 @@ export class LocalStorageService {
   constructor() { }
 
   //Getters
-  getAvatar() { return JSON.parse(localStorage.getItem("avatar") || "[]"); }
-  getUser() { return localStorage.getItem("nombre"); }
-  getTareaActual() { JSON.parse(localStorage.getItem("tareaActual") || "[]"); };
+  sessionGetAvatar() { return JSON.parse(sessionStorage.getItem("avatar") || "[]"); }
+  sessionGetUser() { return JSON.parse(sessionStorage.getItem("usuario") || "[]"); }
+  getTareaActual() { return JSON.parse(localStorage.getItem("tareaActual") || "[]"); };
+  sessionGetNombre() { return sessionStorage.getItem("nombre") || "desconocido" };
 
   //Setters
-  setNombre(nombre) { localStorage.setItem('nombre', JSON.stringify(nombre)); };
-  setAvatar(avatar) { localStorage.setItem('avatar', JSON.stringify(avatar)); }
+  sessionSetNombre(nombre) { sessionStorage.setItem('nombre', nombre); };
+  setAvatar(avatar) { sessionStorage.setItem('avatar', JSON.stringify(avatar)); }
   setJuegos(juegosSeleccionados) { localStorage.setItem('juegos', JSON.stringify(juegosSeleccionados)); }
   setTareas(tareasSeleccionadas) { localStorage.setItem('tareas', JSON.stringify(tareasSeleccionadas)); }
   setTareaActual(tareasSeleccionadas) { localStorage.setItem('tareaActual', JSON.stringify(tareasSeleccionadas)); }
@@ -27,6 +28,8 @@ export class LocalStorageService {
 
   setSeleccion(seleccion) { localStorage.setItem('seleccion', JSON.stringify(seleccion)); }
   getSeleccion() { return JSON.parse(localStorage.getItem("seleccion") || "{}") };
+
+  clear() { localStorage.clear(); }
 
 
 }

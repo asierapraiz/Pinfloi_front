@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Avatar } from './avatar.model';
-import { Router } from '@angular/router';
+import { Avatar } from './../../core/models/avatar.model';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from "../../core/services/local-storage.service";
 import { fadeInAnimation } from './../../animations';
-import { SeleccionService } from './../seleccion/services/seleccion.service';
+import { RetoService } from './../reto/services/reto.service';
+import { AvatarService } from './../../core/services/avatar.service';
+import { AuthService } from '../usuarios/service/auth.service';
+
+
 
 
 
@@ -12,21 +16,12 @@ import { SeleccionService } from './../seleccion/services/seleccion.service';
 @Component({
   selector: 'app-avatar-form',
   templateUrl: './avatar-form.component.html',
-  styleUrls: ['./avatar-form.component.scss', './../../../styles/scss/auth.scss'],
+  styleUrls: ['./avatar-form.component.scss'],
   animations: [fadeInAnimation]
 })
 export class AvatarFormComponent implements OnInit {
 
-  public avatar: Avatar = {
-    definido: false,
-    pelo: 'pelo_1',
-    cejas: 'cejas_1',
-    ojos: 'ojo_1',
-    nariz: 'nariz_1',
-    boca: 'boca_1',
-    cara: 'cara_1',
-    torso: 'torso_1'
-  };
+  public avatar: Avatar = new Avatar();
 
   pelos = Array(30).fill(null).map((x, i) => i + 1);
   ojos = Array(24).fill(null).map((x, i) => i + 1);
@@ -51,33 +46,48 @@ export class AvatarFormComponent implements OnInit {
   private torsoAzul = 'hue-rotate(0deg) brightness(100%) saturate(1) contrast(100%) sepia(0)';
 
 
-  constructor(private ss: SeleccionService, private localStorage: LocalStorageService, private router: Router) { }
+  constructor(private avatarService: AvatarService,
+    private retoService: RetoService,
+    private localStorage: LocalStorageService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    public authService: AuthService) { }
 
   ngOnInit(): void {
 
-    if (this.localStorage.getSeleccion().avatar && this.localStorage.getSeleccion().avatar.definido == true) {
-      this.avatar = this.localStorage.getSeleccion().avatar;
+    this.activatedRoute.paramMap.subscribe(params => {
+      let clienteId = +params.get('registro');
+
+    });
+
+    if (!this.authService.isAuthenticated() && this.localStorage.getSeleccion().avatar) {
+      this.avatar = this.authService.usuario.avatar;
       this.seleccion();
     }
-
   }
 
   seleccion() {
+
     let elements = document.getElementsByClassName('d-none');
     while (elements.length > 0) {
       elements[0].classList.remove("d-none");
     }
-    document.querySelector('#indefinido').classList.add("d-none");
-    document.querySelector('#indefinido-aside').classList.add("d-none");
+    document.querySelector('#indefinido')?.classList.add("d-none");
+    document.querySelector('#indefinido-aside')?.classList.add("d-none");
 
-    this.avatar.definido = true;
-    this.ss.seleccionaAvatar(this.avatar);
+    this.retoService.seleccionaAvatar(this.avatar);
   };
 
   continuar() {
-    this.localStorage.setAvatar(this.avatar);
-    let tareaActual = JSON.parse(localStorage.getItem("tareaActual") || "[]");
-    this.router.navigateByUrl('/tarea/' + tareaActual.name);
+    if (this.authService.isAuthenticated()) {
+      this.avatarService.saveUserAvatar(this.avatar).subscribe(user => {
+        this.authService.guardarAvatar(this.avatar);
+        this.router.navigate(['reto/tareas']);
+      });
+    } else {
+      this.localStorage.setAvatar(this.avatar);
+      let tareaActual = JSON.parse(localStorage.getItem("tareaActual") || "[]");
+      this.router.navigateByUrl('/reto/tareas');
+    }
   }
-
 }

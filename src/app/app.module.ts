@@ -39,9 +39,11 @@ import { TareasComponent } from './components/tareas/tareas.component';
 import { JuegosComponent } from './components/juegos/juegos.component';
 import { SeleccionComponent } from './components/seleccion/seleccion.component';
 import { ResumenComponent } from './components/resumen/resumen.component';
-
-
-
+import { RetoComponent } from './components/reto/reto.component';
+import { RegistroBgComponent } from './components/registro-bg/registro-bg.component';
+import { NodoComponent } from './components/nodo/nodo.component';
+import { NodoDosComponent } from './components/nodo-dos/nodo-dos.component';
+import { NodoBgComponent } from './components/nodo-bg/nodo-bg.component';
 
 
 
@@ -49,6 +51,7 @@ registerLocaleData(localeES, 'es');
 
 const routes: Routes = [
   { path: 'landing', component: LandingComponent, data: { animation: 'LandingPage' } },
+  { path: 'nodo-bg', component: LandingComponent, data: { animation: 'NodoBgPage' } },
   { path: 'directivas', component: DirectivaComponent },
   { path: 'clientes', component: ClientesComponent },
   { path: 'clientes/page/:page', component: ClientesComponent },
@@ -57,26 +60,40 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'facturas/:id', component: DetalleFacturaComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_USER' } },
   { path: 'facturas/form/:clienteId', component: FacturasComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' } },
-  { path: 'registro', component: RegistroComponent },
+
   { path: 'recuperar_pass', component: RecuperarPassComponent },
   { path: 'user/changePassword', component: ChangePassComponent },
   { path: 'juego/:id', component: JuegoComponent, data: { animation: 'GamePage' } },
+  { path: 'avatar', component: AvatarFormComponent, data: { animation: '5' } },
   {
-    path: 'seleccion', component: SeleccionComponent, data: { animation: 'SeleccionPage' },
+    path: 'nodo-bg', component: NodoBgComponent, data: { animation: 'NodoBg' },
     children: [
-      { path: '', component: TareasComponent, data: { animation: '1' } },
-      { path: 'tareas', component: TareasComponent, data: { animation: '2' } },
-      { path: 'juegos', component: JuegosComponent, data: { animation: '3' } },
+      { path: 'nodo', component: NodoComponent, data: { animation: 'Nodo' } },
+      { path: 'nodo-dos', component: NodoDosComponent, data: { animation: 'NodoDos' } },
+      { path: 'login', component: LoginComponent, data: { animation: 'Login' } },
+      { path: 'nombre', component: NombreFormComponent, data: { animation: 'Nombre' } },
+      { path: 'avatar', component: AvatarFormComponent, data: { animation: 'Avatar' } }
+    ]
+  },
+  {
+    path: 'reto', component: RetoComponent, data: { animation: 'RetoPage' },
+    children: [
+      { path: 'tareas', component: TareasComponent, data: { animation: '1' } },
+      { path: 'juegos', component: JuegosComponent, data: { animation: '2' } },
+      { path: 'login', component: LoginComponent, data: { animation: '3' } },
       { path: 'nombre', component: NombreFormComponent, data: { animation: '4' } },
       { path: 'avatar', component: AvatarFormComponent, data: { animation: '5' } },
       { path: 'resumen', component: ResumenComponent, data: { animation: '6' } },
-
-
-
     ]
   },
-
-
+  {
+    path: 'registro-bg', component: RegistroBgComponent, data: { animation: 'RegistroPage' },
+    children: [
+      { path: 'registro', component: RegistroComponent, data: { animation: '1' } },
+      { path: 'login', component: LoginComponent, data: { animation: '2' } },
+      { path: 'avatar', component: AvatarFormComponent, data: { animation: '3' } }
+    ]
+  },
   {
     path: 'tarea', loadChildren: () => import('./components/tarea/tarea.module').then(m => m.TareaModule)
   },
@@ -104,7 +121,12 @@ const routes: Routes = [
     TareasComponent,
     JuegosComponent,
     SeleccionComponent,
-    ResumenComponent
+    ResumenComponent,
+    RetoComponent,
+    RegistroBgComponent,
+    NodoComponent,
+    NodoDosComponent,
+    NodoBgComponent
   ],
   imports: [
     SharedModule,

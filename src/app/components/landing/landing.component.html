@@ -15,7 +15,7 @@
           <!-- <a class="nav-link js-scroll-trigger" (click)="scroll('portfolio')">
             Tareas
           </a> -->
-          <a [routerLink]="'/seleccion/tareas'" class="nav-link js-scroll-trigger">
+          <a [routerLink]="'/nodo-bg/nodo'" class="nav-link js-scroll-trigger">
             Tareas
           </a>
         </li>
@@ -34,18 +34,36 @@
             Resultados
           </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link js-scroll-trigger" (click)="scroll('team')">
             Equipo
           </a>
-        </li>
-        <li class="nav-item">
+        </li> -->
+        <!-- <li class="nav-item">
           <a class="nav-link js-scroll-trigger" (click)="scroll('contact')">
             Contacto
           </a>
+        </li> -->
+
+
+        <li class="nav-item " *ngIf="!authService.isAuthenticated()"><a [routerLink]="['/nodo-bg/login']"
+            class=" nav-link js-scroll-trigger">Login</a></li>
+        <li class="nav-item " *ngIf="!authService.isAuthenticated()"><a [routerLink]="['/registro-bg/registro']"
+            class="nav-link js-scroll-trigger">Registro</a>
         </li>
-      </ul>
+
+        <li *ngIf="authService.isAuthenticated()" class="dropdown nav-item">
+          <a class="nav-link js-scroll-trigger  dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{authService.usuario.username}}
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <li (click)="logout()" class="dropdown-item nav-item" type="submit">Sign Out</li>
     </div>
+    </li>
+    </ul>
+  </div>
   </div>
 </nav>
 
@@ -56,8 +74,9 @@
     <div class="row d-flex justify-content-center ">
       <div class="intro-text col-12 col-md-12">
         <h2 class="intro-heading ">
-          Aprende jugando
+          Diseña tu reto
         </h2>
+
 
       </div>
 
@@ -66,16 +85,16 @@
 
     <div class=" col-12 d-flex justify-content-center opciones">
       <!--
-            <a class="btn btn-primary btn-xl js-scroll-trigger m-1 " href="{{route('login')}}">
-                Tienes cuenta?
-            </a>
-            <a class="btn btn-primary btn-xl js-scroll-trigger m-1 " href="{{route('register')}}">
-                Crea una!!
-            </a>-->
-      <a class="btn btn-primary btn-xl js-scroll-trigger m-1 shadow-pulse" (click)="onClick('portfolio')"
+      <a class="btn btn-primary btn-xl js-scroll-trigger m-1 " href="{{route('login')}}">
+        Tienes cuenta?
+      </a>-->
+      <a class="btn btn-primary btn-xl js-scroll-trigger m-1 shadow-pulse" [routerLink]="['/nodo-bg/nodo']">
+        Adelate!!
+      </a>
+      <!-- <a class="btn btn-primary btn-xl js-scroll-trigger m-1 shadow-pulse" (click)="onClick('portfolio')"
         id="prueba-primero">
         Pruébalo
-      </a>
+      </a> -->
     </div>
   </div>
 </header>

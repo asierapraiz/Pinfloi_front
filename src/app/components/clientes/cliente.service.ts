@@ -8,9 +8,10 @@ import { Observable, throwError } from 'rxjs';
 
 import { Router } from '@angular/router';
 
+
 @Injectable()
 export class ClienteService {
-  private urlEndPoint: string = Constants.API_ENDPOINT+'api/clientes';
+  private urlEndPoint: string = Constants.API_ENDPOINT + 'api/clientes';
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -98,4 +99,6 @@ export class ClienteService {
 
     return this.http.request(req);
   }
+
+
 }

@@ -1,14 +1,33 @@
-#alta{
-    margin-top:10px;   
-    padding:25px 15px 25px 0px; 
+#registro {
+	margin-top: 10px;
+	padding: 25px 15px 25px 0px;
 
-    @media(min-width:768px){
-		margin-top:50px;
-		padding:50px;		
+	color: #fff;
+	font-size: 15pt;
+
+	#registro-guardar {
+		margin: 30px;
 	}
 
-	@media(min-width:1200px) and (max-width:1400px) {
-		margin:20px;	
-		padding:30px;
+	.form-group {
+		margin-bottom: 0.5rem;
+	}
+
+	.icono {
+		background-color: transparent;
+		color: rgb(99, 124, 145);
+		border: none;
+		cursor: pointer;
+		font-size: 18pt;
+	}
+	@media (min-width: 768px) {
+		margin-top: 10px;
+		padding: 50px;
+	}
+
+	@media (min-width: 1600px) {
+		margin-top: 50px;
+		padding: 30px;
+		font-size: 20pt;
 	}
 }

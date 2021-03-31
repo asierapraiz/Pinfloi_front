@@ -1,6 +1,7 @@
-<div class="row container">
-    <div class=" col-10 col-md-6 col-xl-5 caja" id="logeo">
+<div class="d-flex justify-content-center ">
+    <div class=" col-10 col-md-6 col-xl-4 caja" id="logeo">
 
+        {{"En nombre"}}
         <div class="cosa" id="cosa">
             <div [ngClass]="['animacion', 'paused']" class="animacion" id="cara">
                 <div class="ojo animacion" id="ojoIzq">
@@ -20,15 +21,17 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
+
+        <div class="form-group w-100">
             <i class="fa fa-user clc">
             </i>
-            <input class="col-10" [(ngModel)]="nombre" (change)="keyUp()" (input)="keyDown()" id="tuNombre"
-                name="tuNombre" placeholder="Tu nombre" required="" type="text" />
-
+            <input [(ngModel)]="nombre" type="text" (change)="keyUp()" (input)="keyDown()" class="" name="username"
+                id="username" placeholder="Tu nombre" autofocus required>
         </div>
-        <!-- <input class="" (click)="start()" type="submit" value="OK"/>-->
-        {{nombre}}
+
+        <input id="enviar" [routerLink]="['/reto/nombre']" (click)="start()" type="submit"
+            class="btn btn-lg btn-primary " value="Ok">
+
 
     </div>
 </div>

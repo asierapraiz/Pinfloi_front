@@ -1,22 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalStorageService } from "../../core/services/local-storage.service";
-import { SeleccionService } from './../seleccion/services/seleccion.service';
+import { RetoService } from './../reto/services/reto.service';
+import { Usuario } from '../usuarios/models/usuario';
+import { AuthService } from '../usuarios/service/auth.service';
+import swal from 'sweetalert2';
 
 
 
 @Component({
   selector: 'app-nombre-form',
   templateUrl: './nombre-form.component.html',
-  styleUrls: ['./nombre-form.component.scss', './../../../styles/scss/auth.scss']
+  styleUrls: ['./nombre-form.component.scss']
 })
 export class NombreFormComponent implements OnInit {
 
   nombre: string;
   animacion: boolean;
   paused: boolean;
+  usuario: Usuario = new Usuario();
 
-  constructor(private ss: SeleccionService, private localStorage: LocalStorageService, private router: Router) { }
+  constructor(private authService: AuthService, private retoService: RetoService, private localStorage: LocalStorageService, private router: Router) { }
 
   ngOnInit(): void {
     if (this.localStorage.getSeleccion().nombre) {
@@ -25,20 +29,20 @@ export class NombreFormComponent implements OnInit {
   }
 
   keyDown() {
-    this.ss.seleccionaNombre(this.nombre);
+    //this.retoService.seleccionaNombre(this.nombre);
     //console.log("Tamaño nombre :" + this.nombre.length);
     this.animacion = false;
     this.paused = true;
 
-    if (this.nombre.length < 20) {
-      document.getElementById('cara').style.left = (0 + this.nombre.length) + "px";
+    if (this.usuario.username.length < 20) {
+      document.getElementById('cara').style.left = (0 + this.usuario.username.length) + "px";
       document.getElementById('cara').style.top = 25 + "px";
-      document.getElementById('ojoIzq').style.left = 5 + (2 * this.nombre.length) + "px";
-      document.getElementById('irisIzq').style.left = 5 + (0.2 * this.nombre.length) + "px";
-      document.getElementById('brilloIzq').style.left = 5 + (0.2 * this.nombre.length) + "px";
-      document.getElementById('ojoDch').style.left = 45 + (2 * this.nombre.length) + "px";
-      document.getElementById('irisIzq').style.left = 5 + (0.2 * this.nombre.length) + "px";
-      document.getElementById('brilloIzq').style.left = 5 + (0.2 * this.nombre.length) + "px";
+      document.getElementById('ojoIzq').style.left = 5 + (2 * this.usuario.username.length) + "px";
+      document.getElementById('irisIzq').style.left = 5 + (0.2 * this.usuario.username.length) + "px";
+      document.getElementById('brilloIzq').style.left = 5 + (0.2 * this.usuario.username.length) + "px";
+      document.getElementById('ojoDch').style.left = 45 + (2 * this.usuario.username.length) + "px";
+      document.getElementById('irisIzq').style.left = 5 + (0.2 * this.usuario.username.length) + "px";
+      document.getElementById('brilloIzq').style.left = 5 + (0.2 * this.usuario.username.length) + "px";
     }
 
   }
@@ -68,10 +72,16 @@ export class NombreFormComponent implements OnInit {
     this.paused = false;
   }
 
-  start() {
-    this.localStorage.setNombre(this.nombre);
 
-    this.router.navigateByUrl('/avatar');
+
+  start() {
+
+    this.localStorage.sessionSetNombre(this.nombre);
+    this.router.navigateByUrl('/nodo-bg/avatar');
+    //this.retoService.seleccionaNombre(this.nombre);
+
+    //let tareaActual = JSON.parse(localStorage.getItem("tareaActual") || "[]");
+    //this.router.navigateByUrl('/tarea/' + tareaActual.name);
   }
 
 

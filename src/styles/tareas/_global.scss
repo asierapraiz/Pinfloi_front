@@ -190,7 +190,7 @@ body {
 				}
 
 				.nombre {
-					font-size: 7em;
+					font-size: 4em;
 				}
 
 				h2 {
@@ -460,7 +460,7 @@ body {
 			padding: 5%;
 
 			.nombre {
-				font-size: 400%;
+				font-size: 4rem;
 			}
 			.tarea {
 				font-weight: bold;
@@ -475,7 +475,8 @@ body {
 		width: 30px;
 		height: 600px;
 		display: flex;
-		align-items: flex-end;
+		//align-items: flex-end;
+		z-index: 10;
 	}
 	.vadorrin {
 		z-index: -1;
@@ -497,7 +498,13 @@ body {
 		}
 
 		@media (min-width: 1370px) {
-			width: 150%;
+			width: 130%;
+			height: auto;
+			left: -5px;
+		}
+
+		@media (min-width: 1600px) {
+			width: 140%;
 			height: auto;
 			left: -15px;
 		}
@@ -525,6 +532,14 @@ body {
 
 		text-align: center;
 		padding: 35px 35px;
+
+		.resultado {
+			margin-top: 2%;
+		}
+
+		.division .resultado {
+			margin-top: 0.5%;
+		}
 
 		.pizarra-header {
 			position: absolute;

@@ -1,366 +1,322 @@
-#avatar-container{
-	margin-top:10px;
-    font-weight:bold;   
+#avatar-container {
+    margin-top: 10px;
+    font-weight: bold;
 
-    .avatar{
-        height:15rem;
-    }
-  
-
-	h1{		
-		color:white;
-		text-shadow: 0 0 3px black;
-	}
-
-	#guardar {
-		font-size:15pt;
-		padding:7px 20px;
-		margin-left:5px;
-		margin-top:5px;
-		margin-bottom:20px; 
-	}
-
-    .foto{
-      margin:0 auto;
-      position:relative;
-      width:70%;
-      height:auto;
+    .avatar {
+        height: 15rem;
     }
 
-    .foto>.img-fluid{
-      position:absolute;
-      top:0px;
-      left:0%;  
+    h1 {
+        color: white;
+        text-shadow: 0 0 3px black;
     }
 
-    #soporte-foto{
-        margin-bottom:2%;
-        width:40%;
-        float:left;
+    .foto {
+        margin: 0 auto;
+        position: relative;
+        width: 70%;
+        height: auto;
+    }
+
+    .foto > .img-fluid {
+        position: absolute;
+        top: 0px;
+        left: 0%;
+    }
+
+    #soporte-foto {
+        margin-bottom: 2%;
+        width: 40%;
+        float: left;
         //display:inline-block;
     }
 
-    .selectores{
-        margin-bottom:2%;
-        width:50%;
-        float:right;
-        
+    .selectores {
+        margin-bottom: 2%;
+        width: 50%;
+        float: right;
     }
 
-    #avatar-container .img-fluid{
-        border-color:white!important;        
+    #avatar-container .img-fluid {
+        border-color: white !important;
     }
 
-	.titulo-selector{
-
+    .titulo-selector {
         color: white;
-        @include font('dosisbold');
+        @include font("dosisbold");
         font-size: 1.2rem;
-        font-weight:bold;
-        margin-right:5px;
-        
+        font-weight: bold;
+        margin-right: 5px;
     }
 
-    .avatar-box, .img-fluid{
-        border-radius:10px!important;
+    .avatar-box,
+    .img-fluid {
+        border-radius: 10px !important;
     }
 
-    .tab-pane.active{
-        border-color:transparent!important;
+    .tab-pane.active {
+        border-color: transparent !important;
     }
 
-    .tab-content{
-        border-color:transparent!important;
+    .tab-content {
+        border-color: transparent !important;
     }
 
-    .nav-tabs{
-        border-bottom:0px solid transparent!important;
+    .nav-tabs {
+        border-bottom: 0px solid transparent !important;
     }
 
     .nav-tabs .nav-link {
         border: 0px solid transparent;
     }
 
-    .box > img{
-        width: 200%!important;
+    .box > img {
+        width: 200% !important;
     }
 
-    .img-fluid{
-         border: 1px solid LightGray;
-         border-radius:4px;
+    .img-fluid {
+        border: 1px solid LightGray;
+        border-radius: 4px;
     }
-
 
     .selected {
-      border: 2px solid LightGray ;
-      border-radius:2px;  
-      box-shadow: 0 0 12px 4px Gainsboro   ;
+        border: 2px solid LightGray;
+        border-radius: 2px;
+        box-shadow: 0 0 12px 4px Gainsboro;
     }
-    .selected{                                     
-      transition: 500ms all;
-    }    
+    .selected {
+        transition: 500ms all;
+    }
 
-    .chico{
-		 margin-right:0px!important;
-		 margin-left:0px!important;
-		 padding-right:0px!important;
-		 padding-left:0px!important;
-         height:auto;
-         float:left;
-	}
+    .chico {
+        margin-right: 0px !important;
+        margin-left: 0px !important;
+        padding-right: 0px !important;
+        padding-left: 0px !important;
+        height: auto;
+        float: left;
+    }
 
-	.avatar-box>.img-fluid{
-		 border:0px;
-	}
+    .avatar-box > .img-fluid {
+        border: 0px;
+    }
 
-	.avatar-img{     
-    
-        position:relative;
-        background-color: white;        
-        margin:0 auto;
+    .avatar-img {
+        position: relative;
+        background-color: white;
+        margin: 0 auto;
         margin-bottom: 10px;
-        -webkit-box-shadow: inset 0px 0px 46px -9px rgba(0,0,0,0.36);
-        -moz-box-shadow: inset 0px 0px 46px -9px rgba(0,0,0,0.36);
-        box-shadow: inset 0px 0px 46px -9px rgba(0,0,0,0.36);
+        -webkit-box-shadow: inset 0px 0px 46px -9px rgba(0, 0, 0, 0.36);
+        -moz-box-shadow: inset 0px 0px 46px -9px rgba(0, 0, 0, 0.36);
+        box-shadow: inset 0px 0px 46px -9px rgba(0, 0, 0, 0.36);
     }
 
     .avatar-img:after {
-      content: "";
-      display: block;
-      padding-bottom: 90%;
+        content: "";
+        display: block;
+        padding-bottom: 90%;
     }
 
-
-    .avatar-box{
-        position:absolute;
-        left:0px;
+    .avatar-box {
+        position: absolute;
+        left: 0px;
     }
 
-    .nav-tabs>li>a:hover{
-        border-color:transparent!important;
-        color:grey;
+    .nav-tabs > li > a:hover {
+        border-color: transparent !important;
+        color: grey;
     }
 
-    .nav-tabs>li>a{
-        color:white;
-        font-size:0.8rem;
+    .nav-tabs > li > a {
+        color: white;
+        font-size: 0.8rem;
         text-decoration: none;
-        
     }
 
-
-    .nav-tabs>li>a.active{
-        color:black;
+    .nav-tabs > li > a.active {
+        color: black;
         font-weight: bold;
-        border-color:transparent!important;
+        border-color: transparent !important;
     }
-    .nav-link{
-    	padding: 0.3rem 0.5rem;
+    .nav-link {
+        padding: 0.3rem 0.5rem;
     }
 
-    .nav-tabs .nav-link.active{
-
+    .nav-tabs .nav-link.active {
         color: $primary;
-        font-weight:bold;
-        
-        background-color: white!important;
-        box-shadow: 0px -10px 25px  -15px gray, 
-                    -10px -2px 25px  -15px gray, 
-                    10px -2px 25px  -15px gray;
+        font-weight: bold;
+
+        background-color: white !important;
+        box-shadow: 0px -10px 25px -15px gray, -10px -2px 25px -15px gray, 10px -2px 25px -15px gray;
     }
 
-    #myTabContent{
-      overflow-y:auto;
-      overflow-x:hidden;
-      height:60vh;
-      width:100%;
+    #myTabContent {
+        overflow-y: auto;
+        overflow-x: hidden;
+        height: 60vh;
+        width: 100%;
     }
 
-
-    .tab-pane{
+    .tab-pane {
         background-color: white;
-        -webkit-box-shadow: 0px 0px 50px -20px rgba(0,0,0,0.75);
-        -moz-box-shadow: 0px 0px 50px -20px rgba(0,0,0,0.75);
-        box-shadow: 0px 0px 50px -20px rgba(0,0,0,0.75);
-        
+        -webkit-box-shadow: 0px 0px 50px -20px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 0px 50px -20px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 0px 50px -20px rgba(0, 0, 0, 0.75);
     }
-    .tab-pane > img{
+    .tab-pane > img {
         background-color: transparent;
     }
 
-    .tab-pane{
-        border-radius:10px 10px 10px 10px;
+    .tab-pane {
+        border-radius: 10px 10px 10px 10px;
     }
 
-    .tab-pane:first-child{        
-        border-radius:0px 10px 10px 10px;        
+    .tab-pane:first-child {
+        border-radius: 0px 10px 10px 10px;
     }
 
-    .tab-content{
-        min-height: 250px;        
+    .tab-content {
+        min-height: 250px;
         border-color: #ddd;
-        border-width:1px;
+        border-width: 1px;
     }
 
-    .panel{
+    .panel {
         background-color: white;
-         border-radius:10px 10px 10px 10px;
-    }   
-    .capa>.box>img{
-   		cursor:pointer; 
-    } 
-
-    .sexo{
-        font-size: 1rem!important;
+        border-radius: 10px 10px 10px 10px;
     }
-	
+    .capa > .box > img {
+        cursor: pointer;
+    }
 
-	@media(min-width:600px){
+    .sexo {
+        font-size: 1rem !important;
+    }
 
-		margin-top:50px;
+    @media (min-width: 600px) {
+        margin-top: 50px;
 
-		h1{
-	        
-	        font-size:5rem;
-	        font-weight: 300;
-	        margin-bottom:30px;
-	        
-	    }
-
-	    .box{
-			margin-bottom:5px;
-		}
-
-		.titulo-selector{
-        
-        	font-size: 1.2rem;       
-        
-    	}
-
-    	.nav-tabs>li>a{	        
-	        font-size:1.5rem;
-            padding: 0.2rem 0.5rem; 	        
-	    }
-	    input[type=submit] {
-			font-size:15pt;
-			padding:10px 20px;
-			
-		}
-
-		   .nav-link{
-	    	padding: 0.2rem 1rem;
-	    }
-
-
-	}
-
-	
-
-
-	@media(min-width:993px) {
-		margin-top:10px;
-		h1{
-            font-size: 3rem;            
+        h1 {
+            font-size: 5rem;
+            font-weight: 300;
+            margin-bottom: 30px;
         }
 
-        .nav-tabs>li>a{	        
-	        font-size:1.5rem;
-            padding: 0.3rem 1.3rem; 	        
-	    }
-
-	    .nav-link{
-    	   padding: 0.2rem 1rem;
+        .box {
+            margin-bottom: 5px;
         }
 
-        #soporte-foto{
-            margin-bottom:5%;
-            width:100%;
-            float:none;
+        .titulo-selector {
+            font-size: 1.2rem;
+        }
+
+        .nav-tabs > li > a {
+            font-size: 1.5rem;
+            padding: 0.2rem 0.5rem;
+        }
+        input[type="submit"] {
+            font-size: 15pt;
+            padding: 10px 20px;
+        }
+
+        .nav-link {
+            padding: 0.2rem 1rem;
+        }
+    }
+
+    @media (min-width: 993px) {
+        margin-top: 10px;
+        h1 {
+            font-size: 3rem;
+        }
+
+        .nav-tabs > li > a {
+            font-size: 1.5rem;
+            padding: 0.3rem 1.3rem;
+        }
+
+        .nav-link {
+            padding: 0.2rem 1rem;
+        }
+
+        #soporte-foto {
+            margin-bottom: 5%;
+            width: 100%;
+            float: none;
             //display:inline-block;
         }
 
-        .selectores{
+        .selectores {
+            margin-bottom: 5%;
+            padding-left: 10%;
+            width: 100%;
+            float: none;
 
-            margin-bottom:5%;
-            padding-left:10%;
-            width:100%;
-            float:none;
-
-            
-            .selector{
-                 margin-right: 3px; 
+            .selector {
+                margin-right: 3px;
             }
         }
-
-
-	}
-
-    @media(min-width:1400px) {
-        margin-top:40px;
-        h1{
-            font-size: 5rem; 
-
-        }       
-            
-            .titulo-selector{
-                 
-                 font-size: 1.5rem; 
-            }
-        
     }
 
-	
+    @media (min-width: 1400px) {
+        margin-top: 40px;
+        h1 {
+            font-size: 5rem;
+        }
 
-
+        .titulo-selector {
+            font-size: 1.5rem;
+        }
+    }
 }
 
 //Colores de seleccion
 
- .selector{  
-        width: 17px;
-        height: 17px;
-        border: 1px solid white; 
-        display:block;
-        margin-right: 1px;  
-        cursor:pointer;    
-    }
+.selector {
+    width: 17px;
+    height: 17px;
+    border: 1px solid white;
+    display: block;
+    margin-right: 1px;
+    cursor: pointer;
+}
 
-	#bg-moreno{
-     	background-color: Black ;
-    }
-    #bg-castaño{
-        background-color: SaddleBrown ; 
-    }
-    #bg-castaño-claro{
-        background-color: Peru ;
-    }
-    #bg-pelirrojo{
-        background-color: OrangeRed  ;
-    }
-    #bg-azul{
-        background-color: DeepSkyBlue   ;
-    }
-    #bg-rubio{
-        background-color: Gold  ;
-    }
-    #bg-verde{
-        background-color:MediumSeaGreen  ; 
-    }
+#bg-moreno {
+    background-color: Black;
+}
+#bg-castaño {
+    background-color: SaddleBrown;
+}
+#bg-castaño-claro {
+    background-color: Peru;
+}
+#bg-pelirrojo {
+    background-color: OrangeRed;
+}
+#bg-azul {
+    background-color: DeepSkyBlue;
+}
+#bg-rubio {
+    background-color: Gold;
+}
+#bg-verde {
+    background-color: MediumSeaGreen;
+}
 
-    #bg-lila{
-        background-color: #94A5FF   ;
-    }
+#bg-lila {
+    background-color: #94a5ff;
+}
 
-    #bg-morado{
-        background-color: MediumOrchid  ;
-    }
-    #bg-palido{
-        background-color:  LightPink ;
-    }
-    #bg-morenazo{
-        background-color: Peru ;
-    }
+#bg-morado {
+    background-color: MediumOrchid;
+}
+#bg-palido {
+    background-color: LightPink;
+}
+#bg-morenazo {
+    background-color: Peru;
+}
 
-    #bg-oscura{
-        background-color:  SaddleBrown  ;
-    }
+#bg-oscura {
+    background-color: SaddleBrown;
+}

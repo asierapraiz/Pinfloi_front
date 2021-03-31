@@ -1,6 +1,6 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { Juego } from "../../core/models/juego.model";
-import { SeleccionService } from './../seleccion/services/seleccion.service';
+import { RetoService } from './../reto/services/reto.service';
 import { LocalStorageService } from "../../core/services/local-storage.service";
 
 
@@ -25,13 +25,12 @@ export class JuegosComponent implements OnInit {
     { id: 6, 'name': 'cubo', 'selected': false }];
 
 
-  constructor(private ss: SeleccionService, private localStorage: LocalStorageService) { }
+  constructor(private retoService: RetoService, private localStorage: LocalStorageService) { }
 
   ngOnInit(): void {
     if (this.localStorage.getSeleccion().juegosSeleccionados) {
       this.juegosSeleccionados = this.localStorage.getSeleccion().juegosSeleccionados;
     }
-
   }
 
   addJuego(juego) {
@@ -53,7 +52,9 @@ export class JuegosComponent implements OnInit {
     console.log(JSON.stringify(this.juegosSeleccionados));
     console.log("Jueago selected =>" + this.juegoSelected);*/
 
-    this.ss.seleccionaJuego(juego);
+    this.retoService.seleccionaJuego(juego);
+
+
   }
 
 

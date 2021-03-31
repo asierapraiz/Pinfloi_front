@@ -3,11 +3,17 @@ import { RouterOutlet, Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { routeAnimations, flyInOut } from './../../../animations';
 import { TareaService } from './../services/tarea.service';
+import { RetoService } from './../../reto/services/reto.service';;
 import { Avatar } from '../../../core/models/avatar.model';
 import { Tarea } from '../../../core/models/tarea.model';
 import { LocalStorageService } from "./../../../core/services/local-storage.service";
-import { Seleccion } from "../../../core/models/seleccion.model";
+import { Reto } from "../../../core/models/reto.model";
 import swal from 'sweetalert2';
+import { Valoracion } from '../../../core/models/valoracion.model';
+import { Constants } from '../../../global/constants';
+import { UsuarioService } from './../../usuarios/service/usuario.service';
+import { AuthService } from '../../usuarios/service/auth.service';
+
 
 
 
@@ -31,14 +37,15 @@ export class TareaComponent implements OnInit {
   aciertos: number = 0;
   showDragables: boolean = true;
   tablasHechas: number[] = [];
+  valoracion: Valoracion;
 
   avatar: Avatar;
   tareasSeleccionadas: Tarea[];
-  tarea: string = 'restaCon';
-  user: string;
+  tarea: string = '';
+  nombre: string;
   isOpen: boolean = true;
 
-  seleccion: Seleccion = {
+  reto: Reto = {
     nombre: '',
     avatar: {},
     tareasSeleccionadas: [],
@@ -52,32 +59,48 @@ export class TareaComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private elementRef: ElementRef,
-    private ls: LocalStorageService) {
+    private ls: LocalStorageService,
+    private usuarioService: UsuarioService,
+    private retoService: RetoService,
+    private authService: AuthService) {
 
 
-    this.seleccion = this.ls.getSeleccion();
-    this.tarea = this.seleccion.tareasSeleccionadas[this.seleccion.tareaActual].name;
+    this.reto = this.ls.getSeleccion();
+    this.mostrarUsuario();
 
-    if (this.tarea == 'tablas') {
-      this.showDragables = false;
+    //Si es la primera vuelta y no hay tareaActual
+    if (!this.reto.tareaActual) {
+      this.reto.tareaActual = 0;
+      ls.setSeleccion(this.reto);
     }
+    this.tarea = this.reto.tareasSeleccionadas[this.reto.tareaActual].name;
 
+    this.tarea == 'tablas' ? this.showDragables = false : true;
 
-    this.router.navigate(['./' + `${this.tarea}`], { relativeTo: this.route });
-
+    //Si ya ha realizado toda las teras del reto ...
+    if (this.reto.tareaActual == 0 && this.reto.tareasSeleccionadas[this.reto.tareasSeleccionadas.length - 1].valoracion != null) {
+      this.nuevoReto();
+    } else {
+      this.router.navigate(['./' + `${this.tarea}`], { relativeTo: this.route });
+    }
   }
+
+
 
   ngOnInit(): void {
 
-    this.ls.getSeleccion() ? this.seleccion = this.ls.getSeleccion() : this.noHaySeleccion();
-
     this.ls.getTablasHechas() ? this.tablasHechas = this.ls.getTablasHechas() : '';
+    //this.avatar = this.reto.avatar;
+    this.tareasSeleccionadas = this.reto.tareasSeleccionadas;
 
-    this.avatar = this.seleccion.avatar;
-    this.tareasSeleccionadas = this.seleccion.tareasSeleccionadas;
-    this.user = this.seleccion.nombre;
-    //this.tarea = this.seleccion.tareasSeleccionadas[this.seleccion.tareaActual].name;
+    if (this.authService.isAuthenticated()) {
+      this.nombre = this.authService.usuario.nombre;
+    } else {
+      this.reto = this.ls.getSeleccion();
+      this.nombre = this.reto.nombre;
+      this.avatar = this.reto.avatar;
 
+    }
   }
 
 
@@ -108,27 +131,42 @@ export class TareaComponent implements OnInit {
         this.ajugar();
       }
     );
-
-    this.inputs = document.getElementsByClassName("input").length + document.getElementsByClassName("target").length;
-
     document.getElementById('pizarra').addEventListener('click', this.limpiaTodo);
+
+    this.fixFontSize();
+  }
+
+
+  mostrarUsuario() {
+
+    if (this.authService.isAuthenticated()) {
+      console.log("Esta autenticado");
+      this.avatar = this.authService.usuario.avatar;
+      this.nombre = this.authService.usuario.nombre;
+
+    } else {
+      this.avatar = this.ls.sessionGetAvatar();
+      this.nombre = this.ls.sessionGetNombre();
+    }
+    console.log(this.avatar);
+    console.log(this.nombre);
 
   }
 
   noHaySeleccion() {
-    alert("NO hay seleccion");
+    alert("NO hay reto");
   }
 
   actualizaJuego() {
     let next: number;
-    this.seleccion.juegoActual + 1 == this.seleccion.juegosSeleccionados.length ? next = 0 : next = this.seleccion.juegoActual + 1;
+    this.reto.juegoActual + 1 == this.reto.juegosSeleccionados.length ? next = 0 : next = this.reto.juegoActual + 1;
 
     return next;
   }
 
   actualizaTarea() {
     let next: number;
-    this.seleccion.tareaActual + 1 == this.seleccion.tareasSeleccionadas.length ? next = 0 : next = this.seleccion.tareaActual + 1;
+    this.reto.tareaActual + 1 == this.reto.tareasSeleccionadas.length ? next = 0 : next = this.reto.tareaActual + 1;
 
     return next;
   }
@@ -138,8 +176,6 @@ export class TareaComponent implements OnInit {
       document.getElementById('llevada').innerHTML = opcion.target.attributes['data-valor'].value;
       return;
     }
-
-
 
     if (!this.huecoSeleccionado || this.huecoSeleccionado.classList.contains('acierto')) {
       return;
@@ -165,11 +201,19 @@ export class TareaComponent implements OnInit {
       if (parseInt(this.huecoSeleccionado.textContent) > 9) {
         this.huecoSeleccionado.classList.add('font-size-min');
       }
-      //this.huecoSeleccionado.classList.remove('acertado');
+      this.inputs = document.getElementsByClassName("target").length;
       this.huecoSeleccionado.classList.add('acierto');
       this.aciertos++;
+      console.log("Inp  =>" + this.inputs + "-----Aciertos:" + this.aciertos);
+      console.log("Tarea actual  =>" + this.reto.tareaActual);
+
       if (this.aciertos == this.inputs) {
-        //Muestro modal y navego a juego
+        //Muestro modal y navego a juego   
+        console.log("Tarea actual  =>" + this.reto.tareaActual);
+
+        console.log(this.reto);
+
+        this.reto.tareasSeleccionadas[this.reto.tareaActual].valoracion = this.valora();
         this.ajugar();
 
       }
@@ -193,6 +237,15 @@ export class TareaComponent implements OnInit {
     this.limpiaRelacionados();
 
   }
+
+  valora(): Valoracion {
+    let nota = 0;
+    nota = 10;
+    let valoracion: Valoracion = { 'id': null, 'aciertos': this.aciertos, 'errores': this.errores, 'intentos': this.intentos, 'nota': nota };
+
+    return valoracion;
+  }
+
   ajugar() {
     setTimeout(() => {
       swal({
@@ -203,10 +256,10 @@ export class TareaComponent implements OnInit {
         confirmButtonText: 'Vamos!',
       }).then((result) => {
         setTimeout(() => {
-          this.seleccion.tareaActual = this.actualizaTarea();
-          this.seleccion.juegoActual = this.actualizaJuego();
-          this.ls.setSeleccion(this.seleccion);
-          this.router.navigateByUrl('/juego/' + this.seleccion.juegosSeleccionados[this.seleccion.juegoActual].name);
+          this.reto.tareaActual = this.actualizaTarea();
+          this.reto.juegoActual = this.actualizaJuego();
+          this.ls.setSeleccion(this.reto);
+          this.router.navigateByUrl('/juego/' + this.reto.juegosSeleccionados[this.reto.juegoActual].name);
         }, 500);
       });
     }, 1500);
@@ -236,4 +289,83 @@ export class TareaComponent implements OnInit {
       seleccionados[0].classList.remove("seleccionado");
     }
   }
+
+
+  nuevoReto() {
+    swal({
+      title: 'Has terminado tu reto, que quieres hacer?',
+      text: `¿Puedes continuar con este reto o crear uno nuevo?`,
+      //type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Continuar!',
+      cancelButtonText: 'Nuevo reto!',
+      confirmButtonClass: 'btn btn-primary ',
+      cancelButtonClass: 'btn btn-primary',
+      buttonsStyling: false,
+      reverseButtons: true
+    }).then((result) => {
+      if (result.value) {
+
+        //Duplicar reto
+        let tareas = this.reto.tareasSeleccionadas;
+        let l = tareas.length;
+
+        for (let a = 0; a < l; a++) {
+          let tarea: Tarea = { ...this.reto.tareasSeleccionadas[a] };
+          tarea.valoracion = new Valoracion();
+          this.reto.tareasSeleccionadas.push(tarea);
+        }
+
+        this.reto.tareaActual = l;
+
+        this.router.navigate(['./' + `${this.tarea}`], { relativeTo: this.route });
+
+      } else {
+        //Nuevo reto
+        this.quiereGuardarElReto();
+      }
+    });
+  }
+
+  quiereGuardarElReto() {
+
+    //Datos provisionales
+    //this.reto tien más datos que los que hacen falta en back ,
+    //por eso uso un bojeto data que es igual que el reto de back
+    let data = {
+      id: '',
+      nombre: 'Asier',
+      created: "2021-03-23",
+      updated: null,
+      userId: 3,
+      tareas: this.reto.tareasSeleccionadas
+    };
+
+    this.retoService.create(data)
+      .subscribe(
+        reto => {
+          //this.router.navigate(['/clientes']);           
+          this.reto = reto;
+          swal('Reto guardado', `Tu reto  ` + this.reto.nombre + ` se ha guardado correctamente.`, 'success');
+          this.router.navigate(['reto/tareas']);
+        },
+        err => {
+          //this.errores = err.error.errors as string[];
+          console.error('Código del error desde el backend: ' + err.status);
+          console.error(err.error.errors);
+        }
+      );
+  }
+
+  fixFontSize() {
+    var len_fit = 10; // According to your question, 10 letters can fit in.
+    let username = document.getElementById('username');
+
+    // Get the lenght of user name.
+    var len_user_name = username.innerText.length;
+    let new_size = 10 / len_user_name;
+    username.style.fontSize = new_size + " rem";
+
+  }
+
 }

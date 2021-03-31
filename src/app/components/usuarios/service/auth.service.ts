@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Constants } from './../../../global/constants';
+import { Constants } from '../../../global/constants';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from '../models/usuario';
@@ -35,7 +35,7 @@ export class AuthService {
   }
 
   login(usuario: Usuario): Observable<any> {
-    const urlEndpoint = Constants.API_ENDPOINT+'oauth/token';
+    const urlEndpoint = Constants.API_ENDPOINT + 'oauth/token';
 
     const credenciales = btoa('angularapp' + ':' + '12345');
 
@@ -59,7 +59,15 @@ export class AuthService {
     this._usuario.apellido = payload.apellido;
     this._usuario.email = payload.email;
     this._usuario.username = payload.user_name;
+    this._usuario.id = payload.id;
     this._usuario.roles = payload.authorities;
+
+    sessionStorage.setItem('usuario', JSON.stringify(this._usuario));
+  }
+
+  guardarAvatar(avatar) {
+    this._usuario = JSON.parse(sessionStorage.getItem('usuario'));
+    this._usuario.avatar = avatar;
     sessionStorage.setItem('usuario', JSON.stringify(this._usuario));
   }
 
@@ -88,6 +96,10 @@ export class AuthService {
       return true;
     }
     return false;
+  }
+
+  get avatar() {
+    return this._usuario.avatar;
   }
 
   logout(): void {

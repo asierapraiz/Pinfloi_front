@@ -1,0 +1,16 @@
+<section class="seleccion">
+    <img class="bg" src="assets/img/fondos/fondoDibujosB.png" alt="">
+    <div id="aside" class="">
+
+
+    </div>
+    <div class="body">
+        <div class="main-route-container" [@routerAnimations]="prepRouteTransition(outlet)">
+            <router-outlet #outlet="outlet"></router-outlet>
+        </div>
+    </div>
+
+    <div class="footer">
+    </div>
+
+</section>

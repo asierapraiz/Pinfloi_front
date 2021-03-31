@@ -13,9 +13,9 @@ import swal from 'sweetalert2';
 })
 export class RegistroComponent {
   registro: FormGroup;
-  titulo="Registro usuarios"; 
-  enviando: boolean = false; 
-  edad: number[]=[1,2,3,4,5,6,8,9,10,11,12];
+  titulo = "Registro usuarios";
+  enviando: boolean = false;
+  edad: number[] = [1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12];
   usuario: Usuario;
   errores: string[];
 
@@ -57,31 +57,31 @@ export class RegistroComponent {
     private router: Router
   ) {
     this.registro = this.formBuilder.group({
-      nombre: new FormControl('', Validators.compose([
+      nombre: new FormControl('Ane', Validators.compose([
         Validators.required
       ])),
-      apellido: new FormControl('', Validators.compose([
+      apellido: new FormControl('Apellido', Validators.compose([
         Validators.required
       ])),
-      username: new FormControl('', Validators.compose([
+      username: new FormControl('ane', Validators.compose([
         Validators.required
       ])),
-      email: new FormControl('', Validators.compose([
+      email: new FormControl('ane@gmail.com', Validators.compose([
         Validators.required,
         Validators.minLength(2),
         Validators.maxLength(30)
       ])),
-      password: new FormControl('', Validators.compose([
+      password: new FormControl('12345', Validators.compose([
         Validators.required,
         Validators.minLength(2),
         Validators.maxLength(10)
       ])),
-      confirmpassword: new FormControl('', Validators.compose([
+      confirmpassword: new FormControl('12345', Validators.compose([
         Validators.required,
         Validators.minLength(2),
         Validators.maxLength(10)
       ])),
-    }, { 
+    }, {
       validators: this.password.bind(this)
     });
   }
@@ -95,31 +95,32 @@ export class RegistroComponent {
     return password === confirmPassword ? null : { passwordNotMatch: true };
   }
 
-  showPass(id){
-    let pass= document.getElementById(id);
-    let icon= document.getElementById(id+'-eye-icon');  
+  showPass(id) {
+    let pass = document.getElementById(id);
+    let icon = document.getElementById(id + '-eye-icon');
 
-    if(pass.getAttributeNode('type').value=='password'){
+    if (pass.getAttributeNode('type').value == 'password') {
       pass.setAttribute('type', 'text');
       icon.classList.remove('fa-eye');
-      icon.classList.add('fa-eye-slash');             
-    }else{
-      pass.setAttribute('type', 'password');      
+      icon.classList.add('fa-eye-slash');
+    } else {
+      pass.setAttribute('type', 'password');
       icon.classList.remove('fa-eye-slash');
-      icon.classList.add('fa-eye');          
+      icon.classList.add('fa-eye');
     }
   }
 
-  enviar(registro){
-    this.enviando=true;
-   
-    if(!this.registro.valid){return;}   
+  enviar(registro) {
+    this.enviando = true;
 
-    this.usuario = new Usuario(this.registro.value);   
+    if (!this.registro.valid) { return; }
+
+
+    this.usuario = new Usuario(this.registro.value);
     console.log(JSON.stringify(this.usuario));
     this.usuarioService.create(this.usuario).subscribe(
       usuario => {
-        this.router.navigate(['/clientes']);
+        this.router.navigate(['/registro-bg/login']);
         swal('Nuevo usuario', `El cliente ${usuario.nombre} ha sido creado con éxito`, 'success');
       },
       err => {
@@ -127,8 +128,8 @@ export class RegistroComponent {
         console.error('Código del error desde el backend: ' + err.status);
         console.error(err.error.errors);
       }
-    );      
-       
+    );
+
   }
 
 

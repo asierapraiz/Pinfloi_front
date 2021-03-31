@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Constants } from './../../../global/constants';
+import { Constants } from '../../../global/constants';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Factura } from '../models/factura';
@@ -10,7 +10,7 @@ import { Producto } from '../models/producto';
 })
 export class FacturaService {
 
-  private urlEndPoint: string = Constants.API_ENDPOINT+'api/facturas';
+  private urlEndPoint: string = Constants.API_ENDPOINT + 'api/facturas';
 
   constructor(private http: HttpClient) { }
 

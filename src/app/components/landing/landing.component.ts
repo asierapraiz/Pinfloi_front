@@ -5,12 +5,14 @@ import { LocalStorageService } from "../../core/services/local-storage.service";
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
+import { AuthService } from '../usuarios/service/auth.service';
+import swal from 'sweetalert2';
+
 
 
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
-
   styleUrls: ['./landing.component.css']
 })
 export class LandingComponent implements OnInit {
@@ -18,17 +20,17 @@ export class LandingComponent implements OnInit {
 
 
   tareas: Tarea[] = [
-    { id: 1, 'name': 'amigos', 'selected': false, 'cantidad': 0 },
-    { id: 2, 'name': 'suma1', 'selected': false, 'cantidad': 0 },
-    { id: 3, 'name': 'suma', 'selected': false, 'cantidad': 0 },
-    { id: 4, 'name': 'sumaCon', 'selected': false, 'cantidad': 0 },
-    { id: 5, 'name': 'resta', 'selected': false, 'cantidad': 0 },
-    { id: 6, 'name': 'restaCon', 'selected': false, 'cantidad': 0 },
-    { id: 7, 'name': 'tablas', 'selected': false, 'cantidad': 0 },
-    { id: 8, 'name': 'tablas2', 'selected': false, 'cantidad': 0 },
-    { id: 9, 'name': 'multiplicarDeUno', 'selected': false, 'cantidad': 0 },
-    { id: 11, 'name': 'dividir', 'selected': false, 'cantidad': 0 },
-    { id: 12, 'name': 'dividirDeDos', 'selected': false, 'cantidad': 0 }
+    { 'name': 'amigos', 'selected': false, 'cantidad': 0, 'valoracion': null },
+    { 'name': 'suma1', 'selected': false, 'cantidad': 0, 'valoracion': null },
+    { 'name': 'suma', 'selected': false, 'cantidad': 0, 'valoracion': null },
+    { 'name': 'sumaCon', 'selected': false, 'cantidad': 0, 'valoracion': null },
+    { 'name': 'resta', 'selected': false, 'cantidad': 0, 'valoracion': null },
+    { 'name': 'restaCon', 'selected': false, 'cantidad': 0, 'valoracion': null },
+    { 'name': 'tablas', 'selected': false, 'cantidad': 0, 'valoracion': null },
+    { 'name': 'tablas2', 'selected': false, 'cantidad': 0, 'valoracion': null },
+    { 'name': 'multiplicarDeUno', 'selected': false, 'cantidad': 0, 'valoracion': null },
+    { 'name': 'dividir', 'selected': false, 'cantidad': 0, 'valoracion': null },
+    { 'name': 'dividirDeDos', 'selected': false, 'cantidad': 0, 'valoracion': null }
   ];
 
   juegos: Juego[] = [
@@ -39,7 +41,11 @@ export class LandingComponent implements OnInit {
     { id: 5, 'name': 'memcolor', 'selected': false },
     { id: 6, 'name': 'cubo', 'selected': false }];
 
-  constructor(private localStorage: LocalStorageService, private modalService: NgbModal, private viewportScroller: ViewportScroller, private router: Router) { }
+  constructor(public authService: AuthService,
+    private localStorage: LocalStorageService,
+    private modalService: NgbModal,
+    private viewportScroller: ViewportScroller,
+    private router: Router) { }
 
 
 
@@ -90,11 +96,12 @@ export class LandingComponent implements OnInit {
   }
 
   public onClick(landingModal) {
-    //Recalculo e id de las tareas por el indice 
+    //Recalculo e id de las tareas por el indice
+    /* 
     this.tareasSeleccionadas.map((t, index) => {
       t.id = index;
       return t.name;
-    });
+    });*/
 
     this.tareasParaModal = this.tareas.filter(function (tarea) {
       return tarea.cantidad > 0;
@@ -149,7 +156,12 @@ export class LandingComponent implements OnInit {
   }
 
 
+  logout(): void {
+    let username = this.authService.usuario.username;
+    this.authService.logout();
+    //swal('Logout', `Hola ${username}, has cerrado sesión con éxito!`, 'success');
 
+  }
 
 
 
