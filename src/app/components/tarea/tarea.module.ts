@@ -13,6 +13,7 @@ import { MultiplicarComponent } from './multiplicar/multiplicar.component';
 import { MultiplicarDeDosComponent } from './multiplicar-de-dos/multiplicar-de-dos.component';
 import { DividirComponent } from './dividir/dividir.component';
 import { DividirDeDosComponent } from './dividir-de-dos/dividir-de-dos.component';
+import { OpcionesComponent } from './opciones/opciones.component';
 
 
 
@@ -29,7 +30,8 @@ import { DividirDeDosComponent } from './dividir-de-dos/dividir-de-dos.component
     MultiplicarComponent,
     MultiplicarDeDosComponent,
     DividirComponent,
-    DividirDeDosComponent
+    DividirDeDosComponent,
+    OpcionesComponent
   ],
   imports: [
     CommonModule,

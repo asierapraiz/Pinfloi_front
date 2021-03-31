@@ -46,16 +46,26 @@
         <div class="pizarra-header d-flex justify-content-between">
 
             <div class="tarea">{{tarea}}</div>
-            <!-- <img class="logo" src="assets/img/logo/Pinfloi.svg" width="auto" /> -->
+            <!-- <img class="logo" src="assets/img/logo/Pinfloi.svg" width="auto" /> 
+
+            <i class="fas fa-gamepad"></i>
+            -->
 
             <div class="butons-group">
-                <button class="navbar-toggler navbar-toggler-right navbar-ico" data-toggle="modal"
+
+                <button class="navbar-toggler navbar-toggler-right navbar-ico" (click)="openModal()"
                     data-target="#opcionesModal" type="button">
                     <i class="fa fa-bars"></i>
                 </button>
 
-                <button aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right navbar-icon"
-                    data-toggle="modal" data-target="#historicoModal" type="button">
+                <button (click)="openModal()" class="navbar-toggler navbar-toggler-right navbar-ico" data-toggle="modal"
+                    data-target="#opcionesModal" type="button">
+                    <i class="fa fa-gamepad"></i>
+                </button>
+
+                <button aria-label="Toggle navigation" (click)="nuevoReto()"
+                    class="navbar-toggler navbar-toggler-right navbar-icon" data-toggle="modal"
+                    data-target="#historicoModal" type="button">
                     <i id="btn-historico" class="fa fa-history"></i>
                 </button>
 
@@ -116,4 +126,6 @@
         </div>
 
     </div>
+
 </div>
+<app-opciones *ngIf="open" [reto]="reto"></app-opciones>

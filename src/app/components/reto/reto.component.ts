@@ -152,7 +152,7 @@ const rutas2 = [
 })
 export class RetoComponent implements OnInit {
   tareasSeleccionadas: Tarea[] = [];
-  juegosSeleccionados: Array<Juego> = [];
+  juegosSeleccionados: Juego[] = [];
   nombre: String = "";
   hasNext: boolean = true;
   public avatar: Avatar = new Avatar();
@@ -212,7 +212,6 @@ export class RetoComponent implements OnInit {
   }
   ngAfterViewInit(): void {
     this.fixFontSize();
-
   }
 
   makeSuscriptions() {
@@ -286,6 +285,10 @@ export class RetoComponent implements OnInit {
       }
       document.querySelector('#indefinido-aside').classList.add("d-none");
     }
+
+    this.ls.getSeleccion().tareasSeleccionadas ? this.tareasSeleccionadas = this.ls.getSeleccion().tareasSeleccionadas : '';
+    this.ls.getSeleccion().juegosSeleccionados ? this.juegosSeleccionados = this.ls.getSeleccion().juegosSeleccionados : '';
+
 
   }
 

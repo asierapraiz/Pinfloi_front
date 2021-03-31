@@ -2,11 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Cliente } from '../models/cliente';
 import { ClienteService } from '../cliente.service';
 import { ModalService } from './modal.service';
-
 import swal from 'sweetalert2';
 import { HttpEventType } from '@angular/common/http';
 import { AuthService } from '../../usuarios/service/auth.service';
-
 import { FacturaService } from '../../facturas/services/factura.service';
 import { Factura } from '../../facturas/models/factura';
 

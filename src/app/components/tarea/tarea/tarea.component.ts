@@ -1,4 +1,4 @@
-import { ElementRef, HostBinding, Component, OnInit } from '@angular/core';
+import { ElementRef, HostBinding, Component, OnInit, ViewChild } from '@angular/core';
 import { RouterOutlet, Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { routeAnimations, flyInOut } from './../../../animations';
@@ -13,6 +13,7 @@ import { Valoracion } from '../../../core/models/valoracion.model';
 import { Constants } from '../../../global/constants';
 import { UsuarioService } from './../../usuarios/service/usuario.service';
 import { AuthService } from '../../usuarios/service/auth.service';
+import { TareaModalService } from './../../../core/services/tarea-modal.service';
 
 
 
@@ -28,6 +29,8 @@ import { AuthService } from '../../usuarios/service/auth.service';
 export class TareaComponent implements OnInit {
 
 
+
+
   subscription!: Subscription;
   errores: number = 0;
   intentos: number = 1;
@@ -38,7 +41,7 @@ export class TareaComponent implements OnInit {
   showDragables: boolean = true;
   tablasHechas: number[] = [];
   valoracion: Valoracion;
-
+  open: boolean = false;
   avatar: Avatar;
   tareasSeleccionadas: Tarea[];
   tarea: string = '';
@@ -62,7 +65,8 @@ export class TareaComponent implements OnInit {
     private ls: LocalStorageService,
     private usuarioService: UsuarioService,
     private retoService: RetoService,
-    private authService: AuthService) {
+    private authService: AuthService,
+    public tareaModalService: TareaModalService) {
 
 
     this.reto = this.ls.getSeleccion();
@@ -79,7 +83,7 @@ export class TareaComponent implements OnInit {
 
     //Si ya ha realizado toda las teras del reto ...
     if (this.reto.tareaActual == 0 && this.reto.tareasSeleccionadas[this.reto.tareasSeleccionadas.length - 1].valoracion != null) {
-      this.nuevoReto();
+      this.retoTerminado();
     } else {
       this.router.navigate(['./' + `${this.tarea}`], { relativeTo: this.route });
     }
@@ -290,8 +294,56 @@ export class TareaComponent implements OnInit {
     }
   }
 
-
   nuevoReto() {
+    swal({
+      title: 'Nuevo reto',
+      text: `¿Quieres guardar las tareas de este reto?`,
+      //type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Nuevo reto',
+      cancelButtonText: 'Guardar',
+      confirmButtonClass: 'btn btn-primary ',
+      cancelButtonClass: 'btn btn-primary',
+      buttonsStyling: false,
+      reverseButtons: true
+    }).then((result) => {
+      if (result.value) {
+
+        this.router.navigate(['/reto/tareas']);
+
+      } else {
+        //Nuevo reto
+        this.quiereGuardarElReto();
+      }
+    });
+  }
+
+  nuevoJuego() {
+    swal({
+      title: '¿Seguro que quieres cambiar de juego?',
+      //text: `¿Quieres guardar las tareas de este reto?`,
+      //type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Nuevo juego',
+      cancelButtonText: 'Cancelar',
+      confirmButtonClass: 'btn btn-primary ',
+      cancelButtonClass: 'btn btn-primary',
+      buttonsStyling: false,
+      reverseButtons: true
+    }).then((result) => {
+      if (result.value) {
+
+        this.router.navigate(['/reto/juegos']);
+
+      } else {
+        //Nuevo reto
+        this.quiereGuardarElReto();
+      }
+    });
+  }
+
+
+  retoTerminado() {
     swal({
       title: 'Has terminado tu reto, que quieres hacer?',
       text: `¿Puedes continuar con este reto o crear uno nuevo?`,
@@ -366,6 +418,11 @@ export class TareaComponent implements OnInit {
     let new_size = 10 / len_user_name;
     username.style.fontSize = new_size + " rem";
 
+  }
+
+  openModal() {
+    this.tareaModalService.open();
+    this.open = true;
   }
 
 }

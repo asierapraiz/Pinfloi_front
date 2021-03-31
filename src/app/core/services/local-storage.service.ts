@@ -26,8 +26,11 @@ export class LocalStorageService {
   setTablasHechas(tablas) { localStorage.setItem('tablasHechas', JSON.stringify(tablas)); }
   clearTablasHechas() { localStorage.setItem('tablasHechas', "") };
 
-  setSeleccion(seleccion) { localStorage.setItem('seleccion', JSON.stringify(seleccion)); }
-  getSeleccion() { return JSON.parse(localStorage.getItem("seleccion") || "{}") };
+  setSeleccion(seleccion) { sessionStorage.setItem('seleccion', JSON.stringify(seleccion)); }
+  getSeleccion() { return JSON.parse(sessionStorage.getItem("seleccion") || "{}") };
+
+  getJuegosSeleccionados() { return JSON.parse(sessionStorage.getItem("seleccion")['juegosSeleccionados'] || "[]"); }
+  getTareasSeleccionadas() { return JSON.parse(sessionStorage.getItem("seleccion")['tareasSeleccionadas'] || "[]"); }
 
   clear() { localStorage.clear(); }
 
