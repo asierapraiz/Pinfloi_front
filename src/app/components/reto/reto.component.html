@@ -16,7 +16,7 @@
                 <img class="img-fluid nariz d-none" src="assets/img/avatar/nariz/nariz_{{avatar.nariz}}.png" />
             </div>
 
-            <div id="username" class="nombre enlace" routerLink="./nombre">
+            <div id="username" class="nombre enlace">
                 <p>{{nombre}}</p>
             </div>
         </div>
@@ -26,7 +26,7 @@
         <ul class="tareas">
             <li @flyInFromLeft *ngFor="let tarea of tareasSeleccionadas; index as index">
                 <div class="inner tarea-seleccionada ">
-                    <span>{{ tarea.name }}</span>
+                    <span>{{ tarea.name | noSlash}}</span>
                 </div>
                 <span (click)="delete('tarea',index)" class=" trash"><i class="fa fa-trash"></i></span>
             </li>

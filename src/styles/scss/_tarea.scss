@@ -1,0 +1,41 @@
+.line {
+    height: 2px;
+    width: 220px;
+    background-color: rgba(136, 134, 134, 0.699);
+    margin: 0.5rem;
+}
+.icon {
+    margin-left: 0.5rem;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    .tarea-seleccionada {
+        width: 180px;
+        //line-height: 10px;
+        padding: 0 2px;
+        box-sizing: border-box;
+        background-color: rgba(50, 164, 230, 0.774);
+        color: white;
+        border: solid 1px white;
+        border-radius: 6px;
+        margin: 5px;
+        cursor: pointer;
+        overflow: hidden;
+        //white-space: nowrap;
+        box-shadow: 0 5px 12px rgba(0, 0, 0, 0.281);
+    }
+    .tarea-actual {
+        background-color: rgba(37, 119, 167, 0.774);
+        transform: translate(0.5rem, 0);
+        transition-property: transform 1s;
+    }
+}

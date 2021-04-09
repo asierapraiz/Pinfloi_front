@@ -1,108 +1,34 @@
 <section id="resumen" class="body main-route-details">
 
 
-    <div class="mensaje">
+    <div class="mensaje ">
 
-        <div class="cabecera">
-            <h1 *ngIf="todoOK">Comienza tu aventura y aprende jugando.</h1>
-            <h1 *ngIf="!todoOK" class="title" id="modal-basic-title">Te faltan datos por rellenar</h1>
-        </div>
-        <div class="body">
-            <div *ngIf="!todoOK" class="header">
 
-                <ul class="errores">
-                    <li *ngIf="reto.avatar['definido']== false ">
-                        <h3 class="modal-title " id="modal-basic-title">El avatar
-                        </h3>
-                    </li>
-                    <li *ngIf="reto.nombre =='' ">
-                        <h3 class="modal-title " id="modal-basic-title">El nombre</h3>
-                    </li>
-                    <li *ngIf="reto.tareasSeleccionadas.length==0 ">
-                        <h3 class="modal-title " id="modal-basic-title">
-                            Las tareas</h3>
-                    </li>
-                    <li *ngIf="reto.juegosSeleccionados.length==0 ">
-                        <h3 class="modal-title " id="modal-basic-title">
-                            El juego
-                        </h3>
-                    </li>
-                </ul>
-
+        <div class="cabecera ">
+            <div *ngIf="todoOK" class="sa">
+                <div class="sa-success">
+                    <div class="sa-success-tip"></div>
+                    <div class="sa-success-long"></div>
+                    <div class="sa-success-placeholder"></div>
+                    <div class="sa-success-fix"></div>
+                </div>
             </div>
+            <div *ngIf="!todoOK" class="sa">
+                <div class="sa-warning">
+                    <div class="sa-warning-body"></div>
+                    <div class="sa-warning-dot"></div>
+                </div>
+            </div>
+            <h1>{{mensaje}}</h1>
         </div>
-        <div *ngIf="todoOK" class="boton">
+
+        <div *ngIf="todoOK" class="">
             <button @jump_to_tarea class="btn btn-large next-btn" (click)="continuar(resumnenModal)"
                 id="guardar">Comenzar</button>
         </div>
     </div>
 
 
-    <!--ModalngModal-->
-    <ng-template #resumnenModal let-modal id="resumnenModal">
-        <div class="modal-header ">
-            <h1 class="modal-title" id="modal-basic-title">Te faltan datos por rellenar</h1>
 
-        </div>
-        <div *ngIf="todoOK" class="modal-header ">
-            <h1 class="modal-title" id="modal-basic-title">Te faltan datos por rellenar</h1>
-
-            <ul class="alert">
-                <li *ngIf="reto.avatar['definido']== false ">
-                    <h3 class="modal-title " id="modal-basic-title">El avatar
-                    </h3>
-                </li>
-                <li *ngIf="reto.nombre =='' ">
-                    <h3 class="modal-title " id="modal-basic-title">El nombre</h3>
-                </li>
-                <li *ngIf="reto.tareasSeleccionadas.length==0 ">
-                    <h3 class="modal-title " id="modal-basic-title">
-                        Las tareas</h3>
-                </li>
-                <li *ngIf="reto.juegosSeleccionados.length==0 ">
-                    <h3 class="modal-title " id="modal-basic-title">
-                        El juego
-                    </h3>
-                </li>
-            </ul>
-
-        </div>
-        <div class="modal-body ">
-            <ul class="alert">
-                <li *ngIf="reto.avatar['definido']== false ">
-                    <h3 class="modal-title " id="modal-basic-title">El avatar
-                    </h3>
-                </li>
-                <li *ngIf="reto.nombre =='' ">
-                    <h3 class="modal-title " id="modal-basic-title">El nombre</h3>
-                </li>
-                <li *ngIf="reto.tareasSeleccionadas.length==0 ">
-                    <h3 class="modal-title " id="modal-basic-title">
-                        Las tareas</h3>
-                </li>
-                <li *ngIf="reto.juegosSeleccionados.length==0 ">
-                    <h3 class="modal-title " id="modal-basic-title">
-                        El juego
-                    </h3>
-                </li>
-            </ul>
-
-
-            <!-- <div class="row d-flex justify-content-center">
-                <div *ngFor="let juegoS of juegosSeleccionados" class="col-6 col-sm-4 col-md-4 col-xl-3 portfolio-item">
-                    <img alt="juego seleccionado" class="img-fluid redondo-top-bottom m-1"
-                        src="./../../assets/img/juegos/{{juegoS.name}}.png" />
-                </div>
-            </div> -->
-
-        </div>
-        <!-- <div class="mi-modal-footer">
-            <button id="enviar" type="button" class="btn btn-primary col-4 col-lg-3"
-                (click)="modal.close('Save click')"><i class="fa fa-angle-left"></i>Volver</button>
-            <div class="separador-horizontal"></div>
-            <button id="enviar" type="button" class="btn btn-primary col-4 col-lg-3"
-                (click)="seguir(landingModal)">Seguir<i class="fa fa-angle-right"></i></button>
-        </div> -->
-    </ng-template>
 
 </section>

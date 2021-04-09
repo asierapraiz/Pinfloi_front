@@ -15,18 +15,30 @@ import swal from 'sweetalert2';
 })
 export class NombreFormComponent implements OnInit {
 
+  showName = false;
   nombre: string;
   animacion: boolean;
   paused: boolean;
   usuario: Usuario = new Usuario();
+  mensaje: String = "";
 
   constructor(private authService: AuthService, private retoService: RetoService, private localStorage: LocalStorageService, private router: Router) { }
 
   ngOnInit(): void {
-    if (this.localStorage.getSeleccion().nombre) {
-      this.nombre = this.localStorage.getSeleccion().nombre;
+    if (this.localStorage.sessionGetNombre()) {
+      this.nombre = this.localStorage.sessionGetNombre();
+      this.showName = true;
     }
   }
+
+  notMe() {
+    this.showName = false;
+    this.nombre = "";
+    sessionStorage.clear();
+
+  }
+
+
 
   keyDown() {
     //this.retoService.seleccionaNombre(this.nombre);
@@ -34,15 +46,15 @@ export class NombreFormComponent implements OnInit {
     this.animacion = false;
     this.paused = true;
 
-    if (this.usuario.username.length < 20) {
-      document.getElementById('cara').style.left = (0 + this.usuario.username.length) + "px";
+    if (this.nombre.length < 20) {
+      document.getElementById('cara').style.left = (0 + this.nombre.length) + "px";
       document.getElementById('cara').style.top = 25 + "px";
-      document.getElementById('ojoIzq').style.left = 5 + (2 * this.usuario.username.length) + "px";
-      document.getElementById('irisIzq').style.left = 5 + (0.2 * this.usuario.username.length) + "px";
-      document.getElementById('brilloIzq').style.left = 5 + (0.2 * this.usuario.username.length) + "px";
-      document.getElementById('ojoDch').style.left = 45 + (2 * this.usuario.username.length) + "px";
-      document.getElementById('irisIzq').style.left = 5 + (0.2 * this.usuario.username.length) + "px";
-      document.getElementById('brilloIzq').style.left = 5 + (0.2 * this.usuario.username.length) + "px";
+      document.getElementById('ojoIzq').style.left = + (2 * this.nombre.length) + "px";
+      document.getElementById('irisIzq').style.left = 5 + (0.2 * this.nombre.length) + "px";
+      document.getElementById('brilloIzq').style.left = 5 + (0.2 * this.nombre.length) + "px";
+      document.getElementById('ojoDch').style.left = 45 + (2 * this.nombre.length) + "px";
+      document.getElementById('irisIzq').style.left = 5 + (0.2 * this.nombre.length) + "px";
+      document.getElementById('brilloIzq').style.left = 5 + (0.2 * this.nombre.length) + "px";
     }
 
   }
@@ -75,15 +87,21 @@ export class NombreFormComponent implements OnInit {
 
 
   start() {
+    let a = this.nombre;
+    if (this.nombre == "") {
+      this.mensaje = "Tienes que poner un nombre";
+      return;
+    }
 
     this.localStorage.sessionSetNombre(this.nombre);
-    this.router.navigateByUrl('/nodo-bg/avatar');
-    //this.retoService.seleccionaNombre(this.nombre);
 
-    //let tareaActual = JSON.parse(localStorage.getItem("tareaActual") || "[]");
-    //this.router.navigateByUrl('/tarea/' + tareaActual.name);
+    if (this.authService.isAuthenticated()) {
+      this.router.navigateByUrl('/reto/tareas');
+    } else if (!this.localStorage.sessionGetAvatar() || this.localStorage.sessionGetAvatar().length == 0) {
+      this.router.navigateByUrl('/nodo-bg/avatar');
+    } else {
+      this.router.navigateByUrl('/reto/tareas');
+    }
   }
-
-
 
 }

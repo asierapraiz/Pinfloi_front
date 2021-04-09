@@ -22,23 +22,42 @@ export class TareaService {
   private resetChild = new Subject();
   reset$ = this.resetChild.asObservable();
 
+  private addErrorSource = new Subject();
+  addError$ = this.addErrorSource.asObservable();
+
+  private addAciertoSource = new Subject();
+  addAcierto$ = this.addAciertoSource.asObservable();
+
+  private rechargeDraggableEventsSource = new Subject();
+  rechargeDraggableEvents$ = this.rechargeDraggableEventsSource.asObservable();
+
   tablaHecha(text: number) {
     this.tablaHechaSource.next(text);
   }
   seleccionaHueco(value: any) {
-    //console.log("En selecciona hueco del servicio :" + value.attributes['data-valor'].value);
     this.seleccionaHuecoSource.next(value);
   }
 
   seleccionaOpcion(value: any) {
-    console.log("En selecciona opcion del servicio :" + value.target.attributes['data-valor'].value);
     this.seleccionaOpcionSource.next(value);
   }
 
+  addError() {
+    this.addErrorSource.next();
+  }
+
+  addAcierto() {
+    this.addAciertoSource.next();
+  }
+
   reset() {
-    console.log("En el servicio");
     this.resetChild.next();
   }
+
+  reChargeDraggableEvents() {
+    this.rechargeDraggableEventsSource.next();
+  }
+
 
   gardarReto() {
 

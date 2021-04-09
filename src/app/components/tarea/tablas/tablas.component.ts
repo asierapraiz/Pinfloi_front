@@ -14,6 +14,8 @@ import { Router } from '@angular/router';
 
 
 
+
+
 @Component({
   selector: 'app-tablas',
   templateUrl: './tablas.component.html',
@@ -105,7 +107,6 @@ export class TablasComponent extends TareaUtils implements OnInit {
   opcionSeleccionada: number;
   opciones: Element
   tabla: Element;
-  huecoSeleccionado: Element;
   showLista: boolean = true;
   showTabla: boolean = false;
 
@@ -121,73 +122,44 @@ export class TablasComponent extends TareaUtils implements OnInit {
 
   ngOnInit(): void {
     let url = this.router.url;
-    var tipoTabla = url.substring(url.length - 1, url.length);
+    this.ladel = parseInt((url.substring(url.length - 1, url.length)));
 
-    if (tipoTabla == '5') {
+    /* if (tipoTabla == '5') {
       this.opcionesList = [2, 3, 4, 5];
     } else {
       this.opcionesList = [6, 7, 8, 9];
-    }
+    } */
 
     this.intentos = 0;
     this.columnas = 4;
 
-    //Filtro las tablas que ta estén hechas
-    this.opcionesList = this.opcionesList.filter(item => !this.ls.getTablasHechas().includes("" + item));
-
     this.lista = this.source.slice(0, 5);
     this.listaMezclada = this.source.slice(0, 5);
     this.shuffle(this.listaMezclada);
-
+    this.creaElementos();
   }
 
   toggle() {
-    this.showLista = !this.showLista;
     this.showTabla = !this.showTabla;
   }
+
   shuffle(array) {
     array.sort(() => Math.random() - 0.5);
   }
-  ngAfterViewInit() {
-    this.addEventListeners();
 
+  ngAfterViewInit() {
+
+    this.addEventListeners();
     let opcionesList = this.elementRef.nativeElement.querySelectorAll('.opcion');
 
-    opcionesList.forEach((opcion: HTMLElement) => {
-      opcion.addEventListener('click', this.creaElementos.bind(this))
-    })
+    this.ts.reChargeDraggableEvents();
 
-    this.tabla = document.getElementById('showTabla');
-    this.opciones = document.getElementById('elijeOpcion');
-  }
-
-  seleccionaTarget(hueco) {
-    this.huecoSeleccionado = null;
-    this.huecoSeleccionado = hueco.target;
-
-    if (this.seleccionado != null) {
-      this.seleccionado.classList.remove('seleccionado');
-    }
-    this.ts.seleccionaHueco(hueco.target);
-    this.seleccionado = hueco.target;
-    this.seleccionado.classList.add('seleccionado');
-  }
-
-  selectDraggable(element) {
-    this.opcionSeleccionada = element.target.attributes['data-valor'].value;
   }
 
   //Creo los elementos en la pantalla.
-  creaElementos(element) {
-
+  creaElementos() {
     this.toggle()
-
-    this.ladel = element.target.getAttribute('data-ladel');
-
-    this.showOpciones = false;
     this.aciertos = 0;
-    // this.tabla.classList.remove('out');
-    // this.opciones.classList.add('out');
 
   }
 
@@ -195,54 +167,40 @@ export class TablasComponent extends TareaUtils implements OnInit {
     return valor * this.ladel;
   }
 
-  seleccionaOpcion(opcion: any) {
+  opcion(opcion: any) {
 
-    if (!this.huecoSeleccionado || this.huecoSeleccionado.classList.contains('acierto')) {
+    if (!this.seleccionado || this.seleccionado.classList.contains('acierto')) {
       return;
     }
 
-    if (this.huecoSeleccionado.classList.contains('target')) {
-      this.huecoSeleccionado.innerHTML = opcion.target.attributes['data-valor'].value;
+    if (this.seleccionado.classList.contains('target')) {
+      this.seleccionado.innerHTML = opcion.target.attributes['data-valor'].value;
+    }
+    //Cambio la funete pa números mayores que 10 
+    if (parseInt(this.seleccionado.textContent) > 9) {
+      this.seleccionado.classList.add('font-size-min');
     }
 
-    if (this.huecoSeleccionado.textContent == this.huecoSeleccionado.attributes['data-valor'].value) {
-      if (parseInt(this.huecoSeleccionado.textContent) > 9) {
-        this.huecoSeleccionado.classList.add('font-size-min');
-      }
-
-      this.huecoSeleccionado.classList.add('acierto');
-
+    //Si acierta
+    if (this.seleccionado.textContent == this.seleccionado.attributes['data-valor'].value) {
       this.aciertos++;
-
       if (this.aciertos == 10) {
-        //Muestro modal y navego a juego
-        //this.ls.clearTablasHechas()
         this.ts.tablaHecha(this.ladel);
       }
       if (this.aciertos == 5) {
-
-        this.showTabla = !this.showTabla;
-
+        setTimeout(() => {
+          this.showTabla = !this.showTabla;
+        }, 2000);
         setTimeout(() => {
           this.lista = this.source.slice(5);
           this.listaMezclada = this.source.slice(5);
           this.shuffle(this.listaMezclada);
           this.showTabla = !this.showTabla;
-        }, 1200);
-
-      }
-    } else {
-      this.huecoSeleccionado.classList.remove('acierto');
-      this.huecoSeleccionado.classList.add('error');
-      this.errores++;
-
-      if (this.errores > 3) {
-        /*
-                setTimeout(() => {
-                  this.errores = 0;
-                  this.intentos++;
-                  this.router.navigate(['./mensaje'], { relativeTo: this.route });
-                }, 2000);*/
+        }, 3000);
+        setTimeout(() => {
+          this.addEventListeners();
+          this.ts.reChargeDraggableEvents();
+        }, 3500);
 
       }
     }
@@ -250,4 +208,5 @@ export class TablasComponent extends TareaUtils implements OnInit {
     this.limpiaRelacionados();
 
   }
+
 }

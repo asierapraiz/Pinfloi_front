@@ -1,6 +1,6 @@
 <div class="container-fluid row ">
     <div class="col-izq col-12 col-md-3 ">
-        <div class="row">
+        <div class="row ">
             <div class="perfil marco col-11 ">
                 <div class="row ">
                     <div class="col-5 col-md-4 avatar foto">
@@ -17,63 +17,105 @@
                         {{nombre}}
 
                     </div>
-                    <div id="tarea-info">
-                        <div id="intentos">
-                            <p>Intentos:</p>
-                            <i @flyInOut *ngFor="let a of [].constructor(intentos)"
-                                class="intento-icon fa fa-circle fa-1x text-sucess"></i>
-                        </div>
-                        <div id="errores">
-                            <p>Errores:</p>
-                            <i @flyInOut *ngFor="let a of [].constructor(errores)"
-                                class="error-icon fa fa-circle fa-1x text-danger "></i>
-                        </div>
-                        <div class="btn btn-lg" (click)=nuevoReto()>Guardar</div>
-                        <div class="tareas col-12">
-                        </div>
+
+                    <!-- <div *ngIf="authService.isAuthenticated()" class="col-12 d-flex justify-content-center">
+                        <input type="submit" (click)=nuevoReto() class="btn btn-primary " value="Guardar">                        
                     </div>
+                    <div *ngIf="!authService.isAuthenticated()" class="col-12 d-flex justify-content-center">
+                        <input type="submit" (click)=noRegistrado() class="btn btn-primary fs-18 mt-1" value="Guardar">
+                        
+                    </div> -->
+                    <div class="line"></div>
+                    <ul class="">
+                        <li @flyInFromLeft *ngFor="let tarea of tareasSeleccionadas; index as index">
+                            <div class="d-flex justify-content-start">
+                                <div [ngClass]="(index == reto.tareaActual)?'tarea-actual':''"
+                                    class="tarea-seleccionada ">
+                                    <span>{{ tarea.name }}</span>
+                                </div>
+                                <app-valoracion-icon *ngIf="tarea.valoracion" [tarea]="tarea">
+                                </app-valoracion-icon>
+                            </div>
+                        </li>
+                    </ul>
+
                 </div>
             </div>
-            <div class=" col-5 col-sm-4 col-md-12" id="vadorrin">
-                <img class="vadorrin " id="pose" src="assets/img/vadorrin/Pose.png" />
-                <img class="vadorrin " hidden="" id="guiña" src="assets/img/vadorrin/Guina.png " />
-                <img class="vadorrin " hidden="" id="miraPanel" src="assets/img/vadorrin/MiraPanel.png" />
-                <img class="vadorrin " hidden="" id="triste" src="assets/img/vadorrin/Triste.png" />
-            </div>
+
         </div>
     </div>
-    <div class="col-dch col-12 col-md-9 sombra {{tarea}} ralative row" id="pizarra">
+    <div class="col-dch col-12 col-md-9 sombra {{tarea}} row" id="pizarra">
         <div class="pizarra-header d-flex justify-content-between">
 
-            <div class="tarea">{{tarea}}</div>
+
+
+            <div class="tarea">{{tarea | noSlash}}</div>
             <!-- <img class="logo" src="assets/img/logo/Pinfloi.svg" width="auto" /> 
 
             <i class="fas fa-gamepad"></i>
             -->
+            <div id="tarea-info">
+                <div id="errores">
+                    <i @flyInOut *ngFor="let a of [].constructor(errores)"
+                        class="error-icon fa fa-circle fa-1x text-danger "></i>
+                </div>
+
+                <div class="tareas col-12">
+                </div>
+            </div>
 
             <div class="butons-group">
 
-                <button class="navbar-toggler navbar-toggler-right navbar-ico" (click)="openModal()"
-                    data-target="#opcionesModal" type="button">
+                <button appPopper [target]="a" class="navbar-toggler navbar-toggler-right navbar-ico"
+                    (click)="openModal()" type="button">
                     <i class="fa fa-bars"></i>
+                    <span class="btn popper" #a>
+                        <span class="popper__arrow"></span>
+                        Ver el listado de tareas
+                    </span>
                 </button>
 
-                <button (click)="openModal()" class="navbar-toggler navbar-toggler-right navbar-ico" data-toggle="modal"
-                    data-target="#opcionesModal" type="button">
+                <button appPopper [target]="b" (click)="openModal()"
+                    class="navbar-toggler navbar-toggler-right navbar-ico" data-toggle="modal" type="button">
                     <i class="fa fa-gamepad"></i>
+                    <span class="btn popper" #b>
+                        <span class="popper__arrow"></span>
+                        Cambiar juego
+                    </span>
+
                 </button>
 
-                <button aria-label="Toggle navigation" (click)="nuevoReto()"
+                <button appPopper [target]="c" aria-label="Toggle navigation" (click)="nuevoReto()"
                     class="navbar-toggler navbar-toggler-right navbar-icon" data-toggle="modal"
                     data-target="#historicoModal" type="button">
-                    <i id="btn-historico" class="fa fa-history"></i>
+                    <i id="btn-historico" class="fa fa-cloud-upload"></i>
+                    <span class="btn popper" #c>
+                        <span class="popper__arrow"></span>
+                        Guardar reto
+                    </span>
                 </button>
 
-                <button id="volumen-switch" class="navbar-toggler navbar-toggler-right navbar-icon" type="button">
+                <button appPopper [target]="d" id="to-landing" [routerLink]="['/landing']"
+                    class="navbar-toggler navbar-toggler-right navbar-icon" type="button">
+                    <i class="fa fa-home"></i>
+                    <span class="btn popper" #d>
+                        <span class="popper__arrow"></span>
+                        Home
+                    </span>
+                </button>
+
+                <button appPopper [target]="e" id="volumen-switch"
+                    class="navbar-toggler navbar-toggler-right navbar-icon" type="button">
                     <i class="fa fa-volume-off"></i>
+                    <span class="btn popper" #e>
+                        <span class="popper__arrow"></span>
+                        Volumen
+                    </span>
                 </button>
             </div>
         </div>
+
+
 
 
         <div class="pizarra-body ">
@@ -124,6 +166,15 @@
             </div>
 
         </div>
+
+
+        <div [ngClass]="(reto.tareasSeleccionadas.length>5)?'toLeft':''" class="" id="vadorrin">
+            <img class="vadorrin " id="pose" src="assets/img/vadorrin/Pose.png" />
+            <img class="vadorrin " hidden="" id="guiña" src="assets/img/vadorrin/Guina.png " />
+            <img class="vadorrin " hidden="" id="miraPanel" src="assets/img/vadorrin/MiraPanel.png" />
+            <img class="vadorrin " hidden="" id="triste" src="assets/img/vadorrin/Triste.png" />
+        </div>
+
 
     </div>
 

@@ -6,6 +6,7 @@ export class Avatar {
   boca?: number;
   cara?: number;
   torso?: number;
+  selected?: boolean;
 
   constructor() {
     this.pelo = 1;
@@ -15,5 +16,6 @@ export class Avatar {
     this.boca = 1;
     this.cara = 1;
     this.torso = 1;
+    this.selected = false;
   }
 }

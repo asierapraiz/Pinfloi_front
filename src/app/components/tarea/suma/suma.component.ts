@@ -24,17 +24,16 @@ export class SumaComponent extends TareaUtils implements OnInit {
   ngOnInit(): void {
     this.intentos = 0;
 
-
     if (this.llevada == true) {
       this.filas = new Array(4);
     } else {
       this.filas = new Array(3);
     }
+
     this.columnas = 4;
     this.creaOperacion();
     this.resuelveOperacion();
     this.muestraOperacion();
-
   }
 
   ngAfterViewInit() {
@@ -46,8 +45,6 @@ export class SumaComponent extends TareaUtils implements OnInit {
       hueco.addEventListener('click', this.marcaRelacionados.bind(this))
     })
   }
-
-
 
   creaOperacion() {
 
@@ -155,12 +152,7 @@ export class SumaComponent extends TareaUtils implements OnInit {
     this.htmlToAdd = '';
     console.log("En muestraOperacion");
     this.carton = document.querySelector('#carton');
-    /*
-    if (this.carton) {
-      this.carton.classList.add("suma");
-      this.carton.classList.add("ancho-" + (this.columnas + 1));
-      this.carton.classList.add("alto-" + this.filas.length);
-    }*/
+
 
     for (var f = 0; f < this.filas.length; f++) {
       //Creo las filas.
@@ -210,11 +202,6 @@ export class SumaComponent extends TareaUtils implements OnInit {
 
   }
 
-  ///////////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////////         
-  //////////////////////////////////////     MARCA RELACIONADOS    //////////////////////////////////
-  //////////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////////
   marcaRelacionados(elemento) {
 
     this.limpiaRelacionados();

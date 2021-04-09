@@ -45,9 +45,6 @@
           </a>
         </li> -->
 
-
-        <li class="nav-item " *ngIf="!authService.isAuthenticated()"><a [routerLink]="['/nodo-bg/login']"
-            class=" nav-link js-scroll-trigger">Login</a></li>
         <li class="nav-item " *ngIf="!authService.isAuthenticated()"><a [routerLink]="['/registro-bg/registro']"
             class="nav-link js-scroll-trigger">Registro</a>
         </li>

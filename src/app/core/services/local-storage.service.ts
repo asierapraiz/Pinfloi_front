@@ -10,10 +10,10 @@ export class LocalStorageService {
   constructor() { }
 
   //Getters
-  sessionGetAvatar() { return JSON.parse(sessionStorage.getItem("avatar") || "[]"); }
+  sessionGetAvatar() { return JSON.parse(sessionStorage.getItem("avatar")); }
   sessionGetUser() { return JSON.parse(sessionStorage.getItem("usuario") || "[]"); }
   getTareaActual() { return JSON.parse(localStorage.getItem("tareaActual") || "[]"); };
-  sessionGetNombre() { return sessionStorage.getItem("nombre") || "desconocido" };
+  sessionGetNombre() { return sessionStorage.getItem("nombre") };
 
   //Setters
   sessionSetNombre(nombre) { sessionStorage.setItem('nombre', nombre); };

@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center ">
     <div class=" col-10 col-md-6 col-xl-4 caja" id="logeo">
 
-        {{"En nombre"}}
+
         <div class="cosa" id="cosa">
             <div [ngClass]="['animacion', 'paused']" class="animacion" id="cara">
                 <div class="ojo animacion" id="ojoIzq">
@@ -21,16 +21,25 @@
                 </div>
             </div>
         </div>
-
-        <div class="form-group w-100">
-            <i class="fa fa-user clc">
-            </i>
-            <input [(ngModel)]="nombre" type="text" (change)="keyUp()" (input)="keyDown()" class="" name="username"
-                id="username" placeholder="Tu nombre" autofocus required>
+        <div *ngIf="showName">
+            <h1 class="white">Eres {{nombre}}?</h1>
+            <input id="" (click)="start()" type="submit" class="btn btn-lg btn-primary " value="Si">
+            <input id="" (click)="notMe()" type="submit" class="btn btn-lg btn-primary " value="No">
         </div>
 
-        <input id="enviar" [routerLink]="['/reto/nombre']" (click)="start()" type="submit"
-            class="btn btn-lg btn-primary " value="Ok">
+        <div class="animacion fadeIn" *ngIf="!showName">
+
+            <div class="form-group w-100">
+                <i class="fa fa-user clc">
+                </i>
+                <input [(ngModel)]="nombre" type="text" (change)="keyUp()" (input)="keyDown()" class="" name="username"
+                    id="username" placeholder="Tu nombre" autofocus required>
+            </div>
+            <p [ngClass]="(mensaje!='')?'fadeIn':''" class="mensaje">Tienes que poner un nombre</p>
+
+            <input id="enviar" (click)="start()" type="submit" class="btn btn-lg btn-primary " value="Ok">
+
+        </div>
 
 
     </div>

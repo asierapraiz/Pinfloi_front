@@ -7,6 +7,7 @@ import { Reto } from "../../../core/models/reto.model";
 
 
 
+
 @Component({
   selector: 'app-opciones',
   templateUrl: './opciones.component.html',
@@ -30,31 +31,34 @@ export class OpcionesComponent implements OnInit {
 
 
 
+
   ngOnInit(): void {
+
     this.reto = this.localStorage.getSeleccion();
     this.juegoActual = this.reto.juegosSeleccionados[0];
   }
 
-  addJuego(juego) {
+
+  cambiarJuego(juego) {
     this.juegoActual = juego;
   }
 
-  cambiarJuego(juego: Juego) {
+  guardarCambios(juego: Juego) {
     this.reto.juegosSeleccionados = null;
     this.reto.juegosSeleccionados = [this.juegoActual];
     this.localStorage.setSeleccion(this.reto);
     this.closeModal();
-
   }
 
-
   closeModal() {
-    debugger;
     let modal = document.getElementById("modal");
     modal.classList.add("fadeOut");
     modal.classList.remove("fadeIn");
     setTimeout(() => this.tareaModalService.close(), 800);
-
   }
+
+  log() {
+    console.log(...arguments)
+  };
 
 }

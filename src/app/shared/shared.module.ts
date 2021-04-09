@@ -4,14 +4,19 @@ import { RouterModule } from '@angular/router';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-
+import { PopperDirective } from './../core/directives/popper.directive';
+import { NoSlashPipe } from '../pipes/noSlash.pipe';
+import { ValoracionIconComponent } from './valoracion-icon/valoracion-icon.component';
 
 
 @NgModule({
   declarations: [
     PaginatorComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    PopperDirective,
+    NoSlashPipe,
+    ValoracionIconComponent
   ],
   imports: [
     CommonModule,
@@ -22,8 +27,11 @@ import { FooterComponent } from './footer/footer.component';
     PaginatorComponent,
     HeaderComponent,
     FooterComponent,
+    PopperDirective,
     CommonModule,
-    RouterModule
+    RouterModule,
+    NoSlashPipe,
+    ValoracionIconComponent
   ]
 })
 export class SharedModule { }

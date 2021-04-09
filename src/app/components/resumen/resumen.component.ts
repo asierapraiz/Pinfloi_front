@@ -1,5 +1,4 @@
 import { HostBinding, Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Avatar } from '../avatar-form/avatar.model';
 import { Reto } from "../../core/models/reto.model";
 import { LocalStorageService } from "../../core/services/local-storage.service";
@@ -8,6 +7,8 @@ import { Tarea } from "../../core/models/tarea.model";
 import { flyInFromLeft, PAGE_IN_ANIMATION, PAGE_OUT_ANIMATION, JUMP_TO_TAREA_ANIMATION } from '../../animations';
 import { Router } from '@angular/router';
 import { trigger, transition, style, animate, stagger, query, useAnimation } from '@angular/animations';
+import { AuthService } from '../usuarios/service/auth.service';
+
 
 
 
@@ -27,35 +28,61 @@ export class ResumenComponent implements OnInit {
   tareasSeleccionadas: Tarea[] = [];
   juegosSeleccionados: Array<Juego> = [];
   nombre: String;
-  todoOK: boolean = false;
-  /*
-    public avatar: Avatar = {
-      definido: false,
-      pelo: 'pelo_1',
-      cejas: 'cejas_1',
-      ojos: 'ojo_1',
-      nariz: 'nariz_1',
-      boca: 'boca_1',
-      cara: 'cara_1',
-      torso: 'torso_1'
-    };*/
+  todoOK: boolean = true;
+  mensaje: String = "Comienza tu aventura y aprende jugando"
+
 
   reto!: Reto;
 
-  constructor(private modalService: NgbModal, private ls: LocalStorageService, private router: Router) { }
+  constructor(private authService: AuthService, private ls: LocalStorageService, private router: Router) { }
 
 
   ngOnInit(): void {
 
     this.ls.getSeleccion() ? this.reto = this.ls.getSeleccion() : null;
 
-    if (this.reto.nombre != '' &&
-      this.reto.avatar != '' &&
-      this.reto.tareasSeleccionadas.length > 0 &&
-      this.reto.juegosSeleccionados.length > 0
-    ) {
-      this.todoOK = true;
+    if (!this.authService.isAuthenticated()) {
+      this.ls.sessionGetAvatar() ? "" : this.mensaje = "Te falta seleccionar el nombre";
+      this.ls.sessionGetNombre() ? "" : this.mensaje = "Te falta seleccionar el avatar";
+
+      !this.reto.juegosSeleccionados || this.reto.juegosSeleccionados.length == 0 ? this.mensaje = "Te falta seleccionar un juego" : "";
+      !this.reto.tareasSeleccionadas || this.reto.tareasSeleccionadas.length == 0 ? this.mensaje = "Te falta seleccionar tareas" : "";
+
+      if (!this.ls.sessionGetAvatar ||
+        !this.ls.sessionGetNombre() ||
+        !this.reto.tareasSeleccionadas ||
+        !this.reto.juegosSeleccionados ||
+        this.reto.tareasSeleccionadas.length == 0 ||
+        this.reto.juegosSeleccionados.length == 0) {
+        this.todoOK = false;
+      }
+
+    } else {
+
+      !this.reto.juegosSeleccionados || this.reto.juegosSeleccionados.length == 0 ? this.mensaje = "Te falta seleccionar un juego" : "";
+      !this.reto.tareasSeleccionadas || this.reto.tareasSeleccionadas.length == 0 ? this.mensaje = "Te falta seleccionar tareas" : "";
+
+
+      if (!this.reto.tareasSeleccionadas ||
+        !this.reto.juegosSeleccionados ||
+        this.reto.tareasSeleccionadas.length == 0 ||
+        this.reto.juegosSeleccionados.length == 0) {
+        this.todoOK = false;
+      }
     }
+
+
+
+
+
+    /*  if (this.reto.nombre != '' ||
+       this.reto.avatar != '' ||
+       this.reto.tareasSeleccionadas != null ||
+       this.reto.tareasSeleccionadas.length > 0 ||
+       this.reto.juegosSeleccionados.length > 0
+     ) {
+       this.todoOK = false;
+     } */
   }
 
   continuar(resumnenModal) {
@@ -65,32 +92,6 @@ export class ResumenComponent implements OnInit {
     this.ls.setSeleccion(this.reto);
     this.ls.clearTablasHechas();
     this.router.navigateByUrl('/tarea');
-
-
-    // setTimeout(() => {
-    //   this.router.navigateByUrl('/tarea/' + this.ls.getSeleccion().tareasSeleccionadas[this.reto.tareaActual].name);
-
-    // }, 3000);
-    /*
-    if (this.reto.nombre == '' ||
-      this.reto.avatar['definido'] == false ||
-      this.reto.tareasSeleccionadas.length > 0 ||
-      this.reto.juegosSeleccionados.length > 0
-    ) {
-      debugger;
-      this.router.navigateByUrl('/tarea/' + this.ls.getSeleccion().tareasSeleccionadas[this.reto.tareaActual].name);
-
-    } else {
-      this.openModal(resumnenModal);
-    }*/
-
-
-
-  }
-
-  openModal(resumnenModal) {
-    this.modalService.open(resumnenModal, {
-    });
   }
 
 }

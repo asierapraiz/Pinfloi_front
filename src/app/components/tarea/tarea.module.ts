@@ -5,7 +5,7 @@ import { TareaComponent } from './tarea/tarea.component';
 import { RestaComponent } from './resta/resta.component';
 import { TareaRoutingModule } from './tarea-routing.module';
 import { MensajeComponent } from './mensaje/mensaje.component';
-import { SafePipe } from './../../pipes/safe.pipe';
+import { SafePipe } from '../../pipes/safe.pipe';
 import { RestaConComponent } from './resta-con/resta-con.component';
 import { SumaConComponent } from './suma-con/suma-con.component';
 import { TablasComponent } from './tablas/tablas.component';
@@ -14,6 +14,8 @@ import { MultiplicarDeDosComponent } from './multiplicar-de-dos/multiplicar-de-d
 import { DividirComponent } from './dividir/dividir.component';
 import { DividirDeDosComponent } from './dividir-de-dos/dividir-de-dos.component';
 import { OpcionesComponent } from './opciones/opciones.component';
+import { SharedModule } from './../../../app/shared/shared.module';
+
 
 
 
@@ -35,7 +37,8 @@ import { OpcionesComponent } from './opciones/opciones.component';
   ],
   imports: [
     CommonModule,
-    TareaRoutingModule
+    TareaRoutingModule,
+    SharedModule
   ]
 })
 export class TareaModule { }

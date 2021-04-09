@@ -108,7 +108,8 @@ let routeFadeIn = [
 export const routeAnimations =
     trigger('routeAnimations', [
         transition('LandingPage => SeleccionPage', routeAnimationToRight),
-        transition('SeleccionPage => LandingPage', routeAnimationToLeft),
+        transition('NodoBg => LandingPage', routeAnimationToLeft),
+        transition('LandingPage => NodoBg', routeAnimationToRight),
         transition('LandingPage => NodoBg', routeAnimationToRight),
         transition('NodoBg => LandingPage', routeAnimationToLeft),
         transition('NodoDos => Nodo', routeAnimationToLeft),

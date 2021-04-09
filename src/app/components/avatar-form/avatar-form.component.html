@@ -4,7 +4,7 @@
             Elige tu avatar
         </h1>
 
-        <!--Chico-->
+
         <div class="col-12 col-lg-3 chico ">
             <div class="avatar">
                 <div class="foto">
@@ -104,7 +104,7 @@
                 <div aria-labelledby="pelo-tab" class="tab-pane fade show active" id="pelo" role="tabpanel">
                     <div class="row p-3 capa" data-capa="pelo">
 
-                        <div @fadeInAnimation *ngFor="let pelo of pelos" class="col-4 col-md-4 col-lg-3 box">
+                        <div @fadeInAnimation *ngFor="let pelo of pelos" class="col-4 col-md-4 col-lg-3 ">
                             <img alt="" (click)="avatar.pelo=pelo;seleccion()" class="img-fluid"
                                 src="./../../assets/img/avatar/pelos/pelo_{{pelo}}.png" />
                         </div>
@@ -114,7 +114,7 @@
                 <div aria-labelledby="ojos-tab" class="tab-pane fade" id="ojos" role="tabpanel">
                     <div class="row p-3 capa" data-capa="ojos">
 
-                        <div @fadeInAnimation *ngFor="let ojo of ojos" class="col-4 col-md-4 col-lg-3 box">
+                        <div @fadeInAnimation *ngFor="let ojo of ojos" class="col-4 col-md-4 col-lg-3 ">
                             <img alt="" (click)="avatar.ojos=ojo;seleccion()" class="img-fluid"
                                 src="./../../assets/img/avatar/ojos/ojo_{{ojo}}.png" />
                         </div>
@@ -124,7 +124,7 @@
                 <div aria-labelledby="nariz-tab" class="tab-pane fade" id="nariz" role="tabpanel">
                     <div class="row p-3 capa" data-capa="nariz">
 
-                        <div @fadeInAnimation *ngFor="let nariz of narices" class="col-4 col-md-4 col-lg-3 box">
+                        <div @fadeInAnimation *ngFor="let nariz of narices" class="col-4 col-md-4 col-lg-3 ">
                             <img alt="" (click)="avatar.nariz=nariz;seleccion()" class="img-fluid"
                                 src="./../../assets/img/avatar/nariz/nariz_{{nariz}}.png" />
                         </div>
@@ -134,7 +134,7 @@
                 <div aria-labelledby="boca-tab" class="tab-pane fade" id="boca" role="tabpanel">
                     <div class="row p-3 capa" data-capa="boca">
 
-                        <div @fadeInAnimation *ngFor="let boca of bocas" class="col-4 col-md-4 col-lg-3 box">
+                        <div @fadeInAnimation *ngFor="let boca of bocas" class="col-4 col-md-4 col-lg-3 ">
                             <img (click)="avatar.boca=boca;seleccion()" alt="" class="img-fluid"
                                 src="assets/img/avatar/bocas/boca_{{boca}}.png" />
                         </div>
@@ -144,7 +144,7 @@
                 <div aria-labelledby="cejas-tab" class="tab-pane fade" id="cejas" role="tabpanel">
                     <div class="row p-3 capa" data-capa="cejas">
 
-                        <div @fadeInAnimation *ngFor="let ceja of cejas" class="col-4 col-md-4 col-lg-3 box">
+                        <div @fadeInAnimation *ngFor="let ceja of cejas" class="col-4 col-md-4 col-lg-3 ">
                             <img (click)="avatar.cejas=ceja;seleccion()" alt="" class="img-fluid"
                                 src="./../../assets/img/avatar/cejas/cejas_{{ceja}}.png" />
                         </div>
@@ -154,7 +154,7 @@
                 <div aria-labelledby="torso-tab" class="tab-pane fade" id="torso" role="tabpanel">
                     <div class="row p-3 capa" data-capa="torso">
 
-                        <div @fadeInAnimation *ngFor="let torso of torsos" class="col-4 col-md-4 col-lg-3 box">
+                        <div @fadeInAnimation *ngFor="let torso of torsos" class="col-4 col-md-4 col-lg-3 ">
                             <img (click)="avatar.torso=torso;seleccion()" alt="" class="img-fluid"
                                 src="./../../assets/img/avatar/torsos/torso_{{torso}}.png" />
                         </div>

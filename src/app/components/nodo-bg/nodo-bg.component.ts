@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { routeAnimations } from './../../animations';
+import { AuthService } from '../usuarios/service/auth.service';
+import { Router } from '@angular/router';
+
 
 
 
@@ -12,9 +15,10 @@ import { routeAnimations } from './../../animations';
 })
 export class NodoBgComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, public authService: AuthService) { }
 
   ngOnInit(): void {
+
   }
 
   prepRouteTransition(outlet: RouterOutlet) {

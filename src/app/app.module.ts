@@ -30,7 +30,7 @@ import { RecuperarPassComponent } from './components/usuarios/recuperar-pass/rec
 import { ChangePassComponent } from './components/usuarios/change-pass/change-pass.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LandingComponent } from './components/landing/landing.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { NombreFormComponent } from './components/nombre-form/nombre-form.component';
 import { AvatarFormComponent } from './components/avatar-form/avatar-form.component';
 import { JuegoComponent } from './components/juego/juego.component';
@@ -44,6 +44,11 @@ import { RegistroBgComponent } from './components/registro-bg/registro-bg.compon
 import { NodoComponent } from './components/nodo/nodo.component';
 import { NodoDosComponent } from './components/nodo-dos/nodo-dos.component';
 import { NodoBgComponent } from './components/nodo-bg/nodo-bg.component';
+import { OpcionTablasComponent } from './components/opcion-tablas/opcion-tablas.component';
+
+
+
+
 
 
 
@@ -126,7 +131,9 @@ const routes: Routes = [
     RegistroBgComponent,
     NodoComponent,
     NodoDosComponent,
-    NodoBgComponent
+    NodoBgComponent,
+    OpcionTablasComponent
+
   ],
   imports: [
     SharedModule,
@@ -136,7 +143,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
     BrowserAnimationsModule, MatDatepickerModule, MatMomentDateModule,
     ReactiveFormsModule, MatAutocompleteModule, MatInputModule, MatFormFieldModule,
-    FontAwesomeModule, NgbModule
+    FontAwesomeModule
   ],
   providers: [ClienteService, UsuarioService,
     { provide: LOCALE_ID, useValue: 'es' },

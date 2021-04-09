@@ -9,30 +9,29 @@
             </div>
         </div>
         <div class="row">
-            <div *ngFor="let tarea of tareas; index as index" class="col-6 col-sm-4 col-md-3 portfolio-item  tareaItem "
-                data-tipo="tarea">
-                <a id="suma-{{tarea.name}}" class="portfolio-link redondo-top" data-toggle="modal"
-                    (click)="addTarea(tarea)">
-                    <img class="img-fluid redondo-top " src="./../../assets/img/portfolio/{{tarea.name}}.png" />
+            <div *ngFor="let tarea of tareas; index as index"
+                class="col-6 col-sm-4 col-md-3 portfolio-item  tareaItem ">
+                <a id="suma-{{tarea.name}}" class="portfolio-link redondo-top " (click)="addTarea(tarea)">
+                    <img class="img-fluid redondo-top box " src="./../../assets/img/portfolio/{{tarea.name}}.png" />
                 </a>
                 <div [ngClass]="(tarea.selected)?'tarea-seleccionada':''"
-                    class="portfolio-caption redondo-bottom d-flex justify-content-between">
-                    <button id="resta-{{tarea.name}}" (click)="removeTarea(tarea)" class="btn minus" type="button">
+                    class="portfolio-caption redondo-bottom d-flex justify-content-center ">
+                    <!--  <button id="resta-{{tarea.name}}" (click)="removeTarea(tarea)" class="btn minus" type="button">
                         <i class="fa fa-minus-circle"></i>
-                    </button>
+                    </button> -->
                     <div>
                         <h4 class="blue">
                             {{tarea.name}}
                         </h4>
-                        <h4 *ngIf="tarea.cantidad!=0" class="blue">x{{tarea.cantidad}}</h4>
+                        <!-- <h4 *ngIf="tarea.cantidad!=0" class="blue">x{{tarea.cantidad}}</h4> -->
                     </div>
-                    <button id="suma-{{tarea.name}}" (click)=" addTarea(tarea)" class="btn plus" type="button">
+                    <!-- <button id="suma-{{tarea.name}}" (click)=" addTarea(tarea)" class="btn plus" type="button">
                         <i class="fa fa-plus-circle"></i>
-                    </button>
+                    </button> -->
                 </div>
             </div>
         </div>
     </div>
 
-
+    <app-opcion-tablas></app-opcion-tablas>
 </section>

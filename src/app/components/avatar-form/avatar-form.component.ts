@@ -8,11 +8,6 @@ import { AvatarService } from './../../core/services/avatar.service';
 import { AuthService } from '../usuarios/service/auth.service';
 
 
-
-
-
-
-
 @Component({
   selector: 'app-avatar-form',
   templateUrl: './avatar-form.component.html',
@@ -21,7 +16,8 @@ import { AuthService } from '../usuarios/service/auth.service';
 })
 export class AvatarFormComponent implements OnInit {
 
-  public avatar: Avatar = new Avatar();
+  public avatar: Avatar;
+
 
   pelos = Array(30).fill(null).map((x, i) => i + 1);
   ojos = Array(24).fill(null).map((x, i) => i + 1);
@@ -55,27 +51,34 @@ export class AvatarFormComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.activatedRoute.paramMap.subscribe(params => {
-      let clienteId = +params.get('registro');
+    this.avatar = new Avatar();
 
-    });
+    if (this.authService.isAuthenticated()) {
+      if (this.authService.usuario.avatar) {
+        this.avatar = this.authService.usuario.avatar;
+        this.muestraAvatar();
+      }
 
-    if (!this.authService.isAuthenticated() && this.localStorage.getSeleccion().avatar) {
-      this.avatar = this.authService.usuario.avatar;
-      this.seleccion();
+      //this.muestraAvatar();
+    } else if (this.localStorage.sessionGetAvatar() != null) {
+      this.avatar = this.localStorage.sessionGetAvatar();
+      this.muestraAvatar();
     }
   }
 
-  seleccion() {
 
+  muestraAvatar() {
     let elements = document.getElementsByClassName('d-none');
     while (elements.length > 0) {
       elements[0].classList.remove("d-none");
     }
     document.querySelector('#indefinido')?.classList.add("d-none");
     document.querySelector('#indefinido-aside')?.classList.add("d-none");
+  };
 
+  seleccion() {
     this.retoService.seleccionaAvatar(this.avatar);
+    this.muestraAvatar();
   };
 
   continuar() {

@@ -33,22 +33,19 @@ export default class TareaUtils {
 
     addEventListeners() {
 
+        console.log("En addEventListeners() tarea-utils");
         //Añado los eventos en los elementos de la tarea, targets y inputs
         let huecos = this.elementRef.nativeElement.querySelectorAll('.target');
 
         huecos.forEach((hueco: HTMLElement) => {
             hueco.addEventListener('click', this.seleccionaHueco.bind(this))
         })
-
-        // let inputs = this.elementRef.nativeElement.querySelectorAll('.item');
-        // inputs.forEach((hueco: HTMLElement) => {
-        //     hueco.addEventListener('click', this.seleccionaHueco.bind(this));
-        // })
     }
 
 
 
     seleccionaHueco(element: any) {
+        console.log("En seleccionaHueco de utils");
         element.stopPropagation();
         if (element.target.id == 'papelera') {
             return;

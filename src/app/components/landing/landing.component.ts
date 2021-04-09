@@ -2,7 +2,6 @@ import { HostListener, Component, OnInit } from '@angular/core';
 import { Juego } from "../../core/models/juego.model";
 import { Tarea } from "../../core/models/tarea.model";
 import { LocalStorageService } from "../../core/services/local-storage.service";
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 import { AuthService } from '../usuarios/service/auth.service';
@@ -43,7 +42,7 @@ export class LandingComponent implements OnInit {
 
   constructor(public authService: AuthService,
     private localStorage: LocalStorageService,
-    private modalService: NgbModal,
+
     private viewportScroller: ViewportScroller,
     private router: Router) { }
 
@@ -110,9 +109,9 @@ export class LandingComponent implements OnInit {
     console.log("Tareas seleccionadas =>" + JSON.stringify(this.tareasSeleccionadas));
 
     //Añadir las tareas seleccionadas
-    this.juegoSelected && this.tareaSelected ? this.modalService.open(landingModal) :
+    /* this.juegoSelected && this.tareaSelected ? this.modalService.open(landingModal) :
       this.juegoSelected ? this.viewportScroller.scrollToAnchor('tareas') :
-        this.viewportScroller.scrollToAnchor('juegos');
+        this.viewportScroller.scrollToAnchor('juegos'); */
   }
 
   addJuego(juego) {
@@ -134,22 +133,22 @@ export class LandingComponent implements OnInit {
     console.log("Jueago selected =>" + this.juegoSelected);
   }
 
-  openModal(element) {
+  /* openModal(element) {
     if (this.juegosSeleccionados.length == 0 || this.tareasSeleccionadas.length == 0) {
       return;
     }
     this.modalService.open(element, {
     });
   }
-
-  seguir(element) {
+ */
+  /* seguir(element) {
     this.modalService.dismissAll();
     this.localStorage.setTareas(this.tareasSeleccionadas);
     this.localStorage.setTareaActual(this.tareasSeleccionadas[0]);
     this.localStorage.setJuegos(this.juegosSeleccionados);
 
     this.router.navigateByUrl('/nombre');
-  }
+  } */
 
   scroll(target) {
     this.viewportScroller.scrollToAnchor(target);

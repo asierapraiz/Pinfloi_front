@@ -1,6 +1,8 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { Tarea } from "../../core/models/tarea.model";
 import { RetoService } from './../reto/services/reto.service';
+import { OpcionTablasService } from './../../core/services/opcion-tablas.service';
+
 
 
 
@@ -35,13 +37,20 @@ export class TareasComponent implements OnInit {
   ];
 
 
-  constructor(private ss: RetoService) { }
+  constructor(public opcionTablasService: OpcionTablasService, private ss: RetoService) { }
 
   ngOnInit(): void {
   }
 
   addTarea(tarea: any) {
-    this.ss.seleccionaTarea(tarea);
+    var tabla = tarea.name.substring(tarea.name.length - 1, tarea.name.length);
+
+    if (tarea.name.includes('tablas')) {
+      this.opcionTablasService.open(tabla);
+    } else {
+      this.ss.seleccionaTarea(tarea);
+    }
+
   }
 
   removeTarea(event) {

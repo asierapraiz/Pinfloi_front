@@ -1,59 +1,61 @@
 // Global styling for this template
- .separador {
-   display:block;
-   margin: 1rem 0rem;
- }
+.separador {
+  display: block;
+  margin: 1rem 0rem;
+}
 html {
   scroll-behavior: smooth;
- 
 }
 
-body {  
+body {
   overflow-x: hidden;
-  
-  @include font ('dosisbold');
+
+  @include font("dosisbold");
   font-size: 1.3rem;
-  
+
   color: $primary;
   background-color: white;
   //background-image: url('/../assets/img/fondos/fondoDibujosB.png') !important;
   //background-size: cover !important;
   //background-position: center center !important;
-  //background-repeat: repeat-y !important;  
-   //transition: 0.2s all ease-out;
+  //background-repeat: repeat-y !important;
+  //transition: 0.2s all ease-out;
+}
+.color-primary {
+  color: $primary;
 }
 
-
-.minus, .plus{
+.minus,
+.plus {
   font-size: 2rem;
   color: $amarillo;
   border: none;
-  &:hover{
+  &:hover {
     color: $primary;
   }
 }
 
-.sombra{
+.sombra {
   box-shadow: 0px -2px 12px -2px #787878;
 }
 
-.rounded-bm{ 
-    border-radius:10px;      
-    }
-
-    .intro-video {    
-    margin-bottom:20px;
-    }
-
-.sombra-marco{
-  @include sombra-marco;  
-}
-.sombra-borde:hover{
-  box-shadow:none;
+.rounded-bm {
+  border-radius: 10px;
 }
 
-.no-show{
-  display:none;
+.intro-video {
+  margin-bottom: 20px;
+}
+
+.sombra-marco {
+  @include sombra-marco;
+}
+.sombra-borde:hover {
+  box-shadow: none;
+}
+
+.no-show {
+  display: none;
 }
 
 p {
@@ -78,35 +80,30 @@ h4,
 h5,
 h6 {
   font-weight: 700;
-  @include font('dosisextrabold');
+  @include font("dosisextrabold");
 }
-
-
-
 
 section {
   padding: 15px 0;
 
-  &#videos{
-    margin-top:200px;
+  &#videos {
+    margin-top: 200px;
   }
 
-  h1.section-subheading{
-      font-size: 1.3rem;
-    }
-
+  h1.section-subheading {
+    font-size: 1.3rem;
+  }
 
   h2.section-heading {
     font-size: 40px;
     margin-top: 0;
     margin-bottom: 50px;
-    color: #24C5D9
+    color: #24c5d9;
   }
-  #grupo{
-      margin-top:-50px;
-      width:100%;
-    }
-
+  #grupo {
+    margin-top: -50px;
+    width: 100%;
+  }
 
   h3.section-subheading {
     font-size: 16px;
@@ -114,21 +111,18 @@ section {
     font-style: italic;
     margin-bottom: 75px;
     text-transform: none;
-   
   }
 
-  @media(min-width:768px) {
+  @media (min-width: 768px) {
     padding: 10px;
-    h1.section-subheading{
+    h1.section-subheading {
       font-size: 2rem;
-    }    
+    }
     /*
     background-image: url('/img/fondos/fondoDibujosB.png')!important;
     background-size: 100%!important;   
     
     background-repeat: repeat-y!important;*/
-
-
 
     h2.section-heading {
       font-size: 80px;
@@ -136,80 +130,67 @@ section {
     }
 
     h2.section-subheading {
-      
       font-size: 80px;
       margin-top: 0px;
     }
-  
-  
 
-    .btn-submit{
-      font-size: 40px!important;
+    .btn-submit {
+      font-size: 40px !important;
     }
 
-    .btn.focus, .btn:focus {
-    outline: 0;
-    box-shadow: none;
-    }    
-
+    .btn.focus,
+    .btn:focus {
+      outline: 0;
+      box-shadow: none;
+    }
   }
-  @media(min-width:1400px) {
-
-    h1.section-subheading{
+  @media (min-width: 1400px) {
+    h1.section-subheading {
       font-size: 3rem;
     }
-    roundede-bm{
-     border-radius:30px;
+    roundede-bm {
+      border-radius: 30px;
     }
-
-  
 
     h2.section-heading {
-        font-size: 100px;
-        margin-top: 20px;
+      font-size: 100px;
+      margin-top: 20px;
     }
-
   }
 }
 
-.orange{
-  color:$amarillo;
+.orange {
+  color: $amarillo;
 }
 
-.tareas-modal-cantidad{
-  position:absolute;
+.tareas-modal-cantidad {
+  position: absolute;
   top: 0rem;
-  left:0.5rem;
+  left: 0.5rem;
   padding: 0.5rem 1rem;
-  color:rgb(87, 93, 95);
+  color: rgb(87, 93, 95);
   background-color: rgb(150, 156, 154);
   opacity: 0.5;
   border-radius: 50%;
   overflow: hidden;
-  
 }
 
-
 // Button Styles
-.btn-submit{
+.btn-submit {
   font-size: 30px;
 }
 .btn {
-  @include font('dosisextrabold');
+  @include font("dosisextrabold");
   font-weight: 700;
-  border-radius:0.5rem;
-  border:1px solid #fff;
-  padding:0em 0.5em;
-
+  border-radius: 0.5rem;
+  border: 1px solid #fff;
+  padding: 0em 0.5em;
 }
 
-
-
-@media(min-width:1400px) {
-
-.container {
-    max-width: 1240px!important;
-}
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1240px !important;
+  }
 
   .btn-xl {
     font-size: 40px;
@@ -217,35 +198,30 @@ section {
   }
 }
 
-
-
-.btn-primary{
-   background-color: $primary;
+.btn-primary {
+  background-color: $primary;
 }
-.btn-success{
-   background-color: $success;
+.btn-success {
+  background-color: $success;
 }
 
-
-
-.btn-primary , .btn-success{
- 
+.btn-primary,
+.btn-success {
   border-color: $primary;
-  border:1px solid #fff;
-  border-radius:50px;
- 
-  -webkit-transition:box-shadow, .5s;
+  border: 1px solid #fff;
+  border-radius: 50px;
 
-  
-  &:hover {    
-    background-color: $amarillo;    
+  -webkit-transition: box-shadow, 0.5s;
+
+  &:hover {
+    background-color: $amarillo;
     color: white;
-    box-shadow:none;
-    border-color:white!important;
+    box-shadow: none;
+    border-color: white !important;
   }
-  
+
   &:focus {
-    box-shadow: 0 0 0 0.2rem rgba(254, 209, 55,.5) !important;
+    box-shadow: 0 0 0 0.2rem rgba(254, 209, 55, 0.5) !important;
   }
 }
 
@@ -268,18 +244,23 @@ img::-moz-selection {
   background: transparent;
 }
 
+.success {
+  color: #32fc3c;
+}
 
+.regular {
+  color: #336dd8;
+}
+
+.danger {
+  color: #fc5a32;
+}
 
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////
-Animacion dde boton
+Animacion de boton
 ///////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-
-
- 
-
-@keyframes shadow-pulse
-{
+@keyframes shadow-pulse {
   0% {
     box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
   }
@@ -288,15 +269,12 @@ Animacion dde boton
   }
 }
 
-
-
-.shadow-pulse
-{  
+.shadow-pulse {
   animation: shadow-pulse 2s infinite;
 }
 
-.modal-content{
-  color: $primary!important;
+.modal-content {
+  color: $primary !important;
 }
 
 .modal-dialog {
@@ -304,16 +282,14 @@ Animacion dde boton
   margin: 1.75rem auto;
 }
 
-
 .modal-header {
- 
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem 1rem;
   border-bottom: 1px solid #dee2e6;
-  border-top-left-radius: calc(.3rem - 1px);
-  border-top-right-radius: calc(.3rem - 1px);
+  border-top-left-radius: calc(0.3rem - 1px);
+  border-top-right-radius: calc(0.3rem - 1px);
 }
 
 .mi-modal-footer {
@@ -321,30 +297,23 @@ Animacion dde boton
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  padding: .75rem;
+  padding: 0.75rem;
   border-top: 1px solid #dee2e6;
-  border-bottom-right-radius: calc(.3rem - 1px);
-  border-bottom-left-radius: calc(.3rem - 1px);
-  .btn{
+  border-bottom-right-radius: calc(0.3rem - 1px);
+  border-bottom-left-radius: calc(0.3rem - 1px);
+  .btn {
     font-size: 1.75rem;
     padding: 0.25rem 0.15rem;
 
-    .fa-angle-left{
-      margin-right:2rem;
+    .fa-angle-left {
+      margin-right: 2rem;
     }
 
-    .fa-angle-right{
-      margin-left:2rem;
-    }    
+    .fa-angle-right {
+      margin-left: 2rem;
+    }
   }
-  .separador-horizontal{
+  .separador-horizontal {
     margin: 0rem 1rem;
   }
 }
-
-
-
-
-
-
-

@@ -1,0 +1,64 @@
+@import "variables.scss";
+.popper {
+    display: inline-block;
+    background: rgba(238, 238, 238, 0.171);
+
+    border-radius: 3px;
+    padding: 10px;
+    box-shadow: -2px 2px 16px 3px rgba(96, 101, 104, 0.5);
+    color: rgba(77, 77, 77, 0.733);
+
+    &[x-placement^="bottom"] {
+        margin-top: 15px;
+    }
+
+    &[x-placement^="top"] {
+        margin-bottom: 15px;
+    }
+
+    &[x-placement^="right"] {
+        margin-left: 15px;
+    }
+
+    &[x-placement^="left"] {
+        margin-right: 15px;
+    }
+
+    &__arrow {
+        width: 0;
+        height: 0;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+
+        border: {
+            style: solid;
+            width: 10px;
+            color: transparent;
+        }
+    }
+
+    &[x-placement^="top"] &__arrow {
+        border-bottom-width: 0;
+        border-top-color: #eee;
+        bottom: -10px;
+    }
+
+    &[x-placement^="bottom"] &__arrow {
+        border-top-width: 0;
+        border-bottom-color: #eee;
+        top: -10px;
+    }
+
+    &[x-placement^="right"] &__arrow {
+        border-left-width: 0;
+        border-right-color: #eee;
+        left: -10px;
+    }
+
+    &[x-placement^="left"] &__arrow {
+        border-right-width: 0;
+        border-left-color: #eee;
+        right: -10px;
+    }
+}

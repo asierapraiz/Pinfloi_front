@@ -12,6 +12,9 @@ import { Reto } from "../../core/models/reto.model";
 import { LocalStorageService } from "../../core/services/local-storage.service";
 import { AuthService } from '../usuarios/service/auth.service';
 import { UsuarioService } from '../usuarios/service/usuario.service';
+import { Location } from '@angular/common';
+import { OpcionTablasService } from './../../core/services/opcion-tablas.service';
+
 
 
 
@@ -34,20 +37,11 @@ const PAGE_ANIMATIONS = [
 
 const NICE_EASING = 'cubic-bezier(0.35, 0, 0.25, 1)';
 
+//De visita
 const rutas1 = [
   {
-    'actual': '/reto/nodo',
-    'before': '/landing',
-    'next': '/reto/nodo-dos'
-  },
-  {
-    'actual': '/reto/nodo-dos',
-    'before': '/reto/nodo',
-    'next': '/reto/nombre'
-  },
-  {
     'actual': '/reto/nombre',
-    'before': '/reto/nodo-dos',
+    'before': '/nodo-bg/nodo',
     'next': '/reto/avatar'
   },
   {
@@ -57,7 +51,7 @@ const rutas1 = [
   },
   {
     'actual': '/reto/tareas',
-    'before': '/reto//avatar',
+    'before': '/reto/avatar',
     'next': '/reto/juegos'
   },
   {
@@ -72,20 +66,12 @@ const rutas1 = [
   }
 ];
 
+//Logged
 const rutas2 = [
-  {
-    'actual': '/reto/nodo',
-    'before': '/landing',
-    'next': '/reto/nodo-dos'
-  },
-  {
-    'actual': '/reto/nodo-dos',
-    'before': '/reto/nodo',
-    'next': '/reto/tareas'
-  },
+
   {
     'actual': '/reto/tareas',
-    'before': '/reto/nodo',
+    'before': '/nodo-bg/nodo',
     'next': '/reto/juegos'
   },
   {
@@ -160,7 +146,7 @@ export class RetoComponent implements OnInit {
   rutas = rutas1;
 
 
-  constructor(private usuarioService: UsuarioService, private authService: AuthService, private ls: LocalStorageService, private retoService: RetoService, private _router: Router) {
+  constructor(private opcionTablasService: OpcionTablasService, private _location: Location, private usuarioService: UsuarioService, private authService: AuthService, private ls: LocalStorageService, private retoService: RetoService, private _router: Router) {
 
   }
 
@@ -193,23 +179,41 @@ export class RetoComponent implements OnInit {
           while (elements.length > 0) {
             elements[0].classList.remove("d-none");
           }
-          document.querySelector('#indefinido-aside').classList.add("d-none");
-    
+          document.querySelector('#indefinido-aside').classList.add("d-none");    
         }
         this.ls.getSeleccion().nombre ? this.nombre = this.ls.getSeleccion().nombre : '';
     
         this.ls.getSeleccion().tareasSeleccionadas ? this.tareasSeleccionadas = this.ls.getSeleccion().tareasSeleccionadas : '';
         this.ls.getSeleccion().juegosSeleccionados ? this.juegosSeleccionados = this.ls.getSeleccion().juegosSeleccionados : '';
      */
-
-
     /* let next = this.rutas.find(e => e.actual == this.activeRoutePath);
     this.hasNext = next.actual == '/reto/resumen' ? false : true; */
 
+    this.opcionTablasService.addTabla$.subscribe(
+      (tabla) => {
+
+        let tarea: Tarea = { name: "ladel " + tabla, selected: false, cantidad: 0, 'valoracion': null };
+        this.tareasSeleccionadas.push(tarea);
+        this.reto.tareasSeleccionadas = this.tareasSeleccionadas;
+        this.ls.setSeleccion(this.reto);
+      }
+    );
+
+    //Todo, no funciona, no se usa
+    this.opcionTablasService.removeTabla$.subscribe(
+      (tabla) => {
+
+        //let tarea: Tarea = { name: "ladel " + tabla, selected: false, cantidad: 0, 'valoracion': null };
+        //this.tareasSeleccionadas.push(tarea);
+        this.tareasSeleccionadas.filter((t) => t.name === "ladel " + tabla);
+        this.reto.tareasSeleccionadas = this.tareasSeleccionadas;
+        this.ls.setSeleccion(this.reto);
+      }
+    );
+
     this.makeSuscriptions();
-
-
   }
+
   ngAfterViewInit(): void {
     this.fixFontSize();
   }
@@ -254,7 +258,6 @@ export class RetoComponent implements OnInit {
     tipo == 'tarea' ? this.tareasSeleccionadas.splice(index, 1) : this.juegosSeleccionados.splice(index, 1);
     this.reto.tareasSeleccionadas = this.tareasSeleccionadas;
     this.ls.setSeleccion(this.reto);
-
   }
 
   prepRouteTransition(outlet: RouterOutlet) {
@@ -269,9 +272,9 @@ export class RetoComponent implements OnInit {
   mostrarUsuario() {
 
     if (this.authService.isAuthenticated()) {
-      console.log("Esta autenticado");
       this.avatar = this.authService.usuario.avatar;
       this.nombre = this.authService.usuario.nombre;
+      this.rutas = rutas2;
 
     } else {
       this.avatar = this.ls.sessionGetAvatar();
@@ -305,12 +308,12 @@ export class RetoComponent implements OnInit {
     //this.hasNext = next.before == '/reto/resumen' ? false : true;
     this._router.navigate([ruta.before]);
   }
+
   next() {
     let ruta = this.rutas.find(e => e.actual == this.activeRoutePath);
     //this.hasNext = next.next == '/reto/resumen' ? false : true;
     this._router.navigate([ruta.next]);
   }
-
 
   fixFontSize() {
     var len_fit = 10; // According to your question, 10 letters can fit in.

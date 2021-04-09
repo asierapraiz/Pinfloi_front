@@ -1,7 +1,7 @@
 <div id="modal" class="abrir-modal animacion fadeIn" *ngIf="tareaModalService.visible">
     <div id="modal-opciones" class="modal" tabindex="-1" role="dialog" style="display:block;">
         <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
+            <div (clickOutside)="log('outside')" class="modal-content">
 
                 <div class="modal-body">
                     <div class="container">
@@ -14,10 +14,9 @@
                         </div>
                         <div class="row">
 
-                            <div *ngFor="let juego of juegos" class="col-6 col-sm-4 col-md-4 col-xl-3 portfolio-item "
-                                data-name="juego" data-target="juego" data-tipo="juego">
-                                <a class="portfolio-link redondo-top seleccionado " data-toggle="modal"
-                                    (click)="addJuego(juego)">
+                            <div *ngFor="let juego of juegos" class="col-6 col-sm-4 col-md-4 col-xl-3 portfolio-item ">
+
+                                <a class="portfolio-link redondo-top seleccionado " (click)="cambiarJuego(juego)">
                                     <img alt="juego" [ngClass]="juego.name==juegoActual.name?'juego-actual':''"
                                         class="img-fluid redondo-top juego"
                                         src="./../../assets/img/juegos/{{juego.name}}.png" />
@@ -26,7 +25,7 @@
 
                                 </a>
                                 <div class="portfolio-caption redondo-bottom">
-                                    <h4>
+                                    <h4 [ngClass]="juego.name==juegoActual.name?'nombre-actual':''">
                                         {{juego.name}}
                                     </h4>
                                 </div>
@@ -51,7 +50,7 @@
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
                     <div class="col-lg-12 text-center " id="continua-btn">
-                        <input (click)="cambiarJuego()" type="submit" class="btn btn-lg btn-primary " value="OK">
+                        <input (click)="guardarCambios()" type="submit" class="btn btn-lg btn-primary " value="OK">
                     </div>
                 </div>
 

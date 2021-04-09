@@ -20,13 +20,18 @@ export class MensajeComponent implements OnInit {
   constructor(private ls: LocalStorageService, private ts: TareaService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    swal('Mejor si lo intentas de nuevo.', 'Has tenido 3 fallos. ', 'error');
+    swal('Mejor si lo intentas de nuevo.', 'Has tenido fallos. ', 'error');
 
     setTimeout(() => {
-      let s = this.ls.getSeleccion();
-      //this.router.navigateByUrl('/tarea/' + s.tareasSeleccionadas[s.tareaActual].name);
-      this.router.navigateByUrl('/tarea/' + s.tareasSeleccionadas[s.tareaActual].name);
-    }, 3000);
+      let seleccion = this.ls.getSeleccion();
+      let path;
+      if (seleccion.tareasSeleccionadas[seleccion.tareaActual].name.includes('ladel')) {
+        path = seleccion.tareasSeleccionadas[seleccion.tareaActual].name.replace(" ", "/");
+      } else {
+        path = seleccion.tareasSeleccionadas[seleccion.tareaActual].name;
+      }
+      this.router.navigate(['/tarea/' + path]);
+    }, 2000);
 
 
   }

@@ -28,7 +28,7 @@ const tareaRoutes: Routes = [
       { path: 'resta', component: RestaComponent, data: { animation: 'RestaPage' } },
       { path: 'restaCon', component: RestaConComponent, data: { animation: 'RestaConPage' } },
       { path: 'mensaje', component: MensajeComponent, data: { animation: 'MensajePage' } },
-      { path: 'tablas-2-5', component: TablasComponent, data: { animation: 'TablasPage' } },
+      { path: 'ladel/:id', component: TablasComponent, data: { animation: 'TablasPage' } },
       { path: 'tablas-6-9', component: TablasComponent, data: { animation: 'TablasPage' } },
       { path: 'multiplicarDe1', component: MultiplicarComponent, data: { animation: 'TablasPage' } },
       { path: 'multiplicarDe2', component: MultiplicarDeDosComponent, data: { animation: 'TablasPage' } },

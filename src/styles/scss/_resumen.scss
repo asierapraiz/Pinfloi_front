@@ -1,52 +1,50 @@
 section#resumen {
     width: 100vw;
-    height:100vh;
-    display:flex;
+    height: 100vh;
+    display: flex;
     align-items: center;
     justify-content: center;
-    
 
-    .mensaje{
-        color:white;
-        width: 60%;
-        padding:3rem;
-            
-        background-color: aqua;        
+    .mensaje {
+        color: white;
+        width: 1000px;
+        padding: 3rem;
+
+        background-color: aqua;
         align-items: center;
         justify-content: center;
         flex-direction: column;
-            
-        @include sombra-marco-redondo;  
 
-        &::after{
+        @include sombra-marco-redondo;
+
+        &::after {
             content: "";
             display: block;
             padding-bottom: 30%;
         }
-        .cabecera{
-            margin-top:300px;
-            color:white;
-            //height: 200px;
-            h1{
-            color:white!important;
-            font-size: 5rem;
-            font-weight: 300;
-            text-shadow: 0 0 3px black;           
+        .cabecera {
+            margin-top: 150px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            h1 {
+                color: white !important;
+                font-size: 5rem;
+                font-weight: 300;
+                text-shadow: 0 0 3px black;
             }
         }
-        .next-btn{
-            margin-top:2rem;
+        .next-btn {
+            margin-top: 2rem;
             font-size: 2rem;
         }
-        
     }
-    
 }
 
-
-    ul.errores {
-        li{
+ul.errores {
+    li {
         list-style-type: none;
     }
-    }
-
+}

@@ -1,0 +1,15 @@
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.mensaje {
+    color: rgba(23, 107, 146, 0.712);
+    opacity: 0;
+}
+
+.fadeIn {
+    opacity: 1;
+}

@@ -1,19 +1,23 @@
 import { ElementRef, HostBinding, Component, OnInit, ViewChild } from '@angular/core';
 import { RouterOutlet, Router, ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { routeAnimations, flyInOut } from './../../../animations';
-import { TareaService } from './../services/tarea.service';
-import { RetoService } from './../../reto/services/reto.service';;
+import { Observable, Subscription } from 'rxjs';
+import { routeAnimations, flyInOut } from '../../../animations';
+import { TareaService } from '../services/tarea.service';
+import { RetoService } from '../../reto/services/reto.service';;
 import { Avatar } from '../../../core/models/avatar.model';
 import { Tarea } from '../../../core/models/tarea.model';
-import { LocalStorageService } from "./../../../core/services/local-storage.service";
+import { LocalStorageService } from "../../../core/services/local-storage.service";
 import { Reto } from "../../../core/models/reto.model";
 import swal from 'sweetalert2';
 import { Valoracion } from '../../../core/models/valoracion.model';
 import { Constants } from '../../../global/constants';
-import { UsuarioService } from './../../usuarios/service/usuario.service';
+import { UsuarioService } from '../../usuarios/service/usuario.service';
 import { AuthService } from '../../usuarios/service/auth.service';
-import { TareaModalService } from './../../../core/services/tarea-modal.service';
+import { TareaModalService } from '../../../core/services/tarea-modal.service';
+import { flyInFromLeft } from './../../../animations';
+import { ResourceLoader } from '@angular/compiler';
+
+
 
 
 
@@ -23,7 +27,7 @@ import { TareaModalService } from './../../../core/services/tarea-modal.service'
 @Component({
   selector: 'app-tarea',
   templateUrl: './tarea.component.html',
-  animations: [routeAnimations, flyInOut],
+  animations: [routeAnimations, flyInOut, flyInFromLeft],
   styleUrls: ['./tarea.component.scss']
 })
 export class TareaComponent implements OnInit {
@@ -65,21 +69,27 @@ export class TareaComponent implements OnInit {
     private ls: LocalStorageService,
     private usuarioService: UsuarioService,
     private retoService: RetoService,
-    private authService: AuthService,
+    public authService: AuthService,
     public tareaModalService: TareaModalService) {
 
-
     this.reto = this.ls.getSeleccion();
+    this.tareasSeleccionadas = this.reto.tareasSeleccionadas;
     this.mostrarUsuario();
 
     //Si es la primera vuelta y no hay tareaActual
     if (!this.reto.tareaActual) {
       this.reto.tareaActual = 0;
-      ls.setSeleccion(this.reto);
+      this.ls.setSeleccion(this.reto);
     }
     this.tarea = this.reto.tareasSeleccionadas[this.reto.tareaActual].name;
 
-    this.tarea == 'tablas' ? this.showDragables = false : true;
+    if (this.tarea.includes('ladel')) {
+      this.tarea = this.tarea.replace(" ", "/");
+      this.showDragables = false;
+    } else {
+      this.showDragables = true;
+    }
+    console.log("Tarea=>" + this.tarea);
 
     //Si ya ha realizado toda las teras del reto ...
     if (this.reto.tareaActual == 0 && this.reto.tareasSeleccionadas[this.reto.tareasSeleccionadas.length - 1].valoracion != null) {
@@ -89,38 +99,71 @@ export class TareaComponent implements OnInit {
     }
   }
 
-
-
   ngOnInit(): void {
-
     this.ls.getTablasHechas() ? this.tablasHechas = this.ls.getTablasHechas() : '';
-    //this.avatar = this.reto.avatar;
-    this.tareasSeleccionadas = this.reto.tareasSeleccionadas;
-
-    if (this.authService.isAuthenticated()) {
-      this.nombre = this.authService.usuario.nombre;
-    } else {
-      this.reto = this.ls.getSeleccion();
-      this.nombre = this.reto.nombre;
-      this.avatar = this.reto.avatar;
-
-    }
   }
 
-
-
   ngAfterViewInit() {
+    this.eventsSubscriptions();
+    this.fixFontSize();
+  }
+
+  noRegistrado() {
+    swal({
+      title: '¿Quieres guardar las tareas de este reto?',
+      //text: `¿Quieres guardar las tareas de este reto?`,
+      showCancelButton: true,
+      confirmButtonText: 'Registrarme',
+      cancelButtonText: 'No, gracias',
+      confirmButtonClass: 'btn  btn-primary boton',
+      cancelButtonClass: 'btn btn-primary boton',
+      buttonsStyling: false,
+      reverseButtons: true
+    }).then((result) => {
+
+      if (result.dismiss) {
+        swal.close();
+      } else if (result.value) {
+        sessionStorage.removeItem('seleccion');
+        this.router.navigate(['/registro-bg/registro']);
+
+      }
+    });
+
+  }
+
+  eventsSubscriptions() {
+    //Recargar
+
     //Añado los eventos en los elementos de las opciones
-    let opciones = this.elementRef.nativeElement.querySelectorAll('.draggable');
-    opciones.forEach((anchor: HTMLElement) => {
-      anchor.addEventListener('click', this.seleccionaOpcion.bind(this))
-    })
+    this.rechargeDraggableEvents();
+
+    this.ts.rechargeDraggableEvents$.subscribe(
+      () => {
+        this.rechargeDraggableEvents();
+      }
+    );
+
+    this.ts.addError$.subscribe(
+      () => {
+        this.errores++;
+      }
+    );
+
+    this.ts.addAcierto$.subscribe(
+      () => {
+        this.aciertos++;
+      }
+    );
 
     this.ts.seleccionaHueco$.subscribe(
       (hueco) => {
         this.huecoSeleccionado = hueco;
       }
     );
+
+    document.getElementById('pizarra').addEventListener('click', this.limpiaTodo);
+
 
     this.ts.seleccionaOpcion$.subscribe(
       (opcion) => {
@@ -132,14 +175,18 @@ export class TareaComponent implements OnInit {
       (ladel) => {
         this.tablasHechas.push(ladel);
         this.ls.setTablasHechas(this.tablasHechas);
-        this.ajugar();
+        this.goToGame();
       }
     );
-    document.getElementById('pizarra').addEventListener('click', this.limpiaTodo);
 
-    this.fixFontSize();
   }
 
+  rechargeDraggableEvents() {
+    let opciones = this.elementRef.nativeElement.querySelectorAll('.draggable');
+    opciones.forEach((anchor: HTMLElement) => {
+      anchor.addEventListener('click', this.seleccionaOpcion.bind(this))
+    });
+  }
 
   mostrarUsuario() {
 
@@ -152,13 +199,7 @@ export class TareaComponent implements OnInit {
       this.avatar = this.ls.sessionGetAvatar();
       this.nombre = this.ls.sessionGetNombre();
     }
-    console.log(this.avatar);
-    console.log(this.nombre);
 
-  }
-
-  noHaySeleccion() {
-    alert("NO hay reto");
   }
 
   actualizaJuego() {
@@ -176,6 +217,7 @@ export class TareaComponent implements OnInit {
   }
 
   seleccionaOpcion(opcion: any) {
+
     if (this.huecoSeleccionado.id == 'llevadas') {
       document.getElementById('llevada').innerHTML = opcion.target.attributes['data-valor'].value;
       return;
@@ -200,6 +242,7 @@ export class TareaComponent implements OnInit {
 
     }
 
+    //Acierto
     if (this.huecoSeleccionado.textContent == this.huecoSeleccionado.attributes['data-valor'].value) {
 
       if (parseInt(this.huecoSeleccionado.textContent) > 9) {
@@ -207,33 +250,29 @@ export class TareaComponent implements OnInit {
       }
       this.inputs = document.getElementsByClassName("target").length;
       this.huecoSeleccionado.classList.add('acierto');
+      this.huecoSeleccionado.classList.remove('seleccionado');
       this.aciertos++;
-      console.log("Inp  =>" + this.inputs + "-----Aciertos:" + this.aciertos);
-      console.log("Tarea actual  =>" + this.reto.tareaActual);
 
-      if (this.aciertos == this.inputs) {
-        //Muestro modal y navego a juego   
-        console.log("Tarea actual  =>" + this.reto.tareaActual);
 
-        console.log(this.reto);
-
-        this.reto.tareasSeleccionadas[this.reto.tareaActual].valoracion = this.valora();
-        this.ajugar();
-
+      if (this.aciertos == this.inputs && !this.tarea.includes('ladel')) {
+        this.goToGame();
       }
-    } else {
+    } else {//Error
       this.huecoSeleccionado.classList.remove('acierto');
       this.huecoSeleccionado.classList.add('error');
-
-
       this.errores++;
-      if (this.errores > 2) {
+
+      if (this.errores == 3) {
+
+        this.reto.tareasSeleccionadas[this.reto.tareaActual].valoracion = this.valora(false);
+        this.ls.setSeleccion(this.reto);
+        let g = this.reto.tareasSeleccionadas[this.reto.tareaActual];
 
         setTimeout(() => {
           this.errores = 0;
           this.intentos++;
           this.router.navigate(['./mensaje'], { relativeTo: this.route });
-        }, 2000);
+        }, 1000);
 
       }
     }
@@ -242,15 +281,17 @@ export class TareaComponent implements OnInit {
 
   }
 
-  valora(): Valoracion {
-    let nota = 0;
-    nota = 10;
+  valora(ok: boolean): Valoracion {
+    let nota = null;
+    if (ok) {
+      nota = 3;
+    }
     let valoracion: Valoracion = { 'id': null, 'aciertos': this.aciertos, 'errores': this.errores, 'intentos': this.intentos, 'nota': nota };
 
     return valoracion;
   }
 
-  ajugar() {
+  goToGame() {
     setTimeout(() => {
       swal({
         title: 'Muy bienn!',
@@ -258,12 +299,19 @@ export class TareaComponent implements OnInit {
         type: 'success',
         confirmButtonColor: '#3085d6',
         confirmButtonText: 'Vamos!',
+        confirmButtonClass: 'btn  btn-primary boton',
+        buttonsStyling: false
       }).then((result) => {
         setTimeout(() => {
+          this.reto.tareasSeleccionadas[this.reto.tareaActual].valoracion = this.valora(true);
+
           this.reto.tareaActual = this.actualizaTarea();
           this.reto.juegoActual = this.actualizaJuego();
+
           this.ls.setSeleccion(this.reto);
+
           this.router.navigateByUrl('/juego/' + this.reto.juegosSeleccionados[this.reto.juegoActual].name);
+
         }, 500);
       });
     }, 1500);
@@ -295,25 +343,29 @@ export class TareaComponent implements OnInit {
   }
 
   nuevoReto() {
+
     swal({
-      title: 'Nuevo reto',
-      text: `¿Quieres guardar las tareas de este reto?`,
-      //type: 'warning',
+      title: '¿Quieres guardar las tareas de este reto?',
+      //text: `¿Quieres guardar las tareas de este reto?`,
       showCancelButton: true,
-      confirmButtonText: 'Nuevo reto',
-      cancelButtonText: 'Guardar',
-      confirmButtonClass: 'btn btn-primary ',
-      cancelButtonClass: 'btn btn-primary',
+      confirmButtonText: 'Sí, guardar',
+      cancelButtonText: 'No, gracias',
+      confirmButtonClass: 'btn  btn-primary boton',
+      cancelButtonClass: 'btn btn-primary boton',
       buttonsStyling: false,
       reverseButtons: true
     }).then((result) => {
       if (result.value) {
-
-        this.router.navigate(['/reto/tareas']);
-
-      } else {
         //Nuevo reto
         this.quiereGuardarElReto();
+
+      } else if (!result.value) {
+
+        sessionStorage.removeItem('seleccion');
+        this.router.navigate(['/reto/tareas']);
+
+      } else if (result.dismiss) {
+        swal.close();
       }
     });
   }
@@ -326,8 +378,8 @@ export class TareaComponent implements OnInit {
       showCancelButton: true,
       confirmButtonText: 'Nuevo juego',
       cancelButtonText: 'Cancelar',
-      confirmButtonClass: 'btn btn-primary ',
-      cancelButtonClass: 'btn btn-primary',
+      confirmButtonClass: 'btn btn-primary boton',
+      cancelButtonClass: 'btn btn-primary boton',
       buttonsStyling: false,
       reverseButtons: true
     }).then((result) => {
@@ -345,41 +397,52 @@ export class TareaComponent implements OnInit {
 
   retoTerminado() {
     swal({
-      title: 'Has terminado tu reto, que quieres hacer?',
+      title: 'Has terminado tu reto!<br> Qué quieres hacer?',
       text: `¿Puedes continuar con este reto o crear uno nuevo?`,
       //type: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Continuar!',
       cancelButtonText: 'Nuevo reto!',
-      confirmButtonClass: 'btn btn-primary ',
-      cancelButtonClass: 'btn btn-primary',
+      confirmButtonClass: 'btn btn-primary boton',
+      cancelButtonClass: 'btn btn-primary boton',
       buttonsStyling: false,
       reverseButtons: true
     }).then((result) => {
       if (result.value) {
-
-        //Duplicar reto
-        let tareas = this.reto.tareasSeleccionadas;
-        let l = tareas.length;
-
-        for (let a = 0; a < l; a++) {
-          let tarea: Tarea = { ...this.reto.tareasSeleccionadas[a] };
-          tarea.valoracion = new Valoracion();
-          this.reto.tareasSeleccionadas.push(tarea);
-        }
-
-        this.reto.tareaActual = l;
-
+        this.duplicarReto();
         this.router.navigate(['./' + `${this.tarea}`], { relativeTo: this.route });
 
       } else {
-        //Nuevo reto
-        this.quiereGuardarElReto();
+        if (!this.authService.isAuthenticated()) {
+          sessionStorage.removeItem('seleccion');
+          this.router.navigate(['reto/tareas']);
+        } else {
+          this.quiereGuardarElReto();
+        }
+
       }
     });
   }
 
+  duplicarReto() {
+    //Duplicar reto
+    let tareas = this.reto.tareasSeleccionadas;
+    let l = tareas.length;
+
+    for (let a = 0; a < l; a++) {
+      let tarea: Tarea = { ...this.reto.tareasSeleccionadas[a] };
+      tarea.valoracion = new Valoracion();
+      this.reto.tareasSeleccionadas.push(tarea);
+    }
+    this.reto.tareaActual = l;
+    this.ls.setSeleccion(this.reto);
+  }
+
   quiereGuardarElReto() {
+    //Permitir sólo si está logeado
+    if (!this.authService.isAuthenticated()) {
+      this.noEsUsuarioRegistrado();
+    }
 
     //Datos provisionales
     //this.reto tien más datos que los que hacen falta en back ,
@@ -396,10 +459,11 @@ export class TareaComponent implements OnInit {
     this.retoService.create(data)
       .subscribe(
         reto => {
-          //this.router.navigate(['/clientes']);           
           this.reto = reto;
           swal('Reto guardado', `Tu reto  ` + this.reto.nombre + ` se ha guardado correctamente.`, 'success');
+          sessionStorage.removeItem('seleccion');
           this.router.navigate(['reto/tareas']);
+
         },
         err => {
           //this.errores = err.error.errors as string[];
@@ -423,6 +487,29 @@ export class TareaComponent implements OnInit {
   openModal() {
     this.tareaModalService.open();
     this.open = true;
+  }
+
+  noEsUsuarioRegistrado() {
+    swal({
+      title: 'Es necesario ser usuario registrado',
+      text: `¿Quieres registrarte?`,
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Siiiiii!',
+      cancelButtonText: 'No gracias',
+      confirmButtonClass: 'btn btn-primary boton',
+      cancelButtonClass: 'btn btn-primary boton',
+      buttonsStyling: false,
+      reverseButtons: true
+    }).then((result) => {
+      if (result.value) {
+        //Registrarse
+        this.router.navigate(['registro-bg/registro']);
+
+      } else {
+        swal.close();
+      }
+    });
   }
 
 }

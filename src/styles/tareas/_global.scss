@@ -471,16 +471,23 @@ body {
 	}
 
 	#vadorrin {
-		position: relative;
-		width: 30px;
-		height: 600px;
+		position: absolute;
+		width: 300px;
+		height: 450px;
 		display: flex;
 		//align-items: flex-end;
 		z-index: 10;
+		bottom: 0;
+		left: 0;
+		margin-left: -300px;
+		margin-bottom: -70px;
+		&.toLeft {
+			margin-left: -150px !important;
+			transition-property: margin-left 1s;
+		}
 	}
 	.vadorrin {
 		z-index: -1;
-		position: absolute;
 		width: 400px;
 		height: auto;
 		left: -15%;
@@ -516,7 +523,7 @@ body {
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-
+		position: relative;
 		flex-direction: column;
 		border-radius: 30px;
 		border: 1px solid #ffff;

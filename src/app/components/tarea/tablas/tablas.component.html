@@ -4,12 +4,13 @@
 <div class=" row col-md-12" id="carton">
 
 
-    <div [@showLista]="showLista ? 'open' : 'closed'" id='elijeOpcion' class=" col-12" #opciones>
+    <!-- <div [@showLista]="!showLista ? 'open' : 'closed'" id='elijeOpcion' class=" col-12" #opciones>
         <h3 class=''>Elije una tabla:</h3>
         <div id='opciones'>
             <div *ngFor="let opcion of opcionesList" class='opcion' [attr.data-ladel]="opcion">{{opcion}}</div>
         </div>
-    </div>
+    </div>-->
+
     <div [@showTabla]="showTabla ? 'open':'closed'" id='showTabla' class="col-12 ">
         <div class=" ">
             <div *ngFor="let num of lista" class='fila'>
@@ -17,15 +18,16 @@
                 <div class=" item de-tabla">x</div>
                 <div [ngClass]="{'big':num>9}" class=" item de-tabla">{{num}}</div>
                 <div class=" item de-tabla">=</div>
-                <div (click)="seleccionaTarget($event)" [attr.data-valor]="num*ladel" class='item resultado target'>
+                <div [attr.data-valor]="num*ladel" class='item resultado target'>
                 </div>
             </div>
         </div>
 
 
+
         <div class='tablas-draggable-list'>
-            <div *ngFor="let num of listaMezclada" (click)="seleccionaOpcion($event)" [attr.data-valor]="num*ladel"
-                class='tablas-draggable'>{{num*ladel}}</div>
+            <div *ngFor="let num of listaMezclada" (click)="opcion($event)" [attr.data-valor]="num*ladel"
+                class='tablas-draggable draggable'>{{num*ladel}}</div>
         </div>
     </div>
 </div>

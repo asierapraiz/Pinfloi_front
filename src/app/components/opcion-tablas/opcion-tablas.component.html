@@ -1,0 +1,39 @@
+<div id="modal" class="abrir-modal animacion fadeIn" *ngIf="opcionTablasService.visible">
+    <div id="modal-opciones" class="modal" tabindex="-1" role="dialog" style="display:block;">
+        <div class="modal-dialog modal-lg" role="document">
+            <div (clickOutside)="log('outside')" class="modal-content">
+
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row d-flex justify-content-center ">
+                            <div class="col-lg-12 text-center ">
+                                <h3 class="section-heading mb-5">
+                                    Selecciona las tablas que quieras practicar. </h3>
+                            </div>
+                        </div>
+                        <div id="opciones" class="row   d-flex justify-content-center">
+
+                            <div *ngFor="let tabla of opcionTablasService.bloque"
+                                class="col-6 col-sm-4 col-md-4 col-xl-2 ">
+                                <div id="{{tabla}}" class="opcion d-flex justify-content-center caja"
+                                    (click)="addTabla($event)">
+                                    <h1 class="">x{{tabla}}</h1>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <div class="col-lg-12 text-center " id="continua-btn">
+                        <input (click)="close()" type="submit" class="btn btn-lg btn-primary " value="OK">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

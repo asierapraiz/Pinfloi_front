@@ -139,7 +139,6 @@ export class DividirDeDosComponent extends TareaUtils implements OnInit {
           let resto = (parseInt(up) % parseInt(localDivisor)).toString();
           //&& up.length==3
           if (resto.length == 1) {
-            console.log('estoy aqui');
             resto = '0' + resto;
           }
           this.filas[f][a - 1] = resto[0];

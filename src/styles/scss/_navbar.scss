@@ -3,37 +3,33 @@
   background-color: $primary;
 
   &.navbar-shrink {
-    min-height:50px;
+    min-height: 50px;
   }
 
-  &.navbar{
-   
-    padding: 0rem 1rem!important;
+  &.navbar {
+    padding: 0rem 1rem !important;
   }
 
-  .logo{
-    height:40px;
-    width:auto;
-    -webkit-transition:height, .5s;
-    -transition:height, .5s;
+  .logo {
+    height: 40px;
+    width: auto;
+    -webkit-transition: height, 0.5s;
+    -transition: height, 0.5s;
   }
-  
 
-  
   .navbar-toggler {
     font-size: 20px;
     right: 50px;
-    padding: 13px 30px;    
+    padding: 13px 30px;
     color: white;
-    border: 0;    
-    @include font('dosisbold');
-
-
+    border: 0;
+    @include font("dosisbold");
   }
 
-  .navbar-brand, button {
-    color:black;
-    @include font('dosisbold');
+  .navbar-brand,
+  button {
+    color: black;
+    @include font("dosisbold");
     &.active,
     &:active,
     &:focus,
@@ -49,73 +45,67 @@
         padding: 0.1em 0;
         letter-spacing: 1px;
         color: white;
-        @include font('dosisbold');
-        -webkit-transition:color .5s, font-size .5s;
-        transition:color .5s, font-size, .5s;
-        
+        @include font("dosisbold");
+        -webkit-transition: color 0.5s, font-size 0.5s;
+        transition: color 0.5s, font-size, 0.5s;
+
         &.active,
         &:hover {
-         color: darken($primary, 15%);
-         font-size: 2.5rem;
+          color: darken($primary, 15%);
+          font-size: 2.5rem;
         }
       }
     }
   }
 }
-  @media(min-width:992px) {
-    #mainNav {
-      padding-top: 25px;
-      padding-bottom: 25px;
-      -webkit-transition: padding-top 0.3s, padding-bottom 0.3s;
-      -moz-transition: padding-top 0.3s, padding-bottom 0.3s;
-      transition: padding-top 0.3s, padding-bottom 0.3s;
-      
-      background-color: transparent;
-        .navbar-brand {
-          font-size: 1.75em;
-          -webkit-transition: all 0.3s;
-          -moz-transition: all 0.3s;
-          transition: all 0.3s;
+@media (min-width: 992px) {
+  #mainNav {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    -webkit-transition: padding-top 0.3s, padding-bottom 0.3s;
+    -moz-transition: padding-top 0.3s, padding-bottom 0.3s;
+    transition: padding-top 0.3s, padding-bottom 0.3s;
+
+    background-color: transparent;
+    .navbar-brand {
+      font-size: 1.75em;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+    }
+    .navbar-nav {
+      .nav-item {
+        .nav-link {
+          padding: 0.2em 0.2em !important;
         }
-        .navbar-nav {
-          .nav-item {
-            .nav-link {
-              padding: 0.2em 0.2em !important;
-            }
-          }
-        }
-        .logo{
-            height:100px;
-            width:auto;
-          }
-          
+      }
+    }
+    .logo {
+      height: 100px;
+      width: auto;
+    }
 
-        &.navbar-shrink {
+    &.navbar-shrink {
+      padding-top: 0;
+      padding-bottom: 13px;
 
-          padding-top: 0;
-          padding-bottom: 13px;
+      background-color: $primary;
 
-          background-color: $primary;
+      -moz-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 
-          -moz-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-          -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid white !important;
 
-          border-bottom:1px solid white!important;
+      .navbar-brand {
+        font-size: 1.25em;
+        padding: 2px 0;
+      }
 
-          .navbar-brand {
-            font-size: 1.25em;
-            padding: 2px 0;
-          }
-
-          .logo{
-            height:50px;
-            width:auto;
-          }
-        }
-    }   
-    
+      .logo {
+        height: 50px;
+        width: auto;
+      }
+    }
   }
-
-
-  @med
+}
