@@ -10,21 +10,31 @@ export class ValoracionIconComponent implements OnInit {
 
   @Input() tarea: Tarea;
   iconType: String;
+  intentos: any[];
   constructor() { }
 
   ngOnInit(): void {
 
-    switch (this.tarea.valoracion.nota) {
-      case 3:
-        this.iconType = "fa-check";
-        break;
-      case 2:
-        this.iconType = "fa-exclamation";
-        break;
-      case 1:
-        this.iconType = "fa-times";
-        break;
+    if (this.tarea.valoracion != null && this.tarea.valoracion.intentos != null) {
+      this.intentos = Array(this.tarea.valoracion.intentos - 1).fill(4); // [4,4,4,4,4]
+
+      switch (this.tarea.valoracion.nota) {
+        case 3:
+          this.iconType = "fa-check";
+          break;
+        case 2:
+          this.iconType = "fa-exclamation";
+          break;
+        case 1:
+          this.iconType = "fa-times";
+          break;
+      }
     }
+
+
+
+
+
 
   }
 

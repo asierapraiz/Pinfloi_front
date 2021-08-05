@@ -27,14 +27,20 @@
                     </div> -->
                     <div class="line"></div>
                     <ul class="">
-                        <li @flyInFromLeft *ngFor="let tarea of tareasSeleccionadas; index as index">
+                        <li @flyInFromLeft *ngFor="let tr of reto.tareasSeleccionadas; index as index">
                             <div class="d-flex justify-content-start">
-                                <div [ngClass]="(index == reto.tareaActual)?'tarea-actual':''"
+                                <div id="{{index}}" [ngClass]="(index == reto.tareaActual)?'tarea-actual':''"
                                     class="tarea-seleccionada ">
-                                    <span>{{ tarea.name }}</span>
+                                    <span>{{ tr.name }}</span>
                                 </div>
-                                <app-valoracion-icon *ngIf="tarea.valoracion" [tarea]="tarea">
-                                </app-valoracion-icon>
+                                <!-- <app-valoracion-icon [tarea]="tarea"></app-valoracion-icon> -->
+                                <div *ngIf="tr.valoracion" class="ml-2">
+                                    <span @flyInFromLeft *ngFor="let a of [].constructor(tr.valoracion.intentos)"
+                                        class="regular "><i class="fa fa-exclamation"></i></span>
+                                    <span @flyInFromLeft *ngIf="tr.valoracion.nota" class="success "><i
+                                            class="fa fa-check"></i></span>
+                                </div>
+
                             </div>
                         </li>
                     </ul>

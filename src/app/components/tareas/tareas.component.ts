@@ -1,5 +1,6 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { Tarea } from "../../core/models/tarea.model";
+import { Valoracion } from "../../core/models/valoracion.model";
 import { RetoService } from './../reto/services/reto.service';
 import { OpcionTablasService } from './../../core/services/opcion-tablas.service';
 
@@ -21,19 +22,19 @@ export class TareasComponent implements OnInit {
 
 
   tareas: Tarea[] = [
-    { 'name': 'amigos', 'selected': false, 'cantidad': 0, 'valoracion': null },
-    { 'name': 'suma1', 'selected': false, 'cantidad': 0, 'valoracion': null },
-    { 'name': 'suma', 'selected': false, 'cantidad': 0, 'valoracion': null },
-    { 'name': 'sumaCon', 'selected': false, 'cantidad': 0, 'valoracion': null },
-    { 'name': 'resta', 'selected': false, 'cantidad': 0, 'valoracion': null },
-    { 'name': 'restaCon', 'selected': false, 'cantidad': 0, 'valoracion': null },
-    { 'name': 'tablas-2-5', 'selected': false, 'cantidad': 0, 'valoracion': null },
-    { 'name': 'tablas-6-9', 'selected': false, 'cantidad': 0, 'valoracion': null },
+    { 'name': 'amigos', 'selected': false, 'cantidad': 0, 'valoracion': new Valoracion() },
+    { 'name': 'suma1', 'selected': false, 'cantidad': 0, 'valoracion': new Valoracion() },
+    { 'name': 'suma', 'selected': false, 'cantidad': 0, 'valoracion': new Valoracion() },
+    { 'name': 'sumaCon', 'selected': false, 'cantidad': 0, 'valoracion': new Valoracion() },
+    { 'name': 'resta', 'selected': false, 'cantidad': 0, 'valoracion': new Valoracion() },
+    { 'name': 'restaCon', 'selected': false, 'cantidad': 0, 'valoracion': new Valoracion() },
+    { 'name': 'tablas-2-5', 'selected': false, 'cantidad': 0, 'valoracion': new Valoracion() },
+    { 'name': 'tablas-6-9', 'selected': false, 'cantidad': 0, 'valoracion': new Valoracion() },
     //{ id: 8, 'name': 'tablas2', 'selected': false, 'cantidad': 0 },
-    { 'name': 'multiplicarDe1', 'selected': false, 'cantidad': 0, 'valoracion': null },
-    { 'name': 'multiplicarDe2', 'selected': false, 'cantidad': 0, 'valoracion': null },
-    { 'name': 'dividir', 'selected': false, 'cantidad': 0, 'valoracion': null },
-    { 'name': 'dividirDe2', 'selected': false, 'cantidad': 0, 'valoracion': null }
+    { 'name': 'multiplicarDe1', 'selected': false, 'cantidad': 0, 'valoracion': new Valoracion() },
+    { 'name': 'multiplicarDe2', 'selected': false, 'cantidad': 0, 'valoracion': new Valoracion() },
+    { 'name': 'dividir', 'selected': false, 'cantidad': 0, 'valoracion': new Valoracion() },
+    { 'name': 'dividirDe2', 'selected': false, 'cantidad': 0, 'valoracion': new Valoracion() }
   ];
 
 

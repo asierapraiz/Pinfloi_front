@@ -48,12 +48,28 @@ section.nodo {
         display: block;
         padding-bottom: 100%;
       }
-      .nombre {
+      .nombre,
+      .nombre-dropdown,
+      .nombre-dropdown:focus {
         color: white;
         width: 70%;
         display: flex;
         justify-content: center;
         align-items: center;
+        background-color: transparent !important;
+        border: none !important;
+        outline: none;
+      }
+
+      .nombre-dropdown-menu,
+      .nombre-dropdown-item {
+        color: white;
+        width: 70%;
+        background-color: transparent !important;
+        &:hover {
+          color: $amarillo;
+          background-color: transparent !important;
+        }
       }
     }
 

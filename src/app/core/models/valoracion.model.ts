@@ -6,5 +6,10 @@ export class Valoracion {
     nota?: number;
 
     constructor() {
+        this.aciertos = 0;
+        this.errores = 0;
+        this.intentos = 0;
+        this.nota = null;
     }
 }
+

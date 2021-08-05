@@ -34,7 +34,7 @@
   animation: fadeOut 4000;
 }
 @keyframes fadeOut {
-  from {
+  0% {
     opacity: 1;
   }
   to {
@@ -71,7 +71,7 @@
 #cara.animacion {
   animation: ojos calc(1 * var(--semi-duration)) var(--interations-counter) linear;
   @keyframes ojos {
-    from to {
+    0% {
       transform: translateX(0px) translateY(5px);
     }
     25% {
@@ -127,7 +127,7 @@
 }
 
 @keyframes iris {
-  from to {
+  0% {
     transform: translateX(0px);
   }
   25% {
@@ -208,8 +208,7 @@
   animation: mandibula calc(0.4 * var(--semi-duration)) var(--interations-counter) linear;
 
   @keyframes mandibula {
-    from,
-    to {
+    0% {
       transform: rotate(10deg) translateY(10);
     }
     33% {

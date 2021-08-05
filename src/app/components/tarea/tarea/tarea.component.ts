@@ -37,7 +37,7 @@ export class TareaComponent implements OnInit {
 
   subscription!: Subscription;
   errores: number = 0;
-  intentos: number = 1;
+  intentos: number = 0;
   showComponent: boolean = true;
   inputs!: number;
   huecoSeleccionado: Element;
@@ -73,7 +73,6 @@ export class TareaComponent implements OnInit {
     public tareaModalService: TareaModalService) {
 
     this.reto = this.ls.getSeleccion();
-    this.tareasSeleccionadas = this.reto.tareasSeleccionadas;
     this.mostrarUsuario();
 
     //Si es la primera vuelta y no hay tareaActual
@@ -143,6 +142,8 @@ export class TareaComponent implements OnInit {
         this.rechargeDraggableEvents();
       }
     );
+
+
 
     this.ts.addError$.subscribe(
       () => {
@@ -264,13 +265,12 @@ export class TareaComponent implements OnInit {
 
       if (this.errores == 3) {
 
+        this.errores = 0;
+        this.intentos++;
         this.reto.tareasSeleccionadas[this.reto.tareaActual].valoracion = this.valora(false);
         this.ls.setSeleccion(this.reto);
-        let g = this.reto.tareasSeleccionadas[this.reto.tareaActual];
 
         setTimeout(() => {
-          this.errores = 0;
-          this.intentos++;
           this.router.navigate(['./mensaje'], { relativeTo: this.route });
         }, 1000);
 
@@ -278,7 +278,6 @@ export class TareaComponent implements OnInit {
     }
 
     this.limpiaRelacionados();
-
   }
 
   valora(ok: boolean): Valoracion {
@@ -286,12 +285,21 @@ export class TareaComponent implements OnInit {
     if (ok) {
       nota = 3;
     }
+
     let valoracion: Valoracion = { 'id': null, 'aciertos': this.aciertos, 'errores': this.errores, 'intentos': this.intentos, 'nota': nota };
 
     return valoracion;
   }
 
   goToGame() {
+
+    this.reto.tareasSeleccionadas[this.reto.tareaActual].valoracion = this.valora(true);
+
+    this.reto.tareaActual = this.actualizaTarea();
+    this.reto.juegoActual = this.actualizaJuego();
+
+    this.ls.setSeleccion(this.reto);
+
     setTimeout(() => {
       swal({
         title: 'Muy bienn!',
@@ -303,15 +311,7 @@ export class TareaComponent implements OnInit {
         buttonsStyling: false
       }).then((result) => {
         setTimeout(() => {
-          this.reto.tareasSeleccionadas[this.reto.tareaActual].valoracion = this.valora(true);
-
-          this.reto.tareaActual = this.actualizaTarea();
-          this.reto.juegoActual = this.actualizaJuego();
-
-          this.ls.setSeleccion(this.reto);
-
           this.router.navigateByUrl('/juego/' + this.reto.juegosSeleccionados[this.reto.juegoActual].name);
-
         }, 500);
       });
     }, 1500);

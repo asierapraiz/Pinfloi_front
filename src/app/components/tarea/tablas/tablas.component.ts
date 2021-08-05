@@ -190,17 +190,17 @@ export class TablasComponent extends TareaUtils implements OnInit {
       if (this.aciertos == 5) {
         setTimeout(() => {
           this.showTabla = !this.showTabla;
-        }, 2000);
+        }, 1500);
         setTimeout(() => {
           this.lista = this.source.slice(5);
           this.listaMezclada = this.source.slice(5);
           this.shuffle(this.listaMezclada);
           this.showTabla = !this.showTabla;
-        }, 3000);
+        }, 2500);
         setTimeout(() => {
           this.addEventListeners();
           this.ts.reChargeDraggableEvents();
-        }, 3500);
+        }, 3000);
 
       }
     }

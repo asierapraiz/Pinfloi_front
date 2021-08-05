@@ -15,8 +15,7 @@ ul {
 
 li {
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    align-items: start;
 
     .tarea-seleccionada {
         width: 180px;

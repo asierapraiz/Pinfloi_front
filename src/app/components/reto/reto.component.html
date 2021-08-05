@@ -16,8 +16,20 @@
                 <img class="img-fluid nariz d-none" src="assets/img/avatar/nariz/nariz_{{avatar.nariz}}.png" />
             </div>
 
-            <div id="username" class="nombre enlace">
-                <p>{{nombre}}</p>
+            <!--<div id="username" class="nombre enlace">
+            <p>{{nombre}}</p>
+
+        </div>-->
+            <!-- Example split danger button -->
+            <div class="btn-group">
+                <button class="nombre enlace">{{nombre}}</button>
+                <button class="nombre-dropdown dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+                    aria-expanded="false">
+                </button>
+                <div class="dropdown-menu nombre-dropdown-menu">
+                    <a class="dropdown-item nombre-dropdown-item" href="#">Editar</a>
+                    <a class="dropdown-item nombre-dropdown-item" href="#">Salir</a>
+                </div>
             </div>
         </div>
 

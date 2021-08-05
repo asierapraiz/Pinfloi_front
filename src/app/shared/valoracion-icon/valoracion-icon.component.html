@@ -1,5 +1,4 @@
-<div class="ml-2">
-    <span *ngFor="let a of [].constructor(tarea.valoracion.intentos)" class="regular "><i
-            class="fa fa-exclamation"></i></span>
+<div *ngIf="tarea.valoracion " class="ml-2">
+    <span *ngFor="let a of intentos" class="regular "><i class="fa fa-exclamation"></i></span>
     <span class="success "><i class="fa {{iconType}}"></i></span>
 </div>
